@@ -1,0 +1,7 @@
+https://github.com/downloads/srfoster/BasicWorld/BasicWorld.unitypackage
+https://github.com/downloads/srfoster/Unidee/Unidee.unitypackage
+https://github.com/downloads/srfoster/Euclid/Euclid.unitypackage
+https://github.com/downloads/srfoster/UShell/UShell.unitypackage
+https://github.com/downloads/srfoster/Unloader/Unloader.unitypackage
+https://github.com/downloads/srfoster/June/June.unitypackage
+https://github.com/downloads/srfoster/Inventory/Inventory.unitypackage
