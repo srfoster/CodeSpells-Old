@@ -6,7 +6,7 @@ public class Setup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("Todo: 1) Kill java somehow,\n 2) reset java code state,\n 3) enchantment distance restriction");
+		//(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("Todo: 1) Kill java somehow,\n 2) reset java code state,\n 3) enchantment distance restriction");
 		
 		givePlayerAScroll();
 		

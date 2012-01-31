@@ -17,7 +17,7 @@ public class Levitate
 
     
     while(true)
-      entity.movement().levitate(1.0f);
+      entity.movement().levitate(3.0f);
     
   }
 }
