@@ -1,0 +1,31 @@
+******************
+The Euclid Project
+******************
+
+
+This project allows Unity3D to interact with the Eclipse IDE.
+
+Why would this be useful?  I'm personally using this in the CodeSpells project (codespells.blogspot.com).  I also think it could be useful to anyone who wants to build a fully featured IDE inside of Unity.  Also, it would be useful in projects that involve visualizing code bases in 3D environments (Yes, these do exist: http://www.moosetechnology.org/tools/vw/codecity).
+
+
+***************
+Getting started
+***************
+
+You'll need to install: 
+
+1) Eclipse (http://www.eclipse.org/)
+2) Eclim (http://eclim.org/)
+
+After installing these and downloading this Git project, you'll need to edit the EclipseConfig file with the path to your eclipse installation.
+
+You can look at the EuclidTest scene as an example of how to get started.
+
+You can use Euclid in your own project by importing Euclid.unitypackage.  Note that if you do this, you'll also need to import the packages on which Euclid depends:
+
+1) UShell (https://github.com/srfoster/UShell)
+2) Unloader (https://github.com/srfoster/Unloader)
+
+When you have imported all of the necessary packages, you can place the EclipseObject into your scene.  The Eclim server will start when your game starts.  The first time may take several minutes.  Subsequent times will be faster.
+
+You may make calls to the Eclipse IDE by calling functions in Eclipse.cs.  These functions communicate with Eclim, which (in turn) communicates with the Eclise IDE.

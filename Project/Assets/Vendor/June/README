@@ -1,0 +1,47 @@
+****************
+The June Project
+****************
+
+This project aims to provide limited support for Java in Unity3D.  It also provides support for ANY external program (in any language) to interact with Unity.
+
+
+****************
+How do I get it?
+****************
+
+The fastest way is to import June.unitypackage into your project.  The "Server" prefab is all you technically need to add to your scene.  The "Platform" prefab can also be added as an example of a GameObject that is controlled via a Java program.
+
+
+
+*****************
+How does it work?
+*****************
+
+The June Server runs inside of Unity, exposing Unity's API to external programs.  Java programs can manipulate the game state by communicating with the June server.  This project includes the June Server as well as the Java libraries for communicating with it.
+
+
+
+**************************
+Why support Java in Unity?
+**************************
+
+Unity natively supports C#, Boo, and UnityScript.  I personally have a need to supprort Java for the CodeSpells Project (codespells.blogspot.com).  I figured that if I have a need, others might too.
+
+Plus, it's not just Java.  This project allows any external program to manipulate the game state of a running Unity program.  I hope to soon see related projects cropping up: perhaps a Pune Project (Python + Unity), a Rune Project (Ruby + Unity), or a Hune project (Haskell + Unity).  
+
+
+
+********************************************
+Will it work on iPhone/Android/XBox/Wii/Etc?
+********************************************
+
+No.  In fact, it currently only works on the Mac (although if someone would like to help me support Windows, that would be great).  The target platform has to support Java.  And Java must be installed.  The Java programs are executed in parallel with the Unity game. 
+
+
+
+*****************************
+Where do I put my Java files?
+*****************************
+
+I recommend putting them in the "Assets/MyJune" directory.  After the Unity project is built, the PostprocessBuildPlayer script copies this directory into the game's install directory.  Technically, you can put your Java files anywhere -- but you'll have to edit the JuneConfig.cs file appropriately.
+
