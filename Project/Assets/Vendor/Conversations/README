@@ -1,0 +1,12 @@
+************************
+The Conversation Project
+************************
+
+This project is for doing RPG-style conversations in Unity3D.  It is currently incomplete.
+
+TODO:
+
+1) Better subclassing of Conversation (See ExampleConversation for a step in the right direction).  
+2) Prettier GUI for ConversationDisplayer.
+3) NPCTalk should make the NPC turn toward the player when the conversation is initiated.
+

@@ -56,8 +56,12 @@ class YouGitIt extends EditorWindow {
 					    	Debug.Log("Gitting " + to_git);
 							feedback = "Gitting: " + to_git;
 				    		
+				    		/*
 				    		var webClient = new WebClient();
 							webClient.DownloadFile(to_git, data_path + "/Vendor/YouGitIt/"+package_name);
+							*/
+							
+							
 						}catch(e){
 							Debug.Log(e);
 							feedback = e.ToString();

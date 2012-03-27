@@ -6,7 +6,13 @@ public class SetupCodeSpells : MonoBehaviour {
 	
 	public SetupCodeSpells()
 	{
-		
+
+	}
+	
+	void Start()
+	{
+		if(Application.isPlaying)
+			Init();	
 	}
 	
 	public void Init() {

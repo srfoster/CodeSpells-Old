@@ -1,0 +1,23 @@
+*********************
+The Inventory Project
+*********************
+
+This project provides an extensible inventory for a typical RPG game.  Items in the inventory can be used, dragged back to the world, and dragged onto specific targets in the world.  The combining of objects in the inventory is coming soon.  The inventory's look and feel is customizable.
+
+This project is under active development as part of the CodeSpells Project (http://codespells.blogspot.com).
+
+
+************
+Installation
+************
+
+The easiest way to get started is to import the Inventory.unitypackage file.  Alternatively, this project is YouGitIt-friendly -- which means you can install the inventory and stay up-to-date with the latest releases by using YouGitIt (https://github.com/srfoster/YouGitIt).
+
+For aesthetic reasons, the example uses the BasicWorld project (https://github.com/srfoster/BasicWorld).  But if you are only interested in the Inventory code, you can safely delete the Vendor/BasicWorld directory after you obtain the package file.
+
+The Inventory prefab should be added to your world.  Objects that you wish to allow your players to pick up should be given a script that extends Item.  See the DraggableItem and SpellItem for examples.
+
+You can add the Example prefab along with the Inventory prefab to see the various examples in action.
+
+
+

@@ -5,7 +5,12 @@ public class SetupBasicWorld : MonoBehaviour {
 	
 	public SetupBasicWorld()
 	{
-		
+
+	}
+	
+	void Start()
+	{
+
 	}
 	
 	public void Init(){

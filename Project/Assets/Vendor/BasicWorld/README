@@ -1,0 +1,12 @@
+***********
+Basic World
+***********
+
+A possible starting point for Unity3D projects.  The BasicWorld scene contains:
+
+1) A standard terrain,
+2) A standard skybox,
+3) Directional sunlight,
+4) A third-person controller.
+
+The YouGitIt Project (https://github.com/srfoster/YouGitIt) is bundled with this project.  This supports extending the basic world with any YouGitIt-friendly Unity3D projects hosted on GitHub.  See the YouGitIt project page for more information.

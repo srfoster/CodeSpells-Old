@@ -1,0 +1,24 @@
+******************
+The Unidee Project
+******************
+
+Unidee is an IDE that runs inside of Unity3D games.  It supports basic syntax highlighting, basic custom theming, and basic integration with the Eclipse IDE.  Code completion and compiler error messages are coming soon.  The project is under active development as a key component of the CodeSpells project (http://codespells.blogspot.com).
+
+Unfortunately, it doesn't work on Windows yet because it's does some naive things with forward and backward slashes in path names.  It should be easy to fix.  I'm sure some clever person could add Windows support relatively quickly.
+
+
+
+
+************
+Installation
+************
+
+Import the Unidee.unitypackage file into your Unity project.  This will also install YouGitIt.  YouGitIt is a utility for installing Unity package dependencies.  See https://github.com/srfoster/YouGitIt for usage.
+
+YouGitIt will help you install the following dependencies:
+
+1) Euclid -- For Unity/Eclipse integration. (https://github.com/srfoster/Euclid)
+2) UShell -- Command line execution from within Unity3d. (https://github.com/srfoster/UShell)
+3) Unloader -- Loading indicators in Unity3D (https://github.com/srfoster/UShell)
+
+When all dependencies have been installed, you may place the IDE prefab in your scene.  Alternatively, you can load the example scene Unidee/UnideeTest.  Note that for this example scene to work fully, you must have Eclipse installed.  And you must have edited EuclidConfig correctly.  See https://github.com/srfoster/Euclid for more information about setting up Euclid.

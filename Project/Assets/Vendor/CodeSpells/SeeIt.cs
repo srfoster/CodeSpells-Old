@@ -8,6 +8,9 @@ public class SeeIt : MonoBehaviour {
 	
 	void OnDrawGizmos () {
 		
+		if(Application.isPlaying)
+			return;
+		
 		if(should_show && GameObject.FindWithTag("Player") == null)
 		{
 			should_show = false;

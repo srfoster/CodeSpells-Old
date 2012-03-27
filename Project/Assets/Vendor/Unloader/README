@@ -1,0 +1,9 @@
+
+********************
+The Unloader Project
+********************
+
+Unity3D doesn't support animated GIFs in GUIs.  This can make it difficult to add loading indicators to your games.
+
+This project currently contains a single (not-very-customizable) example of a loading indicator.  Feel free to use it as a launching point for building your own loading indicators.  If you make something awesome, feel free to contribute to this project.
+

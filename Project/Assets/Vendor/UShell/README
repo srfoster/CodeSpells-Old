@@ -1,0 +1,13 @@
+
+******************
+The UShell Project
+******************
+
+This project bundles up some standard code that allows a Unity3D game to run external programs.
+
+The example currently only works for Mac.  But I'm sure some clever person could put together a windows example in less than 45 seconds.  If so, please contribute!
+
+UShell.unitypackage is currently a dependency for other projects:
+
+1) June (https://github.com/srfoster/June)
+2) Euclid (https://github.com/srfoster/Euclid)
