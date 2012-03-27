@@ -149,19 +149,24 @@ public class IDE : MonoBehaviour {
 			highlight("if\\w*(.*)",control_statement_syntax_highlight, line, count);
 			highlight("while\\w*(.*)",control_statement_syntax_highlight, line, count);
 			highlight("for \\w*(.*)",control_statement_syntax_highlight, line, count);
-			highlight("\\(.*\\)",expression_syntax_highlight, line, count);
-			highlight("object", declaration_syntax_highlight, line, count);
-			highlight("(movement.\\w+\\(.*\\));", declaration_syntax_highlight, line, count);
+			//highlight("\\(.*\\)",expression_syntax_highlight, line, count);
+			//highlight("object", declaration_syntax_highlight, line, count);
+			//highlight("(movement.\\w+\\(.*\\));", declaration_syntax_highlight, line, count);
 			
 			highlight("public", declaration_syntax_highlight, line, count);
 			highlight("private", declaration_syntax_highlight, line, count);
 			highlight("static", declaration_syntax_highlight, line, count);
 			highlight("void", declaration_syntax_highlight, line, count);
 			highlight("class", declaration_syntax_highlight, line, count);
-			highlight("boolean", declaration_syntax_highlight, line, count);
-			highlight("String", declaration_syntax_highlight, line, count);
+			highlight("import", declaration_syntax_highlight, line, count);
+
 	
-	
+			highlight("[0-9]", expression_syntax_highlight, line, count);
+			highlight("[0-9.]*f", expression_syntax_highlight, line, count);
+
+			highlight("true", expression_syntax_highlight, line, count);
+			highlight("false", expression_syntax_highlight, line, count);
+
 			count++;
 		}
 		

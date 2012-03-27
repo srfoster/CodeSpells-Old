@@ -16,12 +16,24 @@ public class Movement
 
 	public void forward(double distance)
 	{
-		parent.command("transform.position.x += "+distance+"\n");
+        double speed = 0.05;
+        double oldPos = currentPosition();
+        double newPos = oldPos+distance;
+		while(currentPosition() < newPos)
+		{
+			parent.command("transform.position.x += " + speed);
+		}
 	}
 
 	public void backward(double distance)
 	{
-		parent.command("transform.position.x -= "+distance+"\n");
+        double speed = 0.05;
+        double oldPos = currentPosition();
+        double newPos = oldPos+distance;
+		while(currentPosition() > newPos)
+		{
+			parent.command("transform.position.x -= " + speed);
+		}
 	}
 
 	public void right(double distance)
@@ -43,6 +55,27 @@ public class Movement
 			parent.command("transform.position.y += " + speed);
 		}
 	}
+    
+    public void transport(double distance, double height, String direction)
+    {
+        parent.command("rigidbody.useGravity = false");
+		double liftSpeed = 0.03;
+        double moveSpeed = 0.05;
+		while(currentHeight() < height)
+		{
+            parent.command("transform.position.y += " + liftSpeed);
+		}
+        double curr = currentPosition();
+        
+        if(direction.equals("Forward"))
+        {
+            forward(distance);
+        }  
+        else if(direction.equals("Backward"))
+        {
+            backward(distance);
+        }
+    }
 	
 	public void drop()
 	{
@@ -52,5 +85,9 @@ public class Movement
 	public double currentHeight()
 	{
 		return Double.parseDouble(parent.command("transform.position.y"));
+	}
+	public double currentPosition()
+	{
+		return Double.parseDouble(parent.command("transform.position.x"));
 	}
 }

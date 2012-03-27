@@ -1,0 +1,49 @@
+Nodes
+0=Hi there! I'm a magical gnome! I have cast a spell on my box to make it float, you should be able to see my box to the left of me by the fire. I am going to teach you how to use spells! Are you ready?
+1=Are you ready to learn how to use spells now?
+2=Great! On the right hand side of your screen you should see a scroll. Do you see it?
+3=Ask your expert programmer for help, when you have found the scroll, let me know :D
+4=Awesome! Drag the scroll so that it is on top of the enchanted box, this should disenchant the box and capture the spell onto your scroll. Try it!
+5=Were you able to capture the spell and disenchant the box?
+6=Ask your expert programmer for help, when you have captured the spell, let me know :D
+7=You are doing incredible! You have just DISENCHANTED an item and captured the spell. To ENCHANT an item, you perform the same action as DISENCHANTing. Drag your scroll, that now has the spell on it, to the box again. This should ENCHANT the box. Try it!
+8=Were you able to ENCHANT the box again?
+9=Ask your expert programmer for help, when you have cast the spell on the box, let me know :D
+10=Amazing! Go back to your worksheet now, and come back to me once you have filled in the questions.
+11=Now it is time to read the spell! Capture the spell onto your scroll and then click on the scroll. The spell should pop up, refer to your worksheet for an explanation of it.
+12=Do you understand the spell now?
+13=Ask your expert programmer for help, when you have understood the spell, let me know :D
+14=Great! Now switch positions, have someone who hasn't played play now. Then go find my brother! He looks JUST like me, but has a blue circle, he should be near a fire pit to the left.
+15=That's all I have for you :)
+Responses
+0=Yes!=0=2
+1=Yes!=1=2
+2=Yes!=2=4
+3=No :(=2=3
+4=Fount it!=3=4
+5=Yes!=5=7
+6=No :(=5=6
+7=Spell captured!=6=7
+8=Yes!=8=10
+9=No :(=8=9
+10=Spell casted!=9=10
+11=Yes!=12=14
+12=No :(=12=13
+13=Spell understood!=13=14
+Exits
+0=Exit=0=1=1
+1=Exit=1=1=1
+2=Exit=2=2=2
+3=Exit=3=3=3
+4=Exit=4=5=5
+5=Exit=5=5=5
+6=Exit=6=6=6
+7=Exit=7=8=8
+8=Exit=8=8=8
+9=Exit=9=9=9
+10=Exit=10=11=11
+11=Exit=11=12=12
+12=Exit=12=12=12
+13=Exit=13=13=13
+14=Exit=14=15=15
+15=Exit=15=15=15

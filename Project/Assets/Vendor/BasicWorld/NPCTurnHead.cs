@@ -6,7 +6,6 @@ public class NPCTurnHead : MonoBehaviour {
 	private Transform player;
 	private Transform head;
 	
-	private Vector3 last_direction;
 	
 	void Start (){
 		player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -24,7 +23,6 @@ public class NPCTurnHead : MonoBehaviour {
 		if(angle < 70)
 		{
 			head.LookAt(player, Vector3.left);
-			last_direction = direction;
 		} else {
 		}
 	}

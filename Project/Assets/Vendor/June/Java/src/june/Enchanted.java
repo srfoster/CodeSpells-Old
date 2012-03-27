@@ -52,7 +52,7 @@ public class Enchanted
 	public String command(String command)
 	{
 		try{
-			out.println("GameObject.Find('"+id+"')."+command);
+			out.println("GameObject.Find(\""+id+"\")."+command);
 
 			String response = in.readLine(); //Waits for confirmation from the Unity server...
 			System.out.println(response);

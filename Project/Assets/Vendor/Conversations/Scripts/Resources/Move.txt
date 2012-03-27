@@ -1,0 +1,49 @@
+Nodes
+0=Hi there! You must be the new magician! I hear you know how to levitate objects. That is so cool! But I think moving objects is really neat also, would you like to learn how to move objects too?
+1=Are you ready to learn how to move objects now?
+2=Great! Right now my box is enchanted but it doesn't really do anything. Can you capture the spell onto your scroll? When you have captured it, open it up and look at it, then refer to your worksheet for an explanation.
+3=Do you understand the spell now?
+4=Ask your expert programmer for help, when you have understood the spell, let me know :D
+5=Awesome! Now let's make this spell actually do something! Uncomment the line of code in the spell and then recast it onto my box.
+6=Were you able to cast the spell?
+7=Ask your expert programmer for help, when you have cast the spell, let me know :D
+8=Did it do what you expected it to? Try changing around the parameter (the distance that it should move) and casting the box again.
+9=Do you understand how the parameter changes how the box moves now?
+10=Ask your expert programmer for help, when you have understood parameters, let me know :D
+11=Amazing! Now try changing the method being called. Right now, we are called "forward", try calling "backward" instead and seeing what happens.
+12=Do you understand how the method changes how the box moves now?
+13=Ask your expert programmer for help, when you have understood methods, let me know :D
+14=You are so smart! That's all I have for you, go visit my brother, he's the green one and he's passed my pink sister. Don't forget to switch positions, have someone who hasn't played play now. Before you leave though, check the worksheet.
+15=That's all I have for you :)
+Responses
+0=Yes!=0=2
+1=Yes!=1=2
+2=Yes!=3=5
+3=No :(=3=4
+4=I understand!=4=5
+5=Yes!=6=8
+6=No :(=6=7
+7=I cast it!=7=8
+8=Yes!=9=11
+9=No :(=9=10
+10=I understand parameters!=10=11
+11=Yes!=12=14
+12=No :(=12=13
+13=I understand methods!=12=14
+Exits
+0=Exit=0=1=1
+1=Exit=1=1=1
+2=Exit=2=2=3
+3=Exit=3=3=3
+4=Exit=4=4=4
+5=Exit=5=6=6
+6=Exit=6=6=6
+7=Exit=7=7=7
+8=Exit=8=9=9
+9=Exit=9=9=9
+10=Exit=10=10=10
+11=Exit=11=12=12
+12=Exit=12=12=12
+13=Exit=13=13=13
+14=Exit=14=15=15
+15=Exit=15=15=15

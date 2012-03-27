@@ -1,0 +1,102 @@
+Nodes
+0=Hi there! Have you seen my box?
+1=Oh! There it is! Someone must have used LEVITATE on it!!
+2=LEVITATE is a spell used to make objects, like my box, float.
+3=Yeah! Do you know what LEVITATE is?
+4=Well fine then! Off you go!
+5=Ugh. I don't want to talk to you anymore!
+6=Well alright, I forgive you. Are you interested in learning what LEVITATE is?
+7=Well, if only I could find my empty scroll I could show you...
+8=No Problem! Would you like to learn how to use LEVITATE?
+9=OK, come back when you want to learn how to use it.
+10=Would you like to learn how to use LEVITATE now?
+11=Have you found an empty scroll yet?
+12=Great! Try dragging your empty scroll to the floating box. This will capture the LEVITATE spell onto your scroll.
+13=Did you capture the LEVITATE spell onto your empty scroll?
+14=Awesome! Now try viewing your LEVITATE spell by double clicking on the scroll that you captured the spell with.
+15=OK, come back when you have captured the LEVITATE spell.
+16=Were you able to view your LEVITATE spell?
+17=Would you now like to learn how to cast your LEVITATE spell?
+18=OK, come back when you have viewed your LEVITATE spell.
+19=Just drag the LEVITATE scroll to an object to cast it. Try dragging it back to the box first.
+20=OK, come back when you want to learn how to cast the LEVITATE spell.
+21=Have you re-cast the box?
+22=Awesome! Now, capture the LEVITATE spell onto your empty scroll again, then try casting the LEVITATE spell onto one of the trees.
+23=OK, come back when you have re-cast the box.
+24=Have you tried casting a tree?
+25=OK, come back when you have tried casting the LEVITATE spell on a tree.
+26=Did you get an error?
+27=This error just means that the LEVITATE spell can only work on objects of a certain type: moveable. Since Trees aren't moveable, you cannot cast LEVITATE on them.
+28=When a spell doesn't work as expected (or at all) that is called an error. 
+29=That's great! That's all I have to teach you, now it's time for you to try levitating objects throughout the forest. Just make sure they are the right type of object!
+30=Nothing left here!
+31=It should be on the right of your screen.
+Responses
+0=Yes! It's floating over there!=0=1
+1=What is LEVITATE?=1=2
+2=Oh cool!=1=3
+3=Eh, that's not too interesting=1=4
+4=I'm sorry=5=6
+5=I'm sorry=4=6
+6=No I don't=3=2
+7=Sure!=6=2
+8=How do you use levitate?=2=7
+9=Oh OK. Thanks for the info!=2=8
+10=Sure!=8=7
+11=No thanks=8=9
+12=Sure!=10=7
+13=No thanks=10=9
+14=I have an empty scroll=7=12
+15=Yes I did!=11=12
+16=Not yet=11=31
+17=Found it!=31=12
+18=Yes I did!=13=14
+19=Not yet=13=15
+20=Yes I was!=16=17
+21=Not yet=16=18
+22=Yes I would!=17=19
+23=Not yet=17=20
+24=Yes I did!=21=22
+25=Not yet=21=23
+26=Yes I did!=24=26
+27=Not yet=24=25
+28=Yes I did!=26=27
+29=I don't know, it just didn't work=26=28
+30=Oh I see.=28=27
+31=I think I understand LEVITATE now.=27=29
+32=Restart Conversation=29=0
+33=Thanks!=29=30
+34=Restart Conversation=30=0
+Exits
+0=Exit=0=0=0
+1=Exit=1=1=1
+2=Exit=2=2=2
+3=Exit=3=3=3
+4=Exit=4=5=5
+5=Exit=5=5=5
+6=Exit=6=6=6
+7=Exit=7=11=11
+8=Exit=8=10=10
+9=Exit=9=10=10
+10=Exit=10=10=10
+11=Exit=11=11=11
+12=Exit=12=13=13
+13=Exit=13=13=13
+14=Exit=14=16=16
+15=Exit=15=13=13
+16=Exit=16=16=16
+17=Exit=17=17=17
+18=Exit=18=16=16
+19=Exit=19=21=21
+20=Exit=20=17=17
+21=Exit=21=21=21
+22=Exit=22=24=24
+23=Exit=23=21=21
+24=Exit=24=24=24
+25=Exit=25=24=24
+26=Exit=26=26=26
+27=Exit=27=27=27
+28=Exit=28=28=28
+29=Exit=29=30=30
+30=Exit=30=30=30
+31=Exit=31=11=11

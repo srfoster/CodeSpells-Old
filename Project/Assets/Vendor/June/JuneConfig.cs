@@ -6,8 +6,7 @@ public class JuneConfig : MonoBehaviour {
 	public static string java_files_path = ""; 
 	public static string june_files_path = ""; 
 
-	
-	void Start(){
+	void Awake(){
 		if(Application.isEditor)
 		{
 			java_files_path = Application.dataPath + "/Vendor/CodeSpells/CodeSpellsJava";	

@@ -24,17 +24,14 @@ public class Inventory : MonoBehaviour {
 	
 	private int inventory_width = 320;
 	
-	private int item_width = 70;
+	private int item_width = 100;
 	private int item_height = 50;
 	
-	private int item_padding = 10;
 	
 	private int label_height = 40;
 	
 	private int item_columns = 3;
-	
-	private float vSliderValue = 0.0f;
-	
+		
 	private int starting_row = 0;
 	
 	private bool overflow_bottom = false;

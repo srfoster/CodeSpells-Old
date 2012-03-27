@@ -1,0 +1,33 @@
+Nodes
+0=Hello there how are you?
+1=Oh great! Do you want to do a task?
+2=Oh no! Do you want to do a task to make you feel better?
+3=Why don't you try doing a task, it might clear things up for you.
+4=Awesome! Try running around me and my friend 3 times!
+5=Ok, come back when you want to try the task.
+6=Do you want to try the task now?
+7=Great Job!! You are a pro at this!
+8=You didn't quite complete the task, come back when you have completed it.
+Responses
+0=I'm feeling OK.=0=1
+1=I'm feeling horrible!=0=2
+2=I'm really confused…=0=3
+3=Yeah!=1=4
+4=Yeah!=2=4
+5=Yeah!=3=4
+6=Yeah!=6=4
+7=No Thanks.=1=5
+8=No Thanks.=2=5
+9=No Thanks.=3=5
+10=No Thanks.=6=5
+11=Nevermind=4=5
+Exits
+0=Exit=0=0=0
+1=Exit=1=6=6
+2=Exit=2=6=6
+3=Exit=3=6=6
+4=OK!=4=7=8
+5=Exit=5=6=6
+6=Exit=6=6=6
+7=Exit=7=0=0
+8=Exit=8=0=0
