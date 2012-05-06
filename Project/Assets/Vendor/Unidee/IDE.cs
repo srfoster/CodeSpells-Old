@@ -28,6 +28,14 @@ public class IDE : MonoBehaviour {
 	
 	private bool paused = false;
 	
+	private Vector2 scroll_position = Vector2.zero;
+	
+	private bool ignore_scroll = false;
+	
+	private int last_line_number = 0;
+	
+	private TestAutoCompletionManager auto_completion_manager = new TestAutoCompletionManager();
+	
 	public string getCode()
 	{
 		return current_code;
@@ -41,6 +49,48 @@ public class IDE : MonoBehaviour {
 	public int GetCursorPosition()
 	{
 		return stateObj.selectPos;
+	}
+	
+	public int LineNumber()
+	{
+		return NumberOfNewLines(current_code.Substring(0,GetCursorPosition()));	//Number of newlines before cursor
+	}
+	
+	public int CursorVerticalOffset()
+	{
+		return LineNumber() * 24;	
+	}
+	
+	public int NewLineBeforeCursor()
+	{
+		for(int i = GetCursorPosition()-1; i >=0; i--)
+		{
+			char c = current_code[i];
+			if (c == '\n')
+				return i;
+		}
+		return -1;
+	}
+	
+	public int ColumnNumber()
+	{
+		return (GetCursorPosition() - NewLineBeforeCursor()) - 1;	
+	}
+	
+	public int CursorHorizontalOffset()
+	{
+		return ColumnNumber() * 12;
+	}
+	
+	public int NumberOfNewLines(string s)
+	{
+		int count = 0;
+		foreach(char i in s)
+		{
+			if (i == '\n')
+				count++;
+		}
+		return count;
 	}
 	
 	public void SetInput(IDEInput input)
@@ -70,7 +120,7 @@ public class IDE : MonoBehaviour {
 		code_style.fontSize = 20;
 		code_style.normal.textColor = Color.black;
 		code_style.font = ide_font;
-		code_style.wordWrap = true;
+		code_style.wordWrap = false;
 			
 		Thread inputThread  = new Thread (inputProcessing);
 		inputThread.Start();
@@ -79,20 +129,95 @@ public class IDE : MonoBehaviour {
 	
 	void OnGUI()
 	{
+
 		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),background_texture);
 		
 		stateObj = GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl) as TextEditor;
 	
 		leftPanel();
 		rightPanel();
+
+		
+		
+		adjustScroll();
+		
+		catchTabs();
+		
+	}
+	
+	
+	void suggestAutocompletes()
+	{
+		int x = CursorHorizontalOffset();
+		int y = CursorVerticalOffset() + 24;
+		
+		Suggestions suggestions = auto_completion_manager.getSuggestions();
+		
+		GUIStyle suggestion_style = new GUIStyle();
+		
+		suggestion_style.fontSize = 20;
+		suggestion_style.normal.textColor = Color.black;
+		suggestion_style.font = ide_font;
+		suggestion_style.wordWrap = false;
+		suggestion_style.normal.background = Resources.Load("Textures/WoodenButtonUp") as Texture2D;
+		suggestion_style.alignment = TextAnchor.MiddleCenter;
+		
+		GUI.Box(new Rect(x,y, suggestions.longest().Length * 12 + 30, suggestions.number() * 24 + 30), suggestions.toString(), suggestion_style);
+	}
+		
+		
+	void catchTabs()
+	{
+		if( Event.current.Equals( Event.KeyboardEvent("tab") ) )
+	    {
+	        Event.current.Use();
+			
+			current_code = current_code.Substring(0,GetCursorPosition()) + "\t" + current_code.Substring(GetCursorPosition());
+			stateObj.MoveRight();
+		}
+	}
+	
+	void adjustScroll()
+	{
+		if(last_line_number == LineNumber())
+		{
+			return;
+		}
+		
+		last_line_number = LineNumber();
+		
+		if(CursorVerticalOffset() > scroll_position.y + Screen.height - 60)
+		{
+			scroll_position.y += CursorVerticalOffset() - (scroll_position.y + Screen.height - 60);	
+		}
+		
+		if(CursorVerticalOffset() < scroll_position.y)
+		{
+			scroll_position.y += CursorVerticalOffset() - scroll_position.y;
+		}
 	}
 	
 	void leftPanel()
 	{
-		GUI.BeginGroup(new Rect(0,0,Screen.width*3/4,Screen.height));	
+
+
+		GUI.BeginGroup(new Rect(0,0,Screen.width*3/4,Screen.height));
 		GUI.DrawTexture(new Rect(0,0,Screen.width*3/4,Screen.height),left_panel_background);
-		current_code = GUI.TextArea(new Rect(120,40,Screen.width*3/4-200,Screen.height-60),current_code, code_style);
+		
+		GUI.BeginGroup(new Rect(120,40,Screen.width*3/4,Screen.height));
+
+		scroll_position = GUILayout.BeginScrollView (scroll_position, GUILayout.Width(Screen.width*3/4-200), GUILayout.Height(Screen.height-60 )); // Should vary the size of the last rect by how much text we have??
+    	current_code = GUILayout.TextArea(current_code, code_style);
+    	GUILayout.EndScrollView ();
+		
 		syntaxHighlight();
+
+		suggestAutocompletes();
+
+		
+		GUI.EndGroup();
+
+		
 		GUI.EndGroup();
 	}
 	
@@ -181,7 +306,7 @@ public class IDE : MonoBehaviour {
 			Match match = matches[i];
 			int offset = match.Groups[0].Index;
 			int length = match.Groups[0].Length;
-			GUI.DrawTexture(new Rect(118 + offset*12,37+ count * 24, 5 + length * 12, 30), texture);
+			GUI.DrawTexture(new Rect(-2 + offset*12 - scroll_position.x,-2 + count * 24 - scroll_position.y, 5 + length * 12, 30), texture);
 		}
 	}
 
