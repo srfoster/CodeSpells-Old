@@ -22,7 +22,7 @@ public class NPCTurnHead : MonoBehaviour {
 		
 		if(angle < 70)
 		{
-			head.LookAt(player, Vector3.left);
+			head.LookAt(player, head.up);
 		} else {
 		}
 	}
