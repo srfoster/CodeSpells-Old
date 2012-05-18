@@ -15,7 +15,6 @@ public class Flamable : MonoBehaviour {
 		}
 	}
 	
-	
 	void Ignite()
 	{
 		if(isIgnited())
@@ -30,10 +29,41 @@ public class Flamable : MonoBehaviour {
 		return flames_actual != null;
 	}
 	
+	public void Extinguish()
+	{
+		if(!isIgnited())
+			return;
+		Debug.Log("I'm trying to extinguish something that is ignited");
+		Destroy(flames_actual);
+	}
+	
 	void OnCollisionStay(Collision col)
 	{
-		if(!col.gameObject.name.Equals("Terrain"))
-			Debug.Log(col.gameObject);
+		Debug.Log("I'm colliding with: "+col.gameObject);
+		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
+		{
+			Debug.Log("I'm trying to extinguish something");
+			Extinguish();
+		}
+		if(col.gameObject.GetComponent("Flamable") == null)
+		{
+			return;	
+		}
+		
+		Flamable other_flamable = col.gameObject.GetComponent("Flamable") as Flamable;
+		
+		if(other_flamable.isIgnited())
+			Ignite();
+	}
+	
+	void OnTriggerStay(Collider col)
+	{
+				Debug.Log("I'm colliding with: "+col.gameObject);
+		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
+		{
+			Debug.Log("I'm trying to extinguish something");
+			Extinguish();
+		}
 		if(col.gameObject.GetComponent("Flamable") == null)
 		{
 			return;	

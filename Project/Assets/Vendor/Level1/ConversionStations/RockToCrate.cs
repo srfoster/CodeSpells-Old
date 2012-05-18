@@ -13,7 +13,10 @@ public class RockToCrate : ConvertOnEntry {
 		if(!(l.GetComponent("Flamable") as Flamable).isIgnited())
 			return false;
 		
-		if(!(l.tag.Equals("Rock")))
+		if(l.GetComponent("Substance") == null)
+			return false;
+		
+		if(!(l.GetComponent("Substance") as Substance).isRock())
 			return false;
 		
 		return true;

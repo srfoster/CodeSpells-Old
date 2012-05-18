@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class ConvertOnEntry : MonoBehaviour {
 		
-	void OnTriggerEnter(Collider col)
+	void OnTriggerStay(Collider col)
 	{
 		if(isInput(col.gameObject))
 		{

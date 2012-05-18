@@ -5,15 +5,12 @@ public class PlantToCrate : ConvertOnEntry {
 	
 	public GameObject output;
 
-	protected override bool isInput(GameObject l)
+	protected override bool isInput(GameObject plant)
 	{
-		if(l.GetComponent("Waterable") == null)
+		if(plant.GetComponent("Growable") == null)
 			return false;
 		
-		if(!(l.GetComponent("Flamable") as Waterable).isWaterlogged())
-			return false;
-		
-		return true;
+		return (plant.GetComponent("Growable") as Waterable).isWaterlogged();
 	}
 	
 	protected override GameObject target()
