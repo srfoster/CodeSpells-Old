@@ -13,8 +13,9 @@ public abstract class Waterable : MonoBehaviour {
 	private static float maxWaterlogAmount = 1.0f;
 	
 	// When water hits a waterable object, it is being watered
-	void OnTriggerEnter(Collider collider)
+	public void OnTriggerEnter(Collider collider)
 	{
+		Debug.Log("Me: "+gameObject+" is hitting: "+collider.gameObject);
 		if(collider.gameObject.GetComponent<Substance>() != null && collider.gameObject.GetComponent<Substance>().isWater())
 		{
 			beingWatered = true;
@@ -24,11 +25,15 @@ public abstract class Waterable : MonoBehaviour {
 	// If a waterable object is being watered, it should become more waterlogged
 	public void Update()
 	{
-		if(beingWatered && !isWaterlogged())
-		{
-			waterEffectOnObject();
-			waterlogAmount += increaseWaterlogAmount;
-		}
+		onUpdate();
+	}
+	
+	public bool isHalfWaterlogged()
+	{
+		if(waterlogAmount >= (maxWaterlogAmount/2))
+			return true;
+		
+		return false;
 	}
 	
 	public bool isWaterlogged()
@@ -49,4 +54,14 @@ public abstract class Waterable : MonoBehaviour {
 	}
 	
 	public abstract void waterEffectOnObject();
+	
+	public virtual void onUpdate()
+	{
+		if(beingWatered && !isWaterlogged())
+		{
+			waterEffectOnObject();
+			Debug.Log("I'm ("+gameObject+") increasing my waterlogamount by: "+increaseWaterlogAmount);
+			waterlogAmount += increaseWaterlogAmount;
+		}
+	}
 }

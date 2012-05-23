@@ -33,16 +33,14 @@ public class Flamable : MonoBehaviour {
 	{
 		if(!isIgnited())
 			return;
-		Debug.Log("I'm trying to extinguish something that is ignited");
+
 		Destroy(flames_actual);
 	}
 	
 	void OnCollisionStay(Collision col)
 	{
-		Debug.Log("I'm colliding with: "+col.gameObject);
 		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
 		{
-			Debug.Log("I'm trying to extinguish something");
 			Extinguish();
 		}
 		if(col.gameObject.GetComponent("Flamable") == null)
@@ -58,10 +56,8 @@ public class Flamable : MonoBehaviour {
 	
 	void OnTriggerStay(Collider col)
 	{
-				Debug.Log("I'm colliding with: "+col.gameObject);
 		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
 		{
-			Debug.Log("I'm trying to extinguish something");
 			Extinguish();
 		}
 		if(col.gameObject.GetComponent("Flamable") == null)

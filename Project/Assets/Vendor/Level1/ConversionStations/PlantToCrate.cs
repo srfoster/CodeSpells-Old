@@ -10,6 +10,11 @@ public class PlantToCrate : ConvertOnEntry {
 		if(plant.GetComponent("Growable") == null)
 			return false;
 		
+		if(collider.gameObject.GetComponent<Substance>() != null && collider.gameObject.GetComponent<Substance>().isPlant())
+			return false;
+		
+		Debug.Log("The plant: "+plant.gameObject+" is waterlogged: "+ (plant.GetComponent("Growable") as Waterable).isWaterlogged());
+		
 		return (plant.GetComponent("Growable") as Waterable).isWaterlogged();
 	}
 	
