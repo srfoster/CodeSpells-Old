@@ -9,7 +9,7 @@ public class ProcGenerate : MonoBehaviour {
 	
 	
 	void Start () {
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < number; i++)
 		{
 			GameObject obj = Instantiate(prefab, random_location(), Quaternion.identity) as GameObject;
 			
@@ -22,6 +22,10 @@ public class ProcGenerate : MonoBehaviour {
 			//Fix height
 		//	adjust_to_terrain(obj);
 		}
+	}
+	
+	void Update() {
+		
 	}
 	
 	Vector3 random_location()
@@ -53,11 +57,5 @@ public class ProcGenerate : MonoBehaviour {
 		Vector3 new_pos = new Vector3(old_pos.x, yadj, old_pos.z);
 		
 		obj.transform.position = new_pos;
-	}
-	
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
