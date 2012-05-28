@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Extigushable : MonoBehaviour {
+public class Seeker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
