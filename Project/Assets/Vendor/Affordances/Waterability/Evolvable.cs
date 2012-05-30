@@ -11,22 +11,22 @@ public class Evolvable : Waterable {
 	{
 		if(nearGround())
 		{
-			Debug.Log("I am near the ground");
 			convert(gameObject, output);
 		}
 	}
 
 	void convert(GameObject first, GameObject second)
 	{
-		Debug.Log("Converting");
 		Instantiate(second, first.transform.position, Quaternion.identity);
+		
+		// Somehow tell the SeedGenerator to generate another seed
+		Debug.Log("Destroying: "+first.gameObject);
 		
 		Destroy(first);
 	}
 	
 	public override void onUpdate()
 	{
-		Debug.Log("Childs update");
 		if(beingWatered && !isHalfWaterlogged())
 		{
 			waterlogAmount += increaseWaterlogAmount;
@@ -45,7 +45,7 @@ public class Evolvable : Waterable {
 		// Get the height of the seed
 		float ySeed = transform.position.y;
 		
-		float threshold = 0.5f;
+		float threshold = 0.8f;
 		
 		if(Math.Abs(yTerrain-ySeed) < threshold)
 			return true;

@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: 136ec9a04e1ec48619584fc26b64ded2
+guid: 5045c14d35f8f46c1a4e46616c797a35
 ModelImporter:
   fileIDToRecycleName:
     4300000: Mesh
-    7400000: Default Take //// blueFlower_fbx
+    7400000: Default Take //// blueflower
+    7400002: Default Take //// blueFlower_fbx
   serializedVersion: 10
   materials:
     importMaterials: 1
@@ -41,20 +42,20 @@ ModelImporter:
     //RootNode:
       data:
         first: 1
-        second: a2860100
+        second: a0860100
       data:
         first: 4
-        second: 821a0600
+        second: 801a0600
       data:
         first: 111
         second: 605fa900
     Mesh:
       data:
         first: 1
-        second: a0860100
+        second: a2860100
       data:
         first: 4
-        second: 801a0600
+        second: 821a0600
       data:
         first: 23
         second: 60182300
