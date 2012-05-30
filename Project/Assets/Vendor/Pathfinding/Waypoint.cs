@@ -3,8 +3,13 @@ using System.Collections;
 
 public class Waypoint : MonoBehaviour {
 	
-	/*
-	private ArrayList adjacent = new ArrayList();
+	
+	private ArrayList adjacent;
+	
+	void Start()
+	{
+		adjacent = new ArrayList();
+	}
 	
 	void OnTriggerEnter(Collider col)
 	{
@@ -15,13 +20,26 @@ public class Waypoint : MonoBehaviour {
 		Vector3 waypoint_location = col.gameObject.transform.position;
 		waypoint_location.y = Terrain.activeTerrain.SampleHeight(waypoint_location);
 		
-		if(!adjacent.Contains(waypoint_location))
+		if(!adjacent.Contains(waypoint_location)) {
+			//Debug.Log ("adding adjacent");
 			adjacent.Add(waypoint_location);
+		}
 	}
 	
 	public ArrayList getAdjacent()
 	{
 		return adjacent;	
+	}
+	
+	public string print()
+	{
+		string ret = "";
+		ret +="MyLocation: "+ location().x + "\nAdjacency List:\n";
+		foreach(Vector3 vector in adjacent)
+		{
+			ret += vector.x+"\n";	
+		}
+		return ret;
 	}
 	
 	public Vector3 location()
@@ -31,5 +49,5 @@ public class Waypoint : MonoBehaviour {
 		
 		return my_location;
 	}
-	*/
+	
 }
