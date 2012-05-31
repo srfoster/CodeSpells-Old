@@ -23,19 +23,12 @@ public class SwampGnomeAI : GnomeAI {
 	
 	public override bool Back()
 	{
-	   	movements.StartWalking();
+		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
+			GetComponent<Seeker>().setDestination(FromObj);
 		
-	   	Vector3 destination = FromObj.transform.position;
+		GetComponent<Seeker>().walk();
 		
-	   	transform.LookAt(destination);
-	   	transform.Translate(Vector3.forward * Time.deltaTime);
-		
-	  	transform.position = new Vector3(transform.position.x,
-		Terrain.activeTerrain.SampleHeight(transform.position),
-		transform.position.z);
-		
-		float dist = Vector3.Distance(FromObj.transform.position, transform.position);
-		return (dist < 3);
+		return (GetComponent<Seeker>().getState() == Seeker.WalkingState.ReachedDestination);
 	}
 	
 	public override bool Eat()
@@ -45,19 +38,14 @@ public class SwampGnomeAI : GnomeAI {
 	
 	public override bool Walk()
 	{
-		NPCFidget movements = GetComponent<NPCFidget>();
-	   	movements.StartWalking();
+		Debug.Log("I'm walking in my AI");
+		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
+			GetComponent<Seeker>().setDestination(ToObj);
 		
-	   	Vector3 destination = ToObj.transform.position;
+		GetComponent<Seeker>().walk();
 		
-	   	transform.LookAt(destination);
-	   	transform.Translate(Vector3.forward * Time.deltaTime);
+		Debug.Log("I'm returning True or False from my AI walk: "+ (GetComponent<Seeker>().getState() == Seeker.WalkingState.ReachedDestination));
 		
-	  	transform.position = new Vector3(transform.position.x,
-		Terrain.activeTerrain.SampleHeight(transform.position),
-		transform.position.z);
-		
-		float dist = Vector3.Distance(ToObj.transform.position, transform.position);
-		return (dist < 3);
+		return (GetComponent<Seeker>().getState() == Seeker.WalkingState.ReachedDestination);
 	}
 }

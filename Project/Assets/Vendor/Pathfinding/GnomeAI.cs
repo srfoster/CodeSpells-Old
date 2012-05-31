@@ -2,42 +2,51 @@ using UnityEngine;
 using System.Collections;
 
 public abstract class GnomeAI : MonoBehaviour {
-	enum State {Find=1, Collect, Walk, Deliver, Back, Eat};
+	enum ActionState {Find=1, Collect, Walk, Deliver, Back, Eat};
 	bool working = false;
-	State currentState;
+	ActionState currentState;
 	
 	// Use this for initialization
 	void Start () {
-		currentState = State.Walk;
+		currentState = ActionState.Walk;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log("Update is being called and my state is: "+currentState);
 		switch(currentState)
 		{
-			case State.Find: 	
+			case ActionState.Find: 	
 				if(Find())
-					currentState = State.Collect;
+					currentState = ActionState.Collect;
 				break;
-			case State.Collect: 	
+			case ActionState.Collect: 	
 				if(Collect())
-					currentState = State.Walk;
+					currentState = ActionState.Walk;
 				break;
-			case State.Walk: 	
+			case ActionState.Walk: 	
+				Debug.Log("I get to try to walk!");
 				if(Walk())
-					currentState = State.Deliver;
+				{
+					Debug.Log("I'm changing my state");
+					currentState = ActionState.Deliver;
+				}
+				else{
+					Debug.Log("I'm not changing my state");
+				}
 				break;
-			case State.Deliver: 	
+			case ActionState.Deliver: 	
 				if(Deliver())
-					currentState = State.Back;
+					currentState = ActionState.Back;
 				break;
-			case State.Back: 	
+			case ActionState.Back: 	
+				Debug.Log("I get to try to go back!");
 				if(Back())
-					currentState = State.Eat;
+					currentState = ActionState.Eat;
 				break;
-			case State.Eat: 	
+			case ActionState.Eat: 	
 				if(Eat())
-					currentState = State.Find;
+					currentState = ActionState.Find;
 				break;
 			default:
 				break;
