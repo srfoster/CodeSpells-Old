@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class Ingredient : MonoBehaviour {
-	private bool is_rock = false;
-	private bool is_plant = false;
+	public bool is_rock = false;
+	public bool is_plant = false;
 	//if false it is a plant, if true it is a rock
 
 	public bool isRock()

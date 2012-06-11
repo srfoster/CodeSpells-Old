@@ -15,7 +15,6 @@ public abstract class Waterable : MonoBehaviour {
 	// When water hits a waterable object, it is being watered
 	public void OnTriggerEnter(Collider collider)
 	{
-		Debug.Log("Me: "+gameObject+" is hitting: "+collider.gameObject);
 		if(collider.gameObject.GetComponent<Substance>() != null && collider.gameObject.GetComponent<Substance>().isWater())
 		{
 			beingWatered = true;
@@ -60,7 +59,6 @@ public abstract class Waterable : MonoBehaviour {
 		if(beingWatered && !isWaterlogged())
 		{
 			waterEffectOnObject();
-			Debug.Log("I'm ("+gameObject+") increasing my waterlogamount by: "+increaseWaterlogAmount);
 			waterlogAmount += increaseWaterlogAmount;
 		}
 	}

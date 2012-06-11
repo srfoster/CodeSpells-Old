@@ -16,12 +16,10 @@ public class FindSeed : MonoBehaviour {
 		
 		if(!atGrove)
 		{
-			Debug.Log("Still not at the grove");
 			transform.Translate(Vector3.forward * Time.deltaTime);
 			float dist = Vector3.Distance(obj.transform.position, transform.position);
 			if(dist < 10)
 			{
-				Debug.Log("Stop walking!");
 				atGrove = true;
 			}
 		}

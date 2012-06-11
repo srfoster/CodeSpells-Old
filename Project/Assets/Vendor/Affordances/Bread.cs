@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bread : MonoBehaviour {
 	
-	//add code later
+	//creates a new bread object
 	
 	
 	
