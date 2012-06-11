@@ -19,6 +19,9 @@ public class RockToCrate : ConvertOnEntry {
 		if(!(l.GetComponent("Substance") as Substance).isRock())
 			return false;
 		
+		output.AddComponent<Ingredient>();
+		output.GetComponent<Ingredient>().setIsRock();
+		
 		return true;
 	}
 	

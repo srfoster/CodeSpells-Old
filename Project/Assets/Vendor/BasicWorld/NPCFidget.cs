@@ -24,7 +24,8 @@ public class NPCFidget: MonoBehaviour {
 	void Update(){
 		if(!walking)
 		{
-			StartCoroutine(fidget());
+			//fidget isn't working right now
+			//StartCoroutine(fidget());
 		}
 	}
 	
