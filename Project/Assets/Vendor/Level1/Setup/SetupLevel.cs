@@ -27,6 +27,9 @@ public class SetupLevel : MonoBehaviour {
 		
 		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
 		inventory.addItem(initial_scroll);	
+		
+		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
+		code_scroll_item_component.setCurrentFile("Levitate.java");
 	}
 
 }

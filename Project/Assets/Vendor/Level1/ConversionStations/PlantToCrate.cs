@@ -16,7 +16,7 @@ public class PlantToCrate : ConvertOnEntry {
 		
 		if(plant.GetComponent("Growable") == null)
 			return false;
-		
+
 		if(!(plant.GetComponent("Growable") as Waterable).isWaterlogged())
 			return false;
 		

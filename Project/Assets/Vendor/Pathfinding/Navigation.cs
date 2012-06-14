@@ -77,10 +77,7 @@ public class Navigation : MonoBehaviour {
 		double connectToEndDist = Double.MaxValue;
 		Vertex connectToStart = null;
 		Vertex connectToEnd = null;
-		
-		//transform = Get all the GameObjects from Unity that have Waypoint components
-		
-		//Debug.Log ("transform is null? :"+(transform == null));		
+			
 		foreach (Transform t in transform) {
 			Waypoint w = t.gameObject.GetComponent<Waypoint>();
 			

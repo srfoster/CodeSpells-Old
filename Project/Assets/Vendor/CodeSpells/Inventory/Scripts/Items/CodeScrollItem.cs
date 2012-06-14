@@ -84,10 +84,15 @@ public class CodeScrollItem : DraggableItem {
 		
 		enchantable.disenchant();
 		
-		this.file_name = enchantable.getJune().getFileName();
-		this.item_name = file_name.Split('.')[0];
-		this.animate = true;
+		string file_name = enchantable.getJune().getFileName();
+		setCurrentFile(file_name);
 
+	}
+	
+	public void setCurrentFile(string file_name){
+		this.file_name = file_name;
+		this.item_name = file_name.Split('.')[0];
+		this.animate = true;	
 	}
 	
 	public void castSpell(GameObject target)

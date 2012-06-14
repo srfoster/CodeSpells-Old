@@ -64,7 +64,7 @@ public class June {
 	virtual public void javaCompileAndRun()
 	{
 		
-		GameObject.Find("Popup").GetComponent<Popup>().popup("HI");
+		//GameObject.Find("Popup").GetComponent<Popup>().popup("HI");
 		try{
 			string class_name = java_file_name.Split('.')[0];
 			

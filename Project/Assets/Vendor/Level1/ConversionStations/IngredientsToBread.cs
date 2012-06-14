@@ -8,7 +8,6 @@ public class IngredientsToBread : MonoBehaviour {
 	List<GameObject> numRocks = new List<GameObject>();
 	
 	//takes in a generic bread object which it may or may not create
-	public GameObject bread;
 	public GameObject breadRegion;
 		
 			
@@ -32,8 +31,8 @@ public class IngredientsToBread : MonoBehaviour {
 			numRocks.RemoveAt (0);
 			Destroy(numPlants[0]);
 			numPlants.RemoveAt (0);
-			Vector3 breadPos = new Vector3(breadRegion.transform.position.x, 0, breadRegion.transform.position.z);
-			Instantiate(bread, breadPos, breadRegion.transform.rotation);
+			
+			breadRegion.GetComponent<BreadStation>().addBread();
 			
 			return;
 		}
