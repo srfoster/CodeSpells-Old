@@ -7,7 +7,7 @@ public class Seeker : MonoBehaviour {
 	public enum WalkingState {NotStarted=1, OnPath, ReachedDestination, UnreachablePosition};
 	private GameObject destination;
 	private List<Vector3> movements;
-	private int pathIndex = 0;
+	private int pathIndex = 1;
 	private bool hasCalled = false;
 	private WalkingState currentState = WalkingState.NotStarted;
 	
@@ -21,30 +21,34 @@ public class Seeker : MonoBehaviour {
 	
 	public void setPath(List<Vector3> vectorList) {
 		movements = vectorList;
-		pathIndex = 0;
+		pathIndex = 1;
 	}
 	
 	public void setDestination(GameObject dest) {
+		// Finds all the movements to the final destination
 		movements = (GameObject.Find ("PathsThroughGame").GetComponent<Navigation>()).findPath(transform.position, dest.transform.position);
-		pathIndex = 0;
+		pathIndex = 1;
+		currentState = WalkingState.OnPath;
 	}
 	
-	public void walk() { //code to walk
-		Debug.Log("I'm walking in Seeker");
-		if (pathIndex != movements.Count) {
+	public WalkingState walk() { //code to walk
+		if(pathIndex < movements.Count-1)
+		{
 			NPCFidget fidgets = GetComponent<NPCFidget>();
 	   		fidgets.StartWalking();
-			Debug.Log("I'm walking to the next waypoint which is: "+movements[pathIndex]);
+			
 			transform.LookAt (movements[pathIndex]);
-			transform.Translate(5*Vector3.forward * Time.deltaTime);
+			transform.Translate(Vector3.forward * Time.deltaTime);
 			transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
 			
 			if (Vector3.Distance(transform.position, movements[pathIndex]) < 3) {
 				pathIndex++;
 			}
+			return currentState;
 		}
-		else 
-			currentState = WalkingState.ReachedDestination;
+		
+		currentState = WalkingState.NotStarted;
+		return WalkingState.ReachedDestination;
 	}
 }
 

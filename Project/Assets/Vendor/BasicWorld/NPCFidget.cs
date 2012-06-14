@@ -53,5 +53,4 @@ public class NPCFidget: MonoBehaviour {
 		yield return new WaitForSeconds(animation[random_fidget].length);
 		animation.CrossFade("idle",1);
 	}
-
 }
