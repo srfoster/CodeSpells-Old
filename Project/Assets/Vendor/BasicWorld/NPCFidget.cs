@@ -24,7 +24,8 @@ public class NPCFidget: MonoBehaviour {
 	void Update(){
 		if(!walking)
 		{
-			StartCoroutine(fidget());
+			//fidget isn't working right now
+			//StartCoroutine(fidget());
 		}
 	}
 	
@@ -53,5 +54,4 @@ public class NPCFidget: MonoBehaviour {
 		yield return new WaitForSeconds(animation[random_fidget].length);
 		animation.CrossFade("idle",1);
 	}
-
 }

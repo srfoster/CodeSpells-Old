@@ -26,9 +26,9 @@ public class SwampGnomeAI : GnomeAI {
 		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
 			GetComponent<Seeker>().setDestination(FromObj);
 		
-		GetComponent<Seeker>().walk();
+		Seeker.WalkingState state = GetComponent<Seeker>().walk();
 		
-		return (GetComponent<Seeker>().getState() == Seeker.WalkingState.ReachedDestination);
+		return (state == Seeker.WalkingState.ReachedDestination);
 	}
 	
 	public override bool Eat()
@@ -38,14 +38,11 @@ public class SwampGnomeAI : GnomeAI {
 	
 	public override bool Walk()
 	{
-		Debug.Log("I'm walking in my AI");
 		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
 			GetComponent<Seeker>().setDestination(ToObj);
 		
-		GetComponent<Seeker>().walk();
+		Seeker.WalkingState state = GetComponent<Seeker>().walk();
 		
-		Debug.Log("I'm returning True or False from my AI walk: "+ (GetComponent<Seeker>().getState() == Seeker.WalkingState.ReachedDestination));
-		
-		return (GetComponent<Seeker>().getState() == Seeker.WalkingState.ReachedDestination);
+		return (state == Seeker.WalkingState.ReachedDestination);
 	}
 }

@@ -14,7 +14,7 @@ ModelImporter:
   animations:
     generateAnimations: 3
     bakeSimulation: 0
-    splitAnimations: 1
+    splitAnimations: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

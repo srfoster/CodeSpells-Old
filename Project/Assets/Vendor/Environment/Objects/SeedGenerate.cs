@@ -51,8 +51,8 @@ public class SeedGenerate : MonoBehaviour {
 	
 	Vector3 random_location()
 	{
-		float xDistance = Random.Range(0.0f, transform.localScale.x);
-		float zDistance = Random.Range(0.0f, transform.localScale.z);
+		float xDistance = Random.Range(-1*transform.localScale.x/2, transform.localScale.x/2);
+		float zDistance = Random.Range(-1*transform.localScale.z/2, transform.localScale.z/2);
 		
 		Vector3 ret = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		

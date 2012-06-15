@@ -162,7 +162,7 @@ public class IDE : MonoBehaviour {
 		suggestion_style.normal.background = Resources.Load("Textures/WoodenButtonUp") as Texture2D;
 		suggestion_style.alignment = TextAnchor.MiddleCenter;
 		
-		GUI.Box(new Rect(x,y, suggestions.longest().Length * 12 + 30, suggestions.number() * 24 + 30), suggestions.toString(), suggestion_style);
+		//GUI.Box(new Rect(x,y, suggestions.longest().Length * 12 + 30, suggestions.number() * 24 + 30), suggestions.toString(), suggestion_style);
 	}
 		
 		
