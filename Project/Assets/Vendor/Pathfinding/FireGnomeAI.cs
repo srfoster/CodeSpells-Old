@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SwampGnomeAI : GnomeAI {
+public class FireGnomeAI : GnomeAI {
 
 	public GameObject ToObj;
 	public GameObject FromObj;

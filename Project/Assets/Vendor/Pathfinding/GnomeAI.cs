@@ -8,48 +8,40 @@ public abstract class GnomeAI : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		currentState = ActionState.Walk;
+		currentState = ActionState.Find;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log("Update is being called and my state is: "+currentState);
-		switch(currentState)
+		if(currentState == ActionState.Find)
 		{
-			case ActionState.Find: 	
-				if(Find())
-					currentState = ActionState.Collect;
-				break;
-			case ActionState.Collect: 	
-				if(Collect())
-					currentState = ActionState.Walk;
-				break;
-			case ActionState.Walk: 	
-				Debug.Log("I get to try to walk!");
-				if(Walk())
-				{
-					Debug.Log("I'm changing my state");
-					currentState = ActionState.Deliver;
-				}
-				else{
-					Debug.Log("I'm not changing my state");
-				}
-				break;
-			case ActionState.Deliver: 	
-				if(Deliver())
-					currentState = ActionState.Back;
-				break;
-			case ActionState.Back: 	
-				Debug.Log("I get to try to go back!");
-				if(Back())
-					currentState = ActionState.Eat;
-				break;
-			case ActionState.Eat: 	
-				if(Eat())
-					currentState = ActionState.Find;
-				break;
-			default:
-				break;
+			if(Find())
+				currentState = ActionState.Walk;
+		}
+		else if(currentState == ActionState.Collect)
+		{
+			if(Collect())
+				currentState = ActionState.Walk;
+		}
+		else if(currentState == ActionState.Walk)
+		{
+			if(Walk())
+				currentState = ActionState.Deliver;
+		}
+		else if(currentState == ActionState.Deliver)
+		{
+			if(Deliver())
+				currentState = ActionState.Back;
+		}
+		else if(currentState == ActionState.Back)
+		{
+			if(Back())
+				currentState = ActionState.Eat;
+		}
+		else if(currentState == ActionState.Eat)
+		{
+			if(Eat())
+				currentState = ActionState.Find;
 		}
 	}
 	
