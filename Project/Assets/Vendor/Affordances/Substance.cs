@@ -2,29 +2,34 @@ using UnityEngine;
 using System.Collections;
 
 public class Substance : MonoBehaviour {
-	private bool is_water = false;
-	private bool is_plant = false;
-	private bool is_rock = false;
+	public bool is_rock = false;
+	public bool is_wood = false;
+	public bool is_water = false;
+	public bool is_plant = false;
+	public bool is_seed = false;
 
-	public bool isWater() {
-		return is_water;
-	}
-	public bool isRock() {
-		return is_rock;
-	}
-	public bool isPlant() {
-		return is_plant;
-	}
-	public void setIsWater()
+	public bool isRock()
 	{
-		is_water = true;	
+		return is_rock;	
 	}
-	public void setIsPlant()
+	
+	public bool isWood()
 	{
-		is_plant = true;	
+		return is_wood;	
 	}
-	public void setIsRock()
+	
+	public bool isWater()
 	{
-		is_rock = true;	
+		return is_water;	
+	}
+	
+	public bool isPlant()
+	{
+		return is_plant;	
+	}
+
+	public bool isSeed()
+	{
+		return is_seed;	
 	}
 }
