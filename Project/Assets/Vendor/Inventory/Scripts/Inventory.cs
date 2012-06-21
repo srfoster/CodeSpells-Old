@@ -17,20 +17,20 @@ public class Inventory : MonoBehaviour {
 	
 	private int margin_top  = 50;
 	private int margin_left_side = 20;
-	private int margin_right_side = 70;
-	private int margin_bottom = 30;
+	private int margin_right_side = 60;
+	private int margin_bottom = 200;
 	
 	private int vertical_spacing = 20;
 	
 	private int inventory_width = 320;
 	
-	private int item_width = 100;
+	private int item_width = 50;
 	private int item_height = 50;
 	
 	
 	private int label_height = 40;
 	
-	private int item_columns = 3;
+	private int item_columns = 2;
 		
 	private int starting_row = 0;
 	
@@ -84,13 +84,16 @@ public class Inventory : MonoBehaviour {
 	void displayDragged(){
 		if(dragged == null)
 			return;
-					
-		var x = Input.mousePosition.x - item_width/2;
-		var y = Screen.width/2 - Input.mousePosition.y - item_height/2;
-	
-		GUI.DrawTexture(new Rect(x,y,item_width,item_height),(dragged.GetComponent(typeof(Item)) as Item).getTexture());
+
+		var tempx = Input.mousePosition.x;
+		var tempy = Input.mousePosition.y;
 		
-		GUI.Label(new Rect(x, y + item_height, item_width, label_height), (dragged.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
+		var x = tempx - item_width/2;
+		var y = Screen.height - tempy - item_height/2;
+		
+		GUI.DrawTexture(new Rect(x +25,y,item_width,item_height),(dragged.GetComponent(typeof(Item)) as Item).getTexture());
+		
+		GUI.Label(new Rect(x, y + item_height, item_width * 2, label_height), (dragged.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
 	}
 	
 	
@@ -126,9 +129,9 @@ public class Inventory : MonoBehaviour {
 					if(!(item.GetComponent(typeof(Item)) as Item).GetHidden())
 					{
 						bool item_clicked = false;
-						item_clicked = GUI.RepeatButton(new Rect(item_x,  item_y,item_width,item_height), "", item_button_style);
+						item_clicked = GUI.RepeatButton(new Rect(item_x+25,  item_y,item_width,item_height), "", item_button_style);
 										
-						GUI.Label(new Rect(item_x, item_y + item_height, item_width, label_height), (item.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
+						GUI.Label(new Rect(item_x, item_y + item_height, item_width+50, label_height), (item.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
 		
 						
 						if(item_clicked && Input.GetMouseButton(0))

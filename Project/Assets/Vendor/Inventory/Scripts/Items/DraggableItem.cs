@@ -14,13 +14,14 @@ public class DraggableItem : Item {
 		}
 	}
 	
-	virtual protected void Drag()
+	virtual protected void Drag() //drag to inventory (any draggable gameObject)
 	{
+		Debug.Log ("inside drag");
 		SetHidden(true);
 		getInventory().SetDragged(gameObject);
 	}
 	
-	virtual protected void Drop()
+	virtual protected void Drop() //either a spell or a gameObject
 	{
 		SetActive(false);
 		getInventory().SetDragged(null);
