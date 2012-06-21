@@ -37,7 +37,7 @@ public class SwampEnterEffect : MonoBehaviour {
 		
 		if(inside)
 		{	
-			RenderSettings.ambientLight = fadeFrom(original_color,target_color, percent);
+			//RenderSettings.ambientLight = fadeFrom(original_color,target_color, percent);
 			RenderSettings.fogDensity = fadeFrom(original_fog_density, target_fog_density, percent);
 			RenderSettings.fogColor = fadeFrom(original_fog_color, target_fog_color, 1);
 			
@@ -46,8 +46,11 @@ public class SwampEnterEffect : MonoBehaviour {
 		
 			GameObject.Find("SwampSounds").audio.volume = fadeFrom(0,1, percent);
 		} else {
-			RenderSettings.ambientLight = fadeFrom(target_color,original_color, percent);
+			//RenderSettings.ambientLight = fadeFrom(target_color,original_color, percent);
 			RenderSettings.fogDensity = fadeFrom(target_fog_density, original_fog_density, percent);
+			RenderSettings.fogColor = fadeFrom(target_fog_color, original_fog_color, percent);
+			Debug.Log("Should be " + percent + " of the way from " + target_fog_density + " to " + original_fog_density);
+			
 			(GameObject.Find("Main Camera").GetComponent("Skybox") as Skybox).material.shader =Shader.Find( "RenderFX/Skybox" );
 			
 			GameObject.Find("SwampSounds").audio.volume = fadeFrom(1,0, percent);
@@ -71,7 +74,8 @@ public class SwampEnterEffect : MonoBehaviour {
 	{
 		return f + (s - f) * percent;
 	}
-
+	
+	
 	void OnTriggerEnter(Collider col)
 	{
 		
@@ -79,14 +83,13 @@ public class SwampEnterEffect : MonoBehaviour {
 			return;
 		
 		//Only need to do this once.
-		if(original_color == null)
-		{
+	//	if(original_color == null)
+	//	{
 			original_color = RenderSettings.ambientLight;
 			original_fog_color = RenderSettings.fogColor;
 			original_fog_density = RenderSettings.fogDensity;
 			original_skybox = RenderSettings.skybox;
-		}
-		
+	//	}
 		inside = true;
 		
 		time_inside = 0;
@@ -94,9 +97,10 @@ public class SwampEnterEffect : MonoBehaviour {
 		pause = false;
 	}
 	
+	
 	void OnTriggerExit(Collider col)
 	{
-
+		
 		if(!col.gameObject.tag.Equals("Player"))
 			return;
 		
