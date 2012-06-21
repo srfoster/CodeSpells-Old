@@ -6,6 +6,7 @@ public class Levitate
   {
     Enchanted entity = Enchant.byName(args);
 
-    entity.movement().levitate(4.0);
+    entity.movement().levitate(2.0,40.0);
+    
   }
 }

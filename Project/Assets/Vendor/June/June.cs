@@ -23,6 +23,7 @@ public class June {
 	public June(GameObject game_object, string java_file_name)
 	{
 		this.game_object = game_object;
+		
 		this.game_object_name = game_object.name;
 		this.java_file_name = java_file_name;
 	}
@@ -71,7 +72,7 @@ public class June {
 			Shell.shell("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
 		
 
-			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' "+class_name+" " + game_object_name);	
+			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' "+class_name+" " + game_object.GetInstanceID());	
 			java_process.Start();
 			
 			Boolean has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));

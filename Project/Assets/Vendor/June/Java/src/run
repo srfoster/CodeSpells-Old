@@ -1,0 +1,3 @@
+./library_compile
+./compile $1.java
+java -classpath '/Users/stephenfoster/UnityPackages/CodeSpells/Project/Assets/Vendor/June/Java/bin:.' $1 $2

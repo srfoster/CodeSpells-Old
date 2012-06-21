@@ -18,6 +18,7 @@ public class DraggableItem : Item {
 	{
 		SetHidden(true);
 		getInventory().SetDragged(gameObject);
+
 	}
 	
 	virtual protected void Drop()
@@ -32,15 +33,25 @@ public class DraggableItem : Item {
 	    {
 			DroppedOnInventory(Input.mousePosition);
         }else{ // If we're in the world
-        	Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-	    	RaycastHit rayhit = new RaycastHit();
-	        if(Physics.Raycast(ray,out rayhit))
-	        	DroppedOn(rayhit.transform.gameObject);
+        	GameObject obj = objectUnderCursor();
+	        if(obj != null)
+	        	DroppedOn(obj);
 	        else
 	        	DroppedOn(null);
 	     }
 	}
 	
+	protected GameObject objectUnderCursor()
+	{
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+		RaycastHit hit = new RaycastHit();
+		
+		if(Physics.Raycast(ray, out hit))
+			return hit.transform.gameObject;
+		else 
+			return null;
+	}
 	
 	virtual public void DroppedOn(GameObject gameObject)
 	{

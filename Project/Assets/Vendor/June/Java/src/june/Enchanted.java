@@ -52,10 +52,15 @@ public class Enchanted
 	public String command(String command)
 	{
 		try{
-			out.println("GameObject.Find(\""+id+"\")."+command);
+			long before = System.currentTimeMillis();
+			System.out.println("Running " + command);
+			out.println("objects[\""+id+"\"]."+command+";");
 
 			String response = in.readLine(); //Waits for confirmation from the Unity server...
 			System.out.println(response);
+			long after = System.currentTimeMillis();
+			System.out.println("Ran " + command + " in " + (after-before) + " milliseconds");
+
 			return response;
 		}catch(Exception e){
 			e.printStackTrace();

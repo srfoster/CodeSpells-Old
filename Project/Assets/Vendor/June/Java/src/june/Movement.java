@@ -21,7 +21,7 @@ public class Movement
         double newPos = oldPos+distance;
 		while(currentPosition() < newPos)
 		{
-			parent.command("transform.position.x += " + speed);
+			parent.command("transform.position.x += Time.deltaTime*" + speed);
 		}
 	}
 
@@ -32,28 +32,46 @@ public class Movement
         double newPos = oldPos+distance;
 		while(currentPosition() > newPos)
 		{
-			parent.command("transform.position.x -= " + speed);
+			parent.command("transform.position.x -= Time.deltaTime * " + speed);
 		}
 	}
 
 	public void right(double distance)
 	{
-		parent.command("transform.position.z += "+distance+"\n");
+		parent.command("transform.position.z += Time.deltaTime * "+distance+"\n");
 	}
 
 	public void left(double distance)
 	{
-		parent.command("transform.position.z -= "+distance+"\n");
+		parent.command("transform.position.z -= Time.deltaTime * "+distance+"\n");
+	}
+
+	public void levitate(double height, double speed)
+	{
+		double original_height = currentHeight();
+
+		parent.command("rigidbody.useGravity = false");
+		parent.command("rigidbody.isKinematic = false");
+		parent.command("rigidbody.AddForce(Vector3.up * "+speed+")");
+
+		System.out.println("HERE");
+		while(currentHeight() - original_height < height)
+		{
+			//Spin and wait
+			try{
+				Thread.sleep(100);
+			}catch(Exception e){
+
+			}
+		}
+
+		parent.command("rigidbody.AddForce(Vector3.up * -"+speed+")");
+		parent.command("rigidbody.isKinematic = true");
 	}
 
 	public void levitate(double height)
 	{
-		parent.command("rigidbody.useGravity = false");
-		double speed = 0.03;
-		while(currentHeight() < height)
-		{
-			parent.command("transform.position.y += " + speed);
-		}
+		levitate(height, 10);
 	}
     
     public void transport(double distance, double height, String direction)
@@ -63,7 +81,7 @@ public class Movement
         double moveSpeed = 0.05;
 		while(currentHeight() < height)
 		{
-            parent.command("transform.position.y += " + liftSpeed);
+            parent.command("transform.position.y += Time.deltaTime" + liftSpeed);
 		}
         double curr = currentPosition();
         
@@ -79,6 +97,7 @@ public class Movement
 	
 	public void drop()
 	{
+		parent.command("rigidbody.isKinematic = false");
 		parent.command("rigidbody.useGravity = true");
 	}
 

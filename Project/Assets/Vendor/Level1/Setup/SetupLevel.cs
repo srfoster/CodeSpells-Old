@@ -11,6 +11,13 @@ public class SetupLevel : MonoBehaviour {
 	}
 	
 	public void Init() {
+		(new SetupInventory()).Init();		
+		(new SetupUnidee()).Init();		
+		(new SetupPopup()).Init();		
+		(new SetupJune()).Init();		
+		(new SetupConversations()).Init();		
+		(new SetupHighlighter()).Init();
+		
 		givePlayerAScroll();
 	}
 	

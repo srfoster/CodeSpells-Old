@@ -15,14 +15,8 @@ public class ManageMinimap : MonoBehaviour {
 	private int xPadding = 15;
 	private int counter = 15;
 
-	void Update() {	
-
-		if ((Screen.height != screenHeight) || (Screen.width != screenWidth)) {
-			resizeMap ();
-			screenHeight = Screen.height;
-			screenWidth = Screen.width;
-			
-		}
+	void Start() {	
+		resizeMap();
 	}
 	
 	void resizeMap() {

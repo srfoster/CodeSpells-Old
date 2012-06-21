@@ -1,6 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+ * 
+ *  This could be implemented with ProcGenerate.
+ * 
+ *  We should refactor this away when we have some time to do some housecleaning.
+ * 
+ ***/
+
+
 public class SeedGenerate : MonoBehaviour {
 	
 	public GameObject red;

@@ -20,7 +20,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   textureFormat: -1
-  maxTextureSize: 128
+  maxTextureSize: 8
   textureSettings:
     filterMode: -1
     aniso: -1
