@@ -54,7 +54,7 @@ public class Item : MonoBehaviour {
 	void OnMouseDown(){
 		getInventory().addItem(gameObject);
 				
-		this.gameObject.SetActiveRecursively(false);
+		this.gameObject.transform.position = new Vector3(0f,-10000f,0f); //SetActiveRecursively(false);
 	}
 	
 	virtual public void ClickedInInventory()
