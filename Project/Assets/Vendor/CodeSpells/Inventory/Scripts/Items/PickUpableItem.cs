@@ -9,6 +9,6 @@ public class PickUpableItem : DraggableItem {
 		GameObject spawningZone = GameObject.Find ("Spawning Zone");
 		getInventory().removeItem(transform.gameObject);
 		Vector3 nextPosition = new Vector3(spawningZone.transform.position.x, Terrain.activeTerrain.SampleHeight(spawningZone.transform.position),spawningZone.transform.position.z);
-		Instantiate (transform, nextPosition, Quaternion.identity);
+		transform.position = nextPosition;
 	}
 }

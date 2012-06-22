@@ -8,9 +8,8 @@ public class Inventory : MonoBehaviour {
 	
 	public Texture2D up_button_texture;
 	public Texture2D down_button_texture;
-		
-	public Font label_font;
 	
+	public Font label_font;
 	
 	private ArrayList items = new ArrayList();
 	private ArrayList to_remove = new ArrayList();
