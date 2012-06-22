@@ -14,6 +14,26 @@ public class ObjectManager {
 		objects.Add(obj.GetInstanceID().ToString(), obj);
 		
 	}
+	
+	public static void Register(GameObject obj, string id)
+	{
+		Debug.Log("Enchantable: " + obj.name + " " + id);
+		
+		objects.Add(id, obj);
+		
+	}
+	
+	public static void Reregister(GameObject ob, string id, string new_id)
+	{
+		if(objects.ContainsKey(new_id))
+		{
+			throw new System.ArgumentException();
+		}
+		
+		GameObject obj = objects[id];
+		objects.Remove(id);
+		objects.Add(new_id,obj);
+	}
 
 	public static GameObject FindById(string id)
 	{
