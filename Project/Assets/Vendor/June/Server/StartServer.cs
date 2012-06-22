@@ -76,6 +76,7 @@ public class StartServer : MonoBehaviour
 				}
 				call.respond();
 			} catch(Exception e) {
+				Debug.Log(e.Message);
 				Debug.Log(e.StackTrace);
 				call.setResponse("Error: " + e.ToString().Replace("\n",""));
 			}

@@ -15,9 +15,14 @@ public class Enchantable : MonoBehaviour {
 	
 	private EnchantmentFinishedCallback callback;
 	
+	public string id = "";
+	
 	// Use this for initialization
 	void Start () {
-		ObjectManager.Register(gameObject);
+		if(id == "")
+			ObjectManager.Register(gameObject);
+		else
+			ObjectManager.Register(gameObject,id);
 		
 		if(audio_clip == null)
 		{
@@ -28,6 +33,13 @@ public class Enchantable : MonoBehaviour {
 		{
 			particles = Resources.Load("LightSparkles") as GameObject;	
 		}
+	}
+	
+	public void setId(string new_id)
+	{
+		ObjectManager.Reregister(gameObject,id,new_id);
+		
+		this.id = new_id;
 	}
 	
 	// Update is called once per frame
