@@ -20,9 +20,13 @@ public class Enchantable : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(id == "")
+		{
 			ObjectManager.Register(gameObject);
+			//id = gameObject.GetInstanceID().ToString();
+		}
 		else
 			ObjectManager.Register(gameObject,id);
+		
 		
 		if(audio_clip == null)
 		{
@@ -33,6 +37,9 @@ public class Enchantable : MonoBehaviour {
 		{
 			particles = Resources.Load("LightSparkles") as GameObject;	
 		}
+		
+		
+		gameObject.AddComponent<Text3D>();
 	}
 	
 	public void setId(string new_id)
@@ -44,6 +51,9 @@ public class Enchantable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		gameObject.GetComponent<Text3D>().text = id;
+
 		if(june != null && june.isStopped())
 		{
 			disenchantAnimation();
@@ -120,6 +130,7 @@ public class Enchantable : MonoBehaviour {
 		}
 		
 		//Starts the external Java program (the most important line of the method)
+		this.june.setObjectId(id);
 		this.june.Start();
 		
 		//If the enchantable object has an animation (i.e. the broom) play it.

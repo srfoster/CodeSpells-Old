@@ -2,6 +2,7 @@ import june.*;
 
 public class Levitate extends Spell
 {
+  //Test
   public void cast()
   {
     Enchanted target = getTarget();

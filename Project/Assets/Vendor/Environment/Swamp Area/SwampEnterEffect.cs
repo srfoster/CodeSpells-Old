@@ -49,7 +49,6 @@ public class SwampEnterEffect : MonoBehaviour {
 			//RenderSettings.ambientLight = fadeFrom(target_color,original_color, percent);
 			RenderSettings.fogDensity = fadeFrom(target_fog_density, original_fog_density, percent);
 			RenderSettings.fogColor = fadeFrom(target_fog_color, original_fog_color, percent);
-			Debug.Log("Should be " + percent + " of the way from " + target_fog_density + " to " + original_fog_density);
 			
 			(GameObject.Find("Main Camera").GetComponent("Skybox") as Skybox).material.shader =Shader.Find( "RenderFX/Skybox" );
 			
