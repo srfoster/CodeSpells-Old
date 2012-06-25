@@ -4,15 +4,9 @@ using System.Collections;
 
 public class DraggableItem : Item {
 	
-	private bool onDrop = false;
-	private int rectWidth = System.Convert.ToInt32((Screen.width-300)/2.0);
-	private int rectHeight = System.Convert.ToInt32(Screen.height/2.0);
+
 	
-	void OnGUI() {
-		if (onDrop) {
-			item_name = GUI.TextField(new Rect (rectWidth, rectHeight, 140,20), item_name, 16);
-		}
-	}
+
 	
 	public override void ActiveInInventory()
 	{
@@ -34,8 +28,6 @@ public class DraggableItem : Item {
 	
 	virtual protected void Drop()
 	{
-		onDrop = true;
-		Debug.Log ("onDrop is "+onDrop);
 		SetActive(false);
 		getInventory().SetDragged(null);
 		
