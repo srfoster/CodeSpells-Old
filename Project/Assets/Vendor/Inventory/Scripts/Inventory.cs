@@ -1,8 +1,12 @@
 /* See the copyright information at https://github.com/srfoster/Inventory/blob/master/COPYRIGHT */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Inventory : MonoBehaviour {
+	
+	public int count = 0;
 
 	public Texture2D inventory_area_background;
 	
@@ -13,6 +17,8 @@ public class Inventory : MonoBehaviour {
 	
 	private ArrayList items = new ArrayList();
 	private ArrayList to_remove = new ArrayList();
+	
+	private Dictionary<GameObject, ItemInfo> item_infos = new Dictionary<GameObject, ItemInfo>();
 	
 	private int margin_top  = 50;
 	private int margin_left_side = 20;
@@ -51,6 +57,8 @@ public class Inventory : MonoBehaviour {
 	
 	void Update(){
 		notifyActive();
+		
+		count = items.Count;
 	}
 	
 	public void SetDragged(GameObject item)
@@ -107,6 +115,7 @@ public class Inventory : MonoBehaviour {
 		foreach(GameObject r in to_remove)
 		{
 			items.Remove(r);
+			item_infos.Remove(r);
 		}
 		
 		to_remove.Clear();
@@ -117,7 +126,9 @@ public class Inventory : MonoBehaviour {
 			float item_x = margin_right_side + column * (item_width + item_padding);
 			float item_y = margin_top + row * (item_height + vertical_spacing + label_height) - (starting_row * (item_height + vertical_spacing)) ;
 			
-			
+			item_infos[item].icon_x = item_x + (Screen.width - inventory_width);
+			item_infos[item].icon_y = item_y;
+
 			if(item_y + item_height + label_height < Screen.height - margin_bottom)
 			{
 				if(item_y >= margin_top)
@@ -129,8 +140,13 @@ public class Inventory : MonoBehaviour {
 					{
 						bool item_clicked = false;
 						item_clicked = GUI.RepeatButton(new Rect(item_x+25,  item_y,item_width,item_height), "", item_button_style);
-										
-						GUI.Label(new Rect(item_x, item_y + item_height, item_width+50, label_height), (item.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
+								
+						item_infos[item].label_x = item_x + (Screen.width - inventory_width);
+						item_infos[item].label_y = item_y + item_height;
+						
+						string label_value = (item.GetComponent(typeof(Item)) as Item).getName();
+						Debug.Log("Drawing label: " + label_value);
+						GUI.Label(new Rect(item_x, item_y + item_height, item_width+50, label_height), label_value, item_label_style);
 		
 						
 						if(item_clicked && Input.GetMouseButton(0))
@@ -192,6 +208,7 @@ public class Inventory : MonoBehaviour {
 	public void addItem(GameObject item)
 	{
 		items.Add(item);
+		item_infos.Add(item, new ItemInfo());
 	}
 	
 	
@@ -223,5 +240,18 @@ public class Inventory : MonoBehaviour {
 				(item.GetComponent(typeof(Item)) as Item).ActiveInInventory();
 		}
 	}
-
+	
+	public ItemInfo getInfo(GameObject item)
+	{
+		return item_infos[item];	
+	}
+	
+	public class ItemInfo
+	{
+		public float icon_x;
+		public float icon_y;
+		
+		public float label_x;
+		public float label_y;
+	}
 }

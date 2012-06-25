@@ -30,6 +30,13 @@ public class ObjectManager {
 			throw new System.ArgumentException();
 		}
 		
+		if(!objects.ContainsKey(id))
+		{
+			Register(ob,new_id);
+			
+			return;
+		}
+		
 		GameObject obj = objects[id];
 		objects.Remove(id);
 		objects.Add(new_id,obj);
