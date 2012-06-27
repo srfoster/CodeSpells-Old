@@ -2,12 +2,12 @@ package june;
 
 public class Direction
 {
-    private static final int WEST = 1;
-    private static final int EAST = 2;
-    private static final int SOUTH = 3;
-    private static final int NORTH = 4;
-    private static final int LEFT = 5;
-    private static final int RIGHT = 6;
+    public static final int WEST = 1;
+    public static final int EAST = 2;
+    public static final int SOUTH = 3;
+    public static final int NORTH = 4;
+    public static final int LEFT = 5;
+    public static final int RIGHT = 6;
     
     private static int direct;
     
