@@ -5,6 +5,19 @@ public class Location
     private double x;
     private double y;
     private double z;
+
+    public Location(String xyz)
+    {
+	String[] split = xyz.split(",");
+
+	String x_string = split[0].substring(1);
+	String y_string = split[1];
+	String z_string = split[2].substring(0, split[2].length() - 1);
+
+	x = Double.parseDouble(x_string);
+	y = Double.parseDouble(y_string);
+	z = Double.parseDouble(z_string);
+    }
     
     public Location(double x, double y, double z) {
         this.x = x;
@@ -22,6 +35,11 @@ public class Location
     
     public double getZ() {
         return z;
+    }
+
+    public String toString()
+    {
+	return "(" + x + " " + y + " " + z + ")";
     }
     
 }

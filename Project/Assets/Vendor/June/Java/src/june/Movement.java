@@ -56,12 +56,12 @@ public class Movement
 
 	public void right(double distance)
 	{
-		parent.command("transform.position.z += Time.deltaTime * "+distance+"\n");
+		parent.command("transform.position += objects['Player'].transform.right * " + distance);
 	}
 
 	public void left(double distance)
 	{
-		parent.command("transform.position.z -= Time.deltaTime * "+distance+"\n");
+		parent.command("transform.position -= objects['Player'].transform.right * " + distance);
 	}
 
 	public void levitate(double height, double speed)

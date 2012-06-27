@@ -18,6 +18,8 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupConversations()).Init();		
 		(new SetupHighlighter()).Init();
 		
+		ObjectManager.Register(GameObject.Find("First Person Controller"), "Player");
+		
 		givePlayerAScroll();
 	}
 	

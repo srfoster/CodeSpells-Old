@@ -64,15 +64,15 @@ public class Enchanted
 
     
     
-    public Location getLocation(Direction dir) {
+    public Location getLocation(int dir) {
         Location myLoc = getLocation();
         double xVal = myLoc.getX();
         double zVal = myLoc.getZ();
         
-        if(dir.getDirection() == 4) xVal += objRadius;//north
-        if(dir.getDirection() == 3) xVal -= objRadius;//south
-        if(dir.getDirection() == 2 || dir.getDirection() == 6) zVal -= objRadius;//east
-        if(dir.getDirection() == 1 || dir.getDirection() == 5) zVal += objRadius;//west
+        if(dir == Direction.NORTH) xVal += objRadius;//north
+        if(dir == Direction.SOUTH) xVal -= objRadius;//south
+        if(dir == Direction.EAST) zVal -= objRadius;//east
+        if(dir == Direction.WEST) zVal += objRadius;//west
         
         return (new Location(xVal, myLoc.getY(), zVal));
     }
@@ -110,7 +110,16 @@ public class Enchanted
 		try{
 			long before = System.currentTimeMillis();
 			System.out.println("Running " + command);
-			out.println("objects[\""+id+"\"]."+command+";");
+
+			String new_command = "";
+			if(command.indexOf("$target") > -1)
+			{
+			 	new_command = command.replaceAll("\\$target","objects[\""+id+"\"]");
+			} else {
+				new_command = "objects[\""+id+"\"]."+command+";";
+			}
+
+			out.println(new_command);
 
 			String response = in.readLine(); //Waits for confirmation from the Unity server...
 			System.out.println(response);

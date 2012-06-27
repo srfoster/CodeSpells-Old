@@ -2,6 +2,7 @@ package june;
 
 public class Direction
 {
+    public static final int NONE = 0;
     public static final int WEST = 1;
     public static final int EAST = 2;
     public static final int SOUTH = 3;
@@ -42,6 +43,10 @@ public class Direction
     
     public static int left() {
         return 5;
+    }
+
+    public static int none() {
+        return 0;
     }
     
 }
