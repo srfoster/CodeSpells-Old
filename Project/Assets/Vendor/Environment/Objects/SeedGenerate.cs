@@ -30,10 +30,10 @@ public class SeedGenerate : MonoBehaviour {
 		
 		foreach (GameObject prefab in listOfPrefabs)
 		{
-			Debug.Log("On the next kind of flower");
+//			Debug.Log("On the next kind of flower");
 			for(int i = 0; i < number; i++)
 			{
-				Debug.Log("On the next seed of this kind of flower");
+//				Debug.Log("On the next seed of this kind of flower");
 				GameObject obj = Instantiate(prefab, random_location(), Quaternion.identity) as GameObject;
 				
 				//For variety	

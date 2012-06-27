@@ -38,6 +38,8 @@ public class Shell
 	    var error = p.StandardError.ReadToEnd();
 	    
 	   // p.WaitForExit();
+	   
+	   UnityEngine.Debug.Log(output + " " + error);
 	    
 	
 	    return p;

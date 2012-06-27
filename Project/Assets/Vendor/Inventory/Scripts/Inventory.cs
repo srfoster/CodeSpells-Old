@@ -145,7 +145,7 @@ public class Inventory : MonoBehaviour {
 						item_infos[item].label_y = item_y + item_height;
 						
 						string label_value = (item.GetComponent(typeof(Item)) as Item).getName();
-						Debug.Log("Drawing label: " + label_value);
+//						Debug.Log("Drawing label: " + label_value);
 						GUI.Label(new Rect(item_x, item_y + item_height, item_width+50, label_height), label_value, item_label_style);
 		
 						

@@ -8,6 +8,8 @@ public class Popup : MonoBehaviour {
 	private float time = 0f;
 	private string text;
 	
+	public static Popup mainPopup;
+	
 	void Start()
 	{
 		  style = new GUIStyle();
@@ -15,6 +17,8 @@ public class Popup : MonoBehaviour {
 		  style.normal.textColor = Color.white;
 		  style.alignment = TextAnchor.MiddleCenter;
 		  style.fontSize = 17;
+		
+		  mainPopup = this;
 	}
 
 	void OnGUI()
@@ -36,4 +40,6 @@ public class Popup : MonoBehaviour {
 		this.time = 5.0f;
 		this.text = text;
 	}
+	
+
 }

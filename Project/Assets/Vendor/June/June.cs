@@ -73,15 +73,22 @@ public class June {
 	
 	virtual public void javaCompileAndRun()
 	{
+
 		
-		//GameObject.Find("Popup").GetComponent<Popup>().popup("HI");
 		try{
 			string class_name = java_file_name.Split('.')[0];
 			
 			Shell.shell("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
 					
-			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' june.Caster "+class_name+" " + object_id);	
+			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' june.Caster "+class_name+" '" + object_id +"'");	
 			java_process.Start();
+			
+			var output = java_process.StandardOutput.ReadToEnd();
+	    
+	   		var error = java_process.StandardError.ReadToEnd();
+			
+
+
 			
 			Boolean has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));
 			while(!has_exited)

@@ -20,7 +20,6 @@ public class DraggableItem : Item {
 	
 	virtual protected void Drag() //drag to inventory (any draggable gameObject)
 	{
-		Debug.Log ("inside drag");
 		SetHidden(true);
 		getInventory().SetDragged(gameObject);
 

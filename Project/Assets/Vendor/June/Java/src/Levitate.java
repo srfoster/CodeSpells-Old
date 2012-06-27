@@ -2,13 +2,12 @@ import june.*;
 
 public class Levitate extends Spell
 {
-  //Test
   public void cast()
   {
-    Enchanted target = getTarget();
-    Enchanted fountain = getByName("Fountain");
+    Enchanted entity = getTarget();
+    Enchanted other = getByName("Planter");
 
-    fountain.movement().levitate(10f,20f);
-    target.movement().levitate(10f,20f);
+    Location my_location = other.getLocation(Direction.WEST);
+    entity.movement().teleport(my_location);
   }
 }

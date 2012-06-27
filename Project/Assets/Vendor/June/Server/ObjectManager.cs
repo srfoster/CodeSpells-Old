@@ -9,7 +9,7 @@ public class ObjectManager {
 	
 	public static void Register(GameObject obj)
 	{
-		Debug.Log("Enchantable: " + obj.name + " " + obj.GetInstanceID().ToString());
+//		Debug.Log("Enchantable: " + obj.name + " " + obj.GetInstanceID().ToString());
 		
 		objects.Add(obj.GetInstanceID().ToString(), obj);
 		
@@ -17,7 +17,7 @@ public class ObjectManager {
 	
 	public static void Register(GameObject obj, string id)
 	{
-		Debug.Log("Enchantable: " + obj.name + " " + id);
+//		Debug.Log("Enchantable: " + obj.name + " " + id);
 		
 		objects.Add(id, obj);
 		

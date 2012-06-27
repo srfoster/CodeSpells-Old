@@ -19,7 +19,7 @@ public class Enchantable : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		if(id == "")
+		if(id.Equals(""))
 		{
 			ObjectManager.Register(gameObject);
 			//id = gameObject.GetInstanceID().ToString();
@@ -130,7 +130,11 @@ public class Enchantable : MonoBehaviour {
 		}
 		
 		//Starts the external Java program (the most important line of the method)
-		this.june.setObjectId(id);
+		if(id.Equals(""))
+			this.june.setObjectId(gameObject.GetInstanceID().ToString());
+		else
+			this.june.setObjectId(id);
+
 		this.june.Start();
 		
 		//If the enchantable object has an animation (i.e. the broom) play it.

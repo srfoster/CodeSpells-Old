@@ -15,6 +15,11 @@ public class Enchanted
 	Socket soc;
 	PrintWriter out;
 	BufferedReader in;
+    
+    /*public enum Direction {
+        NORTH, SOUTH, EAST, WEST
+    }*/
+    private double objRadius = 2.0;
 
 	/**
 	 * A new Enchanted -- which is a binding to a game entity in Unity.
@@ -47,7 +52,58 @@ public class Enchanted
 
 
 		return movement;
-	}	
+	}
+    
+    public Location getLocation() {
+        double x = Double.parseDouble(command("transform.position.x"));
+        double y = Double.parseDouble(command("transform.position.y"));
+        double z = Double.parseDouble(command("transform.position.z"));
+        return (new Location(x,y,z));
+    }
+    
+
+    
+    
+    public Location getLocation(Direction dir) {
+        Location myLoc = getLocation();
+        double xVal = myLoc.getX();
+        double zVal = myLoc.getZ();
+        
+        if(dir.getDirection() == 4) xVal += objRadius;//north
+        if(dir.getDirection() == 3) xVal -= objRadius;//south
+        if(dir.getDirection() == 2 || dir.getDirection() == 6) zVal -= objRadius;//east
+        if(dir.getDirection() == 1 || dir.getDirection() == 5) zVal += objRadius;//west
+        
+        return (new Location(xVal, myLoc.getY(), zVal));
+    }
+    
+    
+    public void connectTo(Enchanted enc) {
+        /*Implement later
+         
+         
+         */
+    }
+    
+    
+    public String commandGlobal (String command) 
+    {
+        try {
+            long before = System.currentTimeMillis();
+            out.println(command);
+            String response = in.readLine();
+            
+            System.out.println(response);
+			long after = System.currentTimeMillis();
+			System.out.println("Ran " + command + " in " + (after-before) + " milliseconds");
+            
+            return response;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 	public String command(String command)
 	{

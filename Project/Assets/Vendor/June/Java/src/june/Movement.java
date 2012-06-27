@@ -9,11 +9,27 @@ public class Movement
 	 *
 	 * @param parent The parent for this instance.
 	 */
+    
+    //location values
+    
 	public Movement(Enchanted parent)
 	{
 		this.parent = parent;
 	}
+    
+    //new Location(0,0,0)
+    public void teleport(Location loc) {
+        parent.command("transform.position = new Vector3("+loc.getX()+","+loc.getY()+","+loc.getZ()+")");
+    }
+    
+    
+    //(x,z)
+    //loc is the location that the object will be adjacent to
+    
+    
+    
 
+    
 	public void forward(double distance)
 	{
         double speed = 0.05;
@@ -21,18 +37,20 @@ public class Movement
         double newPos = oldPos+distance;
 		while(currentPosition() < newPos)
 		{
-			parent.command("transform.position.x += Time.deltaTime*" + speed);
+			parent.command("transform.position.x += Time.deltaTime *" + distance);
+            
 		}
 	}
-
+    
+    
 	public void backward(double distance)
 	{
         double speed = 0.05;
         double oldPos = currentPosition();
-        double newPos = oldPos+distance;
+        double newPos = oldPos-distance;
 		while(currentPosition() > newPos)
 		{
-			parent.command("transform.position.x -= Time.deltaTime * " + speed);
+			parent.command("transform.position.x -= Time.deltaTime * " + distance);
 		}
 	}
 
@@ -100,11 +118,15 @@ public class Movement
 		parent.command("rigidbody.isKinematic = false");
 		parent.command("rigidbody.useGravity = true");
 	}
-
+    
 	public double currentHeight()
 	{
 		return Double.parseDouble(parent.command("transform.position.y"));
 	}
+    
+    /*comment 
+     out 
+     later*/
 	public double currentPosition()
 	{
 		return Double.parseDouble(parent.command("transform.position.x"));

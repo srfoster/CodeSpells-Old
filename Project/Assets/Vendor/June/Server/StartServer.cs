@@ -67,6 +67,7 @@ public class StartServer : MonoBehaviour
 				} else{ 
 					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects());
 					
+					
 					string response = "";
 					if(ret != null)
 						response = ret.ToString();
@@ -75,6 +76,13 @@ public class StartServer : MonoBehaviour
 					call.setResponse(response);
 				}
 				call.respond();
+				//Debug.Log ("--call is null? "+call.respond());
+				
+				
+				
+				
+				
+				
 			} catch(Exception e) {
 				Debug.Log(e.Message);
 				Debug.Log(e.StackTrace);
