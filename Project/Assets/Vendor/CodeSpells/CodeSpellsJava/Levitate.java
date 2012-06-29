@@ -1,10 +1,9 @@
-import june.*;
+	import june.*;
 
 public class Levitate extends Spell
 {
   public void cast()
   {
- 
      Enchanted fountain = getTarget();
      Wand green_wand = new Wand("green");
 
@@ -16,6 +15,5 @@ public class Levitate extends Spell
             fountain.movement().left(1f);
     
      }
-
   }
 }
