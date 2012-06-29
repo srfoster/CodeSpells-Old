@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
+
 
 public class NPCTurnHead : MonoBehaviour {
 	
@@ -30,7 +32,7 @@ public class NPCTurnHead : MonoBehaviour {
 	
 	void findHeadRecursive(Transform parent)
 	{
-		if(parent.name.Equals("Head"))
+		if(Regex.Match(parent.name,"Head").Success)
 		{
 			head = parent;
 		}

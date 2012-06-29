@@ -9,8 +9,11 @@ public class NPCTestWalk : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	
 	   NPCFidget movements = GetComponent<NPCFidget>();
-	   movements.StartWalking();
+	
+	   if(movements != null)
+	 	  movements.StartWalking();
 		
 	   Vector3 destination = GameObject.FindWithTag("Player").transform.position;
 		

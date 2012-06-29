@@ -1,19 +1,30 @@
-	import june.*;
+import june.*;
+import java.util.*;
 
 public class Levitate extends Spell
 {
   public void cast()
   {
-     Enchanted fountain = getTarget();
-     Wand green_wand = new Wand("green");
 
-     while(true)
+     EnchantedList list = new EnchantedList();;
+
+   		for(int i = 1; i <=10; i++)
      {
-        if(green_wand.getGesture() == Direction.RIGHT)
-            fountain.movement().right(1f);
-        else if(green_wand.getGesture() == Direction.LEFT)
-            fountain.movement().left(1f);
-    
+			   Enchanted rock = getByName("Rock" + i);
+				  list.add(rock);
      }
+
+     Enchanted last = list.get(0);
+
+     for(int i = 1; i < list.size(); i++)
+     {
+    		 Enchanted current = list.get(i);
+        Location dest = last.getLocation();
+        dest.setX(dest.getX() + 2f);
+						current.movement().teleport(dest);
+        last = current;  
+     }
+
+     list.movement().levitate(1f, 100f);
   }
 }

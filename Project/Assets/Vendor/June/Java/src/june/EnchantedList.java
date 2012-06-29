@@ -35,4 +35,13 @@ public class EnchantedList extends Enchanted
         
     //}
     
+    public Enchanted get(int index)
+    {
+      return eList.get(index);
+    }
+
+    public int size()
+    {
+      return eList.size();
+    }
 }
