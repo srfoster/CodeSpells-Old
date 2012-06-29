@@ -19,7 +19,7 @@ public class Enchanted
     /*public enum Direction {
         NORTH, SOUTH, EAST, WEST
     }*/
-    private double objRadius = 2.0;
+    private double objRadius = 1.0;
 
 	/**
 	 * A new Enchanted -- which is a binding to a game entity in Unity.

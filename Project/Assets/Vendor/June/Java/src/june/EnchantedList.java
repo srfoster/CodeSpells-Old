@@ -36,21 +36,26 @@ public class EnchantedList extends Enchanted
         boolean isOdd = (eList.size()%2 == 1);
         int middleIndex = isOdd ? (eList.size()/2) : (eList.size()/2-1);
         double tempHeight = 0.0;
-        double heightChange = 0.5;
+        double heightChange = 0.0;
         //determine the height change based on the length of the list (work on later)
         
-        for(int i=0; i < eList.size(); i++) {
-            super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += tempHeight");
+        for(int i=1; i < eList.size(); i++) {
+            
             if (i < middleIndex) {
+                //super.commandGlobal("Debug.Log(\"inside the add method\")");
+                heightChange = 2.0;
                 tempHeight += heightChange;
             }
             else if (i == middleIndex) {
                 if (!isOdd) middleIndex += 1;
+                //don't change tempheight
             }
-            else
+            else {
                 tempHeight -= heightChange;
-
+            }
+            super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
         }
+        
         
     }
     

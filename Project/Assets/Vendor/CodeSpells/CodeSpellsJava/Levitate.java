@@ -1,33 +1,30 @@
-	import june.*;
+		import june.*;
 
 public class Levitate extends Spell
 {
   public void cast()
   {
-<<<<<<< HEAD
-			Enchanted entity = getTarget();
-			//Enchanted rock1 = getByName("Rock1");
-			
-			EnchantedList myList = new EnchantedList();
-			//myList.add(rock1);
-			myList.add(entity);
-
-			Location my_location = myList.getLocation(Direction.WEST);
-			entity.movement().teleport(my_location);
-			myList.movement().forward(4.0f);
-			
-=======
-     Enchanted fountain = getTarget();
-     Wand green_wand = new Wand("green");
-
-     while(true)
-     {
-        if(green_wand.getGesture() == Direction.RIGHT)
-            fountain.movement().right(1f);
-        else if(green_wand.getGesture() == Direction.LEFT)
-            fountain.movement().left(1f);
-    
-     }
->>>>>>> 2ebf50452c5ff23ced3039dd0d27ef45dc5bd003
+				EnchantedList myList = new EnchantedList();
+				Enchanted entity = getTarget();
+				Enchanted rock1 = getByName("Rock1");
+				Enchanted rock2 = getByName("Rock2");
+				Enchanted rock3 = getByName("Rock3");
+				Enchanted rock4 = getByName("Rock4");
+				myList.add(entity);
+				myList.add(rock1);
+				myList.add(rock2);
+				myList.add(rock3);
+				myList.add(rock4);
+				Location my_location = entity.getLocation(Direction.WEST); //west of entity's location
+				rock1.movement().teleport(my_location);
+				my_location = rock1.getLocation(Direction.WEST);
+				rock2.movement().teleport(my_location);
+				
+				my_location = rock2.getLocation(Direction.WEST);
+				rock3.movement().teleport(my_location);
+				my_location = rock3.getLocation(Direction.WEST);
+				rock4.movement().teleport(my_location);
+				myList.buildBridge();
+				
   }
 }
