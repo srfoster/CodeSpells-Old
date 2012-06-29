@@ -31,6 +31,29 @@ public class EnchantedList extends Enchanted
         eList.add(ench);
     }
     
+    public void buildBridge() {
+        
+        boolean isOdd = (eList.size()%2 == 1);
+        int middleIndex = isOdd ? (eList.size()/2) : (eList.size()/2-1);
+        double tempHeight = 0.0;
+        double heightChange = 0.5;
+        //determine the height change based on the length of the list (work on later)
+        
+        for(int i=0; i < eList.size(); i++) {
+            super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += tempHeight");
+            if (i < middleIndex) {
+                tempHeight += heightChange;
+            }
+            else if (i == middleIndex) {
+                if (!isOdd) middleIndex += 1;
+            }
+            else
+                tempHeight -= heightChange;
+
+        }
+        
+    }
+    
     //public void remove(Enchanted ench) {
         
     //}
