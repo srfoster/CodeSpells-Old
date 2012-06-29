@@ -1,11 +1,9 @@
 import june.*;
 import java.util.*;
-
 public class Levitate extends Spell
 {
   public void cast()
   {
-
      EnchantedList list = new EnchantedList();;
 
    		for(int i = 1; i <=10; i++)
