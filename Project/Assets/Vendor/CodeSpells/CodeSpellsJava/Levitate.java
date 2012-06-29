@@ -4,6 +4,7 @@ public class Levitate extends Spell
 {
   public void cast()
   {
+<<<<<<< HEAD
 			Enchanted entity = getTarget();
 			//Enchanted rock1 = getByName("Rock1");
 			
@@ -15,5 +16,18 @@ public class Levitate extends Spell
 			entity.movement().teleport(my_location);
 			myList.movement().forward(4.0f);
 			
+=======
+     Enchanted fountain = getTarget();
+     Wand green_wand = new Wand("green");
+
+     while(true)
+     {
+        if(green_wand.getGesture() == Direction.RIGHT)
+            fountain.movement().right(1f);
+        else if(green_wand.getGesture() == Direction.LEFT)
+            fountain.movement().left(1f);
+    
+     }
+>>>>>>> 2ebf50452c5ff23ced3039dd0d27ef45dc5bd003
   }
 }

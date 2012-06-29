@@ -37,7 +37,7 @@ public class Movement
         double newPos = oldPos+distance;
 		while(currentPosition() < newPos)
 		{
-			parent.command("transform.position.x += Time.deltaTime *" + distance);
+			parent.command("transform.position.x += Time.deltaTime *" + distance + ";");
             
 		}
 	}
