@@ -4,7 +4,7 @@ public class Levitate extends Spell
 {
   public void cast()
   {
-     Enchanted fountain = getByName("Fountain");
+     Enchanted fountain = getTarget();
      Wand green_wand = new Wand("green");
 
      while(true)

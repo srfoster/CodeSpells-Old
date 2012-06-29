@@ -78,14 +78,21 @@ public class June {
 		try{
 			string class_name = java_file_name.Split('.')[0];
 			
-			Shell.shell("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
-					
+			Process compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
+			compile_process.Start();	
+			
+			var output = compile_process.StandardOutput.ReadToEnd();
+	   		var error = compile_process.StandardError.ReadToEnd();
+			
+			Popup.mainPopup.popup(""  + output + " " + error);
+
+			
+			
+			
 			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' june.Caster "+class_name+" '" + object_id +"'");	
 			java_process.Start();
 			
-			var output = java_process.StandardOutput.ReadToEnd();
-	    
-	   		var error = java_process.StandardError.ReadToEnd();
+
 			
 
 
