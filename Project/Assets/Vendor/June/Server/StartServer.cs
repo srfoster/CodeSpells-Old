@@ -65,7 +65,7 @@ public class StartServer : MonoBehaviour
 				{
 					call.setResponse("");
 				} else{ 
-					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects());
+					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
 					
 					
 					string response = "";

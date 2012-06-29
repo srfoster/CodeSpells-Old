@@ -10,6 +10,17 @@ public class SetupLevel : MonoBehaviour {
 			Init();	
 	}
 	
+	bool done = false;
+	void Update()	
+	{
+		if(!done)
+		{
+			done = true;
+
+			Eval.eval("var empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); objects.Add(\"1202002\", empty);",ObjectManager.GetObjects(), new Util());
+		}
+	}
+	
 	public void Init() {
 		(new SetupInventory()).Init();		
 		(new SetupUnidee()).Init();		

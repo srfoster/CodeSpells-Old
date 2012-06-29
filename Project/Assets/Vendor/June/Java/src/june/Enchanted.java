@@ -43,6 +43,11 @@ public class Enchanted
 	public String getId()
 	{
 		return id;
+	}
+    
+    public void setId(String temp)
+	{
+		id = temp;
 	}	
 
 	public Movement movement()

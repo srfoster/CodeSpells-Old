@@ -92,27 +92,7 @@ public class Movement
 		levitate(height, 10);
 	}
     
-    public void transport(double distance, double height, String direction)
-    {
-        parent.command("rigidbody.useGravity = false");
-		double liftSpeed = 0.03;
-        double moveSpeed = 0.05;
-		while(currentHeight() < height)
-		{
-            parent.command("transform.position.y += Time.deltaTime" + liftSpeed);
-		}
-        double curr = currentPosition();
-        
-        if(direction.equals("Forward"))
-        {
-            forward(distance);
-        }  
-        else if(direction.equals("Backward"))
-        {
-            backward(distance);
-        }
-    }
-	
+
 	public void drop()
 	{
 		parent.command("rigidbody.isKinematic = false");
