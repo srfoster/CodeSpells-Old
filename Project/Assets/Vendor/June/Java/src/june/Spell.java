@@ -8,7 +8,7 @@ public abstract class Spell
     private Enchanted ench;
     
   public Spell(){
-      ench = new Enchanted("");
+      ench = new Enchanted("Player");
   }
 
   public void setTarget(String target_id)
@@ -27,19 +27,20 @@ public abstract class Spell
     
     //gets spawning zone location
     
-    public Location getLocation(Direction dir) {
-        if(dir.getDirection() == Direction.LEFT) //left
+    public Location getLocation(int dir) {
+        if(dir == Direction.LEFT) //left
         {
-            String vector3_string = ench.commandGlobal("transform.position - transform.right");
+            String vector3_string = ench.command("$target.transform.position - $target.transform.right * 10");
             
-            System.out.println(vector3_string);
-            return null;// Location(vector3_string);
+            return new Location(vector3_string);
         }
-        if(dir.getDirection() == Direction.RIGHT) {//right
+        if(dir == Direction.RIGHT) {//right
+            String vector3_string = ench.command("$target.transform.position + $target.transform.right * 10");
             
+            return new Location(vector3_string);
         }
         else {
-           // ench.getLocation(dir);
+           ench.getLocation(dir);
         }
      
         return null;
@@ -48,10 +49,9 @@ public abstract class Spell
     
     public Location getLocation() 
     {
-        double x = Double.parseDouble(ench.commandGlobal("GameObject.Find (\"Spawning Zone\").transform.position.x"));
-        double y = Double.parseDouble(ench.commandGlobal("GameObject.Find (\"Spawning Zone\").transform.position.y"));
-        double z = Double.parseDouble(ench.commandGlobal("GameObject.Find (\"Spawning Zone\").transform.position.z"));
-        return (new Location (x,y,z));
+       String vector3_string = ench.command("$target.transform.position");
+            
+       return new Location(vector3_string);
     }
     
 

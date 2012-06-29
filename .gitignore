@@ -1,3 +1,4 @@
 Project/*
 !Project/Assets/
 .DS_Store
+*.class
