@@ -39,21 +39,23 @@ public class EnchantedList extends Enchanted
         double heightChange = 0.0;
         //determine the height change based on the length of the list (work on later)
         
-        for(int i=1; i < eList.size(); i++) {
+        for(int i=0; i < eList.size(); i++) {
             
             if (i < middleIndex) {
-                //super.commandGlobal("Debug.Log(\"inside the add method\")");
+                super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
                 heightChange = 2.0;
                 tempHeight += heightChange;
             }
             else if (i == middleIndex) {
                 if (!isOdd) middleIndex += 1;
+                super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
                 //don't change tempheight
             }
             else {
                 tempHeight -= heightChange;
+                super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
             }
-            super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
+            
         }
         
         

@@ -4,27 +4,37 @@ public class Levitate extends Spell
 {
   public void cast()
   {
-				EnchantedList myList = new EnchantedList();
-				Enchanted entity = getTarget();
+				EnchantedList list = new EnchantedList();
+
 				Enchanted rock1 = getByName("Rock1");
 				Enchanted rock2 = getByName("Rock2");
 				Enchanted rock3 = getByName("Rock3");
 				Enchanted rock4 = getByName("Rock4");
-				myList.add(entity);
-				myList.add(rock1);
-				myList.add(rock2);
-				myList.add(rock3);
-				myList.add(rock4);
-				Location my_location = entity.getLocation(Direction.WEST); //west of entity's location
-				rock1.movement().teleport(my_location);
-				my_location = rock1.getLocation(Direction.WEST);
-				rock2.movement().teleport(my_location);
-				
-				my_location = rock2.getLocation(Direction.WEST);
-				rock3.movement().teleport(my_location);
-				my_location = rock3.getLocation(Direction.WEST);
-				rock4.movement().teleport(my_location);
-				myList.buildBridge();
+				Enchanted rock5 = getByName("Rock5");
+				Enchanted rock6 = getByName("Rock6");
+
+				for(int i = 1; i <=6; i++)
+    {
+	  Enchanted rock = getByName("Rock" + i);
+	  list.add(rock);
+    }
+
+    Enchanted last = list.get(0);
+
+    for(int i = 1; i < list.size(); i++)
+    {
+   	Enchanted current = list.get(i);
+       Location dest = last.getLocation();
+       dest.setX(dest.getX() + 2f);
+	float len = (float) list.size();
+
+	dest.setY(dest.getY() + (-i*i + len*x));
+
+	current.movement().teleport(dest);
+       last = current;
+    }
+
+    list.movement().levitate(10f, 100f);
 				
   }
 }
