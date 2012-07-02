@@ -12,6 +12,20 @@ public class CodeScrollItem : DraggableItem {
 	private Texture2D still_icon;
 	private Texture2D[] animated_icon;
 	
+    override protected void Drag(){
+		base.Drag();
+		
+		GameObject obj = objectUnderCursor();
+		if(obj != null){
+			if(obj.GetComponent<Enchantable>() != null) {
+				Highlighter.highlight(obj, Color.green);
+			} else {
+				Highlighter.highlight(obj, Color.red);
+			}
+		} else {
+			Highlighter.highlight(null, Color.black);
+		}
+	}
 	
 	override public Texture2D getTexture()	
 	{
@@ -100,7 +114,7 @@ public class CodeScrollItem : DraggableItem {
 		if(target.GetComponent("Enchantable") == null)
 		{
 			
-			(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("Target immune to magic.");
+			(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("Target ("+target.name+") immune to magic.");
 			SetHidden(false);
 			return;
 		}

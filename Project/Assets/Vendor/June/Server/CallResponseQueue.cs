@@ -57,7 +57,10 @@ public class CallResponse
 	}
 	
 	public void respond()
-	{			
+	{
+		if(client_stream == null)
+			return;
+		
 	    ASCIIEncoding encoder = new ASCIIEncoding();
 		byte[] buffer = encoder.GetBytes(response + "\n");
 

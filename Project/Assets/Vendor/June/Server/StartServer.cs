@@ -35,8 +35,6 @@
 using System;
 using UnityEngine;
 
-
-
 public class StartServer : MonoBehaviour
 {
 	public Server server;
@@ -48,10 +46,15 @@ public class StartServer : MonoBehaviour
 	
 		queue = new CallResponseQueue();
 		server = new Server(queue);
+		
+		
 	}
 	
+		
 	void Update () {
-		while(queue.notEmpty())
+
+		
+		if(queue.notEmpty())
 		{
 			CallResponse call = queue.remove();
 			
@@ -62,11 +65,27 @@ public class StartServer : MonoBehaviour
 				{
 					call.setResponse("");
 				} else{ 
-					string response = Eval.eval(call.getCall()).ToString();
+					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
+					
+					
+					string response = "";
+					if(ret != null)
+						response = ret.ToString();
+					
+					Debug.Log("Response was " + response);
 					call.setResponse(response);
 				}
 				call.respond();
+				//Debug.Log ("--call is null? "+call.respond());
+				
+				
+				
+				
+				
+				
 			} catch(Exception e) {
+				Debug.Log(e.Message);
+				Debug.Log(e.StackTrace);
 				call.setResponse("Error: " + e.ToString().Replace("\n",""));
 			}
 			

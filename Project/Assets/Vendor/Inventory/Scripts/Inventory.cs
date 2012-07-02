@@ -1,36 +1,41 @@
 /* See the copyright information at https://github.com/srfoster/Inventory/blob/master/COPYRIGHT */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Inventory : MonoBehaviour {
+	
+	public int count = 0;
 
 	public Texture2D inventory_area_background;
 	
 	public Texture2D up_button_texture;
 	public Texture2D down_button_texture;
-		
-	public Font label_font;
 	
+	public Font label_font;
 	
 	private ArrayList items = new ArrayList();
 	private ArrayList to_remove = new ArrayList();
 	
+	private Dictionary<GameObject, ItemInfo> item_infos = new Dictionary<GameObject, ItemInfo>();
+	
 	private int margin_top  = 50;
 	private int margin_left_side = 20;
-	private int margin_right_side = 70;
-	private int margin_bottom = 30;
+	private int margin_right_side = 60;
+	private int margin_bottom = 200;
 	
 	private int vertical_spacing = 20;
 	
 	private int inventory_width = 320;
 	
-	private int item_width = 100;
+	private int item_width = 50;
 	private int item_height = 50;
 	
 	
 	private int label_height = 40;
 	
-	private int item_columns = 3;
+	private int item_columns = 2;
 		
 	private int starting_row = 0;
 	
@@ -52,6 +57,8 @@ public class Inventory : MonoBehaviour {
 	
 	void Update(){
 		notifyActive();
+		
+		count = items.Count;
 	}
 	
 	public void SetDragged(GameObject item)
@@ -84,13 +91,16 @@ public class Inventory : MonoBehaviour {
 	void displayDragged(){
 		if(dragged == null)
 			return;
-					
-		var x = Input.mousePosition.x - item_width/2;
-		var y = Screen.width/2 - Input.mousePosition.y - item_height/2;
-	
-		GUI.DrawTexture(new Rect(x,y,item_width,item_height),(dragged.GetComponent(typeof(Item)) as Item).getTexture());
+
+		var tempx = Input.mousePosition.x;
+		var tempy = Input.mousePosition.y;
 		
-		GUI.Label(new Rect(x, y + item_height, item_width, label_height), (dragged.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
+		var x = tempx - item_width/2;
+		var y = Screen.height - tempy - item_height/2;
+		
+		GUI.DrawTexture(new Rect(x +25,y,item_width,item_height),(dragged.GetComponent(typeof(Item)) as Item).getTexture());
+		
+		GUI.Label(new Rect(x, y + item_height, item_width * 2, label_height), (dragged.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
 	}
 	
 	
@@ -105,6 +115,7 @@ public class Inventory : MonoBehaviour {
 		foreach(GameObject r in to_remove)
 		{
 			items.Remove(r);
+			item_infos.Remove(r);
 		}
 		
 		to_remove.Clear();
@@ -115,7 +126,9 @@ public class Inventory : MonoBehaviour {
 			float item_x = margin_right_side + column * (item_width + item_padding);
 			float item_y = margin_top + row * (item_height + vertical_spacing + label_height) - (starting_row * (item_height + vertical_spacing)) ;
 			
-			
+			item_infos[item].icon_x = item_x + (Screen.width - inventory_width);
+			item_infos[item].icon_y = item_y;
+
 			if(item_y + item_height + label_height < Screen.height - margin_bottom)
 			{
 				if(item_y >= margin_top)
@@ -126,9 +139,14 @@ public class Inventory : MonoBehaviour {
 					if(!(item.GetComponent(typeof(Item)) as Item).GetHidden())
 					{
 						bool item_clicked = false;
-						item_clicked = GUI.RepeatButton(new Rect(item_x,  item_y,item_width,item_height), "", item_button_style);
-										
-						GUI.Label(new Rect(item_x, item_y + item_height, item_width, label_height), (item.GetComponent(typeof(Item)) as Item).getName(), item_label_style);
+						item_clicked = GUI.RepeatButton(new Rect(item_x+25,  item_y,item_width,item_height), "", item_button_style);
+								
+						item_infos[item].label_x = item_x + (Screen.width - inventory_width);
+						item_infos[item].label_y = item_y + item_height;
+						
+						string label_value = (item.GetComponent(typeof(Item)) as Item).getName();
+//						Debug.Log("Drawing label: " + label_value);
+						GUI.Label(new Rect(item_x, item_y + item_height, item_width+50, label_height), label_value, item_label_style);
 		
 						
 						if(item_clicked && Input.GetMouseButton(0))
@@ -190,6 +208,7 @@ public class Inventory : MonoBehaviour {
 	public void addItem(GameObject item)
 	{
 		items.Add(item);
+		item_infos.Add(item, new ItemInfo());
 	}
 	
 	
@@ -221,5 +240,18 @@ public class Inventory : MonoBehaviour {
 				(item.GetComponent(typeof(Item)) as Item).ActiveInInventory();
 		}
 	}
-
+	
+	public ItemInfo getInfo(GameObject item)
+	{
+		return item_infos[item];	
+	}
+	
+	public class ItemInfo
+	{
+		public float icon_x;
+		public float icon_y;
+		
+		public float label_x;
+		public float label_y;
+	}
 }

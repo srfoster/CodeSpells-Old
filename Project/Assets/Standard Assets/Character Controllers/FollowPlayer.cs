@@ -16,22 +16,13 @@ public class FollowPlayer : MonoBehaviour {
 		Debug.Log ("x: "+transform.position.x+" y: "+transform.position.y
 			+" z: "+transform.position.z);
 		Debug.Log ("Enters");
-		//if(counter == 15) {
-			//mapTarget.transform.position = new Vector3(transform.position.x, 75, transform.position.z);
-			//counter = 0;
-		//}
-			
 
 		if ((Screen.height != screenHeight) || (Screen.width != screenWidth)) {
 			resizeMap ();
-			//counter++;
 			screenHeight = Screen.height;
 			screenWidth = Screen.width;
 			
 		}
-		//transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-		//counter++;
 		}
 	
 	void resizeMap() {

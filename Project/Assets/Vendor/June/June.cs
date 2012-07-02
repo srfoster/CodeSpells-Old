@@ -19,12 +19,22 @@ public class June {
 	protected GameObjectCallback callback = null;
 	
 	protected bool is_stopped = false;
+	
+	protected string object_id;
 		
 	public June(GameObject game_object, string java_file_name)
 	{
 		this.game_object = game_object;
+		
 		this.game_object_name = game_object.name;
 		this.java_file_name = java_file_name;
+		
+		this.object_id = game_object.GetInstanceID().ToString();
+	}
+	
+	public void setObjectId(string id)
+	{
+		this.object_id = id;	
 	}
 
 	public void Start() {
@@ -63,16 +73,29 @@ public class June {
 	
 	virtual public void javaCompileAndRun()
 	{
+
 		
-		//GameObject.Find("Popup").GetComponent<Popup>().popup("HI");
 		try{
 			string class_name = java_file_name.Split('.')[0];
 			
-			Shell.shell("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
-		
+			Process compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
+			compile_process.Start();	
+			
+			var output = compile_process.StandardOutput.ReadToEnd();
+	   		var error = compile_process.StandardError.ReadToEnd();
+			
+			Popup.mainPopup.popup(""  + output + " " + error);
 
-			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' "+class_name+" " + game_object_name);	
+			
+			
+			
+			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' june.Caster "+class_name+" '" + object_id +"'");	
 			java_process.Start();
+			
+
+			
+
+
 			
 			Boolean has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));
 			while(!has_exited)

@@ -1,0 +1,3 @@
+./library_compile
+./compile $1.java
+java -classpath '../bin:.' june.Caster $1 $2

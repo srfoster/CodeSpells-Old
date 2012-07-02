@@ -13,6 +13,7 @@ public class SetupPopup : MonoBehaviour {
 		GameObject prefab = Resources.Load("Popup") as GameObject;
 		
 		GameObject obj = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;	
-		obj.name = prefab.name;		}
+		obj.name = prefab.name;		
+	}
 	
 }

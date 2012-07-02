@@ -17,6 +17,7 @@ public class EclipseInput : FileInput {
 		eclipse = new Eclipse();
 		
 		//This should definitely be moved into Euclid's API.  Clients of an API should not have to do this much work!
+		/*
 		string project_list_string = eclipse.ProjectListString();
 		string project_string = "";
 		foreach(string s in project_list_string.Split('\n'))
@@ -54,6 +55,7 @@ public class EclipseInput : FileInput {
 		
 		
 		short_file_name = GetFileName().Replace(project_path,"");
+		*/
 	}
 	
 
@@ -67,7 +69,7 @@ public class EclipseInput : FileInput {
 		
 	
 		
-		
+		/*
 		string messages = eclipse.JavaSrcUpdateString(short_file_name,project_name);
 		Debug.Log(messages);
 		
@@ -75,5 +77,6 @@ public class EclipseInput : FileInput {
 		
 		string completions=eclipse.JavaCompleteString(short_file_name,project_name,cursor);
 		Debug.Log(completions);
+		*/
 	}
 }
