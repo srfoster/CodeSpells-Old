@@ -16,7 +16,7 @@ public abstract class GnomeAI : MonoBehaviour {
 		if(currentState == ActionState.Find)
 		{
 			if(Find())
-				currentState = ActionState.Walk;
+				currentState = ActionState.Collect;
 		}
 		else if(currentState == ActionState.Collect)
 		{

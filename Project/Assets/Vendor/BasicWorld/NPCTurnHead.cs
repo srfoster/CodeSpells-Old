@@ -19,20 +19,18 @@ public class NPCTurnHead : MonoBehaviour {
 		
 		float angle = Vector3.Angle(forward,direction);
 		
-		
 		if(angle < 70)
 		{
 			head.LookAt(player, head.up);
-		} else {
 		}
 	}
-	
 	
 	void findHeadRecursive(Transform parent)
 	{
 		if(parent.name.Equals("Head"))
 		{
 			head = parent;
+			return;
 		}
 		
 		foreach(Transform child in parent)

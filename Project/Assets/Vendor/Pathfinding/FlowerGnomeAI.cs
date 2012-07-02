@@ -5,6 +5,10 @@ public class FlowerGnomeAI : GnomeAI {
 
 	public GameObject ToObj;
 	public GameObject FromObj;
+	private GameObject objToCollect;
+	private Transform leftHand = null;
+	private Transform rightHand = null;
+	private bool armsUp = false;
 	
 	public override bool Find()
 	{
@@ -14,17 +18,82 @@ public class FlowerGnomeAI : GnomeAI {
 			//If flour exists, and it hasn't been collected yet, then the gnome should collect it
 			if(flour != null && flour.transform.parent == null && Vector3.Distance(transform.position, flour.transform.position) <= 60)
 			{
-				flour.tag = "Untagged";
-				flour.transform.parent = transform;
+				objToCollect = flour;
+				objToCollect.tag = "Untagged";
+				
+				while(!walkToObject());
+				
 				return true;
 			}
 		}
 		return false;
 	}
 	
+	private bool walkToObject()
+	{
+		transform.LookAt (objToCollect.transform);
+		transform.Translate(Vector3.forward * Time.deltaTime);
+		transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
+		if (Vector3.Distance(transform.position, objToCollect.transform.position) < 2)
+			return true;
+		return false;
+	}
+	
 	public override bool Collect()
 	{
-		return true;
+		leftHand = findLeftHandRecursive(transform);
+		rightHand = findRightHandRecursive(transform);
+		if(leftHand != null && rightHand != null)
+		{
+			armsUp = true;
+			objToCollect.transform.position = new Vector3(transform.position.x+2, transform.position.y+1, transform.position.z);
+			objToCollect.transform.parent = transform;
+			return true;
+		}
+		return false;
+	}
+	
+	public void LateUpdate()
+	{
+		if(armsUp)
+		{
+			leftHand.Rotate(-90, 0, 0);
+			rightHand.Rotate(90, 0, 0);
+		}
+	}
+	
+	private Transform findLeftHandRecursive(Transform parent)
+	{
+		Transform ret;
+		if(parent.name.Equals("shouder_L"))
+		{
+			return parent;
+		}
+		
+		foreach(Transform child in parent)
+		{
+			ret = findLeftHandRecursive(child);
+			if(ret != null)
+				return ret;
+		}
+		return null;
+	}
+	
+	private Transform findRightHandRecursive(Transform parent)
+	{
+		Transform ret;
+		if(parent.name.Equals("shouder_R"))
+		{
+			return parent;
+		}
+		
+		foreach(Transform child in parent)
+		{
+			ret = findRightHandRecursive(child);
+			if(ret != null)
+				return ret;
+		}
+		return null;
 	}
 
 	public override bool Deliver()
