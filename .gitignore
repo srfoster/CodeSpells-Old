@@ -2,3 +2,4 @@ Project/*
 !Project/Assets/
 .DS_Store
 *.class
+*.class.meta

@@ -37,6 +37,18 @@ public class Location
         return z;
     }
 
+    public void setX(double x){
+      this.x = x;
+    }
+
+    public void setY(double y){
+      this.y = y;
+    }
+
+    public void setZ(double z){
+      this.z = z;
+    }
+
     public String toString()
     {
 	return "(" + x + " " + y + " " + z + ")";
