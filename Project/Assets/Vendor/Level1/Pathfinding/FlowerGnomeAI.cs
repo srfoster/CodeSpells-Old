@@ -9,22 +9,30 @@ public class FlowerGnomeAI : GnomeAI {
 	private Transform leftHand = null;
 	private Transform rightHand = null;
 	private bool armsUp = false;
+	private bool foundObject = false;
+	private float walkingSpeed = 2;
 	
 	public override bool Find()
 	{
-		// Find all flour within the whole game
-		foreach( GameObject flour in GameObject.FindGameObjectsWithTag("Flour"))
+		Debug.Log(transform.name +" STATE: finding");
+		if(!foundObject)
 		{
-			//If flour exists, and it hasn't been collected yet, then the gnome should collect it
-			if(flour != null && flour.transform.parent == null && Vector3.Distance(transform.position, flour.transform.position) <= 60)
+			// Find all flour within the whole game
+			foreach( GameObject flour in GameObject.FindGameObjectsWithTag("Flour"))
 			{
-				objToCollect = flour;
-				objToCollect.tag = "Untagged";
-				
-				while(!walkToObject());
-				
-				return true;
+				//If flour exists, and it hasn't been collected yet, then the gnome should collect it
+				if(flour != null && flour.transform.parent == null && Vector3.Distance(transform.position, flour.transform.position) <= 60)
+				{
+					objToCollect = flour;
+					objToCollect.tag = "Untagged";
+					foundObject = true;
+					break;
+				}
 			}
+		}
+		else
+		{
+			return walkToObject();
 		}
 		return false;
 	}
@@ -32,21 +40,24 @@ public class FlowerGnomeAI : GnomeAI {
 	private bool walkToObject()
 	{
 		transform.LookAt (objToCollect.transform);
-		transform.Translate(Vector3.forward * Time.deltaTime);
+		transform.Translate(Vector3.forward * Time.deltaTime * walkingSpeed);
 		transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
-		if (Vector3.Distance(transform.position, objToCollect.transform.position) < 2)
-			return true;
-		return false;
+		return (Vector3.Distance(transform.position, objToCollect.transform.position) < 2);
 	}
 	
 	public override bool Collect()
 	{
+		foundObject = false;
+		Debug.Log(transform.name +" STATE: collecting");
 		leftHand = findLeftHandRecursive(transform);
 		rightHand = findRightHandRecursive(transform);
 		if(leftHand != null && rightHand != null)
 		{
 			armsUp = true;
-			objToCollect.transform.position = new Vector3(transform.position.x+2, transform.position.y+1, transform.position.z);
+			objToCollect.rigidbody.active = false;
+			//objToCollect.rigidbody.velocity = transform.forward * 10;
+			objToCollect.transform.position = transform.position + transform.forward*2;
+			objToCollect.transform.position = new Vector3(objToCollect.transform.position.x, objToCollect.transform.position.y+1, objToCollect.transform.position.z);
 			objToCollect.transform.parent = transform;
 			return true;
 		}
@@ -98,16 +109,11 @@ public class FlowerGnomeAI : GnomeAI {
 
 	public override bool Deliver()
 	{
-		if(transform.Find("Flour") != null)
+		//If flour exists, and it is mine then release it
+		if(objToCollect != null && objToCollect.transform.parent == transform)
 		{
-			GameObject flour = transform.Find("Flour").gameObject;
-			
-			//If flour exists, and it is mine then release it
-			if(flour != null && flour.transform.parent == transform)
-			{
-				flour.transform.parent = null;
-				return true;
-			}
+			objToCollect.transform.parent = null;
+			return true;
 		}
 		return false;
 	}
@@ -118,7 +124,7 @@ public class FlowerGnomeAI : GnomeAI {
 			GetComponent<Seeker>().setDestination(FromObj);
 		
 		Seeker.WalkingState state = GetComponent<Seeker>().walk();
-		
+		Debug.Log(transform.name +" STATE: going back");
 		return (state == Seeker.WalkingState.ReachedDestination);
 	}
 	
@@ -129,6 +135,7 @@ public class FlowerGnomeAI : GnomeAI {
 	
 	public override bool Walk()
 	{
+		Debug.Log(transform.name + " STATE: going");
 		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
 			GetComponent<Seeker>().setDestination(ToObj);
 		
