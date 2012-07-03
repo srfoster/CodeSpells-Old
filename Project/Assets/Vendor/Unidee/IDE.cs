@@ -1,10 +1,13 @@
 /* See the copyright information at https://github.com/srfoster/Unidee/blob/master/COPYRIGHT */
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.IO;
+
 
 public class IDE : MonoBehaviour {
 
@@ -15,6 +18,9 @@ public class IDE : MonoBehaviour {
 	public Texture2D control_statement_syntax_highlight;
 	public Texture2D expression_syntax_highlight;
 	public Texture2D declaration_syntax_highlight;
+	public Texture2D error_syntax_highlight;
+
+	
 	public Font ide_font;	
 	public GUIStyle button_style = new GUIStyle();
 	public GUIStyle code_style = new GUIStyle();
@@ -35,6 +41,10 @@ public class IDE : MonoBehaviour {
 	private int last_line_number = 0;
 	
 	private TestAutoCompletionManager auto_completion_manager = new TestAutoCompletionManager();
+	
+	private string current_error;
+	
+	private List<LineStyle> line_styles = new List<LineStyle>();
 	
 	public string getCode()
 	{
@@ -137,8 +147,6 @@ public class IDE : MonoBehaviour {
 		leftPanel();
 		rightPanel();
 
-		
-		
 		adjustScroll();
 		
 		catchTabs();
@@ -172,7 +180,7 @@ public class IDE : MonoBehaviour {
 	    {
 	        Event.current.Use();
 			
-			current_code = current_code.Substring(0,GetCursorPosition()) + "\t" + current_code.Substring(GetCursorPosition());
+			current_code = current_code.Substring(0,GetCursorPosition()) + "    " + current_code.Substring(GetCursorPosition());
 			stateObj.MoveRight();
 		}
 	}
@@ -234,6 +242,14 @@ public class IDE : MonoBehaviour {
 			paused = true;
 	    }
 		
+		
+		GUIStyle style = GUI.skin.box;
+		
+		style.alignment = TextAnchor.UpperLeft;
+		style.wordWrap = true;
+		
+		GUI.Box(new Rect (10,100,230,500), current_error, style);
+		
 		GUI.EndGroup();
 	}
 	
@@ -271,26 +287,36 @@ public class IDE : MonoBehaviour {
 		{
 			string line = lines[i];
 			
-			highlight("if\\w*(.*)",control_statement_syntax_highlight, line, count);
-			highlight("while\\w*(.*)",control_statement_syntax_highlight, line, count);
-			highlight("for \\w*(.*)",control_statement_syntax_highlight, line, count);
-			//highlight("\\(.*\\)",expression_syntax_highlight, line, count);
-			//highlight("object", declaration_syntax_highlight, line, count);
-			//highlight("(movement.\\w+\\(.*\\));", declaration_syntax_highlight, line, count);
+			bool do_syntax_highlight = true;
 			
-			highlight("public", declaration_syntax_highlight, line, count);
-			highlight("private", declaration_syntax_highlight, line, count);
-			highlight("static", declaration_syntax_highlight, line, count);
-			highlight("void", declaration_syntax_highlight, line, count);
-			highlight("class", declaration_syntax_highlight, line, count);
-			highlight("import", declaration_syntax_highlight, line, count);
-
+			foreach(LineStyle style in line_styles)
+			{
+				if(style.number == i)
+				{
+					highlight(".*", style.texture, line, count);
+					
+					do_syntax_highlight = false;
+				}
+			}
+			
+			
+			if(do_syntax_highlight){
+				highlight("if\\w*(.*)",control_statement_syntax_highlight, line, count);
+				highlight("while\\w*(.*)",control_statement_syntax_highlight, line, count);
+				highlight("for \\w*(.*)",control_statement_syntax_highlight, line, count);
+							
+				highlight("Enchanted", declaration_syntax_highlight, line, count);
+				highlight("EnchantedList", declaration_syntax_highlight, line, count);
+				highlight("String", declaration_syntax_highlight, line, count);
+				highlight("Location", declaration_syntax_highlight, line, count);
+				highlight("getTarget", declaration_syntax_highlight, line, count);
+				highlight("getByName", declaration_syntax_highlight, line, count);
+				highlight("getLocation", declaration_syntax_highlight, line, count);
 	
-			highlight("[0-9]", expression_syntax_highlight, line, count);
-			highlight("[0-9.]*f", expression_syntax_highlight, line, count);
-
-			highlight("true", expression_syntax_highlight, line, count);
-			highlight("false", expression_syntax_highlight, line, count);
+	
+				highlight("true", expression_syntax_highlight, line, count);
+				highlight("false", expression_syntax_highlight, line, count);
+			}
 
 			count++;
 		}
@@ -309,5 +335,31 @@ public class IDE : MonoBehaviour {
 			GUI.DrawTexture(new Rect(-2 + offset*12 - scroll_position.x,-2 + count * 24 - scroll_position.y, 5 + length * 12, 30), texture);
 		}
 	}
-
+	
+	public void setErrorMessage(string error)
+	{
+		current_error = error;
+	}
+	
+	public void addStyle(int number, string type){
+		LineStyle style = new LineStyle();
+		style.number = number;
+		
+		if(type.Equals("error"))
+		{
+			style.texture = error_syntax_highlight;	
+		}
+		
+		line_styles.Add(style);
+	}
+	
+	public void clearStyles()
+	{
+		line_styles.Clear();	
+	}
+	
+	public class LineStyle{
+		public int number = -1;
+		public Texture2D texture;
+	}
 }

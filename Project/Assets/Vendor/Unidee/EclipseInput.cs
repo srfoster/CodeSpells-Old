@@ -2,13 +2,22 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Threading;
+using System.Diagnostics;
+
+using System.Text.RegularExpressions;
+
 
 public class EclipseInput : FileInput {
 	string project_name;
 	string project_path;
 	string short_file_name;
 	Eclipse eclipse;
-
+	
+	bool should_compile = false;
+	Process compile_process;
+	
+	String current_error = "";
 	
 	public EclipseInput(string project_name, string file_name) : base(file_name)
 	{
@@ -56,6 +65,9 @@ public class EclipseInput : FileInput {
 		
 		short_file_name = GetFileName().Replace(project_path,"");
 		*/
+		
+		Thread java_thread = (new Thread(javaCompile));
+		java_thread.Start();
 	}
 	
 
@@ -78,5 +90,55 @@ public class EclipseInput : FileInput {
 		string completions=eclipse.JavaCompleteString(short_file_name,project_name,cursor);
 		Debug.Log(completions);
 		*/
+		
+		should_compile = true;
+		
+		ide.setErrorMessage(current_error);
+		
+		ide.clearStyles();
+
+		
+      	string pat = @":([0-9]+)";
+
+      	// Instantiate the regular expression object.
+     	Regex r = new Regex(pat);
+
+      	// Match the regular expression pattern against a text string.
+     	Match m = r.Match(current_error);
+      	int matchCount = 0;
+      	while (m.Success) 
+		{
+			Capture c = m.Groups[1].Captures[0];
+
+			
+			int line_num = int.Parse(c.ToString());
+			
+			ide.addStyle(line_num - 1, "error");
+			
+			m = m.NextMatch();
+		}
+	}
+	
+	virtual public void javaCompile()
+	{
+		
+		while(true){
+			if(should_compile && (compile_process == null || compile_process.HasExited )){				
+				try{					
+					compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+GetFileName());
+					compile_process.Start();	
+					
+					var output = compile_process.StandardOutput.ReadToEnd();
+			   		var error = compile_process.StandardError.ReadToEnd();
+					
+					current_error = error;		
+				}catch(Exception e){
+				}
+			}
+			
+			should_compile = false;
+			
+			Thread.Sleep(500);
+		}
 	}
 }
