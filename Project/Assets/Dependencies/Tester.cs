@@ -9,6 +9,7 @@ public class Tester : MonoBehaviour {
 		//create empty gameobject 4 units away
 		//create new Vector3 with a dirrerent x position
 		GameObject g = new GameObject();
+		//Transform t;
 		Instantiate (g, new Vector3(transform.position.x+2, transform.position.y, transform.position.z), Quaternion.identity);
 		//g.transform.position.
 		

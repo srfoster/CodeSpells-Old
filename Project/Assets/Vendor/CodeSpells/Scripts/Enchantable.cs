@@ -17,6 +17,13 @@ public class Enchantable : MonoBehaviour {
 	
 	public string id = "";
 	
+	public string getId() {
+		if (id.Equals("")) {
+			return gameObject.GetInstanceID().ToString();
+		}
+		return id;
+	}
+	
 	// Use this for initialization
 	void Start () {
 		if(id.Equals(""))

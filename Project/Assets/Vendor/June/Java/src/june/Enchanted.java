@@ -82,6 +82,15 @@ public class Enchanted
         return (new Location(xVal, myLoc.getY(), zVal));
     }
     
+    public EnchantedList findLike(Enchanted ench, double rad) {
+        String list = commandGlobal("util.getObjWith(\""+ench.getId()+"\","+rad+")");
+        String[] ids = list.split(";");
+        EnchantedList eList = new EnchantedList();
+        for (String t : ids) {
+            eList.add(new Enchanted(t)); //create new enchanted instance
+        }
+        return eList;
+    }
     
     public void connectTo(Enchanted enc) {
         /*Implement later

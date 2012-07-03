@@ -10,6 +10,10 @@ public abstract class Spell
   public Spell(){
       ench = new Enchanted("Player");
   }
+    
+    public void print(String message) {
+        ench.command("$Debug.Log(\""+message+"\")");
+    }
 
   public void setTarget(String target_id)
   {
