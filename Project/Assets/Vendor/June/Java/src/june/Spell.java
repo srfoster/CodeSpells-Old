@@ -12,7 +12,7 @@ public abstract class Spell
   }
     
     public void print(String message) {
-        ench.command("$Debug.Log(\""+message+"\")");
+        ench.commandGlobal("Debug.Log(\""+message+"\")");
     }
 
   public void setTarget(String target_id)

@@ -66,26 +66,16 @@ public class Movement
 
 	public void levitate(double height, double speed)
 	{
-		double original_height = currentHeight();
-
-		parent.command("rigidbody.useGravity = false");
-		parent.command("rigidbody.isKinematic = false");
-		parent.command("rigidbody.AddForce(Vector3.up * "+speed+")");
-
-		System.out.println("HERE");
-		while(currentHeight() - original_height < height)
-		{
-			//Spin and wait
-			try{
-				Thread.sleep(100);
-			}catch(Exception e){
-
-			}
-		}
-
-		parent.command("rigidbody.AddForce(Vector3.up * -"+speed+")");
-		parent.command("rigidbody.isKinematic = true");
-	}
+            double so_far = 0.0;
+            while(so_far < height)
+            {
+                Log.log("In while loop because " +so_far+ "<" +height);
+                parent.command("transform.position.y += " + speed);
+                so_far += speed;
+            }
+        Log.log("Finished levitating");
+        
+    }
 
 	public void levitate(double height)
 	{
@@ -101,7 +91,7 @@ public class Movement
     
 	public double currentHeight()
 	{
-		return Double.parseDouble(parent.command("transform.position.y"));
+		return Double.parseDouble(parent.command("$target.transform.position.y - Terrain.activeTerrain.SampleHeight($target.transform.position)"));
 	}
     
     /*comment 

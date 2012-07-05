@@ -83,11 +83,13 @@ public class Enchanted
     }
     
     public EnchantedList findLike(Enchanted ench, double rad) {
-        String list = commandGlobal("util.getObjWith(\""+ench.getId()+"\","+rad+")");
-        String[] ids = list.split(";");
+        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
         EnchantedList eList = new EnchantedList();
-        for (String t : ids) {
-            eList.add(new Enchanted(t)); //create new enchanted instance
+        if (!list.equals("")) {
+            String[] ids = list.split(";");
+            for (String t : ids) {
+                eList.add(new Enchanted(t)); //create new enchanted instance
+            }
         }
         return eList;
     }
@@ -104,8 +106,10 @@ public class Enchanted
     {
         try {
             long before = System.currentTimeMillis();
+            Log.log("Java sends to Unity: "+command);
             out.println(command);
             String response = in.readLine();
+            Log.log("Java gets back from Unity: "+response);
             
             System.out.println(response);
 			long after = System.currentTimeMillis();
@@ -115,34 +119,46 @@ public class Enchanted
         }
         catch(Exception e) {
             e.printStackTrace();
+            Log.log("Error in command: " + e);
+
         }
         return null;
     }
 
 	public String command(String command)
 	{
+        Log.log("Entered command()");
 		try{
+            Log.log("Entered command() try/catch");
+
 			long before = System.currentTimeMillis();
-			System.out.println("Running " + command);
+            Log.log("Got system time");
+
+            Log.log("About to tweak command");
 
 			String new_command = "";
 			if(command.indexOf("$target") > -1)
 			{
+                Log.log("Replacing $target with object[id]");
 			 	new_command = command.replaceAll("\\$target","objects[\""+id+"\"]");
 			} else {
+                Log.log("Appending object[id]");
 				new_command = "objects[\""+id+"\"]."+command+";";
 			}
-
+            Log.log("Java sends to Unity: "+new_command);
 			out.println(new_command);
 
 			String response = in.readLine(); //Waits for confirmation from the Unity server...
-			System.out.println(response);
+            
 			long after = System.currentTimeMillis();
 			System.out.println("Ran " + command + " in " + (after-before) + " milliseconds");
+            Log.log("Java gets back from Unity (in "+(after-before)+" ms): "+response);
+
 
 			return response;
 		}catch(Exception e){
 			e.printStackTrace();
+            Log.log("Error in command: " + e);
 		}
 
 		return null;
