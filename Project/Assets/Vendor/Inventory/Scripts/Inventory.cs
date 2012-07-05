@@ -246,6 +246,19 @@ public class Inventory : MonoBehaviour {
 		return item_infos[item];	
 	}
 	
+	public List<GameObject> getMatching(string s)
+	{
+		List<GameObject> ret = new List<GameObject>();
+		
+		foreach(GameObject item in items)
+		{
+			if(item.GetComponent<Item>().getName().StartsWith(s))
+				ret.Add(item);
+		}
+		
+		return ret;
+	}
+	
 	public class ItemInfo
 	{
 		public float icon_x;

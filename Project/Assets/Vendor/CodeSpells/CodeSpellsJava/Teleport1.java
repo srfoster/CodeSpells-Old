@@ -1,8 +1,7 @@
-
 import june.*;
 import java.util.*;
 
-public class Levitate extends Spell
+public class Teleport1 extends Spell
 {
   public void cast()
   { 
@@ -15,15 +14,3 @@ public class Levitate extends Spell
       .teleport(dest);  
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
