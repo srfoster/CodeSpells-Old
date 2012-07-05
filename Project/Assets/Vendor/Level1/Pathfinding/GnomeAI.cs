@@ -4,15 +4,17 @@ using System.Collections;
 public abstract class GnomeAI : MonoBehaviour {
 	enum ActionState {Find=1, Collect, Walk, Deliver, Back, Eat};
 	bool working = false;
+	public int startState = 1;
 	ActionState currentState;
 	
 	// Use this for initialization
 	void Start () {
-		currentState = ActionState.Find;
+		currentState = (ActionState) startState;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if(currentState == ActionState.Find)
 		{
 			if(Find())

@@ -22,6 +22,7 @@ public class SetupCodeSpells : MonoBehaviour {
 		(new SetupPopup()).Init();		
 		(new SetupJune()).Init();		
 		(new SetupConversations()).Init();		
+		(new SetupSpellbook()).Init();		
 
 		
 		GameObject prefab = Resources.Load("Camp") as GameObject;

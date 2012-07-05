@@ -27,10 +27,25 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupJune()).Init();		
 		(new SetupConversations()).Init();		
 		(new SetupHighlighter()).Init();
+		(new SetupSpellbook()).Init();
+
 		
 		ObjectManager.Register(GameObject.Find("First Person Controller"), "Player");
 		
-		givePlayerAScroll();
+		givePlayerASpellbook();
+	//	givePlayerAScroll();
+	}
+	
+	void givePlayerASpellbook()
+	{
+		GameObject book = new GameObject();
+		book.name = "Book";
+		book.AddComponent<SpellbookItem>();
+		SpellbookItem item = book.GetComponent<SpellbookItem>();
+		item.item_name = "Book";
+				
+		Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+		inventory.addItem(book);	
 	}
 	
 	void givePlayerAScroll()

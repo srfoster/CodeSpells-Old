@@ -12,6 +12,8 @@ public class SetupUnidee : MonoBehaviour {
 		GameObject prefab = Resources.Load("IDE") as GameObject;
 		
 		GameObject obj = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;	
-		obj.name = prefab.name;		}
+		obj.name = prefab.name;		
+		obj.GetComponent<IDE>().Init();
+	}
 	
 }

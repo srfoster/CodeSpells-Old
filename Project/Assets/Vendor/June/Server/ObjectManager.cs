@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,16 +12,16 @@ public class ObjectManager {
 	{
 //		Debug.Log("Enchantable: " + obj.name + " " + obj.GetInstanceID().ToString());
 		
-		objects.Add(obj.GetInstanceID().ToString(), obj);
-		
+		try{
+			objects.Add(obj.GetInstanceID().ToString(), obj);
+		}catch(Exception e){
+			Debug.Log("Could not register. " + e);	
+		}
 	}
 	
 	public static void Register(GameObject obj, string id)
 	{
-//		Debug.Log("Enchantable: " + obj.name + " " + id);
-		
 		objects.Add(id, obj);
-		
 	}
 	
 	public static void Reregister(GameObject ob, string id, string new_id)

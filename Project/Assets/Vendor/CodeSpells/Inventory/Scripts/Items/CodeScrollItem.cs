@@ -57,10 +57,14 @@ public class CodeScrollItem : DraggableItem {
 		if(isEmpty())
 			return;
 
-		IDEInput input = new EclipseInput("CodeSpellsJava", Application.dataPath + "/Vendor/CodeSpells/CodeSpellsJava/"+file_name);
+		IDEInput input = getIDEInput();
 		IDE ide = (GameObject.Find("IDE").GetComponent("IDE") as IDE);
 		ide.SetInput(input);
 		ide.show(GameObject.Find("Inventory"));
+	}
+	
+	public IDEInput getIDEInput(){
+		return new EclipseInput("CodeSpellsJava", Application.dataPath + "/Vendor/CodeSpells/CodeSpellsJava/"+file_name);
 	}
 	
 	public override void DroppedOn(GameObject target)

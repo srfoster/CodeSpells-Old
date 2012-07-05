@@ -32,6 +32,8 @@ public class IDE : MonoBehaviour {
 	private TextEditor stateObj;
 	private GameObject previous_state;
 	
+	private bool no_edit = false;
+	
 	private bool paused = false;
 	
 	private Vector2 scroll_position = Vector2.zero;
@@ -116,10 +118,19 @@ public class IDE : MonoBehaviour {
 		previous_state.active = false;
 		enabled = true;
 		paused = false;
+		no_edit = false;
 	}
 	
 	void Start () {
+		Init();
+			
+		Thread inputThread  = new Thread (inputProcessing);
+		inputThread.Start();
+		
+	}
 	
+	public void Init()
+	{
 		button_style.normal.background = button_up_texture;
 		button_style.active.background = button_down_texture;
 		button_style.normal.textColor = Color.white;
@@ -130,11 +141,7 @@ public class IDE : MonoBehaviour {
 		code_style.fontSize = 20;
 		code_style.normal.textColor = Color.black;
 		code_style.font = ide_font;
-		code_style.wordWrap = false;
-			
-		Thread inputThread  = new Thread (inputProcessing);
-		inputThread.Start();
-		
+		code_style.wordWrap = false;	
 	}
 	
 	void OnGUI()
@@ -213,10 +220,11 @@ public class IDE : MonoBehaviour {
 		GUI.DrawTexture(new Rect(0,0,Screen.width*3/4,Screen.height),left_panel_background);
 		
 		GUI.BeginGroup(new Rect(120,40,Screen.width*3/4,Screen.height));
-
+		
 		scroll_position = GUILayout.BeginScrollView (scroll_position, GUILayout.Width(Screen.width*3/4-200), GUILayout.Height(Screen.height-60 )); // Should vary the size of the last rect by how much text we have??
-    	current_code = GUILayout.TextArea(current_code, code_style);
-    	GUILayout.EndScrollView ();
+		showCode();
+		GUILayout.EndScrollView ();	
+
 		
 		syntaxHighlight();
 
@@ -227,6 +235,13 @@ public class IDE : MonoBehaviour {
 
 		
 		GUI.EndGroup();
+	}
+	
+	public void showCode(){
+		if(no_edit)
+			GUILayout.TextArea(current_code, code_style);
+		else
+    		current_code = GUILayout.TextArea(current_code, code_style);
 	}
 	
 	void rightPanel()
@@ -278,7 +293,11 @@ public class IDE : MonoBehaviour {
 		}
 	}
 	
-	void syntaxHighlight()
+	public void noEdit(){
+		no_edit = true;	
+	}
+	
+	public void syntaxHighlight()
 	{
 		string[] lines = current_code.Split("\n"[0]);
 	
