@@ -11,6 +11,7 @@ public class Text3D : MonoBehaviour {
 		the_3d_text = Instantiate(Resources.Load("Text") as GameObject, transform.position, Quaternion.identity) as GameObject;
 		the_3d_text.GetComponent<TextMesh>().alignment = TextAlignment.Center;
 		the_3d_text.GetComponent<TextMesh>().anchor = TextAnchor.MiddleCenter;
+		the_3d_text.transform.parent = transform;
 	}
 	
 	// Update is called once per frame

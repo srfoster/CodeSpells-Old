@@ -9,18 +9,12 @@ public class ObjectManager {
 	
 	public static void Register(GameObject obj)
 	{
-//		Debug.Log("Enchantable: " + obj.name + " " + obj.GetInstanceID().ToString());
-		
 		objects.Add(obj.GetInstanceID().ToString(), obj);
-		
 	}
 	
 	public static void Register(GameObject obj, string id)
 	{
-//		Debug.Log("Enchantable: " + obj.name + " " + id);
-		
 		objects.Add(id, obj);
-		
 	}
 	
 	public static void Reregister(GameObject ob, string id, string new_id)

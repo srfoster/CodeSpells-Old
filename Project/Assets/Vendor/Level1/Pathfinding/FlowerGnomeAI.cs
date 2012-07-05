@@ -14,7 +14,6 @@ public class FlowerGnomeAI : GnomeAI {
 	
 	public override bool Find()
 	{
-		Debug.Log(transform.name +" STATE: finding");
 		if(!foundObject)
 		{
 			// Find all flour within the whole game
@@ -48,14 +47,12 @@ public class FlowerGnomeAI : GnomeAI {
 	public override bool Collect()
 	{
 		foundObject = false;
-		Debug.Log(transform.name +" STATE: collecting");
 		leftHand = findLeftHandRecursive(transform);
 		rightHand = findRightHandRecursive(transform);
 		if(leftHand != null && rightHand != null)
 		{
 			armsUp = true;
 			objToCollect.rigidbody.active = false;
-			//objToCollect.rigidbody.velocity = transform.forward * 10;
 			objToCollect.transform.position = transform.position + transform.forward*2;
 			objToCollect.transform.position = new Vector3(objToCollect.transform.position.x, objToCollect.transform.position.y+1, objToCollect.transform.position.z);
 			objToCollect.transform.parent = transform;
@@ -113,6 +110,7 @@ public class FlowerGnomeAI : GnomeAI {
 		if(objToCollect != null && objToCollect.transform.parent == transform)
 		{
 			objToCollect.transform.parent = null;
+			armsUp = false;
 			return true;
 		}
 		return false;
@@ -124,7 +122,6 @@ public class FlowerGnomeAI : GnomeAI {
 			GetComponent<Seeker>().setDestination(FromObj);
 		
 		Seeker.WalkingState state = GetComponent<Seeker>().walk();
-		Debug.Log(transform.name +" STATE: going back");
 		return (state == Seeker.WalkingState.ReachedDestination);
 	}
 	
@@ -135,7 +132,6 @@ public class FlowerGnomeAI : GnomeAI {
 	
 	public override bool Walk()
 	{
-		Debug.Log(transform.name + " STATE: going");
 		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
 			GetComponent<Seeker>().setDestination(ToObj);
 		

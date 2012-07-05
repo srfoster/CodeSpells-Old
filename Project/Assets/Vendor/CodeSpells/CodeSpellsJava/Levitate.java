@@ -5,7 +5,7 @@ public class Levitate extends Spell
 {
   public void cast()
   { 
-    Enchanted target = getTarget();            
+    Enchanted target = getByName();            
 
     Location dest = target.getLocation();
 			dest.setY(dest.getY() + 10);
