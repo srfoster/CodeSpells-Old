@@ -4,25 +4,33 @@ using System.Collections;
 
 using System.Collections.Generic;
 
-public class Util : MonoBehaviour {
+public class Util {
 
 	public GameObject instantiate(GameObject obj, Vector3 loc, Quaternion rot)
 	{
-		return Instantiate (obj, loc, rot) as GameObject;	
+		return UnityEngine.Object.Instantiate (obj, loc, rot) as GameObject;	
 	}
 	
-	public static string getObjWith (string id, double radius) {
+	public static string getObjWith (string idCenter, string idName, double radius) {
+		Debug.Log ("getObjWith was called");
 		int counter = 0;
-		GameObject g = ObjectManager.FindById(id);
+		GameObject center = ObjectManager.FindById(idCenter);
+		GameObject named = ObjectManager.FindById(idName);
+		Debug.Log ("named is null? "+(named==null));
 		string ids = "";
 		
 		bool isFirst = true;
 		
-		if (g.GetComponent("Enchantable")) {
-			Collider[] nearColliders = Physics.OverlapSphere(g.transform.position, (float)radius);
+		if (named.GetComponent("Enchantable")) {
+			Collider[] nearColliders = Physics.OverlapSphere(center.transform.position, (float)radius);
+			//Debug.Log ("nearColliders.Length() is "+nearColliders.);
 			foreach (Collider col in nearColliders) {
-				if ((col.gameObject.GetComponent("Enchantable") != null) && (col.gameObject.name.Equals (g.name))) {
+				if ((col.gameObject.GetComponent("Enchantable") != null) && ((named.name).Equals (col.transform.name))) {
+					
+					//reset the ID to Found + i
 					counter++;
+					
+					(col.gameObject.GetComponent("Enchantable") as Enchantable).setId ("Found "+counter);
 					Debug.Log ("		FOUND ENCHANTED OBJECT #"+counter);
 					ids += (isFirst) ? "" : ";";
 					isFirst = false;
@@ -30,7 +38,7 @@ public class Util : MonoBehaviour {
 				}
 			}
 		}
-		//Debug.Log ("returned id string is:"+ids);
+		if (isFirst) {Debug.Log ("NO OBJECTS FOUND");}
 		return ids;
 	}
 }

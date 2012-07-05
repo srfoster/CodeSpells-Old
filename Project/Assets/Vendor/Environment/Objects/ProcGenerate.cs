@@ -5,7 +5,8 @@ public class ProcGenerate : MonoBehaviour {
 	
 	public GameObject prefab;
 	
-	public int number = 10;
+	//public int number = 10;
+	public int number = 20;
 	
 	
 	void Start () {

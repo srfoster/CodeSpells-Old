@@ -39,6 +39,7 @@ public class June {
 
 	public void Start() {
 		java_thread = (new Thread(javaCompileAndRun));
+		java_thread.IsBackground = true;
 		java_thread.Start();
 	}
 	

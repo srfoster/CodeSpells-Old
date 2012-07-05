@@ -12,6 +12,7 @@ public class Tester : MonoBehaviour {
 		//Transform t;
 		Instantiate (g, new Vector3(transform.position.x+2, transform.position.y, transform.position.z), Quaternion.identity);
 		//g.transform.position.
+		Terrain.activeTerrain.SampleHeight(transform.position);
 		
 		value = 0;
 	}

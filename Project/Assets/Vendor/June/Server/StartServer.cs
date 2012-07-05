@@ -50,46 +50,53 @@ public class StartServer : MonoBehaviour
 		
 	}
 	
+	void OnApplicationQuit(){
+		server.applicationRunning = false;	
+	}
+	
 		
 	void Update () {
 
+		//using (System.IO.StreamWriter file = System.IO.StreamWriter(@"C:/Codespells/Codespells/ConsoleOutput.txt"))
+		//{
 		
-		if(queue.notEmpty())
-		{
-			CallResponse call = queue.remove();
-			
-			try{
-				Debug.Log("Trying to eval '" + call.getCall() + "'");
+
+			if(queue.notEmpty())
+			{
+				CallResponse call = queue.remove();
 				
-				if(call.getCall().Equals("\n"))
-				{
-					call.setResponse("");
-				} else{ 
-					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
+				try{
+					//file.WriteLine("Trying to eval '" + call.getCall() + "'");
+					Debug.Log("Trying to eval '" + call.getCall() + "'");
 					
+					if(call.getCall().Equals("\n"))
+					{
+						call.setResponse("");
+					} else{ 
+						object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
 					
-					string response = "";
-					if(ret != null)
+						string response = "";
+						if(ret != null)
 						response = ret.ToString();
 					
-					Debug.Log("Response was " + response);
-					call.setResponse(response);
+						//file.WriteLine("Response was " + response+"\n");
+						Debug.Log("Response was " + response);
+						call.setResponse(response);
+					}
+					call.respond();
+					//Debug.Log ("--call is null? "+call.respond());
+
+				} catch(Exception e) {
+					Debug.Log(e.Message);
+					Debug.Log(e.StackTrace);
+					call.setResponse("Error: " + e.ToString().Replace("\n",""));
+					call.respond();
 				}
-				call.respond();
-				//Debug.Log ("--call is null? "+call.respond());
-				
-				
-				
-				
-				
-				
-			} catch(Exception e) {
-				Debug.Log(e.Message);
-				Debug.Log(e.StackTrace);
-				call.setResponse("Error: " + e.ToString().Replace("\n",""));
-			}
-			
+		//}
+		
 		}
+		
+
 	}
 	
 }

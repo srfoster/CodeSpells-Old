@@ -5,15 +5,14 @@ public class Levitate extends Spell
 {
   public void cast()
   { 
-    Enchanted target = getTarget();            
-
-    Location dest = target.getLocation();
-			dest.setY(dest.getY() + 10);
-
-    getByName("Player").movement().teleport(dest);
-
-    while(true){
-
-    }    
+     Enchanted mc = getByName("Player");
+     Enchanted rock = getTarget();
+     EnchantedList list = mc.findLike(rock, 8.0); 
+              
+              
+     for (int i=0; i<list.size();i++) {
+        list.get(i).movement().levitate(5.0, 0.2);
+     }     
+                                                               
   }
 }

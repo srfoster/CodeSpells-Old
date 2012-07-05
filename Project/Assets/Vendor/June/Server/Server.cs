@@ -15,6 +15,7 @@ public class Server
     private Thread listenThread;
 	public String last_message = "";
 	private CallResponseQueue queue;
+	public bool applicationRunning = true;
 	
     public Server(CallResponseQueue queue)
     {
@@ -22,6 +23,7 @@ public class Server
 	  this.queue = queue;
       this.tcpListener = new TcpListener(IPAddress.Loopback, 3000);
       this.listenThread = new Thread(new ThreadStart(ListenForClients));
+	  this.listenThread.IsBackground = true;
       this.listenThread.Start();
     }
 	
@@ -53,9 +55,12 @@ public class Server
 	  byte[] message = new byte[4096];
 	  int bytesRead;
 	
-	  while (true)
+	  while (applicationRunning)
 	  {
-			
+		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/Codespells/Codespells/ConsoleOutput.txt", true))
+		{
+			file.WriteLine("Top of handling client communication loop.");
+		}
 
 	    bytesRead = 0;
 	
@@ -81,10 +86,24 @@ public class Server
 	    //message has successfully been received
 	    ASCIIEncoding encoder = new ASCIIEncoding();
 		String message_string = encoder.GetString(message, 0, bytesRead);
+			//using (System.IO.StreamWriter file = System.IO.StreamWriter(@"C:/Codespells/Codespells/ConsoleOutput.txt"))
+			//{
+				//file.WriteLine("message_string: "+message_string+"\n");
 			
+		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/Codespells/Codespells/ConsoleOutput.txt", true))
+		{
+			file.WriteLine("Unity gets from Java: "+message_string);
+		}
+			
+				//UnityEngine.Debug.Log ("message_string: "+message_string);
+			//}
 		CallResponse call_response = new CallResponse(message_string, clientStream);
 		queue.add(call_response);
 		
+		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/Codespells/Codespells/ConsoleOutput.txt", true))
+		{
+			file.WriteLine("Bottom of handling client communication loop.");
+		}
 	  }
 	
 	  tcpClient.Close();
