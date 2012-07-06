@@ -1,7 +1,7 @@
 import june.*;
 import java.util.*;
 
-public class Levitate1 extends Spell
+public class Levitate3 extends Spell
 {
   public void cast()
   { 

@@ -21,6 +21,8 @@ public class June {
 	protected bool is_stopped = false;
 	
 	protected string object_id;
+	
+	public static bool isPlaying = true;
 		
 	public June(GameObject game_object, string java_file_name)
 	{
@@ -63,7 +65,6 @@ public class June {
 		}catch(Exception e){
 			UnityEngine.Debug.Log(e);
 		}
-		
 
 	}
 	
@@ -99,8 +100,11 @@ public class June {
 
 			
 			Boolean has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));
-			while(!has_exited)
+			while(!has_exited )
 			{
+				if(!isPlaying)
+					Stop();
+				
 				UnityEngine.Debug.Log("Waiting for Java process to exit: ");	
 				
 				Thread.Sleep(500);

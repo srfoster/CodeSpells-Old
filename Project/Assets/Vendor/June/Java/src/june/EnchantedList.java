@@ -13,9 +13,7 @@ public class EnchantedList extends Enchanted
         //creates empty gameobject, and names it.
         super("");
         super.setId(""+this.hashCode());
-        super.commandGlobal("Debug.Log(\"before I instantiate\")");
-        super.commandGlobal("var empty = new GameObject(); empty.AddComponent(Rigidbody); empty.rigidbody.isKinematic = true; empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); objects.Add(\""+super.getId()+"\", empty); ");
-        super.commandGlobal("Debug.Log(\"after I instantiate\")");
+        super.commandGlobal("empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add(\""+super.getId()+"\", empty); ");
         eList = new ArrayList<Enchanted>();
         setEmptyPos = false;
     }
@@ -26,7 +24,6 @@ public class EnchantedList extends Enchanted
             super.commandGlobal("objects[\""+super.getId()+"\"].transform.position = objects[\""+ench.getId()+"\"].transform.position");
             setEmptyPos = true;
         }
-        super.commandGlobal("Debug.Log(\"inside the add method\")");
         super.commandGlobal("objects[\""+ench.getId()+"\"].transform.parent = objects[\""+super.getId()+"\"].transform");
         eList.add(ench);
     }

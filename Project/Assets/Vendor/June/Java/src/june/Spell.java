@@ -29,34 +29,6 @@ public abstract class Spell
     return Enchant.byName(name);
   }
     
-    //gets spawning zone location
-    
-    public Location getLocation(int dir) {
-        if(dir == Direction.LEFT) //left
-        {
-            String vector3_string = ench.command("$target.transform.position - $target.transform.right * 10");
-            
-            return new Location(vector3_string);
-        }
-        if(dir == Direction.RIGHT) {//right
-            String vector3_string = ench.command("$target.transform.position + $target.transform.right * 10");
-            
-            return new Location(vector3_string);
-        }
-        else {
-           ench.getLocation(dir);
-        }
-     
-        return null;
-    }
-    
-    
-    public Location getLocation() 
-    {
-       String vector3_string = ench.command("$target.transform.position");
-            
-       return new Location(vector3_string);
-    }
     
 
   public abstract void cast();

@@ -57,16 +57,12 @@ public class StartServer : MonoBehaviour
 		
 	void Update () {
 
-		//using (System.IO.StreamWriter file = System.IO.StreamWriter(@"C:/Codespells/Codespells/ConsoleOutput.txt"))
-		//{
-		
 
 			if(queue.notEmpty())
 			{
 				CallResponse call = queue.remove();
 				
 				try{
-					//file.WriteLine("Trying to eval '" + call.getCall() + "'");
 					Debug.Log("Trying to eval '" + call.getCall() + "'");
 					
 					if(call.getCall().Equals("\n"))
@@ -79,12 +75,10 @@ public class StartServer : MonoBehaviour
 						if(ret != null)
 						response = ret.ToString();
 					
-						//file.WriteLine("Response was " + response+"\n");
 						Debug.Log("Response was " + response);
 						call.setResponse(response);
 					}
 					call.respond();
-					//Debug.Log ("--call is null? "+call.respond());
 
 				} catch(Exception e) {
 					Debug.Log(e.Message);
@@ -92,7 +86,6 @@ public class StartServer : MonoBehaviour
 					call.setResponse("Error: " + e.ToString().Replace("\n",""));
 					call.respond();
 				}
-		//}
 		
 		}
 		

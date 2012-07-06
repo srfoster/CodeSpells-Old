@@ -76,19 +76,12 @@ public class CallResponse
 			return;
 		
 		byte[] buffer = Encoding.ASCII.GetBytes(response + "\n");
-		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/Codespells/Codespells/ConsoleOutput.txt", true))
-		{
-			file.WriteLine("Unity can write to Java: "+client_stream.CanWrite);
-			file.WriteLine("Unity sends to Java: "+response + "\n");
-		}
 		
+		FileLogger.Log("Unity about to block, sending to Java: "+response + "\n");
 		client_stream.Write(buffer, 0 , buffer.Length);
 		client_stream.Flush();	
 		
-		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/Codespells/Codespells/ConsoleOutput.txt", true))
-		{
-			file.WriteLine("Unity finished writing to Java.");
-		}
+		FileLogger.Log("Unity finished writing to Java.");
 	}
 
 }

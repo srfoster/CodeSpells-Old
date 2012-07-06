@@ -12,11 +12,9 @@ public class Util {
 	}
 	
 	public static string getObjWith (string idCenter, string idName, double radius) {
-		Debug.Log ("getObjWith was called");
 		int counter = 0;
 		GameObject center = ObjectManager.FindById(idCenter);
 		GameObject named = ObjectManager.FindById(idName);
-		Debug.Log ("named is null? "+(named==null));
 		string ids = "";
 		
 		bool isFirst = true;
@@ -30,15 +28,13 @@ public class Util {
 					//reset the ID to Found + i
 					counter++;
 					
-					(col.gameObject.GetComponent("Enchantable") as Enchantable).setId ("Found "+counter);
-					Debug.Log ("		FOUND ENCHANTED OBJECT #"+counter);
+					//(col.gameObject.GetComponent("Enchantable") as Enchantable).setId ("Found "+counter);
 					ids += (isFirst) ? "" : ";";
 					isFirst = false;
 					ids += ((col.gameObject.GetComponent("Enchantable") as Enchantable).getId());
 				}
 			}
 		}
-		if (isFirst) {Debug.Log ("NO OBJECTS FOUND");}
 		return ids;
 	}
 }

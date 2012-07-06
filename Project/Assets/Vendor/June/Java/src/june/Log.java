@@ -1,15 +1,20 @@
 package june;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 
 public class Log {
+    static BufferedWriter bf;
+    static{
+        try{
+            bf = new BufferedWriter(new FileWriter("/Users/stephenfoster/Desktop/CodeSpells.log",true));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     
     public static void log(String message) {
         try {
-            BufferedWriter bf = new BufferedWriter(new FileWriter("/Codespells/Codespells/ConsoleOutput.txt",true));
-            bf.write(message+"\n");
+            bf.write("Java: " + message+"\n");
             bf.flush();
-            bf.close();
         }
         catch (Exception e) {
             System.out.println("found an exception");

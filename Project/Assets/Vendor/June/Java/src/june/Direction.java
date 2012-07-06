@@ -9,6 +9,10 @@ public class Direction
     public static final int NORTH = 4;
     public static final int LEFT = 5;
     public static final int RIGHT = 6;
+    public static final int UP = 7;
+    public static final int DOWN = 8;
+    public static final int FORWARD = 9;
+    public static final int BACKWARD = 10;
     
     private static int direct;
     
@@ -47,6 +51,45 @@ public class Direction
 
     public static int none() {
         return 0;
+    }
+
+    public static Location toLocation(int dir)
+    {
+        Location loc = new Location(0,0,0);
+
+        if(dir == Direction.NORTH) loc.x += 1.0;//north
+        if(dir == Direction.SOUTH) loc.x -= 1.0;//south
+        if(dir == Direction.UP) loc.y += 1.0;//west
+        if(dir == Direction.DOWN) loc.y -= 1.0;//west
+        if(dir == Direction.EAST) loc.z -= 1.0;//east
+        if(dir == Direction.WEST) loc.z += 1.0;//west
+
+        if(dir == Direction.LEFT) //left
+        {
+            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right * -1");
+            
+            loc = new Location(vector3_string);
+        }
+        if(dir == Direction.RIGHT) {//right
+            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right");
+            
+            loc = new Location(vector3_string);
+        }
+        /*
+        if(dir == Direction.FORWARD) //left
+        {
+            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right * -1");
+            
+            loc = new Location(vector3_string);
+        }
+        if(dir == Direction.RIGHT) {//right
+            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right");
+            
+            loc = new Location(vector3_string);
+        }
+        */
+
+        return loc;
     }
     
 }
