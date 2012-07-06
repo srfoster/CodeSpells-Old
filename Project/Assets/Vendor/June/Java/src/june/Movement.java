@@ -4,76 +4,23 @@ public class Movement
 {
 	Enchanted parent;
 
-	/**
-	 * Constructs a new instance.
-	 *
-	 * @param parent The parent for this instance.
-	 */
-    
-    //location values
-    
 	public Movement(Enchanted parent)
 	{
 		this.parent = parent;
 	}
-    
-    //new Location(0,0,0)
-    public void teleport(Location loc) {
-        parent.command("transform.position = new Vector3("+loc.getX()+","+loc.getY()+","+loc.getZ()+")");
-    }
-    
-    
-    //(x,z)
-    //loc is the location that the object will be adjacent to
-    
-    
-    
-
-    
-	public void forward(double distance)
-	{
-        double speed = 0.05;
-        double oldPos = currentPosition();
-        double newPos = oldPos+distance;
-		while(currentPosition() < newPos)
-		{
-			parent.command("transform.position.x += Time.deltaTime *" + distance + ";");
-            
-		}
-	}
-    
-    
-	public void backward(double distance)
-	{
-        double speed = 0.05;
-        double oldPos = currentPosition();
-        double newPos = oldPos-distance;
-		while(currentPosition() > newPos)
-		{
-			parent.command("transform.position.x -= Time.deltaTime * " + distance);
-		}
-	}
-
-	public void right(double distance)
-	{
-		parent.command("transform.position += objects['Player'].transform.right * " + distance);
-	}
-
-	public void left(double distance)
-	{
-		parent.command("transform.position -= objects['Player'].transform.right * " + distance);
-	}
 
 	public void levitate(double height, double speed)
 	{
-            double so_far = 0.0;
-            while(so_far < height)
-            {
-                Log.log("In while loop because " +so_far+ "<" +height);
-                parent.command("transform.position.y += " + speed);
-                so_far += speed;
-            }
-        Log.log("Finished levitating");
+    double so_far = 0.0;
+
+    while(so_far < height)
+    {
+        Log.log("In while loop because " +so_far+ "<" +height);
+        parent.command("transform.position.y += " + speed);
+        so_far += speed;
+    }
+
+    Log.log("Finished levitating");
         
     }
 
@@ -81,7 +28,6 @@ public class Movement
 	{
 		levitate(height, 10);
 	}
-    
 
 	public void drop()
 	{
@@ -89,16 +35,4 @@ public class Movement
 		parent.command("rigidbody.useGravity = true");
 	}
     
-	public double currentHeight()
-	{
-		return Double.parseDouble(parent.command("$target.transform.position.y - Terrain.activeTerrain.SampleHeight($target.transform.position)"));
-	}
-    
-    /*comment 
-     out 
-     later*/
-	public double currentPosition()
-	{
-		return Double.parseDouble(parent.command("transform.position.x"));
-	}
 }

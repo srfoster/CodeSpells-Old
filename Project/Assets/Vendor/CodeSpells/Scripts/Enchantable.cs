@@ -49,6 +49,11 @@ public class Enchantable : MonoBehaviour {
 		gameObject.AddComponent<Text3D>();
 	}
 	
+	void OnApplicationQuit()
+	{
+		June.isPlaying = false;	
+	}
+	
 	public void setId(string new_id)
 	{
 		ObjectManager.Reregister(gameObject,id,new_id);
