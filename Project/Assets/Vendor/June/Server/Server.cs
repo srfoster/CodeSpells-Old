@@ -34,15 +34,20 @@ public class Server
 
 	  while (true)
 	  {
-			
+		if(!this.tcpListener.Pending())
+		{
+			Thread.Sleep (100);		
+		} else {
 
-	    //blocks until a client has connected to the server
-	    TcpClient client = this.tcpListener.AcceptTcpClient();
-	
-	    //create a thread to handle communication 
-	    //with connected client
-	    Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
-	    clientThread.Start(client);
+		    //blocks until a client has connected to the server
+		    TcpClient client = this.tcpListener.AcceptTcpClient();
+		
+		    //create a thread to handle communication 
+		    //with connected client
+		    Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
+		    clientThread.Start(client);
+		}	
+
 	  }
 	}
 	
@@ -104,6 +109,11 @@ public class Server
 		{
 			file.WriteLine("Bottom of handling client communication loop.");
 		}
+	  }
+		
+	  using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/Codespells/Codespells/ConsoleOutput.txt", true))
+	  {
+	    file.WriteLine("Unity communication thread exiting.");
 	  }
 	
 	  tcpClient.Close();

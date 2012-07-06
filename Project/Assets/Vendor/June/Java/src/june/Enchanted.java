@@ -94,6 +94,21 @@ public class Enchanted
         return eList;
     }
     
+    public EnchantedList findLike(Enchanted ench, double rad, int maxNum) {
+        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+","+maxNum+")");
+        
+        //Trying to eval 'util.getObjWith("Rock1","Rock1",8.0",10)
+        
+        EnchantedList eList = new EnchantedList();
+        if (!list.equals("")) {
+            String[] ids = list.split(";");
+            for (String t : ids) {
+                eList.add(new Enchanted(t)); //create new enchanted instance
+            }
+        }
+        return eList;
+    }
+    
     public void connectTo(Enchanted enc) {
         /*Implement later
          
