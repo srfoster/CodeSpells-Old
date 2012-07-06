@@ -126,7 +126,10 @@ public class Enchanted
     }
     
     public EnchantedList findLike(Enchanted ench, double rad) {
+        System.out.println("inside findLike method");
         String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+        System.out.println("got a string back from unity");
+        System.out.println("the string is "+list);
         EnchantedList eList = new EnchantedList();
         if (!list.equals("")) {
             String[] ids = list.split(";");

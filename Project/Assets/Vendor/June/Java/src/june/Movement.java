@@ -28,6 +28,10 @@ public class Movement
 	{
 		levitate(height, 10);
 	}
+    
+    public void rotate(double angle) {
+        parent.command("transform.rotation.y = "+angle);
+    }
 
 	public void drop()
 	{
