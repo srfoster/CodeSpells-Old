@@ -19,9 +19,6 @@ public class Evolvable : Waterable {
 	{
 		Instantiate(second, first.transform.position, Quaternion.identity);
 		
-		// Somehow tell the SeedGenerator to generate another seed
-		Debug.Log("Destroying: "+first.gameObject);
-		
 		Destroy(first);
 	}
 	

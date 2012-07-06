@@ -1,7 +1,7 @@
 import june.*;
 import java.util.*;
 
-public class Teleport1 extends Spell
+public class Flight1 extends Spell
 {
   public void cast()
   { 
@@ -14,3 +14,4 @@ public class Teleport1 extends Spell
     }  
   }
 }
+

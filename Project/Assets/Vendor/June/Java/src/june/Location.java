@@ -6,6 +6,10 @@ public class Location
     public double y;
     public double z;
 
+    public Location(){
+
+    }
+
     public Location(String xyz)
     {
         String[] split = xyz.split(",");
@@ -80,4 +84,15 @@ public class Location
       z *= scale;
     }
 
+    public String getXString(){
+      return "" + x;
+    }
+
+    public String getYString(){
+      return "" + y;
+    }
+
+    public String getZString(){
+      return "" + z;
+    }
 }
