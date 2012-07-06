@@ -16,7 +16,8 @@ public class Movement
     while(so_far < height)
     {
         Log.log("In while loop because " +so_far+ "<" +height);
-        parent.command("transform.position.y += " + speed);
+        parent.move(Direction.UP, speed);
+        //parent.command("transform.position.y += " + speed);
         so_far += speed;
     }
 

@@ -64,30 +64,28 @@ public class Direction
         if(dir == Direction.EAST) loc.z -= 1.0;//east
         if(dir == Direction.WEST) loc.z += 1.0;//west
 
-        if(dir == Direction.LEFT) //left
+        if(dir == Direction.LEFT)
         {
-            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right * -1");
+            String vector3_string = "objects['Player'].transform.right * -1";
             
-            loc = new Location(vector3_string);
+            loc = new LazyLocation(vector3_string);
         }
-        if(dir == Direction.RIGHT) {//right
-            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right");
+        if(dir == Direction.RIGHT) {
+            String vector3_string = "objects['Player'].transform.right";
             
-            loc = new Location(vector3_string);
+            loc = new LazyLocation(vector3_string);
         }
-        /*
-        if(dir == Direction.FORWARD) //left
+        if(dir == Direction.FORWARD) 
         {
-            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right * -1");
+            String vector3_string = "objects['Player'].transform.forward";
             
-            loc = new Location(vector3_string);
+            loc = new LazyLocation(vector3_string);
         }
-        if(dir == Direction.RIGHT) {//right
-            String vector3_string = Enchanted.commandGlobal("objects['Player'].transform.right");
+        if(dir == Direction.BACKWARD) {
+            String vector3_string = "objects['Player'].transform.forward * - 1";
             
-            loc = new Location(vector3_string);
+            loc = new LazyLocation(vector3_string);
         }
-        */
 
         return loc;
     }
