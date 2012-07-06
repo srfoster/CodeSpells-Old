@@ -13,7 +13,7 @@ public class GnomeAI : MonoBehaviour {
 	private Transform rightHand = null;
 	private bool armsUp = false;
 	private bool foundObject = false;
-	private float walkingSpeed = 3;
+	private float walkingSpeed = 6;
 	public string tag = "";
 	
 	// Use this for initialization
@@ -104,7 +104,6 @@ public class GnomeAI : MonoBehaviour {
 		if(leftHand != null && rightHand != null)
 		{
 			armsUp = true;
-			objToCollect.rigidbody.active = false;
 			objToCollect.transform.rotation = transform.rotation;
 			objToCollect.transform.position = transform.position + transform.forward*2;
 			objToCollect.transform.position = new Vector3(objToCollect.transform.position.x, objToCollect.transform.position.y+1, objToCollect.transform.position.z);
