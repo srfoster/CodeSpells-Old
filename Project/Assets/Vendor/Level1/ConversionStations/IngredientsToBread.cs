@@ -10,23 +10,24 @@ public class IngredientsToBread : MonoBehaviour {
 	//takes in a generic bread object which it may or may not create
 	public GameObject breadRegion;
 		
-			
 	void OnTriggerStay(Collider col)
 	{
 		if(col.gameObject.GetComponent<Ingredient>() == null)
 			return;
 		if(col.gameObject.GetComponent<Ingredient>().isRock()) {
+			Debug.Log("Found a rock ingredient!");
 			numRocks.Add (col.gameObject);
 		}
 		else if(col.gameObject.GetComponent<Ingredient>().isPlant()) {
+			Debug.Log("Found a plant ingredient!");
 			numPlants.Add (col.gameObject);
 		}
 		else
 			return;
 		
 		if((numRocks.Count > 0) && (numPlants.Count > 0)) {
+			Debug.Log("I can make bread!");
 			//create a bread object
-			
 			Destroy(numRocks[0]);
 			numRocks.RemoveAt (0);
 			Destroy(numPlants[0]);
@@ -36,6 +37,5 @@ public class IngredientsToBread : MonoBehaviour {
 			
 			return;
 		}
-		
 	}
 }

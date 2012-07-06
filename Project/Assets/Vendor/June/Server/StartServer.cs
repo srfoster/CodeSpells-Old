@@ -42,12 +42,8 @@ public class StartServer : MonoBehaviour
 	public CallResponseQueue queue;
 
 	void Start () {
-		Debug.Log("Listening for clients...");
-	
 		queue = new CallResponseQueue();
 		server = new Server(queue);
-		
-		
 	}
 	
 		

@@ -38,10 +38,10 @@ public class Seeker : MonoBehaviour {
 	   		fidgets.StartWalking();
 			
 			transform.LookAt (movements[pathIndex]);
-			transform.Translate(Vector3.forward * Time.deltaTime * 2);
+			transform.Translate(Vector3.forward * Time.deltaTime * 3);
 			transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
 			
-			if (Vector3.Distance(transform.position, movements[pathIndex]) < 3) {
+			if (Vector3.Distance(transform.position, movements[pathIndex]) < 1) {
 				pathIndex++;
 			}
 			return currentState;
