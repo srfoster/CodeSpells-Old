@@ -17,7 +17,6 @@ public class SetupLevel : MonoBehaviour {
 		{
 			done = true;
 
-			Eval.eval("var empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); objects.Add(\"1202002\", empty);",ObjectManager.GetObjects(), new Util());
 		}
 	}
 	

@@ -1,25 +1,15 @@
 package june;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-
-import java.net.Socket;
-
 
 public class Enchanted
 {
 	private String id;
 	private Movement movement;
 
-	Socket soc;
-	PrintWriter out;
-	BufferedReader in;
-    
-    /*public enum Direction {
-        NORTH, SOUTH, EAST, WEST
-    }*/
-    private double objRadius = 1.0;
+	static PrintWriter out;
+	static BufferedReader in;
 
 	/**
 	 * A new Enchanted -- which is a binding to a game entity in Unity.
@@ -28,15 +18,9 @@ public class Enchanted
 	 */
 	public Enchanted(String id)
 	{
-		try{
-			soc = new Socket("127.0.0.1",3000);
-			out = new PrintWriter(soc.getOutputStream(), true);
-			in = new BufferedReader(new InputStreamReader(soc.getInputStream()));
-		}catch(Exception e){
-			e.printStackTrace();
-			//Should also probably tell Unity that there's been a problem...
-		}
-
+    out = UnityConnection.getOutgoingWriter();
+    in  = UnityConnection.getIncomingReader();
+    
 		this.id = id;
 	}
 
@@ -45,7 +29,7 @@ public class Enchanted
 		return id;
 	}
     
-    public void setId(String temp)
+  public void setId(String temp)
 	{
 		id = temp;
 	}	
@@ -59,53 +43,24 @@ public class Enchanted
 		return movement;
 	}
     
-    public Location getLocation() {
-        double x = Double.parseDouble(command("transform.position.x"));
-        double y = Double.parseDouble(command("transform.position.y"));
-        double z = Double.parseDouble(command("transform.position.z"));
-        return (new Location(x,y,z));
-    }
     
-
-    
-    
-    public Location getLocation(int dir) {
-        Location myLoc = getLocation();
-        double xVal = myLoc.getX();
-        double zVal = myLoc.getZ();
-        
-        if(dir == Direction.NORTH) xVal += objRadius;//north
-        if(dir == Direction.SOUTH) xVal -= objRadius;//south
-        if(dir == Direction.EAST) zVal -= objRadius;//east
-        if(dir == Direction.WEST) zVal += objRadius;//west
-        
-        return (new Location(xVal, myLoc.getY(), zVal));
-    }
-    
-    
-    public void connectTo(Enchanted enc) {
-        /*Implement later
-         
-         
-         */
-    }
-    
-    
-    public String commandGlobal (String command) 
+    public static String commandGlobal (String command) 
     {
         try {
             long before = System.currentTimeMillis();
+            Log.log("Java sends to Unity: "+command+"\n");
             out.println(command);
             String response = in.readLine();
+            Log.log("Java gets back from Unity: "+response);
             
-            System.out.println(response);
-			long after = System.currentTimeMillis();
-			System.out.println("Ran " + command + " in " + (after-before) + " milliseconds");
+            long after = System.currentTimeMillis();
             
             return response;
         }
         catch(Exception e) {
             e.printStackTrace();
+            Log.log("Error in command: " + e);
+
         }
         return null;
     }
@@ -113,8 +68,8 @@ public class Enchanted
 	public String command(String command)
 	{
 		try{
+
 			long before = System.currentTimeMillis();
-			System.out.println("Running " + command);
 
 			String new_command = "";
 			if(command.indexOf("$target") > -1)
@@ -123,19 +78,76 @@ public class Enchanted
 			} else {
 				new_command = "objects[\""+id+"\"]."+command+";";
 			}
-
+      Log.log("Java about to block, sending to Unity: "+new_command);
 			out.println(new_command);
+      Log.log("Java sent to Unity");
 
+
+      Log.log("Java about to block, reading from Unity");
 			String response = in.readLine(); //Waits for confirmation from the Unity server...
-			System.out.println(response);
+            
 			long after = System.currentTimeMillis();
-			System.out.println("Ran " + command + " in " + (after-before) + " milliseconds");
+      Log.log("Java gets back from Unity (in "+(after-before)+" ms): "+response);
+
 
 			return response;
 		}catch(Exception e){
 			e.printStackTrace();
+      Log.log("Error in command: " + e);
 		}
 
 		return null;
+	}
+
+
+
+
+    //The actual API
+  
+    public Location getLocation() {
+        return new Location(command("transform.position"));
+    }
+
+    public Location getLocation(int dir) {
+       Location loc = getLocation();
+       loc.adjust(dir);
+
+       return loc; 
+    }
+
+    public void setLocation(Location loc)
+    {
+        String command = "";
+        command += "$target.transform.position.x = " + loc.getX() + ";";
+        command += "$target.transform.position.y = " + loc.getY() + ";";
+        command += "$target.transform.position.z = " + loc.getZ() + ";";
+
+        command(command);
+    }
+    
+    public EnchantedList findLike(Enchanted ench, double rad) {
+        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+        EnchantedList eList = new EnchantedList();
+        if (!list.equals("")) {
+            String[] ids = list.split(";");
+            for (String t : ids) {
+                eList.add(new Enchanted(t)); //create new enchanted instance
+            }
+        }
+        return eList;
+    }
+    
+  public void connectTo(Enchanted enc) {
+  }
+    
+  public void move(int dir)
+  {
+    Location loc = getLocation(dir);
+    setLocation(loc);
+  }
+
+	public double currentHeight()
+	{
+		return Double.parseDouble(command("$target.transform.position.y - Terrain.activeTerrain.SampleHeight($target.transform.position)"));
 	}
 }

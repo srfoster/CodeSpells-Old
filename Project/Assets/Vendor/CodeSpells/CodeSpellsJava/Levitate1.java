@@ -5,8 +5,13 @@ public class Levitate1 extends Spell
 {
   public void cast()
   { 
-    Enchanted target = getTarget();            
+     Enchanted mc = getByName("Player");
+     Enchanted rock = getTarget();
+     EnchantedList list = mc.findLike(rock, 8.0);
 
-    target.movement().levitate(3.0f, .1f);
+
+     for (int i=0; i<list.size();i++) {
+        list.get(i).movement().levitate(5.0, 0.2);
+     }
   }
 }

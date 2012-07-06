@@ -17,6 +17,13 @@ public class Enchantable : MonoBehaviour {
 	
 	public string id = "";
 	
+	public string getId() {
+		if (id.Equals("")) {
+			return gameObject.GetInstanceID().ToString();
+		}
+		return id;
+	}
+	
 	// Use this for initialization
 	void Start () {
 		if(id.Equals(""))
@@ -40,6 +47,11 @@ public class Enchantable : MonoBehaviour {
 		
 		
 		gameObject.AddComponent<Text3D>();
+	}
+	
+	void OnApplicationQuit()
+	{
+		June.isPlaying = false;	
 	}
 	
 	public void setId(string new_id)

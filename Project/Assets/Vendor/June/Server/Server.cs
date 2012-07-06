@@ -15,6 +15,7 @@ public class Server
     private Thread listenThread;
 	public String last_message = "";
 	private CallResponseQueue queue;
+	public bool applicationRunning = true;
 	
     public Server(CallResponseQueue queue)
     {
@@ -22,6 +23,7 @@ public class Server
 	  this.queue = queue;
       this.tcpListener = new TcpListener(IPAddress.Loopback, 3000);
       this.listenThread = new Thread(new ThreadStart(ListenForClients));
+	  this.listenThread.IsBackground = true;
       this.listenThread.Start();
     }
 	
@@ -32,40 +34,51 @@ public class Server
 
 	  while (true)
 	  {
-			
-
-	    //blocks until a client has connected to the server
-	    TcpClient client = this.tcpListener.AcceptTcpClient();
+		if(!this.tcpListener.Pending())
+		{
+			Thread.Sleep(1000);	
+		}else{
 	
-	    //create a thread to handle communication 
-	    //with connected client
-	    Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
-	    clientThread.Start(client);
+		    //blocks until a client has connected to the server
+		    TcpClient client = this.tcpListener.AcceptTcpClient();
+		
+		    //create a thread to handle communication 
+		    //with connected client
+		    Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
+			clientThread.IsBackground = true;
+		    clientThread.Start(client);
+		}
 	  }
 	}
 	
 	
 	private void HandleClientComm(object client)
 	{
+	  FileLogger.Log("New TCP Client accepted.");	
 	  TcpClient tcpClient = (TcpClient)client;
 	  NetworkStream clientStream = tcpClient.GetStream();
 	
 	  byte[] message = new byte[4096];
 	  int bytesRead;
 	
-	  while (true)
+	  while (applicationRunning)
 	  {
-			
 
 	    bytesRead = 0;
 	
 	    try
 	    {
-	      //blocks until a client sends a message
-	      bytesRead = clientStream.Read(message, 0, 4096);
+		  if(clientStream.CanRead){
+			  FileLogger.Log("About to block, waiting for Java.");
+		      //blocks until a client sends a message
+		      bytesRead = clientStream.Read(message, 0, 4096);
+			  FileLogger.Log("Unblocked.  Got bytes from Java.");
+		  }
 	    }
-	    catch
+	    catch(Exception e)
 	    {
+		  FileLogger.Log("A socket error occured while waiting for Java: " + e.Message);
+
 	      //a socket error has occured
 	      break;
 	    }
@@ -74,6 +87,8 @@ public class Server
 	
 	    if (bytesRead == 0)
 	    {
+		  FileLogger.Log("The Java client disconnected");
+
 	      //the client has disconnected from the server
 	      break;
 	    }
@@ -81,12 +96,17 @@ public class Server
 	    //message has successfully been received
 	    ASCIIEncoding encoder = new ASCIIEncoding();
 		String message_string = encoder.GetString(message, 0, bytesRead);
+
+			
+		FileLogger.Log("Unity got response from Java: "+message_string);
 			
 		CallResponse call_response = new CallResponse(message_string, clientStream);
 		queue.add(call_response);
-		
+			
 	  }
 	
+	  FileLogger.Log("Closing TCP connection.");
+
 	  tcpClient.Close();
 	}
 	
