@@ -30,7 +30,7 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupSpellbook()).Init();
 
 		
-		ObjectManager.Register(GameObject.Find("First Person Controller"), "Player");
+		ObjectManager.Register(GameObject.Find("First Person Controller"), "Me");
 		
 		givePlayerASpellbook();
 	//	givePlayerAScroll();

@@ -5,12 +5,12 @@ public class Flight1 extends Spell
 {
   public void cast()
   { 
-    Enchanted target = getTarget();            
+    Enchanted my_target = getTarget();            
 
-    target.movement().levitate(10, 0.2);
+    AdeptLevitate1 lev = new AdeptLevitate1();
 
     while(true){
-       target.move(Direction.FORWARD, 0.2);
+       my_target.move(Direction.FORWARD, 0.2);
     }  
   }
 }

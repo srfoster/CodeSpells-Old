@@ -33,8 +33,10 @@ public class Spellbook : MonoBehaviour {
 	
 	void addInitialPages()
 	{
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
+
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Arch");
 

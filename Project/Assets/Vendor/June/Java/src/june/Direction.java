@@ -66,23 +66,23 @@ public class Direction
 
         if(dir == Direction.LEFT)
         {
-            String vector3_string = "objects['Player'].transform.right * -1";
+            String vector3_string = "objects['Me'].transform.right * -1";
             
             loc = new LazyLocation(vector3_string);
         }
         if(dir == Direction.RIGHT) {
-            String vector3_string = "objects['Player'].transform.right";
+            String vector3_string = "objects['Me'].transform.right";
             
             loc = new LazyLocation(vector3_string);
         }
         if(dir == Direction.FORWARD) 
         {
-            String vector3_string = "objects['Player'].transform.forward";
+            String vector3_string = "objects['Me'].transform.forward";
             
             loc = new LazyLocation(vector3_string);
         }
         if(dir == Direction.BACKWARD) {
-            String vector3_string = "objects['Player'].transform.forward * - 1";
+            String vector3_string = "objects['Me'].transform.forward * - 1";
             
             loc = new LazyLocation(vector3_string);
         }
