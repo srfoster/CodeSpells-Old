@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 public class Enchanted
 {
 	private String id;
-	private Movement movement;
 
 	static PrintWriter out;
 	static BufferedReader in;
@@ -33,15 +32,6 @@ public class Enchanted
 	{
 		id = temp;
 	}	
-
-	public Movement movement()
-	{
-		if(movement == null)
-			movement = new Movement(this);		
-
-
-		return movement;
-	}
     
     
     public static String commandGlobal (String command) 
