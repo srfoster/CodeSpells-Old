@@ -7,11 +7,11 @@ public class Levitate1 extends Spell
   { 
     Enchanted my_target = getTarget();
 
-    my_target.move(Direction.UP, 0.1);
-    my_target.move(Direction.UP, 0.1);
-    my_target.move(Direction.UP, 0.1);
-    my_target.move(Direction.UP, 0.1);
-    my_target.move(Direction.UP, 0.1);
+    my_target.move(Direction.up(), 0.1);
+    my_target.move(Direction.up(), 0.1);
+    my_target.move(Direction.up(), 0.1);
+    my_target.move(Direction.up(), 0.1);
+    my_target.move(Direction.up(), 0.1);
   }
 }
 

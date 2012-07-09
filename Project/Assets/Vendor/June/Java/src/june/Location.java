@@ -1,6 +1,6 @@
 package june;
 
-public class Location
+public class Location implements Vector3
 {
     public double x;
     public double y;
@@ -58,23 +58,22 @@ public class Location
 	return "(" + x + " " + y + " " + z + ")";
     }
 
-    public void adjust(int dir)
+    public void adjust(Vector3 dir)
     {
       adjust(dir, 1.0);
     }
     
-    public void adjust(int dir, double scale) {
-        Location adjustment = Direction.toLocation(dir); 
-        adjustment.times(scale);
+    public void adjust(Vector3 dir, double scale) {
+        dir.times(scale);
 
-        add(adjustment);
+        add(dir);
     }
 
-    public void add(Location l)
+    public void add(Vector3 l)
     {
-      x += l.x;
-      y += l.y;
-      z += l.z;
+      x += l.getX();
+      y += l.getY();
+      z += l.getZ();
     }
 
     public void times(double scale)

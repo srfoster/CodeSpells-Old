@@ -108,18 +108,18 @@ public class Enchanted
         return new Location(command("transform.position"));
     }
 
-    public Location getLocation(int dir, double scale) {
+    public Location getLocation(Direction dir, double scale) {
        Location loc = getLocation();
        loc.adjust(dir, scale);
 
        return loc; 
     }
 
-    public void adjustLocation(Location loc){
+    public void adjustLocation(Vector3 loc){
         String command = "";
         command += "$target.transform.position.x += " + loc.getXString() + ";";
         command += "$target.transform.position.y += " + loc.getYString() + ";";
-            command += "$target.transform.position.z += " + loc.getZString() + ";";
+        command += "$target.transform.position.z += " + loc.getZString() + ";";
 
         command(command);
     }
@@ -146,15 +146,11 @@ public class Enchanted
         return eList;
     }
     
-  public void connectTo(Enchanted enc) {
-  }
-    
-  public void move(int dir, double speed)
+  public void move(Direction dir, double speed)
   {
-    Location adjustment = Direction.toLocation(dir); 
-    adjustment.times(speed);
+    dir.times(speed);
 
-    adjustLocation(adjustment);
+    adjustLocation(dir);
   }
 
 	public double currentHeight()

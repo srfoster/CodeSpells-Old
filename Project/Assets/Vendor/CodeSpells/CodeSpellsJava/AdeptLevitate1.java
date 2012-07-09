@@ -9,7 +9,7 @@ public class AdeptLevitate1 extends Spell
     int counter = 0;
     while(counter < 10)
     {
-      my_target.move(Direction.UP, 0.1);
+      my_target.move(Direction.up(), 0.1);
       counter = counter + 1;
     }
   }
