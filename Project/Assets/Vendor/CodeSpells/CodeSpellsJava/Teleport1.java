@@ -7,10 +7,9 @@ public class Teleport1 extends Spell
   { 
     Enchanted target = getTarget();            
 
-    target.movement().levitate(10, 0.2);
+    Location dest = target.getLocation();
+			dest.adjust(Direction.UP, 100);
 
-    while(true){
-       target.move(Direction.FORWARD, 0.2);
-    }  
+    getByName("Me").setLocation(dest);  
   }
 }

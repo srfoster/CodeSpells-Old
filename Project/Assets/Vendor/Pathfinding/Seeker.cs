@@ -26,19 +26,19 @@ public class Seeker : MonoBehaviour {
 	
 	public void setDestination(GameObject dest) {
 		// Finds all the movements to the final destination
-		movements = (GameObject.Find ("PathsThroughGame").GetComponent<Navigation>()).findPath(transform.position, dest.transform.position);
+		movements = (GameObject.Find ("Paths").GetComponent<Navigation>()).findPath(transform.position, dest.transform.position);
 		pathIndex = 1;
 		currentState = WalkingState.OnPath;
 	}
 	
 	public WalkingState walk() { //code to walk
-		if(pathIndex < movements.Count-1)
+		if(pathIndex < movements.Count)
 		{
 			NPCFidget fidgets = GetComponent<NPCFidget>();
 	   		fidgets.StartWalking();
 			
 			transform.LookAt (movements[pathIndex]);
-			transform.Translate(Vector3.forward * Time.deltaTime * 3);
+			transform.Translate(Vector3.forward * Time.deltaTime * 6);
 			transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
 			
 			if (Vector3.Distance(transform.position, movements[pathIndex]) < 1) {
