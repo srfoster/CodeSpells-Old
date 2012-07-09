@@ -69251,3 +69251,13 @@ Java sends to Unity: objects["Found 1"].transform.position.x;
 Error in command: java.net.SocketException: Connection reset
 Unity communication thread exiting.
 Unity communication thread exiting.
+Java: Java sends to Unity: Debug.Log("entered spell")
+
+Java: entered spell
+Java: Java sends to Unity: util.getObjWith("Player","Rock1",11.0)
+
+Java: entered spell
+Java: entered spell
+Java: entered spell
+Java: entered spell
+Java: entered spell
