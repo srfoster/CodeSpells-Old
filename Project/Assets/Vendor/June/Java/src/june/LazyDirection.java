@@ -1,15 +1,15 @@
 package june;
 
-public class LazyLocation extends Location
+public class LazyDirection extends Direction
 {
     String evals_to_vector3;
     String post_x = "";
     String post_y = "";
     String post_z = "";
 
-    public LazyLocation(String string)
+    public LazyDirection(String string)
     {
-      evals_to_vector3 = string; 
+      evals_to_vector3 = "("+string+")"; 
     }
 
     @Override

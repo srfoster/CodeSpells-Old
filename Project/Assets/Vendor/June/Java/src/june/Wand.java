@@ -19,7 +19,7 @@ public class Wand
     this.file = new File(color + "_gesture.txt");
 	}
 
-	public int getGesture()
+	public Direction getGesture()
 	{
 		String gesture = getGestureString();
 

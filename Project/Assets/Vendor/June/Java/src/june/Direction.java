@@ -1,93 +1,152 @@
 package june;
 
-public class Direction
+public class Direction implements Vector3
 {
-    public static final int NONE = 0;
-    public static final int WEST = 1;
-    public static final int EAST = 2;
-    public static final int SOUTH = 3;
-    public static final int NORTH = 4;
-    public static final int LEFT = 5;
-    public static final int RIGHT = 6;
-    public static final int UP = 7;
-    public static final int DOWN = 8;
-    public static final int FORWARD = 9;
-    public static final int BACKWARD = 10;
-    
-    private static int direct;
-    
-    
-    public Direction(int dir) {
-        direct = dir;
-    }
-    
-    public int getDirection() {
-        return direct;
-    }
-    
-    public static int west(){
-        return 1;
-    }
-    
-    public static int east(){
-        return 2;
-    }
-    
-    public static int north(){
-        return 4;
-    }
-    
-    public static int south(){
-        return 3;
-    }
-    
-    public static int right() {
-        return 6;
-    }
-    
-    public static int left() {
-        return 5;
+    public double x;
+    public double y;
+    public double z;
+
+    public Direction(){
+
     }
 
-    public static int none() {
-        return 0;
-    }
-
-    public static Location toLocation(int dir)
+    public Direction(String xyz)
     {
-        Location loc = new Location(0,0,0);
+        String[] split = xyz.split(",");
 
-        if(dir == Direction.NORTH) loc.x += 1.0;//north
-        if(dir == Direction.SOUTH) loc.x -= 1.0;//south
-        if(dir == Direction.UP) loc.y += 1.0;//west
-        if(dir == Direction.DOWN) loc.y -= 1.0;//west
-        if(dir == Direction.EAST) loc.z -= 1.0;//east
-        if(dir == Direction.WEST) loc.z += 1.0;//west
+        String x_string = split[0].substring(1);
+        String y_string = split[1];
+        String z_string = split[2].substring(0, split[2].length() - 1);
 
-        if(dir == Direction.LEFT)
-        {
-            String vector3_string = "objects['Me'].transform.right * -1";
-            
-            loc = new LazyLocation(vector3_string);
-        }
-        if(dir == Direction.RIGHT) {
-            String vector3_string = "objects['Me'].transform.right";
-            
-            loc = new LazyLocation(vector3_string);
-        }
-        if(dir == Direction.FORWARD) 
-        {
-            String vector3_string = "objects['Me'].transform.forward";
-            
-            loc = new LazyLocation(vector3_string);
-        }
-        if(dir == Direction.BACKWARD) {
-            String vector3_string = "objects['Me'].transform.forward * - 1";
-            
-            loc = new LazyLocation(vector3_string);
-        }
-
-        return loc;
+        x = Double.parseDouble(x_string);
+        y = Double.parseDouble(y_string);
+        z = Double.parseDouble(z_string);
     }
     
+    public Direction(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    
+    public double getX() {
+        return x;
+    }
+    
+    public double getY() {
+        return y;
+    }
+    
+    public double getZ() {
+        return z;
+    }
+
+    public void setX(double x){
+      this.x = x;
+    }
+
+    public void setY(double y){
+      this.y = y;
+    }
+
+    public void setZ(double z){
+      this.z = z;
+    }
+
+    public String toString()
+    {
+	    return "(" + x + " " + y + " " + z + ")";
+    }
+
+    public void add(Vector3 l)
+    {
+      x += l.getX();
+      y += l.getY();
+      z += l.getZ();
+    }
+
+    public void times(double scale)
+    {
+      x *= scale;
+      y *= scale;
+      z *= scale;
+    }
+
+    public String getXString(){
+      return "" + x;
+    }
+
+    public String getYString(){
+      return "" + y;
+    }
+
+    public String getZString(){
+      return "" + z;
+    }
+
+
+    public static Direction up(){
+        return new Direction(0,1,0);
+    }
+
+    public static Direction down(){
+        return new Direction(0,-1,0);
+    }
+
+    public static Direction west(){
+        return new Direction(-1,0,0);
+    }
+    
+    public static Direction east(){
+        return new Direction(1,0,0);
+    }
+    
+    public static Direction north(){
+        return new Direction(0,0,1);
+    }
+    
+    public static Direction south(){
+        return new Direction(0,0,-1);
+    }
+    
+    public static Direction right() {
+        String vector3_string = "objects['Me'].transform.right";
+        Direction dir = new LazyDirection(vector3_string);
+            
+        return dir;
+    }
+    
+    public static Direction left() {
+        String vector3_string = "objects['Me'].transform.right * -1";
+        Direction dir = new LazyDirection(vector3_string);
+            
+        return dir;
+    }
+
+    public static Direction forward() {
+        String vector3_string = "objects['Me'].transform.forward";
+        Direction dir = new LazyDirection(vector3_string);
+            
+        return dir;
+    }
+
+    public static Direction backward() {
+        String vector3_string = "objects['Me'].transform.forward * -1";
+        Direction dir = new LazyDirection(vector3_string);
+            
+        return dir;
+    }
+
+    public static Direction none() {
+        return new Direction(0,0,0);
+    }
+
+    public static Direction between(Enchanted source, Enchanted target)
+    {
+       String vector3_string = "(objects['"+target.getId()+"'].transform.position - objects['"+source.getId()+"'].transform.position).normalized";
+            
+       Direction dir = new LazyDirection(vector3_string);
+
+       return dir;
+    }
 }
