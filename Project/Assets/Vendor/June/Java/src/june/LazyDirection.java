@@ -38,16 +38,16 @@ public class LazyDirection extends Direction
     @Override
     public void times(double scale)
     {
-      post_x = "*" + scale;      
-      post_y = "*" + scale;      
-      post_z = "*" + scale;      
+      post_x += "*" + scale;      
+      post_y += "*" + scale;      
+      post_z += "*" + scale;      
     }
 
     @Override
     public void add(Vector3 loc)
     {
-      post_x = "+" + loc.getXString();      
-      post_y = "+" + loc.getXString();      
-      post_z = "+" + loc.getXString();      
+      post_x += "+" + loc.getXString();      
+      post_y += "+" + loc.getXString();      
+      post_z += "+" + loc.getXString();      
     }
 }
