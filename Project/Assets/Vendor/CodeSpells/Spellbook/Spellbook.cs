@@ -43,6 +43,7 @@ public class Spellbook : MonoBehaviour {
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
 		
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire2");
 
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
@@ -70,6 +71,7 @@ public class Spellbook : MonoBehaviour {
 			//Gotta parse out the name
 			string[] split = url.Split(new char[]{'/'});
 			string name = split[split.Length - 1];
+			
 			
 			string new_url = "";
 			

@@ -46,7 +46,7 @@ public class LazyLocation extends Location
     public void add(Vector3 loc)
     {
       post_x += "+" + loc.getXString();      
-      post_y += "+" + loc.getXString();      
-      post_z += "+" + loc.getXString();      
+      post_y += "+" + loc.getYString();      
+      post_z += "+" + loc.getYString();      
     }
 }

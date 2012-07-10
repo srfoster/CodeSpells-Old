@@ -18,7 +18,6 @@ public class WebSpellbookPage : SpellbookPage {
 		
 
 
-		
 		WWW www = new WWW(texture_path);
         yield return www;
         texture = www.texture;
