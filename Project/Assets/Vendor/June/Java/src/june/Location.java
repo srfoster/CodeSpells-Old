@@ -64,6 +64,7 @@ public class Location implements Vector3
     }
     
     public void adjust(Vector3 dir, double scale) {
+        //Vector3 dir is a unit vector
         dir.times(scale);
 
         add(dir);
