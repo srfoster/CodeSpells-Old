@@ -3293,3 +3293,140 @@ Java: Java about to block, sending to Unity: objects["-360136"].transform.positi
 Java: Java sent to Unity
 Java: Java about to block, reading from Unity
 Java: Java gets back from Unity (in 120 ms): 1170.21
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -396224;-396356;-396312;-396246;-395944;-396290;-396334;-396268;-393558;-393470;-395812;-395790;-395922;-395768;-396180;-396092;Rock2;-393360;-393382;-393404;-395878;-393514;-396070;-396026;-396048;-396114;-396400;-396202;-396422
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("1119455398", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["1119455398"].transform.position = objects["-396224"].transform.position
+
+Java: Java gets back from Unity: (983.9, 2.7, 1211.1)
+Java: Java sends to Unity: objects["-396224"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396356"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396312"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396246"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-395944"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396290"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396334"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396268"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-393558"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-393470"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-395812"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-395790"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-395922"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-395768"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396180"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396092"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-393360"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-393382"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-393404"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-395878"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-393514"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396070"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396026"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396048"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396114"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396400"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396202"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-396422"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: Java about to block, sending to Unity: objects["-396224"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396224"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396224"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 154 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-396356"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396356"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396356"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 133 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-396312"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396312"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396312"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 130 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-396246"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396246"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396246"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 127 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-395944"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-395944"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-395944"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 123 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-396290"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396290"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396290"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 124 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-396334"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396334"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396334"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 126 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-396268"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396268"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-396268"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 122 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-393558"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-393558"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-393558"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 123 ms): 1169.668
+Java: Java about to block, sending to Unity: objects["-393470"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-393470"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-393470"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 124 ms): 1169.668
