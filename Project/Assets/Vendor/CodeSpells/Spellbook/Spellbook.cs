@@ -42,7 +42,7 @@ public class Spellbook : MonoBehaviour {
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
 		
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveEffects");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
 
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
