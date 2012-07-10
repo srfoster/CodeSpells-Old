@@ -12,6 +12,11 @@ public class LazyDirection extends Direction
       evals_to_vector3 = "("+string+")"; 
     }
 
+    public LazyDirection(double x, double y, double z)
+    {
+      evals_to_vector3 = "(new Vector3("+x+","+y+","+z+"))";
+    }
+
     @Override
     public String getXString()
     {

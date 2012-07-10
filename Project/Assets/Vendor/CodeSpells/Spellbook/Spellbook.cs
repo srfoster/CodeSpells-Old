@@ -33,16 +33,19 @@ public class Spellbook : MonoBehaviour {
 	
 	void addInitialPages()
 	{
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
+
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
 
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
-
 		
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Arch");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveEffects");
 
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
 	}
 	
 	IEnumerator Start()

@@ -9,7 +9,11 @@ public class LazyLocation extends Location
 
     public LazyLocation(String string)
     {
-      evals_to_vector3 = string; 
+      evals_to_vector3 = "("+string+")"; 
+    }
+
+    public LazyLocation(double x, double y, double z) {
+      evals_to_vector3 = "(new Vector3("+x+","+y+","+z+"))";
     }
 
     @Override

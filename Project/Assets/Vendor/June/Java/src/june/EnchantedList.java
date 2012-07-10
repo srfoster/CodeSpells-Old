@@ -17,6 +17,24 @@ public class EnchantedList extends Enchanted
         eList = new ArrayList<Enchanted>();
         setEmptyPos = false;
     }
+
+    public EnchantedList(String id)
+    {
+       super(id);
+
+       String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+       addAllFromUnityString(list);
+    }
+
+    public void addAllFromUnityString(String list)
+    {
+       if (!list.equals("")) {
+         String[] ids = list.split(";");
+         for (String t : ids) {
+           add(new Enchanted(t)); //create new enchanted instance
+         }
+       }
+    }
     
     public void add(Enchanted ench) {
         //gets parent game object
@@ -28,39 +46,6 @@ public class EnchantedList extends Enchanted
         eList.add(ench);
     }
     
-    public void buildBridge() {
-        
-        boolean isOdd = (eList.size()%2 == 1);
-        int middleIndex = isOdd ? (eList.size()/2) : (eList.size()/2-1);
-        double tempHeight = 0.0;
-        double heightChange = 0.0;
-        //determine the height change based on the length of the list (work on later)
-        
-        for(int i=0; i < eList.size(); i++) {
-            
-            if (i < middleIndex) {
-                super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
-                heightChange = 2.0;
-                tempHeight += heightChange;
-            }
-            else if (i == middleIndex) {
-                if (!isOdd) middleIndex += 1;
-                super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
-                //don't change tempheight
-            }
-            else {
-                tempHeight -= heightChange;
-                super.commandGlobal("objects[\""+eList.get(i).getId()+"\"].transform.position.y += "+tempHeight+"");
-            }
-            
-        }
-        
-        
-    }
-    
-    //public void remove(Enchanted ench) {
-        
-    //}
     
     public Enchanted get(int index)
     {
