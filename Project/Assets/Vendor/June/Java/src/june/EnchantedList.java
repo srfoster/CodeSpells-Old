@@ -17,6 +17,24 @@ public class EnchantedList extends Enchanted
         eList = new ArrayList<Enchanted>();
         setEmptyPos = false;
     }
+
+    /*public EnchantedList(String id)
+    {
+       super(id);
+
+       String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+       addAllFromUnityString(list);
+    }*/
+
+    public void addAllFromUnityString(String list)
+    {
+       if (!list.equals("")) {
+         String[] ids = list.split(";");
+         for (String t : ids) {
+           add(new Enchanted(t)); //create new enchanted instance
+         }
+       }
+    }
     
     public void add(Enchanted ench) {
         //gets parent game object

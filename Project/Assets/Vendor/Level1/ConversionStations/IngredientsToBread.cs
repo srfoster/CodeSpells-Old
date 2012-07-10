@@ -15,18 +15,18 @@ public class IngredientsToBread : MonoBehaviour {
 		if(col.gameObject.GetComponent<Ingredient>() == null)
 			return;
 		if(col.gameObject.GetComponent<Ingredient>().isRock()) {
-			Debug.Log("Found a rock ingredient!");
+			//Debug.Log("Found a rock ingredient!");
 			numRocks.Add (col.gameObject);
 		}
 		else if(col.gameObject.GetComponent<Ingredient>().isPlant()) {
-			Debug.Log("Found a plant ingredient!");
+			//Debug.Log("Found a plant ingredient!");
 			numPlants.Add (col.gameObject);
 		}
 		else
 			return;
 		
 		if((numRocks.Count > 0) && (numPlants.Count > 0)) {
-			Debug.Log("I can make bread!");
+			//Debug.Log("I can make bread!");
 			//create a bread object
 			Destroy(numRocks[0]);
 			numRocks.RemoveAt (0);

@@ -5,8 +5,7 @@ public class Flight1 extends Spell
 {
   public void cast()
   { 
-    Enchanted my_target = getTarget();
-    Enchanted rock = getByName("Target");            
+    Enchanted my_target = getTarget();            
 
     int counter = 0;
     while(counter < 30)
@@ -16,7 +15,7 @@ public class Flight1 extends Spell
     }
 
     while(true){
-       my_target.move(Direction.between(my_target, rock), 0.2);
+       my_target.move(Direction.forward(), 0.2);
     }  
   }
 }

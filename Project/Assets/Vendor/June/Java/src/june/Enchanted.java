@@ -95,7 +95,7 @@ public class Enchanted
     //The actual API
   
     public Location getLocation() {
-        return new Location(command("transform.position"));
+        return new LazyLocation("objects['"+getId()+"'].transform.position");
     }
 
     public Location getLocation(Direction dir, double scale) {
@@ -117,9 +117,9 @@ public class Enchanted
     public void setLocation(Location loc)
     {
         String command = "";
-        command += "$target.transform.position.x = " + loc.getX() + ";";
-        command += "$target.transform.position.y = " + loc.getY() + ";";
-        command += "$target.transform.position.z = " + loc.getZ() + ";";
+        command += "$target.transform.position.x = " + loc.getXString() + ";";
+        command += "$target.transform.position.y = " + loc.getYString() + ";";
+        command += "$target.transform.position.z = " + loc.getZString() + ";";
 
         command(command);
     }
@@ -130,12 +130,7 @@ public class Enchanted
         System.out.println("got a string back from unity");
         System.out.println("the string is "+list);
         EnchantedList eList = new EnchantedList();
-        if (!list.equals("")) {
-            String[] ids = list.split(";");
-            for (String t : ids) {
-                eList.add(new Enchanted(t)); //create new enchanted instance
-            }
-        }
+        eList.addAllFromUnityString(list);
         return eList;
     }
     
@@ -150,4 +145,14 @@ public class Enchanted
 	{
 		return Double.parseDouble(command("$target.transform.position.y - Terrain.activeTerrain.SampleHeight($target.transform.position)"));
 	}
+
+  public void onFire(boolean bool)
+  {
+    if(bool)
+    {
+      command("GetComponent('Flamable').Ignite()");
+    } else {
+      command("GetComponent('Flamable').Extinguish()");
+    }
+  }
 }

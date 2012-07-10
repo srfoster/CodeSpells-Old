@@ -2349,3 +2349,947 @@ Java: Java sent to Unity
 Java: Java about to block, reading from Unity
 Java: Java gets back from Unity (in 116 ms): 1174.7
 Java: after the loop
+Java: INSIDE LEVITATE
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -82316;-82228;-82162;-81684;-81750;-82294;-81772;-82184;-79408;-79364;-81816;-81986;-79386;-79276;-82272;-79320;Rock2;-79430;-81920;-81728;-79452;-81964;-82118;-82052;-82030;-82250;-82096
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("582642819", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["582642819"].transform.position = objects["-82316"].transform.position
+
+Java: Java gets back from Unity: (981.7, 2.8, 1209.2)
+Java: Java sends to Unity: objects["-82316"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82228"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82162"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81684"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81750"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82294"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81772"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82184"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79408"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79364"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81816"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81986"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79386"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79276"].transform.parent = objects["582642819"].transform
+
+Java: INSIDE LEVITATE
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -82316;-82228;-82162;-81684;-81750;-82294;-81772;-82184;-79408;-79364;-81816;-81986;-79386;-79276;-82272;-79320;Rock2;-79430;-81920;-81728;-79452;-81964;-82118;-82052;-82030;-82250;-82096
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("1119455398", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["1119455398"].transform.position = objects["-82316"].transform.position
+
+Java: Java gets back from Unity: (981.7, 2.8, 1209.2)
+Java: Java sends to Unity: objects["-82316"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82228"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82162"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81684"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81750"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82294"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81772"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82184"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79408"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79364"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81816"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81986"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79386"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79276"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82272"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79320"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79430"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81920"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81728"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-79452"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-81964"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82118"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82052"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82030"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82250"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-82096"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java about to block, sending to Unity: objects["-82316"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82316"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82316"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 131 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-82228"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82228"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82228"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 127 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-82162"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82162"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82162"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 119 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-81684"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-81684"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-81684"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 129 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-81750"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-81750"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-81750"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 131 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-82294"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82294"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82294"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 134 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-81772"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-81772"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-81772"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 130 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-82184"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82184"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-82184"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 130 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-79408"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-79408"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-79408"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 132 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-79364"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-79364"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-79364"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 120 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: after the loop
+Java: INSIDE LEVITATE
+Java: about to get an enchantedlist
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -136296;-139160;-139094;-136428;-138660;-138814;-138704;-138792;-138874;-139292;-136252;-139116;Rock2;-139270;-138682;-136318;-136340;-136384;-136362;-136406;-139072;-138984;-138896;-139050
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("582642819", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["582642819"].transform.position = objects["-136296"].transform.position
+
+Java: Java gets back from Unity: (984.6, 2.7, 1213.1)
+Java: Java sends to Unity: objects["-136296"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139160"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139094"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136428"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138660"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138814"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138704"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138792"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138874"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139292"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136252"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139116"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139270"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138682"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136318"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136340"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136384"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136362"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-136406"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139072"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138984"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-138896"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-139050"].transform.parent = objects["582642819"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: before for loop
+Java: Java about to block, sending to Unity: objects["-136296"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-136296"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-136296"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 125 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-139160"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-139160"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-139160"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 134 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-139094"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-139094"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-139094"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 134 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-136428"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-136428"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-136428"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 134 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-138660"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138660"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138660"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 128 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-138814"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138814"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138814"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 129 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-138704"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138704"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138704"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 137 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-138792"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138792"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138792"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 127 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-138874"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138874"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-138874"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 122 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-139292"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-139292"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-139292"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 126 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: after the loop
+Java: INSIDE LEVITATE
+Java: about to get an enchantedlist
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -161856;-161378;-161422;-161290;-161592;-158882;-161444;-161680;-161400;-159036;-158970;-161312;Rock2;-161488;-158948;-159014;-161614;-158992;-158904;-161526;-161636;-159080
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("1119455398", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["1119455398"].transform.position = objects["-161856"].transform.position
+
+Java: Java gets back from Unity: (978.2, 2.7, 1211.5)
+Java: Java sends to Unity: objects["-161856"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161378"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161422"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161290"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161592"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-158882"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161444"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161680"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161400"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-159036"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-158970"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161312"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161488"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-158948"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-159014"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161614"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-158992"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-158904"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161526"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-161636"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-159080"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: before for loop
+Java: Java about to block, sending to Unity: objects["-161856"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161856"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161856"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 123 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161378"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161378"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161378"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 189 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161422"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161422"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161422"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 132 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161290"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161290"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161290"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 168 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161592"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161592"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161592"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 134 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-158882"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-158882"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-158882"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 169 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161444"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161444"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161444"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 122 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161680"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161680"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161680"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 175 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-161400"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161400"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-161400"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 164 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-159036"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-159036"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-159036"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 222 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: after the loop
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -188618;-188574;-188486;-188442;-188222;-185600;-188266;-188118;-188508;-185666;-185688;-185578;-185732;-188420;-188030;Rock2;-185644;-185754;-188530;-188354;-185622;-185556;-188398;-185710;-188332;-188310;-188200;-188376;-188288
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("2077638201", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["2077638201"].transform.position = objects["-188618"].transform.position
+
+Java: Java gets back from Unity: (983.0, 2.8, 1209.7)
+Java: Java sends to Unity: objects["-188618"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188574"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188486"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188442"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188222"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185600"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188266"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188118"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188508"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185666"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185688"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185578"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185732"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188420"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188030"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185644"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185754"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188530"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188354"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185622"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185556"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188398"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-185710"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188332"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188310"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188200"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188376"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-188288"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: Java about to block, sending to Unity: objects["-188618"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188618"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188618"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 142 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188574"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188574"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188574"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 123 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188486"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188486"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188486"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 155 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188442"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188442"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188442"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 242 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188222"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188222"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188222"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 184 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-185600"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-185600"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-185600"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 132 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188266"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188266"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188266"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 130 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188118"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188118"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188118"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 128 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-188508"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188508"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-188508"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 147 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-185666"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-185666"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-185666"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 154 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Error in command: java.lang.NullPointerException
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("1579321858", empty); 
+
+Java: Error in command: java.lang.NullPointerException
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -280682;-280880;-277862;-277994;-277884;-277950;-280550;-280484;-280528;-280660;-277818;Rock2;-277906;-280704;-277928;-280594;-280462;-279588;-279676
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("1789308653", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["1789308653"].transform.position = objects["-280682"].transform.position
+
+Java: Java gets back from Unity: (976.5, 2.6, 1213.7)
+Java: Java sends to Unity: objects["-280682"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280880"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277862"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277994"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277884"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277950"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280550"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280484"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280528"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280660"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277818"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277906"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280704"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-277928"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280594"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-280462"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-279588"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-279676"].transform.parent = objects["1789308653"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: Java about to block, sending to Unity: objects["-280682"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280682"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280682"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 235 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-280880"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280880"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280880"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 223 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-277862"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277862"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277862"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 252 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-277994"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277994"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277994"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 259 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-277884"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277884"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277884"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 236 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-277950"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277950"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-277950"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 232 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-280550"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280550"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280550"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 268 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-280484"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280484"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280484"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 237 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-280528"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280528"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280528"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 232 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-280660"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280660"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-280660"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 223 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -308016;-308038;-308258;-308060;-308082;-305284;-307736;-307626;-305328;-308148;-307972;Rock2;-305416;-305262;-305306;-307884;-305372;-307994;-308192;-308170;-305240;-306988;-308236;-307054;-307950;-307928
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("2077638201", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["2077638201"].transform.position = objects["-308016"].transform.position
+
+Java: Java gets back from Unity: (982.8, 2.8, 1202.0)
+Java: Java sends to Unity: objects["-308016"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308038"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308258"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308060"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308082"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305284"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307736"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307626"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305328"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308148"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307972"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305416"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305262"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305306"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307884"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305372"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307994"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308192"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308170"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-305240"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-306988"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-308236"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307054"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307950"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-307928"].transform.parent = objects["2077638201"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: Java about to block, sending to Unity: objects["-308016"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308016"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308016"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 124 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-308038"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308038"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308038"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 127 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-308258"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308258"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308258"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 123 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-308060"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308060"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308060"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 139 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-308082"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308082"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308082"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 122 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-305284"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-305284"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-305284"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 128 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-307736"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-307736"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-307736"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 133 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-307626"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-307626"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-307626"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 129 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-305328"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-305328"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-305328"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 128 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java about to block, sending to Unity: objects["-308148"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308148"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-308148"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 138 ms): Error: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.at System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.get_Item (string) <0x0023c>at (wrapper dynamic-method) System.Collections.Generic.Dictionary`2<string, UnityEngine.GameObject>.Dictionary`2$get_Item$System.String (object,object[]) <IL 0x00012, 0x00078>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at Boo.Lang.Runtime.DynamicDispatching.SliceDispatcherFactory/<CreateGetter>c__AnonStoreyE.<>m__1 (object,object[]) <IL 0x00012, 0x0004b>at Boo.Lang.Runtime.RuntimeServices.GetSlice (object,string,object[]) <IL 0x00056, 0x00137>at script.Run () <IL 0x00064, 0x001d0>at UnityScript.Scripting.Evaluator.Run () <IL 0x00010, 0x00078>at UnityScript.Scripting.Evaluator.Eval (UnityScript.Scripting.EvaluationContext,string) <IL 0x00007, 0x00059>at Eval.eval (object,object,object) [0x00020] in /CodeSpells/CodeSpells/Project/Assets/Standard Assets/June/Eval/Eval.js:7at StartServer.Update () [0x0005b] in /CodeSpells/CodeSpells/Project/Assets/Vendor/June/Server/StartServer.cs:68
+Java: Java sends to Unity: util.getObjWith("Rock2","Rock2",11.0)
+
+Java: Java gets back from Unity: -360004;-359614;-359482;-359658;-357206;-360026;-359960;-360070;-359718;-360136;Rock2;-359850;-359916;-357118;-359828;-359806;-359740;-360114;-360092;-357250;-359938;-359548;-357162;-359526;-359762;-357272;-357074;-357096;-357140
+Java: Java sends to Unity: empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add("1119455398", empty); 
+
+Java: Java gets back from Unity: 
+Java: Java sends to Unity: objects["1119455398"].transform.position = objects["-360004"].transform.position
+
+Java: Java gets back from Unity: (982.9, 2.5, 1201.4)
+Java: Java sends to Unity: objects["-360004"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359614"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359482"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359658"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357206"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-360026"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359960"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-360070"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359718"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-360136"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["Rock2"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359850"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359916"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357118"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359828"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359806"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359740"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-360114"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-360092"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357250"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359938"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359548"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357162"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359526"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-359762"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357272"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357074"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357096"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: Java sends to Unity: objects["-357140"].transform.parent = objects["1119455398"].transform
+
+Java: Java gets back from Unity: New Game Object(Clone) (UnityEngine.Transform)
+Java: should have gotten enchantedlist
+Java: Java about to block, sending to Unity: objects["-360004"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360004"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360004"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 135 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-359614"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359614"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359614"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 127 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-359482"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359482"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359482"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 135 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-359658"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359658"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359658"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 131 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-357206"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-357206"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-357206"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 138 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-360026"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360026"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360026"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 131 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-359960"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359960"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359960"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 125 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-360070"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360070"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360070"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 118 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-359718"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359718"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-359718"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 140 ms): 1170.21
+Java: Java about to block, sending to Unity: objects["-360136"].transform.position.x = (objects['Rock1'].transform.position).x+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360136"].transform.position.y = (objects['Rock1'].transform.position).y+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;objects["-360136"].transform.position.z = (objects['Rock1'].transform.position).z+((objects['Destination'].transform.position - objects['Rock1'].transform.position).normalized).x*1.0;
+Java: Java sent to Unity
+Java: Java about to block, reading from Unity
+Java: Java gets back from Unity (in 120 ms): 1170.21
