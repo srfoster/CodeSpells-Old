@@ -109,6 +109,10 @@ public class GnomeAI : MonoBehaviour {
 			objToCollect.transform.position = transform.position + transform.forward*2;
 			objToCollect.transform.position = new Vector3(objToCollect.transform.position.x, objToCollect.transform.position.y+1, objToCollect.transform.position.z);
 			objToCollect.transform.parent = transform;
+			if(objToCollect.GetComponent("Evolvable") != null)
+			{
+				(objToCollect.GetComponent("Evolvable") as Evolvable).enabled = false;
+			}
 			return true;
 		}
 		return false;
@@ -155,6 +159,10 @@ public class GnomeAI : MonoBehaviour {
 			objToCollect.tag = outgoingTag;
 			objToCollect.transform.parent = null;
 			armsUp = false;
+			if(objToCollect.GetComponent("Evolvable") != null)
+			{
+				(objToCollect.GetComponent("Evolvable") as Evolvable).enabled = true;
+			}
 			return true;
 		}
 		return false;

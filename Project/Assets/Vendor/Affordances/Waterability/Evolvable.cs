@@ -17,7 +17,10 @@ public class Evolvable : Waterable {
 
 	void convert(GameObject first, GameObject second)
 	{
-		Instantiate(second, first.transform.position, Quaternion.identity);
+		GameObject plant = (Instantiate(second, first.transform.position, Quaternion.identity) as GameObject);
+		
+		plant.transform.position = 
+			new Vector3(plant.transform.position.x, Terrain.activeTerrain.SampleHeight(plant.transform.position), plant.transform.position.z);
 		
 		Destroy(first);
 	}
