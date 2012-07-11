@@ -7,6 +7,8 @@ public class Flamable : MonoBehaviour {
 	
 	private GameObject flames_actual;
 	
+	Texture2D old_texture;
+	
 	void Start()
 	{
 		if(flaming_at_start)
@@ -22,6 +24,18 @@ public class Flamable : MonoBehaviour {
 		
 		flames_actual = Instantiate(flames_prefab, transform.position, Quaternion.identity) as GameObject;
 		flames_actual.transform.parent = transform;
+		
+
+		
+		if(gameObject.GetComponent<Item>() != null)
+		{
+			old_texture = gameObject.GetComponent<Item>().inventoryTexture;
+			try{
+				gameObject.GetComponent<Item>().inventoryTexture = Resources.Load("flaming_"+old_texture.name) as Texture2D;
+			}catch{
+				
+			}
+		}
 	}
 	
 	public bool isIgnited()
@@ -35,6 +49,15 @@ public class Flamable : MonoBehaviour {
 			return;
 
 		Destroy(flames_actual);
+		
+		if(gameObject.GetComponent<Item>() != null && old_texture != null)
+		{
+			try{
+				gameObject.GetComponent<Item>().inventoryTexture = old_texture;
+			}catch{
+				
+			}
+		}
 	}
 	
 	void OnCollisionStay(Collision col)

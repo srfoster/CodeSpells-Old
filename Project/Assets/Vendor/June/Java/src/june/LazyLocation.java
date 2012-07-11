@@ -9,7 +9,11 @@ public class LazyLocation extends Location
 
     public LazyLocation(String string)
     {
-      evals_to_vector3 = string; 
+      evals_to_vector3 = "("+string+")"; 
+    }
+
+    public LazyLocation(double x, double y, double z) {
+      evals_to_vector3 = "(new Vector3("+x+","+y+","+z+"))";
     }
 
     @Override
@@ -33,16 +37,16 @@ public class LazyLocation extends Location
     @Override
     public void times(double scale)
     {
-      post_x = "*" + scale;      
-      post_y = "*" + scale;      
-      post_z = "*" + scale;      
+      post_x += "*" + scale;      
+      post_y += "*" + scale;      
+      post_z += "*" + scale;      
     }
 
     @Override
     public void add(Vector3 loc)
     {
-      post_x = "+" + loc.getXString();      
-      post_y = "+" + loc.getXString();      
-      post_z = "+" + loc.getXString();      
+      post_x += "+" + loc.getXString();      
+      post_y += "+" + loc.getYString();      
+      post_z += "+" + loc.getYString();      
     }
 }

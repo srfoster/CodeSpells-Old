@@ -33,16 +33,20 @@ public class Spellbook : MonoBehaviour {
 	
 	void addInitialPages()
 	{
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
+
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
 
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
 		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
-
 		
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Arch");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire2");
 
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
+		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
 	}
 	
 	IEnumerator Start()
@@ -67,6 +71,7 @@ public class Spellbook : MonoBehaviour {
 			//Gotta parse out the name
 			string[] split = url.Split(new char[]{'/'});
 			string name = split[split.Length - 1];
+			
 			
 			string new_url = "";
 			
@@ -145,9 +150,9 @@ public class Spellbook : MonoBehaviour {
 		int number = matching.Count + 1;
 		
 		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
-		code_scroll_item_component.setCurrentFile(currentPage().name + number + ".java");
+		code_scroll_item_component.setCurrentFile(currentPage().getName() + number + ".java");
 		
-		code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().name, currentPage().name + number));
+		code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));
 	}
 	
 	void displayCurrentPage()
