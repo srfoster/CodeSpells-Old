@@ -11,6 +11,30 @@ public class Util {
 		return UnityEngine.Object.Instantiate (obj, loc, rot) as GameObject;	
 	}
 	
+	public void reregister(string old_id, string new_id)
+	{
+		ObjectManager.Reregister(ObjectManager.FindById(old_id), old_id, new_id);
+	}
+	
+	public string getEnchantedChildrenOf(string id)
+	{
+		GameObject parent = ObjectManager.FindById(id);
+		
+		List<string> ids = new List<string>();
+		
+		foreach(Transform child in parent.transform)
+		{
+			if(child.gameObject.GetComponent<Enchantable>() != null)
+			{
+				ids.Add(child.GetComponent<Enchantable>().getId());
+			}
+		}
+		
+		string[] id_array = ids.ToArray();
+		
+		return string.Join(";",id_array);
+	}
+	
 	public static string getObjWith (string idCenter, string idName, double radius) {
 		int counter = 0;
 		GameObject center = ObjectManager.FindById(idCenter);

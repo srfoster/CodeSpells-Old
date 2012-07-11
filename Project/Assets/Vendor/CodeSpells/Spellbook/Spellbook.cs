@@ -150,9 +150,9 @@ public class Spellbook : MonoBehaviour {
 		int number = matching.Count + 1;
 		
 		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
-		code_scroll_item_component.setCurrentFile(currentPage().name + number + ".java");
+		code_scroll_item_component.setCurrentFile(currentPage().getName() + number + ".java");
 		
-		code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().name, currentPage().name + number));
+		code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));
 	}
 	
 	void displayCurrentPage()

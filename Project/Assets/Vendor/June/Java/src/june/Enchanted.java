@@ -34,6 +34,12 @@ public class Enchanted
 		id = temp;
 	}	
 
+  public void setName(String new_name)
+  {
+    commandGlobal("util.reregister(\""+id+"\",\""+new_name+"\");");
+    setId(id);
+  }
+
 	public Movement movement()
 	{
 		if(movement == null)
