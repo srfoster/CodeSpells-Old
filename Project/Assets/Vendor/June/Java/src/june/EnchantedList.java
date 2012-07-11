@@ -13,7 +13,7 @@ public class EnchantedList extends Enchanted implements Iterable<Enchanted>
         //creates empty gameobject, and names it.
         super("");
         super.setId(""+this.hashCode());
-        super.commandGlobal("empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.layer=2; objects.Add(\""+super.getId()+"\", empty); ");
+        super.commandGlobal("empty = new GameObject(); empty = util.instantiate (empty, Vector3(0,0,0), Quaternion.identity); empty.name =\""+this.hashCode()+"\"; empty.layer=2; objects.Add(\""+super.getId()+"\", empty); ");
         eList = new ArrayList<Enchanted>();
         setEmptyPos = false;
     }

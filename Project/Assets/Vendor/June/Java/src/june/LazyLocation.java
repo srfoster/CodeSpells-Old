@@ -47,6 +47,6 @@ public class LazyLocation extends Location
     {
       post_x += "+" + loc.getXString();      
       post_y += "+" + loc.getYString();      
-      post_z += "+" + loc.getYString();      
+      post_z += "+" + loc.getZString();      
     }
 }

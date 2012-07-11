@@ -20,12 +20,17 @@ public class Util {
 	{
 		GameObject parent = ObjectManager.FindById(id);
 		
+		Debug.Log("getting enchanted children.  parent = " + parent.name);
+		
 		List<string> ids = new List<string>();
 		
 		foreach(Transform child in parent.transform)
 		{
+			Debug.Log("Looking at child " + child.gameObject.name);
 			if(child.gameObject.GetComponent<Enchantable>() != null)
 			{
+				Debug.Log("Found enchanted child = " + child.gameObject.name);
+
 				ids.Add(child.GetComponent<Enchantable>().getId());
 			}
 		}
