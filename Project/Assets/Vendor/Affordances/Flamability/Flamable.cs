@@ -14,7 +14,7 @@ public class Flamable : MonoBehaviour {
 			Ignite();	
 		}
 	}
-	
+
 	public void Ignite()
 	{
 		if(isIgnited())

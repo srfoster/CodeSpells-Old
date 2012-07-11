@@ -32,7 +32,7 @@ public class Seeker : MonoBehaviour {
 	}
 	
 	public WalkingState walk() { //code to walk
-		if(pathIndex < movements.Count)
+		if(pathIndex < movements.Count-1)
 		{
 			NPCFidget fidgets = GetComponent<NPCFidget>();
 	   		fidgets.StartWalking();

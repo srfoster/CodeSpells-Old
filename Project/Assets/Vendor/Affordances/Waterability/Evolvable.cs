@@ -9,10 +9,10 @@ public class Evolvable : Waterable {
 
 	public override void waterEffectOnObject()
 	{
-		if(nearGround())
-		{
+		//if(nearGround())
+		//{
 			convert(gameObject, output);
-		}
+		//}
 	}
 
 	void convert(GameObject first, GameObject second)
@@ -42,7 +42,7 @@ public class Evolvable : Waterable {
 		// Get the height of the seed
 		float ySeed = transform.position.y;
 		
-		float threshold = 0.8f;
+		float threshold = 2f;
 		
 		if(Math.Abs(yTerrain-ySeed) < threshold)
 			return true;
