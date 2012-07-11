@@ -9,7 +9,6 @@ public class TestCarriable : MonoBehaviour {
 	
 	void OnMouseDown()
 	{
-		Debug.Log("HERE");
 		Transform player = GameObject.FindGameObjectWithTag("MainCamera").transform;
 		if(!being_carried)
 		{

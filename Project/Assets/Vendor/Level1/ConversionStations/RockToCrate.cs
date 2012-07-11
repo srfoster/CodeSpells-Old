@@ -20,7 +20,6 @@ public class RockToCrate : ConvertOnEntry {
 	
 	protected override GameObject target()
 	{
-		Debug.Log("Converting to: "+output.gameObject.name);
 		return output;	
 	}
 }

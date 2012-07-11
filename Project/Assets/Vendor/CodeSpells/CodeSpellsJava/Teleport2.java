@@ -8,9 +8,8 @@ public class Teleport2 extends Spell
     Enchanted target = getTarget();            
 
     Location dest = target.getLocation();
-			dest.setY(dest.getY() + 10);
+    dest.adjust(Direction.up(), 10);
 
-    getByName("Player").movement()
-      .teleport(dest);  
+    getByName("Me").setLocation(dest); 
   }
 }

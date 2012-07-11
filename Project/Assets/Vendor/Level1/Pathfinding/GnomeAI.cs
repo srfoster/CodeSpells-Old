@@ -14,7 +14,8 @@ public class GnomeAI : MonoBehaviour {
 	private bool armsUp = false;
 	private bool foundObject = false;
 	private float walkingSpeed = 6;
-	public string tag = "";
+	public string incomingTag = "";
+	public string outgoingTag = "";
 	
 	// Use this for initialization
 	void Start () {
@@ -60,10 +61,10 @@ public class GnomeAI : MonoBehaviour {
 	{
 		if(!foundObject)
 		{
-			foreach( GameObject item in GameObject.FindGameObjectsWithTag(tag))
+			foreach( GameObject item in GameObject.FindGameObjectsWithTag(incomingTag))
 			{
 				//If flour exists, and it hasn't been collected yet, then the gnome should collect it
-				if(item != null && item.transform.parent == null && Vector3.Distance(transform.position, item.transform.position) <= 60)
+				if(item != null && Vector3.Distance(transform.position, item.transform.position) <= 60)
 				{
 					objToCollect = item;
 					objToCollect.tag = "Untagged";
@@ -108,6 +109,10 @@ public class GnomeAI : MonoBehaviour {
 			objToCollect.transform.position = transform.position + transform.forward*2;
 			objToCollect.transform.position = new Vector3(objToCollect.transform.position.x, objToCollect.transform.position.y+1, objToCollect.transform.position.z);
 			objToCollect.transform.parent = transform;
+			if(objToCollect.GetComponent("Evolvable") != null)
+			{
+				(objToCollect.GetComponent("Evolvable") as Evolvable).enabled = false;
+			}
 			return true;
 		}
 		return false;
@@ -151,8 +156,13 @@ public class GnomeAI : MonoBehaviour {
 	{
 		if(objToCollect != null && objToCollect.transform.parent == transform)
 		{
+			objToCollect.tag = outgoingTag;
 			objToCollect.transform.parent = null;
 			armsUp = false;
+			if(objToCollect.GetComponent("Evolvable") != null)
+			{
+				(objToCollect.GetComponent("Evolvable") as Evolvable).enabled = true;
+			}
 			return true;
 		}
 		return false;

@@ -1,8 +1,8 @@
 package june;
 
-import java.util.ArrayList;
+import java.util.*;
 
-public class EnchantedList extends Enchanted 
+public class EnchantedList extends Enchanted implements Iterable<Enchanted>
 {
     //list of enchanted objects
     //add method
@@ -22,7 +22,10 @@ public class EnchantedList extends Enchanted
     {
        super(id);
 
-       String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+       eList = new ArrayList<Enchanted>();
+
+       String list = commandGlobal("util.getEnchantedChildrenOf(\""+this.getId()+"\")");
+       setEmptyPos = true;
        addAllFromUnityString(list);
     }*/
 
@@ -58,5 +61,10 @@ public class EnchantedList extends Enchanted
     public int size()
     {
       return eList.size();
+    }
+
+    public Iterator<Enchanted> iterator()
+    {
+      return eList.iterator();
     }
 }

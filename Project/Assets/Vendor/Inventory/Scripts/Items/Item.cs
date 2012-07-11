@@ -59,7 +59,6 @@ public class Item : MonoBehaviour {
 	
 	virtual public void ClickedInInventory()
 	{
-		Debug.Log("Clicked...");
 	}
 	
 	virtual public void ActiveInInventory()

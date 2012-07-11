@@ -24,6 +24,11 @@ public abstract class Spell
   {
     return Enchant.byName(name);
   }
+
+  protected EnchantedList getListByName(String name)
+  {
+    return new EnchantedList(name);
+  }
     
     
 

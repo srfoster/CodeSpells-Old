@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,11 +9,7 @@ public class Seeker : MonoBehaviour {
 	private int pathIndex = 1;
 	private bool hasCalled = false;
 	private WalkingState currentState = WalkingState.NotStarted;
-	
-	void Start() {
-		
-	}
-	
+
 	public WalkingState getState() {
 		return currentState;
 	}
@@ -32,7 +27,7 @@ public class Seeker : MonoBehaviour {
 	}
 	
 	public WalkingState walk() { //code to walk
-		if(pathIndex < movements.Count)
+		if(pathIndex < movements.Count-1)
 		{
 			NPCFidget fidgets = GetComponent<NPCFidget>();
 	   		fidgets.StartWalking();
@@ -40,8 +35,8 @@ public class Seeker : MonoBehaviour {
 			transform.LookAt (movements[pathIndex]);
 			transform.Translate(Vector3.forward * Time.deltaTime * 6);
 			transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
-			
-			if (Vector3.Distance(transform.position, movements[pathIndex]) < 1) {
+
+			if (Vector3.Distance(transform.position, movements[pathIndex]) < Random.Range(1,4)) {
 				pathIndex++;
 			}
 			return currentState;
@@ -51,6 +46,3 @@ public class Seeker : MonoBehaviour {
 		return WalkingState.ReachedDestination;
 	}
 }
-
-
-

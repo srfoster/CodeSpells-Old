@@ -6,7 +6,9 @@ public class Levitate extends Spell
     public void cast()
     { 
         //move rock to firepit
-        Enchanted 
+        
+        //git checkout -- 
+        git checkout -- Project/Assets/Vendor/Level1/JeffsVersion.unity Project/Assets/Vendor/Level1/ConversionStations/IngredientsToBread.cs Project/Assets/Vendor/June/Java/src/june/Enchanted.java Project/Assets/Standard\ Assets/Skyboxes/Sunny3\ Skybox.mat 
         
         
         

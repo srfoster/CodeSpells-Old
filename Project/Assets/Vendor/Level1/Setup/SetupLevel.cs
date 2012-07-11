@@ -27,7 +27,7 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupJune()).Init();		
 		(new SetupConversations()).Init();		
 		(new SetupHighlighter()).Init();
-		(new SetupSpellbook()).Init();
+		//(new SetupSpellbook()).Init();
 
 		
 		ObjectManager.Register(GameObject.Find("First Person Controller"), "Me");

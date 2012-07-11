@@ -5,9 +5,7 @@ public class ProcGenerate : MonoBehaviour {
 	
 	public GameObject prefab;
 	
-	//public int number = 10;
 	public int number = 20;
-	
 	
 	void Start () {
 		for(int i = 0; i < number; i++)
@@ -19,14 +17,7 @@ public class ProcGenerate : MonoBehaviour {
 			obj.transform.RotateAround(obj.transform.position, Vector3.up, random_angle()); //Spin them a bit
 			obj.transform.RotateAround(obj.transform.position, Vector3.left, random_angle()); //Spin them a bit
 			obj.transform.RotateAround(obj.transform.position, Vector3.forward, random_angle()); //Spin them a bit
-			
-			//Fix height
-		//	adjust_to_terrain(obj);
 		}
-	}
-	
-	void Update() {
-		
 	}
 	
 	Vector3 random_location()
@@ -46,17 +37,5 @@ public class ProcGenerate : MonoBehaviour {
 	float random_angle()
 	{
 		return 360 * Random.value;
-	}
-	
-	void adjust_to_terrain(GameObject obj)
-	{
-		Vector3 old_pos = obj.transform.position;
-		
-		float yadj = Terrain.activeTerrain.SampleHeight(old_pos);
-		yadj = obj.transform.localScale.y * Random.value; //Some height variation
-		
-		Vector3 new_pos = new Vector3(old_pos.x, yadj, old_pos.z);
-		
-		obj.transform.position = new_pos;
 	}
 }
