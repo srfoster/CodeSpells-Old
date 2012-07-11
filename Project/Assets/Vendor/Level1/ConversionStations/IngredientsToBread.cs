@@ -12,19 +12,22 @@ public class IngredientsToBread : MonoBehaviour {
 		
 	void OnTriggerStay(Collider col)
 	{
+		if(col.gameObject.transform.parent != null)
+			return;
 		if(col.gameObject.GetComponent<Ingredient>() == null)
 			return;
-		if(col.gameObject.GetComponent<Ingredient>().isRock()) {
+		if(col.gameObject.GetComponent<Ingredient>().isRock() && !numRocks.Contains(col.gameObject)) {
 			numRocks.Add (col.gameObject);
 		}
-		else if(col.gameObject.GetComponent<Ingredient>().isPlant()) {
+		else if(col.gameObject.GetComponent<Ingredient>().isPlant()&& !numPlants.Contains(col.gameObject)) {
 			numPlants.Add (col.gameObject);
 		}
 		else
 			return;
-		
+
 		if((numRocks.Count > 0) && (numPlants.Count > 0)) {
 			//create a bread object
+			DestroyObjects();
 			Destroy(numRocks[0]);
 			numRocks.RemoveAt (0);
 			Destroy(numPlants[0]);
@@ -34,5 +37,10 @@ public class IngredientsToBread : MonoBehaviour {
 			
 			return;
 		}
+	}
+	
+	public void DestroyObjects()
+	{
+		
 	}
 }
