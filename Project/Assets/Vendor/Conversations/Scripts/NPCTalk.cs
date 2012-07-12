@@ -9,7 +9,25 @@ public class NPCTalk : MonoBehaviour {
 	private bool talked = false; 
 	
 	public string convo_file;
-	private QuestChecker quest = new QuestChecker();
+	enum whichQuest {Fire=1, River}; 
+	public int questIndex;
+	private QuestChecker quest;
+	
+	void Start()
+	{
+		switch((whichQuest) questIndex)
+		{
+		case whichQuest.Fire:
+			quest = new FireQuestChecker();
+			break;
+		case whichQuest.River:
+			quest = new RiverQuestChecker();
+			break;
+		default:
+			quest = new NonQuestChecker();
+			break;
+		}
+	}
 	
 	void OnTriggerEnter (Collider collider) {
 
@@ -24,13 +42,12 @@ public class NPCTalk : MonoBehaviour {
 		// Initialize a conversation if one hasn't started yet
 		if(!talked)
 		{
+			Debug.Log("haven't talked");
 			talked = true;
 			convo = new GraphConversation(convo_file);
 		}
 		
 		ConversationDisplayer c = GameObject.Find("ConversationDisplayer").GetComponent(typeof(ConversationDisplayer)) as ConversationDisplayer;
-		
-		// TODO: Need to determine if the action was completed
 		
 		// Begin the conversation displayer
 		c.Converse(convo, quest);
