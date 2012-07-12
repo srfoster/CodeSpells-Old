@@ -90,6 +90,12 @@ public class GnomeAI : MonoBehaviour {
 	
 	private bool walkToObject()
 	{
+		if(objToCollect == null || objToCollect.transform == null)
+		{
+			foundObject = false;
+			currentState = ActionState.Find;
+			return false;
+		}
 		transform.LookAt (objToCollect.transform);
 		transform.Translate(Vector3.forward * Time.deltaTime * walkingSpeed);
 		transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
@@ -104,6 +110,8 @@ public class GnomeAI : MonoBehaviour {
 		if(leftHand != null && rightHand != null)
 		{
 			armsUp = true;
+			if(objToCollect == null)
+				currentState = ActionState.Find;
 			objToCollect.transform.rotation = transform.rotation;
 			objToCollect.transform.position = transform.position + transform.forward*2;
 			objToCollect.transform.position = new Vector3(objToCollect.transform.position.x, objToCollect.transform.position.y+1, objToCollect.transform.position.z);

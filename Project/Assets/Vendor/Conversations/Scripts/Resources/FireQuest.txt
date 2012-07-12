@@ -1,0 +1,18 @@
+Nodes
+0=This is unfair, my brother's fire is so amazing, but my fire has gone out, can you help me re-ignite my fire?
+1=Well I would look in your spell book, there must be something in there about fire...
+2=Did you find the Flame spell? You can copy it to your inventory and then drag it onto items you want to enchant.
+3=Thank you so much for igniting my fire again! My brother is going to be se jealous!
+4=Now that you know how to ignite fires, try putting fires out.
+5=You can use your ignite spell, and change the onFire parameter "true" to "false", try it!
+6=You are a fire pro now! I don't have anything else to teach you :)
+Responses
+0=How?=0=1
+Exits
+0=Exit=0=0=0
+1=Exit=1=2=2
+2=Ok!=2=2=3
+3=No problem!=3=4=4
+4=Ok!=4=5=5
+5=Exit=5=6=6
+6=Exit=6=6=6

@@ -11,7 +11,6 @@ public class Monster : MonoBehaviour {
 	float alphaFadeValue = 0;
 	float amount_rotated = 0f;
 
-	
 	bool alive = true;
 	bool turning = true;
 	
@@ -19,10 +18,8 @@ public class Monster : MonoBehaviour {
 	Quaternion starting_rotation;
 	
 	void Start(){
-	//	Attack();	
 		starting_location = transform.position;
 		starting_rotation = transform.rotation;
-		
 	}
 	
 	public void Attack () {
@@ -60,7 +57,6 @@ public class Monster : MonoBehaviour {
 		}
 	}
 	
-	
 	void UpdateAttack()
 	{
 		Vector3 destination = GameObject.FindWithTag("Player").transform.position;
@@ -86,7 +82,6 @@ public class Monster : MonoBehaviour {
 		child.animation.CrossFade("run");
 	}
 	
-		
  	IEnumerator KillPlayer() 
 	{
 		alphaFadeValue = 1;
@@ -96,11 +91,8 @@ public class Monster : MonoBehaviour {
 		
 		yield return new WaitForSeconds(2);
 		
-		
-
 		GameObject start = GameObject.FindGameObjectWithTag("Respawn");
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		
 		
 		player.transform.position = start.transform.position;
 		

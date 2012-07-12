@@ -1,0 +1,22 @@
+Nodes
+0=That river monster is scary! If you touch the water or jump over it he attacks!
+1=Hmm, you must need a spell to help you get across. Try looking in your spell book.
+2=Did you find a spell that you can use?
+3=Try them out by copying them out of your book and casting them by dragging them into the world.
+4=I think you will want to teleport yourself to an object on the other side of the river.
+5=You did it! You got across the river safely!
+6=Try the spell called "Teleport" and cast it on a rock that is on the other side of the river. You will know if you are casting it because the rock will light up green when you drag the spell onto it.
+7=Try experimenting with other ways of crossing the river.
+Responses
+0=How can I get across?=0=1
+1=I found a few that might work=2=3
+2=I don't know which ones would help=2=4
+Exits
+0=Exit=0=0=0
+1=OK=1=2=2
+2=Exit=2=2=2
+3=OK=3=4=5
+4=OK=4=6=5
+5=Exit=5=7=7
+6=OK=6=6=5
+7=OK=7=7=7
