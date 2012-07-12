@@ -49,6 +49,9 @@ public class EnchantedList extends Enchanted implements Iterable<Enchanted>
         eList.add(ench);
     }
     
+    //public void remove(Enchanted ench) {
+        
+    //}
     
     public Enchanted get(int index)
     {

@@ -2,14 +2,14 @@ package june;
 
 public class LazyLocation extends Location
 {
-    String evals_to_vector3;
+    String evals_to_vector3; //normalized direction
     String post_x = "";
     String post_y = "";
     String post_z = "";
 
     public LazyLocation(String string)
     {
-      evals_to_vector3 = "("+string+")"; 
+      evals_to_vector3 = "("+string+")";
     }
 
     public LazyLocation(double x, double y, double z) {

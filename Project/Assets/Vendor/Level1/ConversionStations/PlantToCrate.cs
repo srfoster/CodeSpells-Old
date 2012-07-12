@@ -13,7 +13,6 @@ public class PlantToCrate : ConvertOnEntry {
 		
 		if(!(plant.GetComponent("Substance") as Substance).isPlant())
 			return false;
-		
 		if(plant.GetComponent("Growable") == null)
 			return false;
 

@@ -12,9 +12,10 @@ public abstract class Location implements Vector3
     }
     
     public void adjust(Vector3 dir, double scale) {
-      dir.times(scale);
+        //Vector3 dir is a unit vector
+        dir.times(scale);
 
-      add(dir);
+        add(dir);
     }
 
     public abstract void add(Vector3 v);
