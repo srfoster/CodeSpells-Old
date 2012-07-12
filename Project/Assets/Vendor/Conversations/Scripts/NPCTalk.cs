@@ -9,10 +9,10 @@ public class NPCTalk : MonoBehaviour {
 	private bool talked = false; 
 	
 	public string convo_file;
+	private QuestChecker quest = new QuestChecker();
 	
 	void OnTriggerEnter (Collider collider) {
-		
-		
+
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		
 		if(collider.gameObject != player)
@@ -33,7 +33,7 @@ public class NPCTalk : MonoBehaviour {
 		// TODO: Need to determine if the action was completed
 		
 		// Begin the conversation displayer
-		c.Converse(convo);
+		c.Converse(convo, quest);
 		
 	}
 	
@@ -46,9 +46,9 @@ public class NPCTalk : MonoBehaviour {
 		
 		ConversationDisplayer c = GameObject.Find("ConversationDisplayer").GetComponent(typeof(ConversationDisplayer)) as ConversationDisplayer;
 		// Set the conversation to the proper return point
-		convo.endConversation();
+		convo.resetConversation(false);
 		
 		// End the conversation displayer
-		c.Converse(null);
+		c.Converse(null, quest);
 	}
 }

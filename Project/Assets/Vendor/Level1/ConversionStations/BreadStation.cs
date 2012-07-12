@@ -10,17 +10,25 @@ public class BreadStation : MonoBehaviour {
 	private float breadOffset = 1.0f;
 	
 	public void addBread() {
-		float randRadius = Random.Range (0f, (float)(transform.localScale.x/2-breadOffset));
-		float randAngle = Random.Range (0f, 2*Mathf.PI);
-		float xDistance = transform.position.x + randRadius*Mathf.Cos (randAngle);
-		float zDistance = transform.position.z + randRadius*Mathf.Sin (randAngle);
+		float randRadius;
+		float randAngle;
+		float xDistance;
+		float zDistance;
+		Vector3 breadPos;
+		GameObject actBread;
 		
-		
-		Vector3 breadPos = new Vector3(xDistance, Terrain.activeTerrain.SampleHeight(transform.position), zDistance);
-		
-		GameObject actBread = (Instantiate(bread, breadPos, Quaternion.identity) as GameObject);
-		breadList.Add(actBread);
-	//	actBread.AddComponent("DisplayOnMinimap");
+		for(int i = 0; i < 3; i++)
+		{
+			randRadius = Random.Range (0f, (float)(transform.localScale.x/2-breadOffset));
+			randAngle = Random.Range (0f, 2*Mathf.PI);
+			xDistance = transform.position.x + randRadius*Mathf.Cos (randAngle);
+			zDistance = transform.position.z + randRadius*Mathf.Sin (randAngle);
+			
+			breadPos = new Vector3(xDistance, Terrain.activeTerrain.SampleHeight(transform.position), zDistance);
+			
+			actBread = (Instantiate(bread, breadPos, Quaternion.identity) as GameObject);
+			breadList.Add(actBread);
+		}
 	}
 	
 	public bool isEmpty() {

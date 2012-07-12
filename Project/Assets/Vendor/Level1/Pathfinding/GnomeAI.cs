@@ -24,7 +24,7 @@ public class GnomeAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//Debug.Log(transform.gameObject.name + " is " + currentState.ToString());
 		if(currentState == ActionState.Find)
 		{
 			if(Find())
@@ -63,7 +63,6 @@ public class GnomeAI : MonoBehaviour {
 		{
 			foreach( GameObject item in GameObject.FindGameObjectsWithTag(incomingTag))
 			{
-				//If flour exists, and it hasn't been collected yet, then the gnome should collect it
 				if(item != null && Vector3.Distance(transform.position, item.transform.position) <= 60)
 				{
 					objToCollect = item;
@@ -180,7 +179,21 @@ public class GnomeAI : MonoBehaviour {
 	
 	public bool Eat()
 	{
-		return true;
+		if(!incomingTag.Equals("Bread"))
+		{
+			foreach( GameObject item in GameObject.FindGameObjectsWithTag("Food"))
+			{
+				if(item != null && Vector3.Distance(transform.position, item.transform.position) <= 10)
+				{
+					Destroy(item);
+					return true;
+				}
+			}
+		}
+		else
+			return true;
+		
+		return false;
 	}
 	
 	public bool Walk()
