@@ -18,7 +18,7 @@ public class EnchantedList extends Enchanted implements Iterable<Enchanted>
         setEmptyPos = false;
     }
 
-    /*public EnchantedList(String id)
+    public EnchantedList(String id)
     {
        super(id);
 
@@ -27,7 +27,7 @@ public class EnchantedList extends Enchanted implements Iterable<Enchanted>
        String list = commandGlobal("util.getEnchantedChildrenOf(\""+this.getId()+"\")");
        setEmptyPos = true;
        addAllFromUnityString(list);
-    }*/
+    }
 
     public void addAllFromUnityString(String list)
     {

@@ -5,28 +5,32 @@ public class Levitate extends Spell
 {
     public void cast()
     { 
-        //move rock to firepit
+        Enchanted destination = getByName("Dest");
+        Enchanted center = getTarget();
         
-        //git checkout -- 
-        git checkout -- Project/Assets/Vendor/Level1/JeffsVersion.unity Project/Assets/Vendor/Level1/ConversionStations/IngredientsToBread.cs Project/Assets/Vendor/June/Java/src/june/Enchanted.java Project/Assets/Standard\ Assets/Skyboxes/Sunny3\ Skybox.mat 
+        while (center.distanceBetween(destination) > 2.5) {
+            center.move(Direction.between(center,destination), 2.0);
+        }
         
         
         
+        //EnchantedList list = center.findLike(center, 25.0);
         
-        /*Enchanted end = getByName("End");
-        Enchanted start = getByName("Start");
+        /*for(int i = 0; i < 1; i++) {
+            Enchanted currentRock = list.get(i);
+            currentRock.move(Direction.between(currentRock,destination), 2.0);
+        }*/
         
-        EnchantedList list = getListByName("Rocks");
-        Direction direction = Direction.between(start,end);
+        /*Direction direction = Direction.between(start,destination);
 
         Location last = start.getLocation();
         
         
-        for(Enchanted e : list)
+        for(int i = 0; i < list.size(); i++)
         {
             last.add(direction);
-            e.setLocation(last);
-            last = e.getLocation();
+            list.get(i).setLocation(last);
+            last = list.get(i).getLocation();
         }*/
 
     }

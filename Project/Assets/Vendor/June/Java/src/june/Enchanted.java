@@ -32,24 +32,12 @@ public class Enchanted
 	{
 		id = temp;
 	}	
-<<<<<<< HEAD
-=======
 
   public void setName(String new_name)
   {
     commandGlobal("util.reregister(\""+id+"\",\""+new_name+"\");");
     setId(id);
   }
-
-	public Movement movement()
-	{
-		if(movement == null)
-			movement = new Movement(this);		
-
-
-		return movement;
-	}
->>>>>>> 1b6883993580a7b3d72ff2754962f1d7e11dafef
     
     
     public static String commandGlobal (String command) 
@@ -150,6 +138,10 @@ public class Enchanted
         EnchantedList eList = new EnchantedList();
         eList.addAllFromUnityString(list);
         return eList;
+    }
+    
+    public double distanceBetween(Enchanted ench) {
+        return Double.parseDouble(command("Vector3.Distance($target.transform.position , objects[\""+ench.getId()+"\"].transform.position)"));
     }
     
   public void move(Direction dir, double speed)
