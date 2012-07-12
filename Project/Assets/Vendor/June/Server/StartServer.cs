@@ -50,42 +50,35 @@ public class StartServer : MonoBehaviour
 		server.applicationRunning = false;	
 	}
 	
-		
 	void Update () {
-
-
-			if(queue.notEmpty())
-			{
-				CallResponse call = queue.remove();
+		if(queue.notEmpty())
+		{
+			CallResponse call = queue.remove();
+			
+			try{
+				Debug.Log("Trying to eval '" + call.getCall() + "'");
 				
-				try{
-					Debug.Log("Trying to eval '" + call.getCall() + "'");
-					
-					if(call.getCall().Equals("\n"))
-					{
-						call.setResponse("");
-					} else{ 
-						object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
-					
-						string response = "";
-						if(ret != null)
-						response = ret.ToString();
-					
-						Debug.Log("Response was " + response);
-						call.setResponse(response);
-					}
-					call.respond();
-
-				} catch(Exception e) {
-					Debug.Log(e.Message);
-					Debug.Log(e.StackTrace);
-					call.setResponse("Error: " + e.ToString().Replace("\n",""));
-					call.respond();
+				if(call.getCall().Equals("\n"))
+				{
+					call.setResponse("");
+				} else{ 
+					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
+				
+					string response = "";
+					if(ret != null)
+					response = ret.ToString();
+				
+					Debug.Log("Response was " + response);
+					call.setResponse(response);
 				}
-		
-		}
-		
+				call.respond();
 
+			} catch(Exception e) {
+				Debug.Log(e.Message);
+				Debug.Log(e.StackTrace);
+				call.setResponse("Error: " + e.ToString().Replace("\n",""));
+				call.respond();
+			}
+		}
 	}
-	
 }

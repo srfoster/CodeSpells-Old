@@ -54,8 +54,12 @@ public class ConversationDisplayer : MonoBehaviour {
 		}
 	}
 	
-	public void Converse(Conversation conversation)
+	public void Converse(Conversation conversation, QuestChecker quest)
 	{
+		if(quest.checkIfCompleted())
+		{
+			conversation.resetConversation(true);
+		}
 		this.conversation = conversation;
 	}
 }

@@ -7,7 +7,7 @@ public class Graph {
 	private ArrayList nodes;
 	private ArrayList edges;
 	private Dictionary<Node, ArrayList> graph;
-	private readonly bool debug = true;
+	private readonly bool debug = false;
 	
 	public Graph(string convo_file)
 	{
@@ -71,7 +71,7 @@ public class Graph {
 				else if(readExits)
 				{
 					string [] split = txt.Split('='); 
-					this.addExit(System.Int32.Parse(split[0]), split[1], System.Int32.Parse(split[2]), System.Int32.Parse(split[3]));//, System.Int32.Parse(split[4]));
+					this.addExit(System.Int32.Parse(split[0]), split[1], System.Int32.Parse(split[2]), System.Int32.Parse(split[3]), System.Int32.Parse(split[4]));
 				}
 				txt = reader.ReadLine();
 			}
@@ -110,9 +110,9 @@ public class Graph {
 	}
 	
 	// Adds exit edges to the graph
-	public void addExit(int p_id, string p_statement, int p_fromNode, int p_toNode)//, int p_altToNode)
+	public void addExit(int p_id, string p_statement, int p_fromNode, int p_toNode, int p_altToNode)
 	{
-		Response temp = new Response(p_statement, p_fromNode, p_toNode);//, p_altToNode);
+		Response temp = new Response(p_statement, p_fromNode, p_toNode, p_altToNode);
 		temp.setIsExit(true);
 		edges.Insert(p_id, temp);
 		foreach (KeyValuePair<Node, ArrayList> pair in graph)
@@ -122,7 +122,7 @@ public class Graph {
 		}
 		
 		if(debug)
-			Debug.Log("Added Response: "+p_id+"\n\tfrom: "+p_fromNode+"\n\tto: "+p_toNode);//+"\n\tAlternative to: "+p_altToNode);
+			Debug.Log("Added Response: "+p_id+"\n\tfrom: "+p_fromNode+"\n\tto: "+p_toNode+"\n\tAlternative to: "+p_altToNode);
 	}
 	
 	// Returns the node that matches this ID
@@ -153,7 +153,7 @@ public class Graph {
 	}
 	
 	// Finds the exit response for this node
-	public Node getReentryNode(int p_id)
+	public Node getReentryNode(int p_id, bool alt)
 	{
 		if(debug)
 			Debug.Log("Getting Exit Response for Node: "+p_id);
@@ -164,9 +164,13 @@ public class Graph {
 			{
 				foreach (Response response in pair.Value)
 				{
-					if(response.isExit())
+					if(response.isExit() && !alt)
 					{
 						return this.getNode(response.getNextNode());
+					}
+					else if(response.isExit() && alt)
+					{
+						return this.getNode(response.getAltNextNode());
 					}
 				}
 			}

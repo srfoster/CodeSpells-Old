@@ -8,10 +8,8 @@ public class GraphConversation : Conversation {
 	private Node initialNode = null;
 	private Node currentNode = null;
 	private Graph g = null;
-	private readonly bool debug = true;
+	private readonly bool debug = false;
 	private static readonly int INIT = 0;
-	
-	
 	
 	public GraphConversation(string convo_file)
 	{
@@ -46,8 +44,8 @@ public class GraphConversation : Conversation {
 	
 	// Sets up the conversation so that when the player returns, the
 	// conversation continues properly
-	public override void endConversation()
+	public override void resetConversation(bool alt)
 	{
-		currentNode = g.getReentryNode(currentNode.getId());	
+		currentNode = g.getReentryNode(currentNode.getId(), alt);	
 	}
 }
