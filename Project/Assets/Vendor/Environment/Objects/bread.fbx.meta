@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: a6c83f4a59d2f4d2a9a4be88ae2bc3e0
+guid: 6b9548be9b025434e85997dcc9915eef
 ModelImporter:
   fileIDToRecycleName:
-    4300000: default
+    4300000: Cube
+    7400000: Default Take //// bread
   serializedVersion: 10
   materials:
     importMaterials: 1
@@ -20,7 +21,7 @@ ModelImporter:
     clipAnimations: []
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     swapUVChannels: 0
@@ -47,7 +48,7 @@ ModelImporter:
       data:
         first: 111
         second: 605fa900
-    default:
+    Cube:
       data:
         first: 1
         second: a2860100

@@ -17,8 +17,8 @@ public class DisplayOnMinimap : MonoBehaviour {
 		
 		Material my_material = new Material(Shader.Find("Diffuse"));
 		
-		triangle.transform.FindChild("default").gameObject.renderer.material = my_material;
-		triangle.transform.FindChild("default").gameObject.renderer.material.color = color;
+		triangle.transform.FindChild("Mesh").gameObject.renderer.material = my_material;
+		triangle.transform.FindChild("Mesh").gameObject.renderer.material.color = color;
 	}
 	
 	void Update () {
