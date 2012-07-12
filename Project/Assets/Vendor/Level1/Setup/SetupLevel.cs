@@ -109,7 +109,7 @@ public class SetupLevel : MonoBehaviour {
 		
 		
 		
-		badgebook.Replace("helping_others_light_fire", "completed_helping_others_light_fire", "  Light Fire", "new_icon_name", true);
+		//badgebook.Replace("helping_others_light_fire", "completed_helping_others_light_fire", "  Light Fire", "new_icon_name", true);
 	}
 	
 	void givePlayerAScroll()

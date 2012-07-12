@@ -16,16 +16,7 @@ public class IngredientsToBread : MonoBehaviour {
 			return;
 		if(col.gameObject.GetComponent<Ingredient>() == null)
 			return;
-<<<<<<< HEAD
-		if(col.gameObject.GetComponent<Ingredient>().isRock()) {
-			//Debug.Log("Found a rock ingredient!");
-			numRocks.Add (col.gameObject);
-		}
-		else if(col.gameObject.GetComponent<Ingredient>().isPlant()) {
-			//Debug.Log("Found a plant ingredient!");
-=======
 		if(col.gameObject.GetComponent<Ingredient>().isRock() && !numRocks.Contains(col.gameObject)) {
->>>>>>> 01849c7a10afb9fafa69e35e8016ffaa7cdcd5d1
 			numRocks.Add (col.gameObject);
 		}
 		else if(col.gameObject.GetComponent<Ingredient>().isPlant()&& !numPlants.Contains(col.gameObject)) {
