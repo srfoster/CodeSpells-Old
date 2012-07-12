@@ -15,12 +15,10 @@ public class BreadStation : MonoBehaviour {
 		float xDistance = transform.position.x + randRadius*Mathf.Cos (randAngle);
 		float zDistance = transform.position.z + randRadius*Mathf.Sin (randAngle);
 		
-		
 		Vector3 breadPos = new Vector3(xDistance, Terrain.activeTerrain.SampleHeight(transform.position), zDistance);
 		
-		GameObject actBread = (Instantiate(bread, breadPos, Quaternion.identity) as GameObject);
-		breadList.Add(actBread);
-	//	actBread.AddComponent("DisplayOnMinimap");
+		//GameObject actBread = (Instantiate(bread, breadPos, Quaternion.identity) as GameObject);
+		//breadList.Add(actBread);
 	}
 	
 	public bool isEmpty() {
