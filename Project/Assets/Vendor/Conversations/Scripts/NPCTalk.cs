@@ -9,7 +9,7 @@ public class NPCTalk : MonoBehaviour {
 	private bool talked = false; 
 	
 	public string convo_file;
-	enum whichQuest {Fire=1, PickUp, River}; 
+	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport}; 
 	public int questIndex;
 	private QuestChecker quest;
 	
@@ -25,6 +25,18 @@ public class NPCTalk : MonoBehaviour {
 			break;
 		case whichQuest.River:
 			quest = new RiverQuestChecker();
+			break;
+		case whichQuest.Extinguish:
+			quest = new ExtinguishQuestChecker();
+			break;
+		case whichQuest.Levitate:
+			quest = new LevitateQuestChecker();
+			break;
+		case whichQuest.Fly:
+			quest = new FlyQuestChecker();
+			break;
+		case whichQuest.Transport:
+			quest = new TransportQuestChecker();
 			break;
 		default:
 			quest = new NonQuestChecker();
