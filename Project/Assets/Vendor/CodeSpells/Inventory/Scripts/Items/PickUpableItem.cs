@@ -40,8 +40,6 @@ public class PickUpableItem : DraggableItem {
 				has_set_focus = true;
 			}
 		}
-		
-
 	}
 	
 	public override void DroppedOn(GameObject target)

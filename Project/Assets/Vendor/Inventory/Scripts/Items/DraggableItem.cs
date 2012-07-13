@@ -4,10 +4,6 @@ using System.Collections;
 
 public class DraggableItem : Item {
 	
-
-	
-
-	
 	public override void ActiveInInventory()
 	{
 		if(Input.GetMouseButton(0))
@@ -22,7 +18,6 @@ public class DraggableItem : Item {
 	{
 		SetHidden(true);
 		getInventory().SetDragged(gameObject);
-
 	}
 	
 	virtual protected void Drop()
@@ -30,8 +25,6 @@ public class DraggableItem : Item {
 		SetActive(false);
 		getInventory().SetDragged(null);
 		
-		//
-
 	    if(getInventory().MouseOverInventory()) // If we're back in the inventory
 	    {
 			DroppedOnInventory(Input.mousePosition);

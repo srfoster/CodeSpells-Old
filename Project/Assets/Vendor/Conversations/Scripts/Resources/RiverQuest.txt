@@ -1,22 +1,18 @@
 Nodes
-0=That river monster is scary! If you touch the water or jump over it he attacks!
-1=Hmm, you must need a spell to help you get across. Try looking in your spell book.
-2=Did you find a spell that you can use?
-3=Try them out by copying them out of your book and casting them by dragging them into the world.
-4=I think you will want to teleport yourself to an object on the other side of the river.
-5=You did it! You got across the river safely!
-6=Try the spell called "Teleport" and cast it on a rock that is on the other side of the river. You will know if you are casting it because the rock will light up green when you drag the spell onto it.
-7=Try experimenting with other ways of crossing the river.
+0=I hear you are supposed to deliver a present to me.
+1=Do you have my presents?
+2=Oh, go back across the river and talk to my friend standing by the beach, he'll tell you what you need to do.
+3=Can you drag my present out of your inventory so that I can have it?
+4=Thank goodness you were smart enough to cross the river without getting eaten! Otherwise I would have never gotten my present!"
+5=Try experimenting with other ways of crossing the river.
 Responses
-0=How can I get across?=0=1
-1=I found a few that might work=2=3
-2=I don't know which ones would help=2=4
+0=Yes, I am.=0=1
+1=I didn't know I was supposed to.=0=2
+2=Yes, I do!=1=3
 Exits
-0=Exit=0=0=0
-1=OK=1=2=2
-2=Exit=2=2=2
-3=OK=3=4=5
-4=OK=4=6=5
-5=Exit=5=7=7
-6=OK=6=6=5
-7=OK=7=7=7
+0=Exit=0=0=4
+1=Exit=1=1=4
+2=OK=2=1=4
+3=OK=3=3=4
+4=No Problem!=4=5=5
+5=OK=5=5=5

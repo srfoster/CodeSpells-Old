@@ -80,12 +80,12 @@ public class SetupLevel : MonoBehaviour {
 		inventory.addItem(book);
 		
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
-		
-		
+		//badgebook.Replace("helping_others_light_fire", "completed_helping_others_light_fire", "  Light Fire", "new_icon_name", true);
+	
 		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"test_badge", false);
-		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"test_badge", false);
+		badgebook.Add("helping_others_pick_up_item", 	"  Pick Up Item", 				"test_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"test_badge", false);
-		badgebook.Add("helping_others_make_bread", 		"  Make Bread", 				"test_badge", false);
+		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"test_badge", false);
 		
 		
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"test_badge", false);
@@ -104,10 +104,6 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("learning_the_craft_first_if", 		"  First Conditional Modification", 			"test_badge", false);
 		badgebook.Add("learning_the_craft_first_list", 		"  First List", 								"test_badge", false);
 		*/
-		
-
-		
-		
 		
 		//badgebook.Replace("helping_others_light_fire", "completed_helping_others_light_fire", "  Light Fire", "new_icon_name", true);
 	}

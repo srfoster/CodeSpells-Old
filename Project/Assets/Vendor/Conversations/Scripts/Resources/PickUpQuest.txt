@@ -1,0 +1,30 @@
+Nodes
+0=I really need to send my friend this crate of presents! Maybe you can take my friend the presents?
+1=Well first you need to click on my crate, then it will appear in your inventory.
+2=Make sure you pick up my presents first! Just click on my presents crate.
+3=Awesome! Now that you have my presents you can get across the river and deliver them for me!
+4=If you try going through the water the scary monster will get you...Hmm, you must need a spell to help you get across. Try looking in your spell book.
+5=Did you find a spell that you can use?
+6=Try them out by copying them out of your book and casting them by dragging them into the world.
+7=I think you will want to teleport yourself to an object on the other side of the river.
+8=You did it! You got across the river safely!
+9=Try the spell called "Teleport" and cast it on a rock that is on the other side of the river. You will know if you are casting it because the rock will light up green when you drag the spell onto it.
+10=You are a fearless wizard!
+Responses
+0=Sure, how do I do that?=0=1
+1=How do I get across the river?=3=4
+2=I found a few that might work.=5=6
+3=I don't know which ones would help.=5=7
+4=Yeah! I understand teleporting now!=8=10
+Exits
+0=Exit=0=0=3
+1=OK=1=2=3
+2=OK=2=2=3
+3=OK=3=3=3
+4=OK=4=5=5
+5=Exit=5=5=8
+6=OK=6=9=8
+7=OK=7=9=8
+8=Exit=8=8=8
+9=OK=9=9=8
+10=Thanks!=10=10=10
