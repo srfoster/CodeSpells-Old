@@ -80,36 +80,32 @@ public class SetupLevel : MonoBehaviour {
 		inventory.addItem(book);
 		
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
-		
-		
-		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"complete_helping_others_badge", false);
-		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"complete_crossing_river_badge", false);
-		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"complete_light_fire_badge", false);
-		badgebook.Add("helping_others_make_bread", 		"  Make Bread", 				"test_badge", false);
-		
-		
-		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"test_badge", false);
-		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"test_badge", false);
-		badgebook.Add("reading_your_book_levitate", 		"  Novice Levitation", 			"test_badge", false);
-		badgebook.Add("reading_your_book_adv_levitate", 	"  Adept Levitation", 			"test_badge", false);
-		badgebook.Add("reading_your_book_flight", 			"  Flight", 					"test_badge", false);
-		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"test_badge", false);
-		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"test_badge", false);
-		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"test_badge", false);
+	
+		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"incomplete_helping_others_badge", false);
+		badgebook.Add("helping_others_pickin_up_stuff",	"  Pickin up Stuff", 			"incomplete_pickin_up_stuff", false);
+		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
+		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
+		badgebook.Add("helping_others_out_of_reach", 	"  Out of Reach", 				"incomplete_out_of_reach_badge", false);
+		badgebook.Add("helping_others_putting_high", 	"  New Heights", 				"incomplete_new_heights_badge", false);
+		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_firefighter_badge", false);
 
 		
+		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
+		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"incomplete_cast_flame_badge", false);
+		badgebook.Add("reading_your_book_levitate", 		"  Novice Levitation", 			"incomplete_cast_levitation_badge", false);
+		badgebook.Add("reading_your_book_adv_levitate", 	"  Adept Levitation", 			"incomplete_cast_adv_levitation_bagde", false);
+		badgebook.Add("reading_your_book_flight", 			"  Flight", 					"incomplete_cast_flight_badge", false);
+		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
+		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
+		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
+
+		/*
 		badgebook.Add("learning_the_craft", 				"LEARNING THE CRAFT", 							"test_badge", false);
 		badgebook.Add("learning_the_craft_first_mod", 		"  First Spell Modification", 					"test_badge", false);
 		badgebook.Add("learning_the_craft_first_loop", 		"  First Loop Modification", 					"test_badge", false);
 		badgebook.Add("learning_the_craft_first_if", 		"  First Conditional Modification", 			"test_badge", false);
 		badgebook.Add("learning_the_craft_first_list", 		"  First List", 								"test_badge", false);
-		
-		
-
-		
-		
-		
-		//badgebook.Replace("helping_others_light_fire", "completed_helping_others_light_fire", "  Light Fire", "new_icon_name", true);
+		*/
 	}
 	
 	void givePlayerAScroll()

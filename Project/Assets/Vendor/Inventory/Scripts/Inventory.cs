@@ -204,13 +204,11 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	
-	
 	public void addItem(GameObject item)
 	{
 		items.Add(item);
 		item_infos.Add(item, new ItemInfo());
 	}
-	
 	
 	public void removeItem(GameObject item)
 	{

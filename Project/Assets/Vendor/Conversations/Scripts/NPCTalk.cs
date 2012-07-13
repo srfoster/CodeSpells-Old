@@ -9,7 +9,7 @@ public class NPCTalk : MonoBehaviour {
 	private bool talked = false; 
 	
 	public string convo_file;
-	enum whichQuest {Fire=1, River}; 
+	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport}; 
 	public int questIndex;
 	private QuestChecker quest;
 	
@@ -20,8 +20,23 @@ public class NPCTalk : MonoBehaviour {
 		case whichQuest.Fire:
 			quest = new FireQuestChecker();
 			break;
+		case whichQuest.PickUp:
+			quest = new PickUpQuestChecker();
+			break;
 		case whichQuest.River:
 			quest = new RiverQuestChecker();
+			break;
+		case whichQuest.Extinguish:
+			quest = new ExtinguishQuestChecker();
+			break;
+		case whichQuest.Levitate:
+			quest = new LevitateQuestChecker();
+			break;
+		case whichQuest.Fly:
+			quest = new FlyQuestChecker();
+			break;
+		case whichQuest.Transport:
+			quest = new TransportQuestChecker();
 			break;
 		default:
 			quest = new NonQuestChecker();
@@ -42,7 +57,6 @@ public class NPCTalk : MonoBehaviour {
 		// Initialize a conversation if one hasn't started yet
 		if(!talked)
 		{
-			Debug.Log("haven't talked");
 			talked = true;
 			convo = new GraphConversation(convo_file);
 		}
@@ -51,7 +65,6 @@ public class NPCTalk : MonoBehaviour {
 		
 		// Begin the conversation displayer
 		c.Converse(convo, quest);
-		
 	}
 	
 	void OnTriggerExit (Collider collider) {
