@@ -10,8 +10,8 @@ public class RiverQuestChecker : QuestChecker {
 		GameObject gnome = GameObject.Find("QuestSwampGnomeReceive");
 		if(Vector3.Distance(presents.transform.position, gnome.transform.position) < 5)
 		{
-			if(!badgebook.Contains("completed_helping_others_cross_river"))
-				badgebook.Replace("helping_others_cross_river", "completed_helping_others_cross_river", "  Cross River [COMPLETED]", "test_badge", true);
+			if(!badgebook.Contains("complete_helping_others_cross_river"))
+				badgebook.Complete("helping_others_cross_river");
 			return true;
 		}
 		

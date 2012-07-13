@@ -92,6 +92,11 @@ public class Badgebook : MonoBehaviour {
 		}
 	}
 	
+	public void Complete(string name)
+	{
+		Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
+	}
+	
 	public bool Contains(string name)
 	{
 		return badgeStore.Contains(name);	
@@ -141,6 +146,13 @@ public class Badgebook : MonoBehaviour {
 			
 			icon_style.normal.background = badgeStore.icon(i);
 			GUI.Box(new Rect(x,y, 50 ,50), "" , icon_style);
+			
+			if(badgeStore.path(i).Contains("incomplete"))
+			{
+				label_style.normal.textColor = Color.gray;	
+			} else {
+				label_style.normal.textColor = Color.black;	
+			}
 
 			GUI.Label(new Rect(x + 55, y, Screen.width * .40f - 50, 50), badgeStore.label(i), label_style);
 			

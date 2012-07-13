@@ -88,12 +88,20 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_putting_something_high_badge", false);
 		badgebook.Add("helping_others_putting_something_high", 	"  New Heights", 		"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
+		badgebook.Add("helping_others_moving_rocks", 	"  Moving Cargo", 				"incomplete_moving_rocks_badge", false);
+		
+		
+
+		badgebook.Add("blank_line_hack1", 					"", 			"", false);
+		badgebook.Add("blank_line_hack2", 					"", 			"", false);
+		
 
 		
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
 		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"incomplete_cast_flame_badge", false);
 		badgebook.Add("reading_your_book_adv_levitate", 	"  Adept Levitation", 			"incomplete_cast_levitate_badge", false);
 		badgebook.Add("reading_your_book_flight", 			"  Flight", 					"incomplete_cast_flight_badge", false);
+		badgebook.Add("reading_your_book_teleport", 		"  Teleportation", 				"incomplete_cast_teleport_badge", false);
 		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);

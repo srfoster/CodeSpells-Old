@@ -38,6 +38,26 @@ public class BadgeStore {
 		return badges[names[i]].texture;	
 	}
 	
+	public string path(int i)
+	{
+		return badges[names[i]].path;	
+	}
+	
+	public string label(string i)
+	{
+		return badges[i].label;
+	}
+	
+	public Texture2D icon(string i)
+	{
+		return badges[i].texture;	
+	}
+	
+	public string path(string i)
+	{
+		return badges[i].path;	
+	}
+	
 	public bool Contains(string name)
 	{
 		return names.Contains(name);	
@@ -51,11 +71,13 @@ public class BadgeStore {
 	public class BadgeInfo{
 		public Texture2D texture;	
 		public string label;
+		public string path;
 		
 		public BadgeInfo(string label, string path)
 		{
 			texture = Resources.Load(path) as Texture2D;
 			this.label = label;
+			this.path = path;
 		}
 	}
 }

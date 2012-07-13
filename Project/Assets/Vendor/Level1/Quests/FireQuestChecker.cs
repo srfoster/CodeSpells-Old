@@ -11,8 +11,8 @@ public class FireQuestChecker : QuestChecker {
 		
 		if((crate1.GetComponent("Flamable") as Flamable).isIgnited() && (crate1.GetComponent("Flamable") as Flamable).isIgnited())
 		{
-			if(!badgebook.Contains("completed_helping_others_light_fire"))
-				badgebook.Replace("helping_others_light_fire", "completed_helping_others_light_fire", "  Light Fire [COMPLETED]", "test_badge", true);
+			if(!badgebook.Contains("complete_helping_others_light_fire"))
+				badgebook.Complete("helping_others_light_fire");
 			return true;
 		}
 		return false;
