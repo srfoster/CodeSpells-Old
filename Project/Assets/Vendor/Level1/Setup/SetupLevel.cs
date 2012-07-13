@@ -82,11 +82,11 @@ public class SetupLevel : MonoBehaviour {
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
 	
 		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"incomplete_helping_others_badge", false);
-		badgebook.Add("helping_others_pickin_up_stuff",	"  Pickin up Stuff", 			"incomplete_pickin_up_stuff", false);
+		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
-		badgebook.Add("helping_others_out_of_reach", 	"  Out of Reach", 				"incomplete_out_of_reach_badge", false);
-		badgebook.Add("helping_others_putting_high", 	"  New Heights", 				"incomplete_new_heights_badge", false);
+		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_putting_something_high_badge", false);
+		badgebook.Add("helping_others_putting_something_high", 	"  New Heights", 		"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_firefighter_badge", false);
 
 		
