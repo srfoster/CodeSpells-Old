@@ -66,8 +66,10 @@ public class EclipseInput : FileInput {
 		short_file_name = GetFileName().Replace(project_path,"");
 		*/
 		
+		/*
 		Thread java_thread = (new Thread(javaCompile));
 		java_thread.Start();
+		*/
 	}
 	
 
@@ -91,7 +93,8 @@ public class EclipseInput : FileInput {
 		Debug.Log(completions);
 		*/
 		
-		should_compile = true;
+		
+		javaCompile();
 		
 		ide.setErrorMessage(current_error);
 		
@@ -120,25 +123,16 @@ public class EclipseInput : FileInput {
 	}
 	
 	virtual public void javaCompile()
-	{
-		
-		while(true){
-			if(should_compile && (compile_process == null || compile_process.HasExited )){				
-				try{					
-					compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+GetFileName());
-					compile_process.Start();	
-					
-					var output = compile_process.StandardOutput.ReadToEnd();
-			   		var error = compile_process.StandardError.ReadToEnd();
-					
-					current_error = error;		
-				}catch(Exception e){
-				}
-			}
+	{			
+		try{					
+			compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+GetFileName());
+			compile_process.Start();	
 			
-			should_compile = false;
+			var output = compile_process.StandardOutput.ReadToEnd();
+	   		var error = compile_process.StandardError.ReadToEnd();
 			
-			Thread.Sleep(500);
+			current_error = error;		
+		}catch(Exception e){
 		}
 	}
 }

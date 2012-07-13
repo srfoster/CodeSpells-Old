@@ -5,5 +5,7 @@ public class Flame1 extends Spell{
     Enchanted target = getTarget();
 
     target.onFire(true);
+
+
   }
 }
