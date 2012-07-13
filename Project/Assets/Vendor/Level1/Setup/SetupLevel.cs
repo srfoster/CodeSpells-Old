@@ -82,9 +82,9 @@ public class SetupLevel : MonoBehaviour {
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
 		
 		
-		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"test_badge", false);
-		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"test_badge", false);
-		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"test_badge", false);
+		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"complete_helping_others_badge", false);
+		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"complete_crossing_river_badge", false);
+		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"complete_light_fire_badge", false);
 		badgebook.Add("helping_others_make_bread", 		"  Make Bread", 				"test_badge", false);
 		
 		
@@ -97,13 +97,13 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"test_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"test_badge", false);
 
-		/*
-		badgebook.Add("learning_the_craft", 				"Learning the Craft", 							"test_badge", false);
+		
+		badgebook.Add("learning_the_craft", 				"LEARNING THE CRAFT", 							"test_badge", false);
 		badgebook.Add("learning_the_craft_first_mod", 		"  First Spell Modification", 					"test_badge", false);
 		badgebook.Add("learning_the_craft_first_loop", 		"  First Loop Modification", 					"test_badge", false);
 		badgebook.Add("learning_the_craft_first_if", 		"  First Conditional Modification", 			"test_badge", false);
 		badgebook.Add("learning_the_craft_first_list", 		"  First List", 								"test_badge", false);
-		*/
+		
 		
 
 		

@@ -43,7 +43,7 @@ public class Badgebook : MonoBehaviour {
 	
 	void OnGUI(){
 		if(enabled){
-			displayCurrentPage();
+			displayPages();
 			
 			
 			if (GUI.Button (new Rect (Screen.width - 200,30,130,65), "Back", button_style))
@@ -97,19 +97,30 @@ public class Badgebook : MonoBehaviour {
 		return badgeStore.Contains(name);	
 	}
 	
-	void displayCurrentPage()
+	void displayPages()
 	{
 		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),background);
 		
 		
-		int table_width = (int) (Screen.width * .3);
+		int table_width = (int) (Screen.width * .45);
 		int table_height = (int) (Screen.height * .8);
 		
 
-		GUI.BeginGroup(new Rect(50f,30f, Screen.width * .45f, Screen.height * .87f));
-		
+		GUI.BeginGroup(new Rect(50f,30f, table_width, table_height));
 
+		displayPage(1, table_width, table_height);		
+
+		GUI.EndGroup();
 		
+		GUI.BeginGroup(new Rect(50f + table_width + 100, 30f, table_width, table_height));
+
+		displayPage(2, table_width, table_height);		
+
+		GUI.EndGroup();
+	}
+	
+	void displayPage(int page_number, int table_width, int table_height)
+	{
 		//Would be nice to have an abstract GUI utility for doing this kind of stuff.
 		
 		int row = 0;
@@ -118,9 +129,12 @@ public class Badgebook : MonoBehaviour {
 		int field_width  = (int) (Screen.width * .40f);
 		int field_height = 50;
 		
+		int per_page = (table_width / field_width) * (table_height / field_height);
+		int page_max = per_page * page_number;
+		
 		int height_so_far = 0;
 				
-		for(int i = 0; i < badgeStore.Size(); i++)
+		for(int i = page_max - per_page; i < Mathf.Min(badgeStore.Size(), page_max); i++)
 		{					
 			int x = col * field_width;
 			int y = row * field_height;
@@ -140,9 +154,7 @@ public class Badgebook : MonoBehaviour {
 				
 				height_so_far = 0;
 			}
-		}
-	
-		GUI.EndGroup();
+		}	
 	}
 	
 		
