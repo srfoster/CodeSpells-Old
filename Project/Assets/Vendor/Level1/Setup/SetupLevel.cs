@@ -50,7 +50,10 @@ public class SetupLevel : MonoBehaviour {
 		inventory.addItem(book);
 		
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+		
+		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MySpell");
 
+		
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
 
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
@@ -109,30 +112,38 @@ public class SetupLevel : MonoBehaviour {
 		
 		//Set up the callbacks for unlocking the badges.
 		
-		
+		int num_unlocked = 0;
 		Enchantable.EnchantmentEnded += (spell_target, item_name) => {
 		
+			bool success = false;
 			if(item_name.StartsWith("Flame"))
-				badgebook.Complete("reading_your_book_fire");
+				success =  badgebook.Complete("reading_your_book_fire");
 			
 			if(item_name.StartsWith("Massive"))
-				badgebook.Complete("reading_your_book_massive");
+				success = badgebook.Complete("reading_your_book_massive");
 			
 			if(item_name.StartsWith("Flight"))
-				badgebook.Complete("reading_your_book_flight");
+				success = badgebook.Complete("reading_your_book_flight");
 			
 			if(item_name.StartsWith("AdeptLevitate"))
-				badgebook.Complete("reading_your_book_adv_levitate");
+				success = badgebook.Complete("reading_your_book_adv_levitate");
 			
 			if(item_name.StartsWith("Summon"))
-				badgebook.Complete("reading_your_book_summon");
+				success = badgebook.Complete("reading_your_book_summon");
 					
 			if(item_name.StartsWith("Teleport"))
-				badgebook.Complete("reading_your_book_teleport");
+				success = badgebook.Complete("reading_your_book_teleport");
 			
 			if(item_name.StartsWith("Architecture"))
-				badgebook.Complete("reading_your_book_architecture");
+				success = badgebook.Complete("reading_your_book_architecture");
 			
+			if(success)
+				num_unlocked++;
+			
+			if(num_unlocked == 7)
+			{
+				badgebook.Complete("reading_your_book");
+			}
 		};
 		
 		

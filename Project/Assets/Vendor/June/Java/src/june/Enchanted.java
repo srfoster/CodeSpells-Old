@@ -116,18 +116,23 @@ public class Enchanted
 
         command(command);
     }
-    
-    public EnchantedList findLike(Enchanted ench, double rad) {
-        System.out.println("inside findLike method");
-        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
-        System.out.println("got a string back from unity");
-        System.out.println("the string is "+list);
+
+    public EnchantedList findWithin()
+    {
+        String list = commandGlobal("util.getWithin(\""+this.getId()+"\")");
         EnchantedList eList = new EnchantedList();
         eList.addAllFromUnityString(list);
         return eList;
     }
     
-    public double distanceBetween(Enchanted ench) {
+    public EnchantedList findLike(Enchanted ench, double rad) {
+        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+        EnchantedList eList = new EnchantedList();
+        eList.addAllFromUnityString(list);
+        return eList;
+    }
+    
+    public double distanceTo(Enchanted ench) {
         return Double.parseDouble(command("Vector3.Distance($target.transform.position , objects[\""+ench.getId()+"\"].transform.position)"));
     }
     
