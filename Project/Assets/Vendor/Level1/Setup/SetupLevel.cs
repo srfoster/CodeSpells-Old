@@ -35,8 +35,23 @@ public class SetupLevel : MonoBehaviour {
 		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
+		givePlayerAFlag();
 	//	givePlayerAScroll();
 	}
+	
+	void givePlayerAFlag() {
+		GameObject game_flag = new GameObject();
+		game_flag.AddComponent<Flag>();
+		//GameObject game_flag = Instantiate(Resources.Load("Flag") as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+		game_flag.name = "game_flag";
+		
+		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+		inventory.addItem(game_flag);
+		
+	}
+	
+	
+	
 	
 	void givePlayerASpellbook()
 	{
@@ -155,7 +170,6 @@ public class SetupLevel : MonoBehaviour {
 		item.item_name = "Blank";
 		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
 		
-		GameObject test = GameObject.Find("Inventory");
 		
 		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
 		inventory.addItem(initial_scroll);	

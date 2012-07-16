@@ -52,10 +52,17 @@ public class Item : MonoBehaviour {
 		return item_name;
 	}
 	
-	void OnMouseDown(){
+	virtual public void handleMouseDown()
+	{
 		getInventory().addItem(gameObject);
 		inInventory = true;
 		this.gameObject.transform.position = new Vector3(0f,-10000f,0f); //SetActiveRecursively(false);
+	}
+	
+	
+	void OnMouseDown()
+	{
+		handleMouseDown();
 	}
 	
 	public bool isInInventory()
