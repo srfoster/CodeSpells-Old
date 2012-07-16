@@ -10,16 +10,18 @@ public class PickUpQuestChecker : QuestChecker {
 		if((presents.GetComponent("PickUpableItem") as PickUpableItem).isInInventory())
 		{
 			//Unlocked the pick up items badge for the first time
-			if(!badgebook.Contains("complete_helping_others_pick_up_item"))
+			if(!badgebook.Contains("complete_helping_others_picking_up_item"))
 			{
-				badgebook.Complete("helping_others_pick_up_item");
+				badgebook.Complete("helping_others_picking_up_item");
 				return true;
 			}
-
+			
+			/*
 			else if(badgebook.Contains("complete_helping_others_pick_up_item") && badgebook.Contains("complete_helping_others_cross_river"))
 			{
 				return true;
 			}
+			*/
 		}
 		return false;
 	}
