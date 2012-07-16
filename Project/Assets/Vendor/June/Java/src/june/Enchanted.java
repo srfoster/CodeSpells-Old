@@ -47,7 +47,14 @@ public class Enchanted
             Log.log("Java sends to Unity: "+command+"\n");
             out.println(command);
             String response = in.readLine();
+
+            if(response.startsWith("Error"))
+            {
+              throw new RuntimeException("Unity Error");
+            }
+
             Log.log("Java gets back from Unity: "+response);
+
             
             long after = System.currentTimeMillis();
             
@@ -57,42 +64,22 @@ public class Enchanted
             e.printStackTrace();
             Log.log("Error in command: " + e);
 
+            System.exit(1);
         }
         return null;
     }
 
 	public String command(String command)
 	{
-		try{
-
-			long before = System.currentTimeMillis();
-
-			String new_command = "";
+      String new_command = "";
 			if(command.indexOf("$target") > -1)
 			{
 			 	new_command = command.replaceAll("\\$target","objects[\""+id+"\"]");
 			} else {
 				new_command = "objects[\""+id+"\"]."+command+";";
 			}
-      Log.log("Java about to block, sending to Unity: "+new_command);
-			out.println(new_command);
-      Log.log("Java sent to Unity");
 
-
-      Log.log("Java about to block, reading from Unity");
-			String response = in.readLine(); //Waits for confirmation from the Unity server...
-            
-			long after = System.currentTimeMillis();
-      Log.log("Java gets back from Unity (in "+(after-before)+" ms): "+response);
-
-
-			return response;
-		}catch(Exception e){
-			e.printStackTrace();
-      Log.log("Error in command: " + e);
-		}
-
-		return null;
+      return commandGlobal(new_command);
 	}
 
 

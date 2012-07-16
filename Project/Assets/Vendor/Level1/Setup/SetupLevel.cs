@@ -105,7 +105,38 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
-
+		
+		
+		//Set up the callbacks for unlocking the badges.
+		
+		
+		Enchantable.EnchantmentEnded += (spell_target, item_name) => {
+		
+			if(item_name.StartsWith("Flame"))
+				badgebook.Complete("reading_your_book_fire");
+			
+			if(item_name.StartsWith("Massive"))
+				badgebook.Complete("reading_your_book_massive");
+			
+			if(item_name.StartsWith("Flight"))
+				badgebook.Complete("reading_your_book_flight");
+			
+			if(item_name.StartsWith("AdeptLevitate"))
+				badgebook.Complete("reading_your_book_adv_levitate");
+			
+			if(item_name.StartsWith("Summon"))
+				badgebook.Complete("reading_your_book_summon");
+					
+			if(item_name.StartsWith("Teleport"))
+				badgebook.Complete("reading_your_book_teleport");
+			
+			if(item_name.StartsWith("Architecture"))
+				badgebook.Complete("reading_your_book_architecture");
+			
+		};
+		
+		
+	
 		/*
 		badgebook.Add("learning_the_craft", 				"LEARNING THE CRAFT", 							"test_badge", false);
 		badgebook.Add("learning_the_craft_first_mod", 		"  First Spell Modification", 					"test_badge", false);

@@ -13,8 +13,6 @@ public class Architecture1 extends Spell
 
         Location last = start.getLocation();
         
-
-         s      
         for(Enchanted e : list)
         {
             last.add(direction);

@@ -94,7 +94,8 @@ public class Badgebook : MonoBehaviour {
 	
 	public void Complete(string name)
 	{
-		Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
+		if(!Contains("complete_"+name))
+			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
 	}
 	
 	public bool Contains(string name)

@@ -23,6 +23,10 @@ public class June {
 	protected string object_id;
 	
 	public static bool isPlaying = true;
+	
+	
+	private bool success = true;
+
 		
 	public June(GameObject game_object, string java_file_name)
 	{
@@ -40,6 +44,7 @@ public class June {
 	}
 
 	public void Start() {
+		success = true;
 		java_thread = (new Thread(javaCompileAndRun));
 		java_thread.IsBackground = true;
 		java_thread.Start();
@@ -48,6 +53,11 @@ public class June {
 	public bool isStopped()
 	{
 		return is_stopped;	
+	}
+	
+	public bool wasSuccessful()
+	{
+		return success;	
 	}
 	
 	public void Stop() {
@@ -86,17 +96,16 @@ public class June {
 			var output = compile_process.StandardOutput.ReadToEnd();
 	   		var error = compile_process.StandardError.ReadToEnd();
 			
-			Popup.mainPopup.popup(""  + output + " " + error);
+	//		Popup.mainPopup.popup(""  + output + " " + error);
 
-			
+			if(!error.Equals(""))
+			{
+				success = false;	
+			}
 			
 			
 			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' june.Caster "+class_name+" '" + object_id +"'");	
 			java_process.Start();
-			
-
-			
-
 
 			
 			Boolean has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));
@@ -110,10 +119,18 @@ public class June {
 				Thread.Sleep(500);
 				
 				has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));
+				
+
+
 			}
+		
+							
+			if(java_process.ExitCode != 0)
+			{
+				success = false;
+			}
+
 			
-			UnityEngine.Debug.Log("I'm here.");
-	
 			is_stopped = true;
 		}catch(Exception e){
 			UnityEngine.Debug.Log(e);
