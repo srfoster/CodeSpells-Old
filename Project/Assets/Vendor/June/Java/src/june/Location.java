@@ -20,4 +20,6 @@ public abstract class Location implements Vector3
 
     public abstract void add(Vector3 v);
     public abstract void times(double d);
+    public abstract double distanceBetween(Location loc);
+    public abstract void freeze();
 }

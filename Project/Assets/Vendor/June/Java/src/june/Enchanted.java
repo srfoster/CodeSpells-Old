@@ -140,9 +140,10 @@ public class Enchanted
         return eList;
     }
     
-    public double distanceBetween(Enchanted ench) {
-        return Double.parseDouble(command("Vector3.Distance($target.transform.position , objects[\""+ench.getId()+"\"].transform.position)"));
+    public void scale() {
+        command("$target.transform.localScale = $target.transform.localScale + (new Vector3(0.2,0.2,0.2))");
     }
+    
     
   public void move(Direction dir, double speed)
   {
