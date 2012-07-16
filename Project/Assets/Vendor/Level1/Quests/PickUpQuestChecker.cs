@@ -15,13 +15,13 @@ public class PickUpQuestChecker : QuestChecker {
 				badgebook.Complete("helping_others_picking_up_item");
 				return true;
 			}
-			
 			/*
 			else if(badgebook.Contains("complete_helping_others_pick_up_item") && badgebook.Contains("complete_helping_others_cross_river"))
 			{
 				return true;
 			}
 			*/
+
 		}
 		return false;
 	}
