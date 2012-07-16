@@ -15,6 +15,12 @@ public class Enchantable : MonoBehaviour {
 	
 	private EnchantmentFinishedCallback callback;
 	
+	public delegate void EventHandler(GameObject target, string class_name);
+	public static event EventHandler EnchantmentStarted;
+	public static event EventHandler EnchantmentEnded;
+	public static event EventHandler EnchantmentFailed;
+
+	
 	public string id = "";
 	
 	public string getId() {
@@ -74,6 +80,17 @@ public class Enchantable : MonoBehaviour {
 			{
 				callback(gameObject);
 				callback = null;
+				
+				if(june.wasSuccessful())	
+				{
+					if(EnchantmentEnded != null)
+						EnchantmentEnded(gameObject, june.getFileName());
+				} else {
+					if(EnchantmentFailed != null)
+						EnchantmentFailed(gameObject, june.getFileName());
+				}
+
+
 			}
 		}
 	}
@@ -148,6 +165,13 @@ public class Enchantable : MonoBehaviour {
 			this.june.setObjectId(id);
 
 		this.june.Start();
+		
+								
+		if(EnchantmentStarted != null)
+			EnchantmentStarted(gameObject, june.getFileName());
+				
+
+		
 		
 		//If the enchantable object has an animation (i.e. the broom) play it.
 		if(animation != null && animation.clip != null)

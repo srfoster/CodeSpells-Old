@@ -49,6 +49,7 @@ public class LazyLocation extends Location
       return evals_to_vector3 +".z" + post_z;
     }
 
+
     @Override
     public void times(double scale)
     {

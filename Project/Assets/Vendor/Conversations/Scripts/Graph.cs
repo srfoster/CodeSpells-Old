@@ -15,7 +15,6 @@ public class Graph {
 		edges = new ArrayList();
 		graph = new Dictionary<Node, ArrayList>();
 		
-		
 		readInConversation(convo_file);
 	}
 	
@@ -26,8 +25,14 @@ public class Graph {
 		bool readNodes = false;
 		bool readEdges = false;
 		bool readExits = false;
-		Debug.Log("FILE: "+convo_file);
+		if(debug)
+			Debug.Log("FILE: "+convo_file);
 		TextAsset convo = (TextAsset)Resources.Load(convo_file, typeof(TextAsset));
+		if(convo == null)
+		{
+			if(debug)
+				Debug.Log("something wrong with the TextAsset");	
+		}
 		reader = new StringReader(convo.text);
 		if ( reader == null )
 		{

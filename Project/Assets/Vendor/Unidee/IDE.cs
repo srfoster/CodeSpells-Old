@@ -32,6 +32,10 @@ public class IDE : MonoBehaviour {
 	private TextEditor stateObj;
 	private GameObject previous_state;
 	
+	private bool thread_started = false;
+	
+	private double unpause_count = 0;
+	
 	private bool no_edit = false;
 	
 	private bool paused = false;
@@ -119,13 +123,14 @@ public class IDE : MonoBehaviour {
 		enabled = true;
 		paused = false;
 		no_edit = false;
+		
+		Time.timeScale = 0;
 	}
 	
 	void Start () {
 		Init();
 			
-		Thread inputThread  = new Thread (inputProcessing);
-		inputThread.Start();
+
 		
 	}
 	
@@ -158,6 +163,31 @@ public class IDE : MonoBehaviour {
 		
 		catchTabs();
 		
+		detectKeyboardActivity();
+		
+	}
+	
+	void detectKeyboardActivity()
+	{
+		unpause_count += .1;
+		
+		Debug.Log(unpause_count);
+		
+		if(Event.current.isKey)
+		{
+			unpause_count = 0;
+			thread_started = false;
+		}
+		
+
+		
+		if(unpause_count > 2 && !thread_started)  // Unpause stuff like compilation after every 5 seconds of inactivity
+		{
+			Debug.Log("Starting thread");
+			thread_started = true;
+			Thread inputThread  = new Thread (inputProcessing);
+			inputThread.Start();
+		}
 	}
 	
 	
@@ -228,7 +258,7 @@ public class IDE : MonoBehaviour {
 		
 		syntaxHighlight();
 
-		suggestAutocompletes();
+	//	suggestAutocompletes();
 
 		
 		GUI.EndGroup();
@@ -255,6 +285,7 @@ public class IDE : MonoBehaviour {
 			enabled = false;
 	        previous_state.active = true;
 			paused = true;
+			Time.timeScale = 1;
 	    }
 		
 		
@@ -280,17 +311,8 @@ public class IDE : MonoBehaviour {
 	 */ 
 	void inputProcessing()
 	{
-		while(true)
-		{
-			if(!paused)
-			{
-				writeOut();
-				
-				input.Process(this);
-				
-				Thread.Sleep(500);
-			}
-		}
+		writeOut();
+		input.Process(this);			
 	}
 	
 	public void noEdit(){

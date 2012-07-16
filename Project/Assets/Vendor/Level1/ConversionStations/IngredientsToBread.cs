@@ -23,6 +23,7 @@ public class IngredientsToBread : MonoBehaviour {
 		else if(col.gameObject.GetComponent<Ingredient>().isPlant()) {
 			//Debug.Log("Found a plant ingredient!");
 		}
+
 		if(col.gameObject.GetComponent<Ingredient>().isRock() && !numRocks.Contains(col.gameObject)) {
 			numRocks.Add (col.gameObject);
 		}

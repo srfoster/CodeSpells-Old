@@ -1,0 +1,18 @@
+Nodes
+0=I hear you are supposed to deliver a present to me.
+1=Do you have my presents?
+2=Oh, go back across the river and talk to my friend standing by the beach, he'll tell you what you need to do.
+3=Can you drag my present out of your inventory so that I can have it?
+4=Thank goodness you were smart enough to cross the river without getting eaten! Otherwise I would have never gotten my present!"
+5=Try experimenting with other ways of crossing the river.
+Responses
+0=Yes, I am.=0=1
+1=I didn't know I was supposed to.=0=2
+2=Yes, I do!=1=3
+Exits
+0=Exit=0=0=4
+1=Exit=1=1=4
+2=OK=2=1=4
+3=OK=3=3=4
+4=No Problem!=4=5=5
+5=OK=5=5=5

@@ -9,7 +9,40 @@ public class NPCTalk : MonoBehaviour {
 	private bool talked = false; 
 	
 	public string convo_file;
-	private QuestChecker quest = new QuestChecker();
+	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport}; 
+	public int questIndex;
+	private QuestChecker quest;
+	
+	void Start()
+	{
+		switch((whichQuest) questIndex)
+		{
+		case whichQuest.Fire:
+			quest = new FireQuestChecker();
+			break;
+		case whichQuest.PickUp:
+			quest = new PickUpQuestChecker();
+			break;
+		case whichQuest.River:
+			quest = new RiverQuestChecker();
+			break;
+		case whichQuest.Extinguish:
+			quest = new ExtinguishQuestChecker();
+			break;
+		case whichQuest.Levitate:
+			quest = new LevitateQuestChecker();
+			break;
+		case whichQuest.Fly:
+			quest = new FlyQuestChecker();
+			break;
+		case whichQuest.Transport:
+			quest = new TransportQuestChecker();
+			break;
+		default:
+			quest = new NonQuestChecker();
+			break;
+		}
+	}
 	
 	void OnTriggerEnter (Collider collider) {
 
@@ -30,11 +63,8 @@ public class NPCTalk : MonoBehaviour {
 		
 		ConversationDisplayer c = GameObject.Find("ConversationDisplayer").GetComponent(typeof(ConversationDisplayer)) as ConversationDisplayer;
 		
-		// TODO: Need to determine if the action was completed
-		
 		// Begin the conversation displayer
 		c.Converse(convo, quest);
-		
 	}
 	
 	void OnTriggerExit (Collider collider) {

@@ -11,6 +11,7 @@ public class CodeScrollItem : DraggableItem {
 	
 	private Texture2D still_icon;
 	private Texture2D[] animated_icon;
+
 	
     override protected void Drag(){
 		base.Drag();
@@ -83,6 +84,7 @@ public class CodeScrollItem : DraggableItem {
 			castSpell(target);	
 		}
 		
+		
 
 	}
 	
@@ -123,8 +125,10 @@ public class CodeScrollItem : DraggableItem {
 			return;
 		}
 		
-		June june = new June(target, file_name);
 		
+		
+		June june = new June(target, file_name);
+
 		SetHidden(false);
 		
 		item_name = "Blank";
@@ -136,6 +140,8 @@ public class CodeScrollItem : DraggableItem {
 
 		
 		(target.GetComponent("Enchantable") as Enchantable).enchant(june, delegate(GameObject t){absorbSpell(t); });
+		
+
 	}
 		   
 	private bool isEmpty()

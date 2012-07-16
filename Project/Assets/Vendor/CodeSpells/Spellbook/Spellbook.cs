@@ -31,23 +31,7 @@ public class Spellbook : MonoBehaviour {
 	public List<string> page_urls = new List<string>();
 	List<SpellbookPage> pages = new List<SpellbookPage>();
 	
-	void addInitialPages()
-	{
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
 
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
-
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
-		
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire2");
-
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
-		page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
-	}
 	
 	IEnumerator Start()
 	{
@@ -62,9 +46,7 @@ public class Spellbook : MonoBehaviour {
 		button_style.fontSize = 30;
 		
 		ide = GameObject.Find("IDE").GetComponent<IDE>();
-		
-		addInitialPages();
-		
+				
 		
 		foreach(string url in page_urls)
 		{
