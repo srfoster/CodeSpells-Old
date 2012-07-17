@@ -171,7 +171,7 @@ public class IDE : MonoBehaviour {
 	{
 		unpause_count += .1;
 		
-		Debug.Log(unpause_count);
+//		Debug.Log(unpause_count);
 		
 		if(Event.current.isKey)
 		{

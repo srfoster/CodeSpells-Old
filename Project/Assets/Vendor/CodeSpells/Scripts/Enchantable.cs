@@ -32,6 +32,10 @@ public class Enchantable : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Init();
+	}
+	
+	public void Init(){
 		if(id.Equals(""))
 		{
 			ObjectManager.Register(gameObject);
@@ -52,7 +56,7 @@ public class Enchantable : MonoBehaviour {
 		}
 		
 		
-		gameObject.AddComponent<Text3D>();
+		gameObject.AddComponent<Text3D>();	
 	}
 	
 	void OnApplicationQuit()

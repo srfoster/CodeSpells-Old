@@ -5,12 +5,34 @@ public class Levitate extends Spell
 {
     public void cast()
     { 
-        Enchanted destination = getByName("Dest");
-        Enchanted center = getTarget();
+        Enchanted obj = getTarget();
+        obj.scale();
         
-        while (center.distanceBetween(destination) > 2.5) {
-            center.move(Direction.between(center,destination), 2.0);
+        
+        Enchanted pit = getByName("FirePit");
+        Enchanted pond = getByName("Pond");
+        Enchanted center = getTarget();
+        Location origLoc = center.getLocation();
+        origLoc.freeze();
+        
+        while ((center.getLocation()).distanceBetween(pond.getLocation()) > 3.5) {
+            center.move(Direction.between(center,pond), 2.0);
         }
+        
+
+        
+        while((center.getLocation()).distanceBetween(origLoc) > 3.5) {
+            center.move(Direction.between(center.getLocation(),origLoc), 2.0);
+        }
+        
+        
+        
+        
+        /*        while ((center.getLocation()).distanceBetween(pond.getLocation()) > 3.5) {
+         center.move(Direction.between(center,pond), 2.0);
+         }
+ 
+         */
         
         
         
