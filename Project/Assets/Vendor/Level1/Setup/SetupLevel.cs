@@ -48,6 +48,7 @@ public class SetupLevel : MonoBehaviour {
 		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
 		inventory.addItem(game_flag);
 		
+		game_flag.GetComponent<Item>().item_name = "Flag";
 	}
 	
 	

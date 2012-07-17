@@ -8,7 +8,8 @@ public class ObjectTracker : MonoBehaviour {
 	private List<GameObject> within = new List<GameObject>();
 
 	void OnTriggerEnter(Collider col)
-	{		
+	{	
+		Debug.Log ("Tracker adding");
 		within.Add(col.gameObject);
 	}
 	
