@@ -9,7 +9,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	public string convo_files;
 	public string quests;
 	
-	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport}; 
+	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport, None}; 
 	private int questIndex;
 	
 	private QuestChecker questObject;

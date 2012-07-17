@@ -1,0 +1,22 @@
+Nodes
+0=Welcome to CodeSpells! I am your greeter into this incredible land. My friends are busy making stone bread so that we may eat. 
+1=Stone bread is made with two ingredients: Rock Sugar and Flower Flour.
+2=Rock Sugar is an ingredient made by rocks being heated in a fire pit and then dunked in a magical pond.
+3=Flower Flour is an ingredient made by seeds being planted in a magical grove then grown into beautiful flowers.
+4=Enjoy walking through our land, there are some gnomes that will talk with you if you click on them, they will help you learn spells that will allow you to help us automate our bread making process.
+5=The other gnomes will probably be able to help you out more than I can.
+Responses
+0=How do they make stone bread?=0=1
+1=What is rock sugar?=1=2
+2=What is flower flour?=1=3
+3=What is flower flour?=2=3
+4=What is rock sugar?=3=4
+5=How can I help?=2=4
+6=How can I help?=3=4
+Exits
+0=OK=0=0
+1=That's nice=1=1
+2=Ok=2=2
+3=Ok=3=3
+4=Ok!=4=5
+5=Exit=5=5
