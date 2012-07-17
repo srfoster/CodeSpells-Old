@@ -218,7 +218,7 @@ public class IDE : MonoBehaviour {
 	        Event.current.Use();
 			
 			current_code = current_code.Substring(0,GetCursorPosition()) + "    " + current_code.Substring(GetCursorPosition());
-			stateObj.MoveRight();
+			stateObj.MoveRight(); stateObj.MoveRight(); stateObj.MoveRight(); stateObj.MoveRight(); 
 		}
 	}
 	

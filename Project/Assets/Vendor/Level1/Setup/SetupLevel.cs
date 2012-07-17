@@ -33,7 +33,7 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupBadgebook()).Init();
 
 		
-		ObjectManager.Register(GameObject.Find("First Person Controller"), "Me");
+		//ObjectManager.Register(GameObject.Find("First Person Controller"), "Me");
 		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
