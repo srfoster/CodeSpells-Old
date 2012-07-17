@@ -10,16 +10,21 @@ public class ConversationDisplayer : MonoBehaviour {
 	
 	private Conversation conversation;
 	
+	void Start(){
+		font = Resources.Load("Erika Ormig") as Font;	
+	}
+	
 	void OnGUI(){
 		if(conversation == null)
 			return;
 		
-		GUIStyle guiStyle = GUI.skin.box;
+		GUIStyle guiStyle = new GUIStyle();
 		guiStyle.wordWrap = true;
 		guiStyle.font = font;
 		guiStyle.normal.background = Resources.Load("Textures/SyntaxHighlightBlue") as Texture2D;
 		guiStyle.alignment = TextAnchor.MiddleCenter;
-		guiStyle.fontSize = 17;
+		guiStyle.fontSize = 20;
+		guiStyle.normal.textColor = Color.black;
 		
 		GUI.Box(new Rect(Screen.width/2-width/2,Screen.height/2-height/2,width,height), conversation.GetText(), guiStyle);
 		
@@ -33,12 +38,13 @@ public class ConversationDisplayer : MonoBehaviour {
 				
 				string response_text = response.getResponseText();
 				
-				GUIStyle buttonStyle = GUI.skin.box;
+				GUIStyle buttonStyle = new GUIStyle();
 				buttonStyle.wordWrap = true;
 				buttonStyle.font = font;
 				buttonStyle.normal.background = Resources.Load("Textures/SyntaxHighlightGreen") as Texture2D;
 				buttonStyle.alignment = TextAnchor.MiddleCenter;
-		  		buttonStyle.fontSize = 17;
+				buttonStyle.fontSize = 20;
+				buttonStyle.normal.textColor = Color.black;
 				
 				if(GUI.Button(new Rect(Screen.width/2+width/2 + 10,Screen.height/2-height/2 + response_height,200,50), response_text, buttonStyle))
 				{

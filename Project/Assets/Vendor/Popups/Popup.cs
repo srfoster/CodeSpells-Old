@@ -16,7 +16,9 @@ public class Popup : MonoBehaviour {
 		  style.normal.background = Resources.Load("Textures/SyntaxHighlightBlue") as Texture2D;
 		  style.normal.textColor = Color.white;
 		  style.alignment = TextAnchor.MiddleCenter;
-		  style.fontSize = 17;
+		  style.fontSize = 20;
+          style.normal.textColor = Color.black;
+		  style.font = Resources.Load("Erika Ormig") as Font;
 		
 		  mainPopup = this;
 	}

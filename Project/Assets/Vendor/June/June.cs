@@ -66,16 +66,15 @@ public class June {
 		
 		//is_stopped = true;
 		
-		
-		UnityEngine.Debug.Log("Trying to kill");
-		
+				
 		try{
 			//Work-around because Unity is being stupid
 			java_process.GetType().GetMethod( "Kill" ).Invoke( java_process, new object[]{} );
 		}catch(Exception e){
 			UnityEngine.Debug.Log(e);
 		}
-
+		
+		
 	}
 	
 	public string getFileName()
