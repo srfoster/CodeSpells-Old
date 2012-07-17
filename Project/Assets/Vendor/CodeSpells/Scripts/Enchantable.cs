@@ -89,8 +89,6 @@ public class Enchantable : MonoBehaviour {
 					if(EnchantmentFailed != null)
 						EnchantmentFailed(gameObject, june.getFileName());
 				}
-
-
 			}
 		}
 	}

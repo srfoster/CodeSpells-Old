@@ -44,8 +44,8 @@ public class GraphConversation : Conversation {
 	
 	// Sets up the conversation so that when the player returns, the
 	// conversation continues properly
-	public override void resetConversation(bool alt)
+	public override void resetConversation()
 	{
-		currentNode = g.getReentryNode(currentNode.getId(), alt);	
+		currentNode = g.getReentryNode(currentNode.getId());	
 	}
 }

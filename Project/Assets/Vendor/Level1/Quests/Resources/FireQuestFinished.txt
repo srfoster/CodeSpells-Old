@@ -1,0 +1,13 @@
+Nodes
+0=Thank you so much for igniting my fire again! My brother is going to be se jealous!
+1=Now that you know how to ignite fires, try putting fires out.
+2=You can use your ignite spell, and change the onFire parameter "true" to "false", try it!
+3=You are a fire pro now! I don't have anything else to teach you :)
+Responses
+0=No Problem!=0=1
+1=How do I do that?=1=2
+Exits
+0=Exit=0=1
+1=OK=1=2
+2=OK=2=3
+3=OK=3=3

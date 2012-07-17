@@ -1,0 +1,10 @@
+Nodes
+0=I really need to send my friend this crate of presents! Maybe you can take my friend the presents?
+1=Well first you need to click on my crate, then it will appear in your inventory.
+2=Make sure you pick up my presents first! Just click on my presents crate.
+Responses
+0=Sure, how do I do that?=0=1
+Exits
+0=Not Now.=0=0
+1=OK=1=2
+2=OK=2=2

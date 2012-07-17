@@ -2,8 +2,8 @@ import june.*;
 
 public class Flame1 extends Spell{
   public void cast(){
-    Enchanted target = getByName("Rock");
+    Enchanted thing = getTarget();
 
-    target.onFire(true);
+    thing.onFire(true);
   }
 }
