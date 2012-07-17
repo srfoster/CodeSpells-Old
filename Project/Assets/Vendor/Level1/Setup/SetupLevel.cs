@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SetupLevel : MonoBehaviour {
 	CodeScrollItem item;
+	private bool crate1 = false;
+	private bool crate2 = false;
 	
 	void Start()
 	{
@@ -124,7 +126,6 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
 		
-		
 		//Set up the callbacks for unlocking the badges.
 		
 		int num_unlocked = 0;
@@ -161,15 +162,36 @@ public class SetupLevel : MonoBehaviour {
 			}
 		};
 		
+		Inventory.PickedUp += (target) => {
+			if(target.name.Equals("Presents"))
+				badgebook.Complete("helping_others_picking_up_item");	
+		};
 		
-	
-		/*
-		badgebook.Add("learning_the_craft", 				"LEARNING THE CRAFT", 							"test_badge", false);
-		badgebook.Add("learning_the_craft_first_mod", 		"  First Spell Modification", 					"test_badge", false);
-		badgebook.Add("learning_the_craft_first_loop", 		"  First Loop Modification", 					"test_badge", false);
-		badgebook.Add("learning_the_craft_first_if", 		"  First Conditional Modification", 			"test_badge", false);
-		badgebook.Add("learning_the_craft_first_list", 		"  First List", 								"test_badge", false);
-		*/
+		Inventory.DroppedOff += (target) => {
+			GameObject gnome = GameObject.Find("QuestSwampGnome");
+			GameObject presents = GameObject.Find("Presents");
+			Debug.Log("The distance is: "+Vector3.Distance(gnome.transform.position, presents.transform.position));
+			if(target.name.Equals("Presents") && Vector3.Distance(gnome.transform.position, presents.transform.position) < 10)
+				badgebook.Complete("helping_others_cross_river");
+		};
+		
+
+		
+		Flamable.CaughtFire += (target) => {
+			if(!crate1 && target.name.Equals("QuestFlammingCrate"))
+			{
+				crate1 = true;
+				if(crate2)
+					badgebook.Complete("helping_others_light_fire");	
+			}
+			
+			if(!crate2 && target.name.Equals("QuestFlammingCrate1"))
+			{
+				crate2 = true;
+				if(crate1)
+					badgebook.Complete("helping_others_light_fire");
+			}
+		};
 	}
 	
 	void givePlayerAScroll()

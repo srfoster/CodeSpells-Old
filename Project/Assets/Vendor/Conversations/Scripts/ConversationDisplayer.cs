@@ -53,6 +53,7 @@ public class ConversationDisplayer : MonoBehaviour {
 					if(response.isExit())
 					{
 						conversation = null;
+						Time.timeScale = 1;
 					}
 				}
 				response_height += 60;
@@ -60,12 +61,8 @@ public class ConversationDisplayer : MonoBehaviour {
 		}
 	}
 	
-	public void Converse(Conversation conversation, QuestChecker quest)
+	public void Converse(Conversation conversation)
 	{
-		if(quest.checkIfCompleted())
-		{
-			conversation.resetConversation(true);
-		}
 		this.conversation = conversation;
 	}
 }

@@ -104,6 +104,14 @@ public class Badgebook : MonoBehaviour {
 		
 	}
 	
+	public bool IsComplete(string name)
+	{
+		if(Contains("complete_"+name))
+			return true;
+		
+		return false;
+	}
+	
 	public bool Contains(string name)
 	{
 		return badgeStore.Contains(name);	

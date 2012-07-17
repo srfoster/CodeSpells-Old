@@ -1,0 +1,19 @@
+Nodes
+0=Awesome! You picked up my presents! Can you deliver them to my friend now?
+1=He is across the river, but you have to be careful because if you touch the water or jump over the river the river monster will kill you.
+2=I would try using a spell from your spellbook. Maybe you can teleport to that big boudler across the river.
+3=Did you figure out how to get across the river?
+4=I would use a TELEPORTATION spell if I were you. You can copy it out of your spellbook and then cast it on the big boulder that's across the river!
+5=Can you deliver my presents to my friend now?
+Responses
+0=Of course, where is your friend?=0=1
+1=Then how do I cross the river?=1=2
+2=No, I didn't, can you help me?=3=4
+3=Yes I did!=3=5
+Exits
+0=Not Now.=0=0
+1=OK=1=2
+2=OK=2=3
+3=Exit=3=3
+4=OK=4=3
+5=OK=5=5

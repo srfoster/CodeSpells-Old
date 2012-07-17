@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class Inventory : MonoBehaviour {
 	
 	public int count = 0;
@@ -45,6 +44,10 @@ public class Inventory : MonoBehaviour {
 	private GameObject dragged = null;
 	
 	private GUIStyle item_label_style;
+	
+	public delegate void EventHandler(GameObject target);
+	public static event EventHandler PickedUp;
+	public static event EventHandler DroppedOff;
 	
 	void Start(){
 		item_label_style = new GUIStyle();
@@ -208,11 +211,19 @@ public class Inventory : MonoBehaviour {
 	{
 		items.Add(item);
 		item_infos.Add(item, new ItemInfo());
+		if(PickedUp != null)
+		{
+			PickedUp(item);
+		}
 	}
 	
 	public void removeItem(GameObject item)
 	{
 		to_remove.Add(item);
+		if(DroppedOff != null)
+		{
+			DroppedOff(item);	
+		}
 	}
 	
 	public void disactivate(GameObject item)
@@ -241,6 +252,12 @@ public class Inventory : MonoBehaviour {
 	
 	public ItemInfo getInfo(GameObject item)
 	{
+		if(item == null)
+			return null;
+		
+		if(!item_infos.ContainsKey(item))
+			return null;
+		
 		return item_infos[item];	
 	}
 	

@@ -8,8 +8,6 @@ public class Item : MonoBehaviour {
 	//The in-inventory representation of an object
 	public Texture2D inventoryTexture;
 	public string item_name;
-	private bool inInventory = false;
-	
 	
 	private bool is_active = false;
 	private bool is_hidden = false;
@@ -55,7 +53,6 @@ public class Item : MonoBehaviour {
 	virtual public void handleMouseDown()
 	{
 		getInventory().addItem(gameObject);
-		inInventory = true;
 		this.gameObject.transform.position = new Vector3(0f,-10000f,0f); //SetActiveRecursively(false);
 	}
 	
@@ -67,7 +64,9 @@ public class Item : MonoBehaviour {
 	
 	public bool isInInventory()
 	{
-		return inInventory;	
+		if(getInventory().getInfo(this.gameObject) != null)
+			return true;	
+		return false;
 	}
 	
 	virtual public void ClickedInInventory()

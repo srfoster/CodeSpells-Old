@@ -3,6 +3,11 @@ import june.*;
 public class Flame1 extends Spell{
   public void cast(){
 <<<<<<< HEAD
+    Enchanted thing = getTarget();
+
+    thing.onFire(true);
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 while(true) {
         Enchanted obj = getTarget();
@@ -16,5 +21,6 @@ while(true) {
 
     target.onFire(true);
 >>>>>>> c8fbe9984f4909a59d0a7394d57a6a9e380b0332
+>>>>>>> 7db0b824460af8cac0e8a55050c45e65995e52a7
   }
 }

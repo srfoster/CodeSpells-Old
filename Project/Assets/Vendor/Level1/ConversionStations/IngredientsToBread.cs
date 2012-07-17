@@ -17,7 +17,6 @@ public class IngredientsToBread : MonoBehaviour {
 		if(col.gameObject.GetComponent<Ingredient>() == null)
 			return;
 
-
 		if(col.gameObject.GetComponent<Ingredient>().isRock() && !numRocks.Contains(col.gameObject)) {
 			numRocks.Add (col.gameObject);
 		}
