@@ -1,6 +1,6 @@
 Nodes
 0=I would have never gotten my present if you weren't such an incredible wizard!
-1=Try experim?enting with other ways of crossing the river.
+1=Try experimenting with other ways of crossing the river.
 2=You Rock!
 Responses
 Exits
