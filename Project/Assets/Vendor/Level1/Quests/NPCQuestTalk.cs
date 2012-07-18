@@ -78,7 +78,7 @@ public class NPCQuestTalk : MonoBehaviour {
 		// coroutine in order to facilitate a smoother turn if we want to implement that.
 		transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
 		
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.2f);
 
 		
 		ConversationDisplayer c = GameObject.Find("ConversationDisplayer").GetComponent(typeof(ConversationDisplayer)) as ConversationDisplayer;
