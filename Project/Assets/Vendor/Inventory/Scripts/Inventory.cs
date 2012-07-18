@@ -200,7 +200,7 @@ public class Inventory : MonoBehaviour {
 			down_button_style.normal.background = down_button_texture;
 		
 			
-			if(GUI.Button(new Rect(inventory_width/2 - button_width/2,Screen.height-button_height-button_margin,button_width, button_height), "", down_button_style))
+			if(GUI.Button(new Rect(inventory_width/2 - button_width/2,Screen.height-button_height*2-button_margin-margin_bottom,button_width, button_height), "", down_button_style))
 			{
 				starting_row++;
 			}
