@@ -21,6 +21,6 @@ public class Text3D : MonoBehaviour {
 		the_3d_text.transform.position = new Vector3(transform.position.x,
 			transform.position.y+1,
 			transform.position.z);
-
+	
 	}
 }

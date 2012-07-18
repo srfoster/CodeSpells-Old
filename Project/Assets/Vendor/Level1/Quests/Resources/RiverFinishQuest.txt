@@ -1,0 +1,9 @@
+Nodes
+0=I would have never gotten my present if you weren't such an incredible wizard!
+1=Try experimenting with other ways of crossing the river.
+2=You Rock!
+Responses
+Exits
+0=Thank you=0=1
+1=OK=1=2
+2=Thanks!=2=0

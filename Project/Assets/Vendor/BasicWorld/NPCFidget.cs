@@ -18,7 +18,7 @@ public class NPCFidget: MonoBehaviour {
 	}
 	
 	void Start(){
-		animation.Play("idle");
+		animation.CrossFade("idle");
 	}
 	
 	void Update(){

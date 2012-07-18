@@ -1,6 +1,7 @@
 /* See the copyright information at https://github.com/srfoster/Inventory/blob/master/COPYRIGHT */
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Item : MonoBehaviour {
 
@@ -8,8 +9,6 @@ public class Item : MonoBehaviour {
 	//The in-inventory representation of an object
 	public Texture2D inventoryTexture;
 	public string item_name;
-	private bool inInventory = false;
-	
 	
 	private bool is_active = false;
 	private bool is_hidden = false;
@@ -39,7 +38,12 @@ public class Item : MonoBehaviour {
 	
 	public Inventory getInventory()
 	{
-		return GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+		GameObject inventory = GameObject.Find("Inventory");
+		
+		if(inventory != null)
+			return inventory.GetComponent(typeof(Inventory)) as Inventory;
+		
+		return null;
 	}
 	
 	public virtual Texture2D getTexture()
@@ -54,9 +58,12 @@ public class Item : MonoBehaviour {
 	
 	virtual public void handleMouseDown()
 	{
-		getInventory().addItem(gameObject);
-		inInventory = true;
-		this.gameObject.transform.position = new Vector3(0f,-10000f,0f); //SetActiveRecursively(false);
+		try{
+			getInventory().addItem(gameObject);
+			this.gameObject.transform.position = new Vector3(0f,-10000f,0f); //SetActiveRecursively(false);
+		}catch(NullReferenceException e){
+			
+		}
 	}
 	
 	
@@ -67,7 +74,9 @@ public class Item : MonoBehaviour {
 	
 	public bool isInInventory()
 	{
-		return inInventory;	
+		if(getInventory().getInfo(this.gameObject) != null)
+			return true;	
+		return false;
 	}
 	
 	virtual public void ClickedInInventory()

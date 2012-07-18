@@ -96,7 +96,7 @@ public class EclipseInput : FileInput {
 		
 		javaCompile();
 		
-		ide.setErrorMessage(current_error);
+		ide.setErrorMessage(noviceClean(current_error));
 		
 		ide.clearStyles();
 
@@ -134,5 +134,22 @@ public class EclipseInput : FileInput {
 			current_error = error;		
 		}catch(Exception e){
 		}
+	}
+	
+	string noviceClean(string java_error_string)
+	{
+		
+		Regex r = new Regex(".*\\^.*");
+		string[] errors = r.Split(java_error_string);
+		
+		string new_java_error_string = "";
+		foreach(string err in errors)
+		{
+			string new_err = Regex.Replace(err, "/.*?:", "" );
+			
+			new_java_error_string += new_err + "------------\n";
+		}
+		
+		return new_java_error_string;
 	}
 }

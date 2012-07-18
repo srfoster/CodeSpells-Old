@@ -13,6 +13,7 @@ public class AvoidRiver : MonoBehaviour {
 		
 		if(detect_jump)
 		{
+			Debug.Log("ATTACKING");
 			if(GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMotor>().IsJumping())
 				GameObject.Find("Monster").GetComponent<Monster>().Attack();
 		} else {
