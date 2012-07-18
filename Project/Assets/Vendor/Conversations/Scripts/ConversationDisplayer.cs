@@ -20,6 +20,8 @@ public class ConversationDisplayer : MonoBehaviour {
 		if(conversation == null)
 			return;
 		
+		
+		GUI.Box(new Rect(0,0, Screen.width, Screen.height), "");
 
 		
 		GUIStyle guiStyle = new GUIStyle();
@@ -28,7 +30,7 @@ public class ConversationDisplayer : MonoBehaviour {
 		guiStyle.normal.background = Resources.Load("Textures/SyntaxHighlightBlue") as Texture2D;
 		guiStyle.alignment = TextAnchor.MiddleCenter;
 		guiStyle.fontSize = 20;
-		guiStyle.normal.textColor = Color.black;
+		guiStyle.normal.textColor = Color.white;
 		
 		GUI.Box(new Rect(Screen.width/2-width/2,Screen.height/2-height/2,width,height), conversation.GetText(), guiStyle);
 		
@@ -50,7 +52,7 @@ public class ConversationDisplayer : MonoBehaviour {
 				buttonStyle.normal.background = Resources.Load("Textures/SyntaxHighlightGreen") as Texture2D;
 				buttonStyle.alignment = TextAnchor.MiddleCenter;
 				buttonStyle.fontSize = 20;
-				buttonStyle.normal.textColor = Color.black;
+				buttonStyle.normal.textColor = Color.white;
 				
 				
 				//Check if the mouse is over a button
