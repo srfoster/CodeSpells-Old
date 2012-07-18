@@ -36,8 +36,18 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
+		givePlayerATrashCan();
+		
 	//	givePlayerAScroll();
 	}
+	
+	void givePlayerATrashCan() {
+		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+		//inventory.addItem();
+		
+		
+	}
+	
 	
 	void givePlayerAFlag() {
 		GameObject game_flag = new GameObject();

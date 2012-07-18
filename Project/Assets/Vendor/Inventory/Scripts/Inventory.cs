@@ -21,21 +21,26 @@ public class Inventory : MonoBehaviour {
 	private Dictionary<GameObject, ItemInfo> item_infos = new Dictionary<GameObject, ItemInfo>();
 	
 	private int margin_top  = 50;
+	
 	private int margin_left_side = 20;
 	private int margin_right_side = 60;
+	
 	private int margin_bottom = 200;
 	
 	private int vertical_spacing = 20;
 	
 	private int inventory_width = 320;
 	
-	private int item_width = 50;
-	private int item_height = 50;
+	//private int item_width = 50;
+	//private int item_height = 50;
+	
+	private int item_width = 30;
+	private int item_height = 30;
 	
 	
 	private int label_height = 40;
 	
-	private int item_columns = 2;
+	private int item_columns = 3;
 		
 	private int starting_row = 0;
 	
@@ -50,7 +55,8 @@ public class Inventory : MonoBehaviour {
 		item_label_style = new GUIStyle();
 		item_label_style.normal.textColor = Color.white;
 		item_label_style.alignment = TextAnchor.MiddleCenter;
-		item_label_style.fontSize = 20;
+		//item_label_style.fontSize = 20;
+		item_label_style.fontSize = 15;
 		item_label_style.wordWrap = true;
 		item_label_style.font = label_font;
 	}
@@ -122,7 +128,7 @@ public class Inventory : MonoBehaviour {
 		
 		foreach(GameObject item in items)
 		{
-			float item_padding = (1.0f * inventory_width - margin_right_side - margin_left_side - (item_columns * item_width)) / (item_columns);
+			float item_padding = (0.95f * inventory_width - margin_right_side - margin_left_side - (item_columns * item_width)) / (item_columns);
 			float item_x = margin_right_side + column * (item_width + item_padding);
 			float item_y = margin_top + row * (item_height + vertical_spacing + label_height) - (starting_row * (item_height + vertical_spacing)) ;
 			
