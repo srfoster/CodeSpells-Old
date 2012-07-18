@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour {
 	
 	private int vertical_spacing = 20;
 	
-	private int inventory_width = 320;
+	public int inventory_width = 320;
 	
 	private int item_width = 50;
 	private int item_height = 50;

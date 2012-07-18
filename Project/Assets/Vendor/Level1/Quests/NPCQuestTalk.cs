@@ -80,6 +80,7 @@ public class NPCQuestTalk : MonoBehaviour {
 		
 		yield return new WaitForSeconds(0.2f);
 
+	
 		
 		ConversationDisplayer c = GameObject.Find("ConversationDisplayer").GetComponent(typeof(ConversationDisplayer)) as ConversationDisplayer;
 		Time.timeScale = 0;
@@ -89,5 +90,7 @@ public class NPCQuestTalk : MonoBehaviour {
 		}
 		
 		c.Converse(((Conversation)conversationList[currentQuest]));
+		
+		c.show(GameObject.Find("Inventory"));
 	}
 }
