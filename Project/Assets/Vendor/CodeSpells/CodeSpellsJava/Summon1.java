@@ -6,7 +6,8 @@ public class Summon1 extends Spell{
     Enchanted rain    = getByName("Rain");
     Enchanted myself  = getByName("Me");
 
-    while(rain.distanceBetween(myself) > 65){
+    while(rain.distanceTo(myself) > 65)
+    {
       Direction toward_me = Direction.between(rain,myself);
       rain.move(toward_me, 5);
     }

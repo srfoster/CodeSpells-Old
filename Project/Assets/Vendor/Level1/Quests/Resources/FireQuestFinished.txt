@@ -1,5 +1,5 @@
 Nodes
-0=Thank you so much for igniting my fire again! My brother is going to be se jealous!
+0=Thank you so much for igniting my fire again! My brother is going to be so jealous!
 1=Now that you know how to ignite fires, try putting fires out.
 2=You can use your ignite spell, and change the onFire parameter "true" to "false", try it!
 3=You are a fire pro now! I don't have anything else to teach you :)
