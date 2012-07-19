@@ -25,12 +25,11 @@ Responses
 5=How can I help?=2=4
 6=How can I help?=3=4
 7=I've never cast spells before, can you help me?=4=5
-8=Yes, I do=5=6
-9=Yes, I saw it=6=7
-10=Yes, I saw it=7=8
-11=Yes, I did=9=10
-12=Yes=13=14
-13=Can you help me with spell casting again?=16=5
+8=Yes, I saw it=6=7
+9=Yes, I saw it=7=8
+10=Yes, I did=9=10
+11=Yes=13=14
+12=Can you help me with spell casting again?=16=5
 Exits
 0=OK=0=0
 1=That's nice=1=1

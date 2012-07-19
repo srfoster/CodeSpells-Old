@@ -68,6 +68,11 @@ public class Monster : MonoBehaviour {
 				Terrain.activeTerrain.SampleHeight(transform.position),
 				transform.position.z);
 			
+		if(Vector3.Distance(destination, GameObject.Find("SwampBounds").transform.position) < 20)
+		{
+			LoosePlayer();	
+		}
+		
 		if(Vector3.Distance(destination, transform.position) <= 5 && alive)
 		{
 			StartCoroutine(KillPlayer());
@@ -82,13 +87,26 @@ public class Monster : MonoBehaviour {
 		child.animation.CrossFade("run");
 	}
 	
+	void LoosePlayer() 
+	{
+		//reset everything;
+		alive = true;
+		attacking = false;
+		alphaFadeValue = 0;
+		
+		transform.position = starting_location;
+		
+		transform.rotation = starting_rotation;
+		
+		child.animation.Stop();
+  	}
+	
  	IEnumerator KillPlayer() 
 	{
 		alphaFadeValue = 1;
 		
 		GameObject.Find("Voice").audio.PlayOneShot(Resources.Load("Dying") as AudioClip);  
 
-		
 		yield return new WaitForSeconds(2);
 		
 		GameObject start = GameObject.FindGameObjectWithTag("Respawn");
