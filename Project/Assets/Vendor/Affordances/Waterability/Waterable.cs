@@ -5,6 +5,7 @@ public abstract class Waterable : MonoBehaviour {
 	// Most likely will not change
 	public float waterlogAmount = 0.0f;
 	public bool beingWatered = false;
+	public float decreaseWaterlogAmount = 0;
 	
 	// Will have to define each time
 	public float increaseWaterlogAmount;
@@ -60,6 +61,10 @@ public abstract class Waterable : MonoBehaviour {
 		{
 			waterEffectOnObject();
 			waterlogAmount += increaseWaterlogAmount;
+		}
+		if(!beingWatered && waterlogAmount > 0)
+		{
+			waterlogAmount -= decreaseWaterlogAmount;
 		}
 	}
 }

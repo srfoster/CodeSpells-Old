@@ -1,0 +1,17 @@
+Nodes
+0=Oh No! I wanted a fire pit like my cousins, but it has gotten out of control! I don't know how to put it out and I think only water can put it out! Can you put water on this huge fire?
+1=I think the easiest thing would be to bring the huge rain cloud over my fire.
+2=Great! Thank you for trying to help :)
+3=I would SUMMON the cloud over to you, as long as you are standing near the fire the rain will hit the fire and put it out!
+4=Did you find the SUMMONING spell?
+Responses
+0=Where can I find water?=0=1
+1=OK, I can do that!=1=2
+2=Hmm, how do I bring the rain cloud over?=1=3
+3=Yes.=4=2
+Exits
+0=Not now.=0=0
+1=OK!=1=4
+2=OK!=2=4
+3=OK!=3=4
+4=Not Yet.=4=4

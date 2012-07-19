@@ -76,7 +76,6 @@ public class ConversationDisplayer : MonoBehaviour {
 				buttonStyle.fontSize = 20;
 				buttonStyle.normal.textColor = Color.white;
 				
-				
 				//Check if the mouse is over a button
 				Rect button_rect = new Rect(width + 10, response_height,200,50);
 				
@@ -97,20 +96,15 @@ public class ConversationDisplayer : MonoBehaviour {
 			}
 		}
 		
-		
 		GUI.EndGroup();
-		
-				
+			
 		if(Event.current.type == EventType.MouseDown && !mouse_over_button){
 			Event.current.Use();
 			exit();
 			return;
 		}
-		
-		
 	}
 
-	
 	public void Converse(Conversation conversation)
 	{
 		this.conversation = conversation;

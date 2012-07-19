@@ -117,8 +117,6 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 //		badgebook.Add("helping_others_moving_rocks", 	"  Moving Cargo", 				"incomplete_moving_rocks_badge", false);
 		
-		
-
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
 		
@@ -182,7 +180,12 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("helping_others_cross_river");
 		};
 		
-
+		Flamable.Extinguished += (target) => {
+			if(target.name.Equals("QuestSummonCrate"))
+			{
+				badgebook.Complete("helping_others_put_out_fire");	
+			}
+		};
 		
 		Flamable.CaughtFire += (target) => {
 			if(!crate1 && target.name.Equals("QuestFlammingCrate"))
