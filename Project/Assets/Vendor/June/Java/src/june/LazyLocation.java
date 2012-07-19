@@ -19,7 +19,7 @@ public class LazyLocation extends Location
     @Override
     public void freeze() 
     {
-        String[] split = (Enchanted.commandGlobal(this.toString())).split(",");
+        String[] split = (Enchanted.executeCommand(this.toString())).split(",");
         String x_string = split[0].substring(1);
         String y_string = split[1];
         String z_string = split[2].substring(0, split[2].length() - 1);
@@ -28,7 +28,7 @@ public class LazyLocation extends Location
     
     @Override
     public double distanceBetween(Location loc) {
-        return Double.parseDouble(Enchanted.commandGlobal("Vector3.Distance("+this.toString()+","+loc.toString()+")"));
+        return Double.parseDouble(Enchanted.executeCommand("Vector3.Distance("+this.toString()+","+loc.toString()+")"));
     }
 
     @Override

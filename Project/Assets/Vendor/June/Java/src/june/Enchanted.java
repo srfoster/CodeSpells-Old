@@ -23,24 +23,24 @@ public class Enchanted
 		this.id = id;
 	}
 
-	public String getId()
+	protected String getId()
 	{
 		return id;
 	}
     
-  public void setId(String temp)
+  protected void setId(String temp)
 	{
 		id = temp;
 	}	
 
   public void setName(String new_name)
   {
-    commandGlobal("util.reregister(\""+id+"\",\""+new_name+"\");");
+    executeCommand("util.reregister(\""+id+"\",\""+new_name+"\");");
     setId(id);
   }
     
     
-    public static String commandGlobal (String command) 
+    public static String executeCommand(String command) 
     {
         try {
             long before = System.currentTimeMillis();
@@ -69,7 +69,7 @@ public class Enchanted
         return null;
     }
 
-	public String command(String command)
+	private String interpolateId(String command)
 	{
       String new_command = "";
 			if(command.indexOf("$target") > -1)
@@ -79,7 +79,7 @@ public class Enchanted
 				new_command = "objects[\""+id+"\"]."+command+";";
 			}
 
-      return commandGlobal(new_command);
+      return new_command;
 	}
 
 
@@ -98,69 +98,91 @@ public class Enchanted
        return loc; 
     }
 
-    public void adjustLocation(Vector3 loc){
+    public void move(Direction dir, double speed)
+    {
+      executeCommand(moveCommand(dir,speed));
+    }
+    
+    public String moveCommand(Direction dir, double speed)
+    {
+      dir.times(speed);
+
+      return adjustLocationCommand(dir);
+    }
+
+    public void adjustLocation(Vector3 loc)
+    {
+       executeCommand(adjustLocationCommand(loc));
+    }
+
+    public String adjustLocationCommand(Vector3 loc){
         String command = "";
         command += "$target.transform.position.x += " + loc.getXString() + ";";
         command += "$target.transform.position.y += " + loc.getYString() + ";";
         command += "$target.transform.position.z += " + loc.getZString() + ";";
 
-        command(command);
+        String c = interpolateId(command);
+        return c;
     }
 
-    public void setLocation(Location loc)
+    public String setLocationCommand(Location loc)
     {
         String command = "";
         command += "$target.transform.position.x = " + loc.getXString() + ";";
         command += "$target.transform.position.y = " + loc.getYString() + ";";
         command += "$target.transform.position.z = " + loc.getZString() + ";";
 
-        command(command);
+        String c = interpolateId(command);
+        return c;
+    }
+
+    public void setLocation(Location loc)
+    {
+        executeCommand(setLocationCommand(loc));
     }
 
     public EnchantedList findWithin()
     {
-        String list = commandGlobal("util.getWithin(\""+this.getId()+"\")");
-        EnchantedList eList = new EnchantedList();
-        eList.addAllFromUnityString(list);
-        return eList;
-    }
-    
-    public EnchantedList findLike(Enchanted ench, double rad) {
-        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+        String list = executeCommand("util.getWithin(\""+this.getId()+"\")");
         EnchantedList eList = new EnchantedList();
         eList.addAllFromUnityString(list);
         return eList;
     }
     
 
-    public void grow(float amount) {
-        command("$target.transform.localScale = $target.transform.localScale + (new Vector3("+amount+","+amount+","+amount+"))");
+    public String growCommand(double amount) {
+        String c = interpolateId("$target.transform.localScale = $target.transform.localScale + (new Vector3("+amount+","+amount+","+amount+"))");
+        return c;
+    }
+
+    public void grow(double amount)
+    {
+      executeCommand(growCommand(amount));
     }
 
     public double distanceTo(Enchanted ench) {
-        return Double.parseDouble(command("Vector3.Distance($target.transform.position , objects[\""+ench.getId()+"\"].transform.position)"));
+        String c = interpolateId("Vector3.Distance($target.transform.position , objects[\""+ench.getId()+"\"].transform.position)");
+        String resp = executeCommand(c);
+        return Double.parseDouble(resp);
     }
     
-    
-  public void move(Direction dir, double speed)
+
+  public String onFireCommand(boolean bool)
   {
-    dir.times(speed);
+    String c = "";
+    if(bool)
+    {
+      c = interpolateId("GetComponent('Flamable').Ignite()");
+    } else {
+      c = interpolateId("GetComponent('Flamable').Extinguish()");
+    }
 
-    adjustLocation(dir);
+    return c;
   }
-
-	public double currentHeight()
-	{
-		return Double.parseDouble(command("$target.transform.position.y - Terrain.activeTerrain.SampleHeight($target.transform.position)"));
-	}
 
   public void onFire(boolean bool)
   {
-    if(bool)
-    {
-      command("GetComponent('Flamable').Ignite()");
-    } else {
-      command("GetComponent('Flamable').Extinguish()");
-    }
+    String c = onFireCommand(bool);
+    executeCommand(c);
   }
 }
