@@ -94,9 +94,8 @@ public class CodeScrollItem : DraggableItem {
 		
 		Enchantable enchantable = (target.GetComponent("Enchantable") as Enchantable);
 		
-		if(enchantable == null || !enchantable.isEnchanted())
+		if(enchantable == null)
 		{
-			(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("No enchantment to absorb.");
 			SetHidden(false);
 
 			return;

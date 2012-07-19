@@ -6,7 +6,7 @@ public class Enchantable : MonoBehaviour {
 	public GameObject particles;
 	public AudioClip audio_clip;
 	
-	private bool is_enchanted;
+	private bool is_enchanted = false;
 	private GameObject particle_instance;
 	
 	private June june;
@@ -22,7 +22,7 @@ public class Enchantable : MonoBehaviour {
 
 	
 	public string id = "";
-	
+		
 	public string getId() {
 		if (id.Equals("")) {
 			return gameObject.GetInstanceID().ToString();
@@ -76,7 +76,7 @@ public class Enchantable : MonoBehaviour {
 		
 		gameObject.GetComponent<Text3D>().text = id;
 
-		if(june != null && june.isStopped())
+		if(!isEnchanted())
 		{
 			disenchantAnimation();
 			
@@ -97,6 +97,11 @@ public class Enchantable : MonoBehaviour {
 		}
 	}
 	
+	public void setCallback( EnchantmentFinishedCallback callback)
+	{
+		this.callback = callback;	
+	}
+	
 	public void enchant(June june, EnchantmentFinishedCallback callback)
 	{	
 				
@@ -114,11 +119,21 @@ public class Enchantable : MonoBehaviour {
 	public void disenchant(){
 		if(isEnchanted())
 			june.Stop();
+
+		is_enchanted = false;
 	}
 	
 	public bool isEnchanted()
 	{
-		return june != null;	
+		if(june == null)
+		{
+			return false;	
+		}
+		
+		if(june.isStopped())
+			is_enchanted = false;
+		
+		return is_enchanted;	
 	}
 	
 	private void disenchantAnimation()
@@ -135,6 +150,8 @@ public class Enchantable : MonoBehaviour {
 	
 	//Kind of a bloated, over-worked method.  But I guess I don't fully understand coroutines well enough to modularize it yet.
 	private IEnumerator enchantAnimation(){
+		
+		is_enchanted = true;
 	
 		//Fade the light out
 		if(GameObject.Find("Directional light") != null)

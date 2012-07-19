@@ -48,8 +48,15 @@ public class Flag : PickUpableItem {
 	override public void handleMouseDown() {
 		
 		int to_remove = int.Parse(gameObject.GetComponent<Enchantable>().getId().Split(' ')[1]);
+
+		if(gameObject.GetComponent<Enchantable>().isEnchanted())
+			return;
+		
 		
 		num_list.Remove (to_remove);
+		
+		
+
 		
 		ObjectManager.Unregister("Area " + to_remove);
 		Destroy (gameObject);
