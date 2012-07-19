@@ -162,7 +162,7 @@ public class IDE : MonoBehaviour {
 		adjustScroll();
 		
 		catchTabs();
-		
+			
 		detectKeyboardActivity();
 		
 	}
@@ -213,13 +213,55 @@ public class IDE : MonoBehaviour {
 		
 	void catchTabs()
 	{
+		
+		//Insert tab if they press tab.
 		if( Event.current.Equals( Event.KeyboardEvent("tab") ) )
 	    {
 	        Event.current.Use();
 			
-			current_code = current_code.Substring(0,GetCursorPosition()) + "    " + current_code.Substring(GetCursorPosition());
-			stateObj.MoveRight();
+			insertTab(2);
 		}
+		
+		//If they press Enter, figure out the new indentation, and do an auto indent
+		
+		if(Event.current.type == EventType.KeyUp && Event.current.keyCode == KeyCode.Return)
+		{
+			
+			
+			string up_to_cursor = current_code.Substring(0, GetCursorPosition());
+			
+			int num_indents = 0;
+			for(int i = 0; i < up_to_cursor.Length; i++)
+			{
+				char current = up_to_cursor[i];
+				
+				if(current == '{')
+					num_indents++;
+				
+				if(current == '}')
+					num_indents--;
+			}
+
+						
+			for(int i = 0; i < num_indents; i++)
+			{
+				insertTab(2);	
+			}
+		}
+		
+	}
+	
+	void insertTab(int tab_width)
+	{
+		string spaces = "";
+		
+		for(int i = 0; i < tab_width; i++)
+			spaces += " ";
+		
+		current_code = current_code.Substring(0,GetCursorPosition()) + spaces + current_code.Substring(GetCursorPosition());
+		
+		for(int i = 0; i < tab_width; i++)
+			stateObj.MoveRight();
 	}
 	
 	void adjustScroll()
@@ -318,6 +360,8 @@ public class IDE : MonoBehaviour {
 	public void noEdit(){
 		no_edit = true;	
 	}
+	
+
 	
 	public void syntaxHighlight()
 	{

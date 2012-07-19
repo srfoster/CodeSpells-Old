@@ -71,6 +71,9 @@ public class GnomeAI : MonoBehaviour {
 					break;
 				}
 			}
+			
+			if(!foundObject)
+				GetComponent<NPCFidget>().StopWalking();
 		}
 		else
 		{
@@ -90,6 +93,8 @@ public class GnomeAI : MonoBehaviour {
 	
 	private bool walkToObject()
 	{
+		GetComponent<NPCFidget>().StartWalking();
+			
 		if(objToCollect == null || objToCollect.transform == null)
 		{
 			foundObject = false;
@@ -104,6 +109,8 @@ public class GnomeAI : MonoBehaviour {
 	
 	public bool Collect()
 	{
+		GetComponent<NPCFidget>().StopWalking();
+
 		foundObject = false;
 		leftHand = findLeftHandRecursive(transform);
 		rightHand = findRightHandRecursive(transform);
@@ -161,6 +168,9 @@ public class GnomeAI : MonoBehaviour {
 
 	public bool Deliver()
 	{
+		
+		GetComponent<NPCFidget>().StopWalking();
+
 		if(objToCollect != null && objToCollect.transform.parent == transform)
 		{
 			objToCollect.tag = outgoingTag;
@@ -187,6 +197,9 @@ public class GnomeAI : MonoBehaviour {
 	
 	public bool Eat()
 	{
+		
+		GetComponent<NPCFidget>().StopWalking();
+
 		if(!incomingTag.Equals("Bread"))
 		{
 			foreach( GameObject item in GameObject.FindGameObjectsWithTag("Food"))
