@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
 
 public class SetupLevel : MonoBehaviour {
 	CodeScrollItem item;
@@ -38,7 +41,9 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
-	//	givePlayerAScroll();
+		
+		setupSpecialEvents();  //i.e. do random shit
+		
 	}
 	
 	void givePlayerAFlag() {
@@ -195,22 +200,30 @@ public class SetupLevel : MonoBehaviour {
 			}
 		};
 	}
+
 	
-	void givePlayerAScroll()
+	void setupSpecialEvents() // random shit
 	{
-		GameObject initial_scroll = new GameObject();
-		initial_scroll.name = "InitialScroll";
-		initial_scroll.AddComponent("CodeScrollItem");
-		item = (initial_scroll.GetComponent("CodeScrollItem") as CodeScrollItem);
-		item.item_name = "Blank";
-		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
 		
 		
-		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
-		inventory.addItem(initial_scroll);	
 		
-		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
-		code_scroll_item_component.setCurrentFile("Levitate.java");
+		//Remove a spell from the inventory if the user blanks out the file contents.
+		//  This is how we'll delete spells (for now).
+		IDE.IDEClosed += (file_name, contents) => {
+			string[] segs = file_name.Split('/');
+			string short_name = segs[segs.Length - 1].Replace(".java","");
+			
+			Debug.Log(short_name + " : " + contents);
+			
+			Inventory i = GameObject.Find("Inventory").GetComponent<Inventory>();
+			
+			List<GameObject> matching_items = i.getMatching(short_name);
+			
+			if(Regex.Match(contents.Replace("\n",""), "^\\s*$").Success && matching_items.Count > 0)
+			{
+				i.removeItem(matching_items[0]);
+			}
+		};	
 	}
 
 }

@@ -9,7 +9,13 @@ using System.Threading;
 using System.IO;
 
 
+
+
 public class IDE : MonoBehaviour {
+	
+	public delegate void EventHandler(string file_name, string contents);
+	public static event EventHandler IDEOpened;
+	public static event EventHandler IDEClosed;
 
 	public Texture2D background_texture;
 	public Texture2D left_panel_background;
@@ -126,6 +132,9 @@ public class IDE : MonoBehaviour {
 		no_edit = false;
 		
 		Time.timeScale = 0;
+		
+		if(IDEOpened != null)
+			IDEOpened(file_name, current_code);
 	}
 	
 	void Start () {
@@ -329,6 +338,10 @@ public class IDE : MonoBehaviour {
 	        previous_state.active = true;
 			paused = true;
 			Time.timeScale = 1;
+			
+					
+			if(IDEClosed != null)
+				IDEClosed(file_name, current_code);
 	    }
 		
 		
