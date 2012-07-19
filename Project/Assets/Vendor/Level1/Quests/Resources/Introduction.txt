@@ -1,10 +1,21 @@
 Nodes
-0=Welcome to CodeSpells! I am your greeter into this incredible land. My friends are busy making stone bread so that we may eat. 
+0=Welcome to our village! I am your greeter into this incredible land. My friends are busy making stone bread so that we may eat. 
 1=Stone bread is made with two ingredients: Rock Sugar and Flower Flour.
 2=Rock Sugar is an ingredient made by rocks being heated in a fire pit and then dunked in a magical pond.
 3=Flower Flour is an ingredient made by seeds being planted in a magical grove then grown into beautiful flowers.
 4=Enjoy walking through our land, there are some gnomes that will talk with you if you click on them, they will help you learn spells that will allow you to help us automate our bread making process.
-5=The other gnomes will probably be able to help you out more than I can.
+5=Of course! Let's do a little lesson in spell casting. First, you need a usable spell in your inventory. When I finish talking to you, look to the right of your screen and look for your inventory, then click on me again so that I can walk you through the rest.
+6=Did you see your inventory?
+7=Great, in your inventory, you should have seen your spell book, did you see it?
+8=Awesome. Now I want you to click on your spell book, that will open it, then copy the first spell out of your spell book. It will then appear in your inventory, then click on me again.
+9=Did you copy the spell into your inventory?
+10=To cast the spell, drag it out of your inventory and onto the crate that is right next to me. The crate will highlight green, that's how you know the spell is casting properly. Click on me after you cast the spell.
+11=You can see that the crate is sparkling, that means it is enchanted. To un-enchant the crate (and to get your spell back) drag the empty scroll onto the crate again and the scroll will capture the spell back. Click on me after you un-cast the spell.
+12=There are some spells that don't stay on the object though. Go back into your spell book and copy out the second spell in your book. Then cast is onto my crate.
+13=Did you notice that the spell effected the crate but then went back into your inventory? 
+14=Good. That is the basics of spell casting. The last thing to know about magic is that your inventory is infinately huge, you can collect spells and objects throughout the world. To collect an object (like my crate) just click on the object and it will appear in your inventory. Try it!
+15=That's really all I have to teach you. Now it's time for you to journey through out land and engage in quests to help my village. Gnomes that have green arrows over their heads have quests for you, so make sure you talk to them!
+16=I don't have anything else for you.
 Responses
 0=How do they make stone bread?=0=1
 1=What is rock sugar?=1=2
@@ -13,10 +24,28 @@ Responses
 4=What is rock sugar?=3=4
 5=How can I help?=2=4
 6=How can I help?=3=4
+7=I've never cast spells before, can you help me?=4=5
+8=Yes, I do=5=6
+9=Yes, I saw it=6=7
+10=Yes, I saw it=7=8
+11=Yes, I did=9=10
+12=Yes=13=14
+13=Can you help me with spell casting again?=16=5
 Exits
 0=OK=0=0
 1=That's nice=1=1
 2=Ok=2=2
 3=Ok=3=3
 4=Ok!=4=5
-5=Exit=5=5
+5=OK=5=6
+6=Exit=6=6
+7=Exit=7=7
+8=OK=8=9
+9=Exit=9=9
+10=OK=10=11
+11=OK=11=12
+12=OK=12=13
+13=Exit=13=13
+14=OK=14=15
+15=OK=15=16
+16=OK=16=16

@@ -53,9 +53,6 @@ public class Flamable : MonoBehaviour {
 		if(!isIgnited())
 			return;
 		
-		if(Extinguished != null)
-			Extinguished(this.gameObject);
-		
 		Destroy(flames_actual);
 		
 		if(gameObject.GetComponent<Item>() != null && old_texture != null)
@@ -72,7 +69,11 @@ public class Flamable : MonoBehaviour {
 	{
 		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
 		{
-			Extinguish();
+			if(Extinguished != null)
+				Extinguished(this.gameObject);
+			
+			if(!flames_prefab.name.Equals("TallFire"))
+				Extinguish();
 		}
 		if(col.gameObject.GetComponent("Flamable") == null)
 		{

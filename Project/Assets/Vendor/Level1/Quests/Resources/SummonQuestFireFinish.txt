@@ -1,0 +1,9 @@
+Nodes
+0=Thank you for helping me so much!
+1=You rock!
+2=You are a fire/water master!
+Responses
+Exits
+0=No problem!=0=1
+1=Thanks!=1=2
+2=Thank you!=2=0

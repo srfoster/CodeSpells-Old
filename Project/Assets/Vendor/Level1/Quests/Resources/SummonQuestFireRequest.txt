@@ -1,0 +1,8 @@
+Nodes
+0=Now that there isn't a big fire and the rain is back where it should be, could you please put my crates on fire, but the little fire like my cousins?
+1=I would use the FLAME spell, just make sure flame is set to true and not false!
+Responses
+0=Sure, how do I do that?=0=1
+Exits
+0=No problem!=0=1
+1=OK, I know how to do that!=1=1
