@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import june.*;
 
 public class MySpell1 extends Spell{
@@ -20,3 +21,5 @@ public class MySpell1 extends Spell{
         }
   }
 }
+=======
+>>>>>>> 6dbb00acab63976213dfa08aa6f69ae458b0d323

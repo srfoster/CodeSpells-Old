@@ -72,6 +72,11 @@ public class Spellbook : MonoBehaviour {
 
 	}
 	
+	public void Add(SpellbookPage page)
+	{
+		pages.Add(page);	
+	}
+	
 	void OnGUI(){
 		if(enabled){
 			displayCurrentPage();

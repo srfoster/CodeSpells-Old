@@ -2,6 +2,7 @@ import june.*;
 
 public class MySpell2 extends Spell{
   public void cast(){
+<<<<<<< HEAD
         Enchanted pond = getByName("Pond");
         Enchanted firePit = getByName("FirePit");
         
@@ -18,5 +19,11 @@ public class MySpell2 extends Spell{
         while ((objects.getLocation()).distanceBetween(pond.getLocation()) > 1.5) {
             objects.move(Direction.between(objects,pond), 1.0);
         }
+=======
+    Enchanted t = getTarget();
+    
+    while(true)
+      t.scale();
+>>>>>>> 6dbb00acab63976213dfa08aa6f69ae458b0d323
   }
 }

@@ -1,0 +1,11 @@
+Nodes
+0=Thank you so much for putting this huge fire out! You should probably return the rain to the magic grove where it came from, otherwise the seeds won't grow into flowers and the flowers won't turn into flour for the bread!
+1=You will have to walk into the grove and summon the rain again.
+2=Make sure the rain is over the magic grove!
+Responses
+0=How do I do that?=0=1
+1=Sure, how do I do that?=1=2
+Exits
+0=Good thinking!=0=0
+1=OK, I know how to do that!=1=2
+2=OK!=2=2

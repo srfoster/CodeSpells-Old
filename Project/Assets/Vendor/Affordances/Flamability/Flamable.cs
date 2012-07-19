@@ -6,7 +6,6 @@ public class Flamable : MonoBehaviour {
 	public bool flaming_at_start = false;
 	
 	private GameObject flames_actual;
-	
 	Texture2D old_texture;
 	
 	public delegate void EventHandler(GameObject target);
@@ -53,9 +52,6 @@ public class Flamable : MonoBehaviour {
 		if(!isIgnited())
 			return;
 		
-		if(Extinguished != null)
-			Extinguished(this.gameObject);
-		
 		Destroy(flames_actual);
 		
 		if(gameObject.GetComponent<Item>() != null && old_texture != null)
@@ -70,33 +66,26 @@ public class Flamable : MonoBehaviour {
 	
 	void OnCollisionStay(Collision col)
 	{
-		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
-		{
-			Extinguish();
-		}
-		if(col.gameObject.GetComponent("Flamable") == null)
-		{
-			return;	
-		}
-		
-		Flamable other_flamable = col.gameObject.GetComponent("Flamable") as Flamable;
-		
-		if(other_flamable.isIgnited())
-			Ignite();
+		DetermineIgniteOrExtinguish(col.gameObject);
 	}
-	
+		
 	void OnTriggerStay(Collider col)
 	{
-		if(col.gameObject.GetComponent<Substance>() != null && col.gameObject.GetComponent<Substance>().isWater())
+		DetermineIgniteOrExtinguish(col.gameObject);
+	}
+	
+	void DetermineIgniteOrExtinguish(GameObject col)
+	{
+		if(col.GetComponent<Substance>() != null && col.GetComponent<Substance>().isWater())
 		{
 			Extinguish();
 		}
-		if(col.gameObject.GetComponent("Flamable") == null)
+		if(col.GetComponent("Flamable") == null)
 		{
 			return;	
 		}
 		
-		Flamable other_flamable = col.gameObject.GetComponent("Flamable") as Flamable;
+		Flamable other_flamable = col.GetComponent("Flamable") as Flamable;
 		
 		if(other_flamable.isIgnited())
 			Ignite();

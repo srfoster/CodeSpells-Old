@@ -40,8 +40,7 @@ public class CodeScrollItem : DraggableItem {
 			animated_icon[1] = Resources.Load("SparkleScroll2") as Texture2D;	
 			animated_icon[2] = Resources.Load("SparkleScroll3") as Texture2D;	
 		}
-		                     
-		
+		              
 		if(animate)
 		{
 			current_frame = (current_frame + 1) % 30;
@@ -94,9 +93,8 @@ public class CodeScrollItem : DraggableItem {
 		
 		Enchantable enchantable = (target.GetComponent("Enchantable") as Enchantable);
 		
-		if(enchantable == null || !enchantable.isEnchanted())
+		if(enchantable == null)
 		{
-			(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("No enchantment to absorb.");
 			SetHidden(false);
 
 			return;
