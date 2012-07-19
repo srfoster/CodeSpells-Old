@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 public class Icon3D : MonoBehaviour {
 	
@@ -10,11 +11,23 @@ public class Icon3D : MonoBehaviour {
 	public float z_adj = 0;
 	
 	int count = 0;
+	
+	public Color color = Color.green;
+	
+	Transform mesh;
 
-	// Use this for initialization
+	
 	void Start () {
+
+		
 		icon = Instantiate(icon, new Vector3(0,0,0), icon.transform.rotation) as GameObject;	
-		//icon.transform.parent = transform;
+		
+		Material my_material = new Material(Shader.Find("Icon/Unlit"));
+		
+		findMeshRecursive(icon.transform);
+		
+		mesh.gameObject.renderer.material = my_material;
+		mesh.gameObject.renderer.material.color = color;
 	}
 	
 	// Update is called once per frame
@@ -26,6 +39,20 @@ public class Icon3D : MonoBehaviour {
 			transform.position.y+ y_adj + bounce(),
 			transform.position.z + z_adj);
 	
+	}
+	
+	void findMeshRecursive(Transform parent)
+	{
+		if(Regex.Match(parent.name,"Mesh").Success)
+		{
+			mesh = parent;
+			return;
+		}
+		
+		foreach(Transform child in parent)
+		{
+			findMeshRecursive(child);
+		}
 	}
 	
 	float bounce()

@@ -133,8 +133,8 @@ public class Enchanted
     }
     
 
-    public void scale() {
-        command("$target.transform.localScale = $target.transform.localScale + (new Vector3(0.2,0.2,0.2))");
+    public void grow(float amount) {
+        command("$target.transform.localScale = $target.transform.localScale + (new Vector3("+amount+","+amount+","+amount+"))");
     }
 
     public double distanceTo(Enchanted ench) {
