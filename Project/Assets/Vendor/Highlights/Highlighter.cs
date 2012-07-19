@@ -5,6 +5,16 @@ public class Highlighter : MonoBehaviour {
 	
 	private static GameObject last;
 	private static Shader old_shader;
+	
+	void Update()
+	{
+		//Clear the highlight if there's no mouse button held down.
+		//  Fixes problems for us, but makes this class a bit less abstract.  Oh well.
+		if(!Input.GetMouseButton(0))
+		{
+			highlight(null, Color.black);	
+		}
+	}
 
 	
 	public static void highlight(GameObject obj, Color color)
