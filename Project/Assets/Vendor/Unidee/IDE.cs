@@ -114,6 +114,7 @@ public class IDE : MonoBehaviour {
 		this.input = input;
 		current_code = input.GetCode();
 		file_name = input.GetFileName();
+		scroll_position = Vector2.zero;
 	}
 	
 	public void show(GameObject previous_state)

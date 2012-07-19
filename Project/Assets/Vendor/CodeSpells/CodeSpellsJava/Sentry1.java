@@ -1,12 +1,12 @@
 import june.*;
 
-public class MySpell1 extends Spell{
+public class Sentry1 extends Spell{
   public void cast(){
-    Enchanted e = getTarget();
+    Enchanted thing = getTarget();
     
     while(true){
-      moveEast(e);
-      moveWest(e);
+      moveEast(thing);
+      moveWest(thing);
     }
   }
   
