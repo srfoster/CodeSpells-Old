@@ -119,7 +119,8 @@ public class SetupLevel : MonoBehaviour {
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
-		
+		badgebook.Add("blank_line_hack3", 					"", 			"", false);
+
 
 		
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
