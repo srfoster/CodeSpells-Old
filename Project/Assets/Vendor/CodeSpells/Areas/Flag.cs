@@ -16,6 +16,8 @@ public class Flag : PickUpableItem {
 		
 		Debug.Log ("Next is " + num);
 		game_flag.GetComponent<Enchantable>().id = "Area "+num;
+		
+		
 				
 		Debug.Log ("Adding " + num);
 
