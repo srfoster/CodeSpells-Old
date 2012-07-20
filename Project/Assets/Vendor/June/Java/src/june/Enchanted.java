@@ -105,9 +105,9 @@ public class Enchanted
     
     public String moveCommand(Direction dir, double speed)
     {
-      dir.times(speed);
+      Vector3 new_dir = dir.times(speed);
 
-      return adjustLocationCommand(dir);
+      return adjustLocationCommand(new_dir);
     }
 
     public void adjustLocation(Vector3 loc)

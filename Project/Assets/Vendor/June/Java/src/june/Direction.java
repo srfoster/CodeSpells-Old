@@ -79,6 +79,6 @@ public abstract class Direction implements Vector3
        return dir;
     }
 
-    public abstract void add(Vector3 v);
-    public abstract void times(double d);
+    public abstract Vector3 add(Vector3 v);
+    public abstract Vector3 times(double d);
 }
