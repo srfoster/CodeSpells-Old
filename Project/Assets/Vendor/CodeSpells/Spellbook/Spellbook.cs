@@ -5,6 +5,11 @@ using System.Collections.Generic;
 
 public class Spellbook : MonoBehaviour {
 	
+			
+	public delegate void EventHandler(SpellbookPage page);
+	public static event EventHandler PageTurnedForward;
+	public static event EventHandler PageTurnedBackward;
+	
 	Texture2D background_texture;
 	
 	GameObject previous_state;
@@ -107,6 +112,7 @@ public class Spellbook : MonoBehaviour {
 			if(current_page != 0 && GUI.Button (new Rect (Screen.width * 0.025f, Screen.height * 0.5f, 35, 35), "", prev_button_style))
 			{
 				current_page--;
+				PageTurnedBackward(currentPage());
 			}
 			
 			
@@ -115,6 +121,7 @@ public class Spellbook : MonoBehaviour {
 			if(current_page != pages.Count - 1 && GUI.Button (new Rect (Screen.width * 0.95f, Screen.height * 0.5f, 35, 35), "", next_button_style))
 			{
 				current_page++;
+				PageTurnedForward(currentPage());
 			}
 		}
 	}

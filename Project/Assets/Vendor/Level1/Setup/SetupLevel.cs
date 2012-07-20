@@ -239,6 +239,16 @@ public class SetupLevel : MonoBehaviour {
 			monster.audio.PlayOneShot(monster_clip);
 		};
 		
+		
+		AudioSource main_audio = GameObject.Find("Voice").audio;
+			
+		AudioClip spellbook_clip = Resources.Load("PageTurn") as AudioClip;
+		Spellbook.PageTurnedForward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.PageTurnedBackward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
 	}
 
 }
