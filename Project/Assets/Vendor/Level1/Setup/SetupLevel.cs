@@ -258,6 +258,12 @@ public class SetupLevel : MonoBehaviour {
 		Inventory.DroppedOff += (target) => {
 			main_audio.audio.PlayOneShot(drop_item_clip);	
 		};
+		
+				
+		AudioClip badge_clip = Resources.Load("BadgeUnlocked") as AudioClip;
+		Badgebook.BadgeUnlocked += (target) => {
+			main_audio.audio.PlayOneShot(badge_clip);	
+		};
 	}
 
 }

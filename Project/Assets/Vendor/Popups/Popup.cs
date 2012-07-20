@@ -13,11 +13,11 @@ public class Popup : MonoBehaviour {
 	void Start()
 	{
 		  style = new GUIStyle();
-		  style.normal.background = Resources.Load("Textures/SyntaxHighlightBlue") as Texture2D;
+		  style.normal.background = Resources.Load("Textures/SyntaxHighlightRed") as Texture2D;
 		  style.normal.textColor = Color.white;
 		  style.alignment = TextAnchor.MiddleCenter;
 		  style.fontSize = 20;
-          style.normal.textColor = Color.black;
+          style.normal.textColor = Color.white;
 		  style.font = Resources.Load("Erika Ormig") as Font;
 		
 		  mainPopup = this;
