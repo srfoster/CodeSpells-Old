@@ -125,12 +125,12 @@ public class Enchanted
         return eList;
     }
     
-    public EnchantedList findLike(Enchanted ench, double rad) {
+    /*public EnchantedList findLike(Enchanted ench, double rad) {
         String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
         EnchantedList eList = new EnchantedList();
         eList.addAllFromUnityString(list);
         return eList;
-    }
+    }*/
     
 
     public void grow(float amount) {
