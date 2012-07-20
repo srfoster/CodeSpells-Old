@@ -230,6 +230,15 @@ public class SetupLevel : MonoBehaviour {
 				i.removeItem(matching_items[0]);
 			}
 		};	
+		
+		
+		
+		AudioClip monster_clip = Resources.Load("Growls") as AudioClip;
+		//Setup sounds
+		Monster.AttackStarted += (monster) => {
+			monster.audio.PlayOneShot(monster_clip);
+		};
+		
 	}
 
 }
