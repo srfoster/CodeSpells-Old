@@ -19,6 +19,8 @@ public class Enchantable : MonoBehaviour {
 	public static event EventHandler EnchantmentStarted;
 	public static event EventHandler EnchantmentEnded;
 	public static event EventHandler EnchantmentFailed;
+	
+	public bool do_restrictions = true;
 
 	
 	public string id = "";
@@ -61,8 +63,12 @@ public class Enchantable : MonoBehaviour {
 		
 		
 		gameObject.AddComponent<Text3D>();
-		gameObject.AddComponent<NoUnderground>();
-		gameObject.AddComponent<ScaleLimit>();
+		
+		if(do_restrictions)
+		{
+			gameObject.AddComponent<NoUnderground>();
+			gameObject.AddComponent<ScaleLimit>();
+		}
 		//gameObject.GetComponent<ScaleLimit>().upper_limit = 100;
 		//gameObject.GetComponent<ScaleLimit>().lower_limit = 0;
 	}

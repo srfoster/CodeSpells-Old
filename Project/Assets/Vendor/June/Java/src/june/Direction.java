@@ -45,7 +45,7 @@ public abstract class Direction implements Vector3
     }
 
     public static Direction forward() {
-        String vector3_string = "objects['Me'].transform.forward";
+        String vector3_string = "objects['Me'].transform.FindChild('Main Camera').transform.forward";
         Direction dir = new LazyDirection(vector3_string);
             
         return dir;

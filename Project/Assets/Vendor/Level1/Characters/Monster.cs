@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Monster : MonoBehaviour {
 	
+		
+	public delegate void EventHandler(GameObject monster);
+	public static event EventHandler AttackStarted;
+	
 	//Because the actual monster asset is a child of the monster prefab
 	public GameObject child;
 	public int speed = 10;
@@ -25,6 +29,8 @@ public class Monster : MonoBehaviour {
 	public void Attack () {
 		StartRunning();
 		attacking = true;
+		
+		AttackStarted(gameObject);
 	}
 	
 	void Update()

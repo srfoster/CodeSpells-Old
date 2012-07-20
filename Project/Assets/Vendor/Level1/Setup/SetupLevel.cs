@@ -223,6 +223,40 @@ public class SetupLevel : MonoBehaviour {
 				i.removeItem(matching_items[0]);
 			}
 		};	
+		
+		
+		
+		AudioClip monster_clip = Resources.Load("Growls") as AudioClip;
+		//Setup sounds
+		Monster.AttackStarted += (monster) => {
+			monster.audio.PlayOneShot(monster_clip);
+		};
+		
+		
+		AudioSource main_audio = GameObject.Find("Voice").audio;
+			
+		AudioClip spellbook_clip = Resources.Load("PageTurn") as AudioClip;
+		Spellbook.PageTurnedForward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.PageTurnedBackward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.SpellCopied += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		
+		
+		AudioClip drop_item_clip = Resources.Load("DropItem") as AudioClip;
+		Inventory.DroppedOff += (target) => {
+			main_audio.audio.PlayOneShot(drop_item_clip);	
+		};
+		
+				
+		AudioClip badge_clip = Resources.Load("BadgeUnlocked") as AudioClip;
+		Badgebook.BadgeUnlocked += (target) => {
+			main_audio.audio.PlayOneShot(badge_clip);	
+		};
 	}
 
 }
