@@ -252,6 +252,12 @@ public class SetupLevel : MonoBehaviour {
 		Spellbook.SpellCopied += (page) => {
 			main_audio.audio.PlayOneShot(spellbook_clip);
 		};
+		
+		
+		AudioClip drop_item_clip = Resources.Load("DropItem") as AudioClip;
+		Inventory.DroppedOff += (target) => {
+			main_audio.audio.PlayOneShot(drop_item_clip);	
+		};
 	}
 
 }
