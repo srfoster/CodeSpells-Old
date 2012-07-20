@@ -18,20 +18,30 @@ public class Util {
 	
 	public string getWithin(string id)
 	{
+		Debug.Log ("------------------------ get within was called");
 		GameObject parent = ObjectManager.FindById(id);
+		Debug.Log ("parent is null? "+ (parent == null));
+		Debug.Log ("parent has been found");
 				
 		if(parent.GetComponent<ObjectTracker>() == null)
 			return "";
 		
 		List<string> ids = new List<string>();
 		
+		parent.GetComponent<ObjectTracker>().getWithin();
+		Debug.Log ("getWithin() was called on the parent's component");
+		
 		foreach(GameObject child in parent.GetComponent<ObjectTracker>().getWithin())
 		{
-			if(child.GetComponent<Enchantable>() != null)
+			Debug.Log ("Found a child GameObject: "+child);
+			
+			if(child != null && child.GetComponent<Enchantable>() != null)
 			{
 				ids.Add(child.GetComponent<Enchantable>().getId());
+				Debug.Log ("enchantable object has been found");
 			}
 		}
+		Debug.Log ("Has finished looping through enchantable objects");
 		
 		string[] id_array = ids.ToArray();
 		

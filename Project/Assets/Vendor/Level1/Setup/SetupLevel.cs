@@ -41,10 +41,12 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
+
 		
 		setupSpecialEvents();  //i.e. do random shit
 		
 	}
+	
 	
 	void givePlayerAFlag() {
 		GameObject game_flag = new GameObject();
