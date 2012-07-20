@@ -249,6 +249,9 @@ public class SetupLevel : MonoBehaviour {
 		Spellbook.PageTurnedBackward += (page) => {
 			main_audio.audio.PlayOneShot(spellbook_clip);
 		};
+		Spellbook.SpellCopied += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
 	}
 
 }

@@ -9,6 +9,8 @@ public class Spellbook : MonoBehaviour {
 	public delegate void EventHandler(SpellbookPage page);
 	public static event EventHandler PageTurnedForward;
 	public static event EventHandler PageTurnedBackward;
+	public static event EventHandler SpellCopied;
+
 	
 	Texture2D background_texture;
 	
@@ -104,6 +106,8 @@ public class Spellbook : MonoBehaviour {
 	        	previous_state.active = true;
 				
 				givePlayerAScroll();
+				
+				SpellCopied(currentPage());
 			}
 			
 			
