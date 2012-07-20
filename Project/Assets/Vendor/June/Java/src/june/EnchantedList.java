@@ -94,4 +94,16 @@ public class EnchantedList implements Iterable<Enchanted>
        Enchanted.executeCommand(big_command);
     }
 
+    public void setLocation(Location loc)
+    {
+       String big_command = "";
+
+       for(Enchanted e : eList)
+       {
+          big_command += e.setLocationCommand(loc) + ";";
+       }
+
+       Enchanted.executeCommand(big_command);
+    }
+
 }
