@@ -73,6 +73,8 @@ public class Monster : MonoBehaviour {
 			LoosePlayer();	
 		}
 		
+
+		
 		if(Vector3.Distance(destination, transform.position) <= 5 && alive)
 		{
 			StartCoroutine(KillPlayer());
@@ -87,7 +89,7 @@ public class Monster : MonoBehaviour {
 		child.animation.CrossFade("run");
 	}
 	
-	void LoosePlayer() 
+	public void LoosePlayer() 
 	{
 		//reset everything;
 		alive = true;
