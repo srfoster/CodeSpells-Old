@@ -45,6 +45,10 @@ public class Enchantable : MonoBehaviour {
 			ObjectManager.Register(gameObject,id);
 		
 		
+		
+		
+		
+		
 		if(audio_clip == null)
 		{
 			audio_clip = Resources.Load("SpellEffect") as AudioClip;	
@@ -56,7 +60,11 @@ public class Enchantable : MonoBehaviour {
 		}
 		
 		
-		gameObject.AddComponent<Text3D>();	
+		gameObject.AddComponent<Text3D>();
+		gameObject.AddComponent<NoUnderground>();
+		gameObject.AddComponent<ScaleLimit>();
+		//gameObject.GetComponent<ScaleLimit>().upper_limit = 100;
+		//gameObject.GetComponent<ScaleLimit>().lower_limit = 0;
 	}
 	
 	void OnApplicationQuit()
