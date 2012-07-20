@@ -8,8 +8,8 @@ public class Teleport1 extends Spell
     Enchanted target = getTarget();            
     Enchanted myself = getByName("Me");
 
-    Location dest = target.getLocation();
-    dest.adjust(Direction.up(), 10);
+    Location temp = target.getLocation();
+    Location dest = temp.adjust(Direction.up(), 10);
 
     myself.setLocation(dest); 
   }
