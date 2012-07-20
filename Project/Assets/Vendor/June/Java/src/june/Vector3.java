@@ -5,6 +5,6 @@ public interface Vector3{
   public String getYString();
   public String getZString();
 
-  public void add(Vector3 other);
-  public void times(double s);
+  public Vector3 add(Vector3 other);
+  public Vector3 times(double s);
 }

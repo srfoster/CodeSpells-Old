@@ -41,21 +41,9 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
-<<<<<<< HEAD
-		givePlayerATrashCan();
-		
-	//	givePlayerAScroll();
-=======
+
 		
 		setupSpecialEvents();  //i.e. do random shit
-		
->>>>>>> 6dbb00acab63976213dfa08aa6f69ae458b0d323
-	}
-	
-	void givePlayerATrashCan() {
-		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
-		//inventory.addItem();
-		
 		
 	}
 	

@@ -36,18 +36,43 @@ public class LazyDirection extends Direction
     }
 
     @Override
-    public void times(double scale)
+    public Vector3 times(double scale)
     {
-      post_x += "*" + scale;      
-      post_y += "*" + scale;      
-      post_z += "*" + scale;      
+      LazyDirection ret = new LazyDirection(evals_to_vector3);
+      ret.appendPostX("*" + scale);
+      ret.appendPostY("*" + scale);
+      ret.appendPostZ("*" + scale);
+
+      return ret;
     }
 
     @Override
-    public void add(Vector3 loc)
+    public Vector3 add(Vector3 loc)
     {
-      post_x += "+" + loc.getXString();      
-      post_y += "+" + loc.getYString();      
-      post_z += "+" + loc.getZString();      
+      LazyDirection ret = new LazyDirection(evals_to_vector3);
+      ret.appendPostX("+" + loc.getXString());
+      ret.appendPostY("+" + loc.getYString());
+      ret.appendPostZ("+" + loc.getZString());
+
+      return ret;
+    }
+
+    public void setPostX(String string){
+      post_x = string;
+    }
+    public void setPostY(String string){
+      post_y = string;
+    }
+    public void setPostZ(String string){
+      post_z = string;
+    }
+    public void appendPostX(String string){
+      post_x += string;
+    }
+    public void appendPostY(String string){
+      post_y += string;
+    }
+    public void appendPostZ(String string){
+      post_z += string;
     }
 }

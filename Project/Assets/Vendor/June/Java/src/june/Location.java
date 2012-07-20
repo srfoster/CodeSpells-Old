@@ -6,20 +6,22 @@ public abstract class Location implements Vector3
 
     }
 
-    public void adjust(Vector3 dir)
+    public Location adjust(Vector3 dir)
     {
-      adjust(dir, 1.0);
+      return adjust(dir, 1.0);
     }
     
-    public void adjust(Vector3 dir, double scale) {
+    public Location adjust(Vector3 dir, double scale) {
         //Vector3 dir is a unit vector
-        dir.times(scale);
+        Direction new_dir = (Direction) dir.times(scale);
 
-        add(dir);
+        Location new_loc  = (Location) add(new_dir);
+
+        return (Location) new_loc;
     }
 
-    public abstract void add(Vector3 v);
-    public abstract void times(double d);
+    public abstract Vector3 add(Vector3 v);
+    public abstract Vector3 times(double d);
     public abstract double distanceBetween(Location loc);
     public abstract void freeze();
 }
