@@ -4,6 +4,6 @@ public class Flame1 extends Spell{
   public void cast(){
     Enchanted thing = getTarget();
 
-    thing.grow(30);
+    thing.onFire(true);
   }
 }

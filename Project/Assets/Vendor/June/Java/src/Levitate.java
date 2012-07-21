@@ -8,7 +8,7 @@ public class Levitate extends Spell
         //rocks to fire pit
         Enchanted startRegion = getTarget();
         Enchanted firePit = getByName("FirePit");
-        startRegion.grow(30);
+        startRegion.grow(10);
         
         EnchantedList objects = startRegion.findWithin();
         objects.setLocation(startRegion.getLocation());
@@ -21,7 +21,7 @@ public class Levitate extends Spell
         //fire pit to pond
         Enchanted pond = getByName("Pond");
         Enchanted firePit = getByName("FirePit");
-        firePit.grow(30);
+        firePit.grow(10);
         
         EnchantedList objects = firePit.findWithin();
         objects.setLocation(firePit.getLocation());
@@ -34,7 +34,7 @@ public class Levitate extends Spell
         //pond to bakery
         Enchanted pond = getByName("Pond");
         Enchanted bakery = getByName("Bakery");
-        pond.grow(45);
+        pond.grow(15);
         
         EnchantedList objects = pond.findWithin();
         objects.setLocation(pond.getLocation());

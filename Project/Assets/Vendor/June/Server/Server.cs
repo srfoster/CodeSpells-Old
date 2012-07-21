@@ -57,27 +57,35 @@ public class Server
 	  FileLogger.Log("New TCP Client accepted.");	
 	  TcpClient tcpClient = (TcpClient)client;
 	  NetworkStream clientStream = tcpClient.GetStream();
-	
 	  byte[] message = new byte[4096];
 	  int bytesRead;
 	
 	  while (applicationRunning)
 	  {
 
-	    bytesRead = 0;
-	
-	    try
-	    {
-		  if(clientStream.CanRead){
-			  FileLogger.Log("About to block, waiting for Java.");
-		      //blocks until a client sends a message
-		      bytesRead = clientStream.Read(message, 0, 4096);
-			  FileLogger.Log("Unblocked.  Got bytes from Java.");
-		  }
-	    }
+	    	bytesRead = 0;
+			String message_string = "";
+			try
+			{
+				do {
+					FileLogger.Log("About to block, waiting for Java."); 
+					//blocks until a client sends a message
+					bytesRead = clientStream.Read(message, 0, 4096);
+					
+				    if(bytesRead == 0){
+					  throw new Exception("");
+				    }
+					
+					
+					
+					FileLogger.Log("Unblocked.  Got bytes from Java.");
+					ASCIIEncoding encoder = new ASCIIEncoding();
+					message_string += encoder.GetString(message, 0, bytesRead);
+				} while (!message_string.EndsWith ("\n"));
+			}
 	    catch(Exception e)
 	    {
-		  FileLogger.Log("A socket error occured while waiting for Java: " + e.Message);
+		  FileLogger.Log("A socket error occured or there was not data while waiting for Java: " + e.Message);
 
 	      //a socket error has occured
 	      break;
@@ -85,17 +93,18 @@ public class Server
 			
 
 	
-	    if (bytesRead == 0)
+	    /*if (bytesRead == 0)
 	    {
 		  FileLogger.Log("The Java client disconnected");
 
 	      //the client has disconnected from the server
 	      break;
-	    }
+	    }*/
 	
 	    //message has successfully been received
-	    ASCIIEncoding encoder = new ASCIIEncoding();
-		String message_string = encoder.GetString(message, 0, bytesRead);
+	    //ASCIIEncoding encoder = new ASCIIEncoding();
+		//String message_string = encoder.GetString(message, 0, bytesRead);
+		//} //ends while loop
 
 			
 		FileLogger.Log("Unity got response from Java: "+message_string);
