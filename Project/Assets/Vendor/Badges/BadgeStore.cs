@@ -28,6 +28,8 @@ public class BadgeStore {
 		}
 	}
 	
+
+	
 	public string label(int i)
 	{
 		return badges[names[i]].label;
@@ -56,6 +58,11 @@ public class BadgeStore {
 	public string path(string i)
 	{
 		return badges[i].path;	
+	}
+	
+	public BadgeInfo Get(string i)
+	{
+		return badges[i];	
 	}
 	
 	public bool Contains(string name)

@@ -23,6 +23,9 @@ using System.Collections;
  *
  * */
 public class Badgebook : MonoBehaviour {
+	
+	public delegate void EventHandler(BadgeStore.BadgeInfo badge);
+	public static event EventHandler BadgeUnlocked;
 
 	public Texture2D background;
 	GameObject previous_state;
@@ -88,7 +91,8 @@ public class Badgebook : MonoBehaviour {
 			
 		if(popup)
 		{
-			Popup.mainPopup.popup("Badge unlocked!");	
+			Popup.mainPopup.popup("Badge unlocked!");
+			BadgeUnlocked(badgeStore.Get(new_name));
 		}
 	}
 	

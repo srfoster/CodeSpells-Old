@@ -114,17 +114,14 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
-		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_putting_something_high_badge", false);
-		badgebook.Add("helping_others_putting_something_high", 	"  New Heights", 		"incomplete_reaching_up_high_badge", false);
+		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_reahing_up_high_badge", false);
+		badgebook.Add("helping_others_collecting_something_high", 	"  New Heights", 		"incomplete_collecting_something_high_badge", false);
 		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
-//		badgebook.Add("helping_others_moving_rocks", 	"  Moving Cargo", 				"incomplete_moving_rocks_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
 		badgebook.Add("blank_line_hack3", 					"", 			"", false);
 
-
-		
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
 		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"incomplete_cast_flame_badge", false);
 		badgebook.Add("reading_your_book_adv_levitate", 	"  Adept Levitation", 			"incomplete_cast_levitate_badge", false);
@@ -207,12 +204,8 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 
-	
 	void setupSpecialEvents() // random shit
 	{
-		
-		
-		
 		//Remove a spell from the inventory if the user blanks out the file contents.
 		//  This is how we'll delete spells (for now).
 		IDE.IDEClosed += (file_name, contents) => {
@@ -230,6 +223,40 @@ public class SetupLevel : MonoBehaviour {
 				i.removeItem(matching_items[0]);
 			}
 		};	
+		
+		
+		
+		AudioClip monster_clip = Resources.Load("Growls") as AudioClip;
+		//Setup sounds
+		Monster.AttackStarted += (monster) => {
+			monster.audio.PlayOneShot(monster_clip);
+		};
+		
+		
+		AudioSource main_audio = GameObject.Find("Voice").audio;
+			
+		AudioClip spellbook_clip = Resources.Load("PageTurn") as AudioClip;
+		Spellbook.PageTurnedForward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.PageTurnedBackward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.SpellCopied += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		
+		
+		AudioClip drop_item_clip = Resources.Load("DropItem") as AudioClip;
+		Inventory.DroppedOff += (target) => {
+			main_audio.audio.PlayOneShot(drop_item_clip);	
+		};
+		
+				
+		AudioClip badge_clip = Resources.Load("BadgeUnlocked") as AudioClip;
+		Badgebook.BadgeUnlocked += (target) => {
+			main_audio.audio.PlayOneShot(badge_clip);	
+		};
 	}
 
 }

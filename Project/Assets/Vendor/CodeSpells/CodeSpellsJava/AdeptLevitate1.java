@@ -7,7 +7,7 @@ public class AdeptLevitate1 extends Spell
   { 
     Enchanted my_target = getTarget();
     int counter = 0;
-    while(counter < 10)
+    while(counter < 170)
     {
       my_target.move(Direction.up(), 0.1);
       counter = counter + 1;
