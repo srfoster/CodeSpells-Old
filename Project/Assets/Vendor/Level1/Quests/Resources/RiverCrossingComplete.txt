@@ -1,11 +1,17 @@
 Nodes
-0=Thank you for delivering my presents for me! You are an amazing wizard!
-1=Try getting across the river in other ways.
-2=I don't have anything else for you to do.
-3=You have exceeded my knowledge.
+0=Thank you for delivering my special crate for me! You are an amazing wizard!
+1=The watch-gnome is on the roof of this building and he told me he needs some expert wizard help, I think you can help him.
+2=First, you need to get on my special crate and leviate up to the watch-gnome. He'll explain the rest. 
+3=Jump on top of the crate, look down, and cast the LEVITATE spell on it. That will make you levitate with the crate.
+4=Do you want to help the watch-gnome now?
 Responses
+0=Do you need anything else?=0=1
+1=OK, what should I do to help him?=1=2
+2=How do I levitate the special crate?=2=3
+3=Yes!=4=2
 Exits
 0=No problem!=0=1
-1=OK=1=2
+1=Not Now.=1=2
 2=OK=2=3
-3=Exit=3=0
+3=Ok=3=3
+4=Not now.=4=4

@@ -68,20 +68,19 @@ public class NPCQuestTalk : MonoBehaviour {
 	
 	void OnMouseDown()
 	{
-		StartCoroutine(turnToFaceAndTalk());
+		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+		if(Vector3.Distance(transform.position, player.position)<10)
+			StartCoroutine(turnToFaceAndTalk());
 	}
 	
 	IEnumerator turnToFaceAndTalk()
 	{
-		
 		//Does an sudden, jumpy turn which actually looks okayish.  But this method is called as a
 		// coroutine in order to facilitate a smoother turn if we want to implement that.
 		transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
 		
 		yield return new WaitForSeconds(0.2f);
 
-	
-		
 		ConversationDisplayer c = GameObject.Find("ConversationDisplayer").GetComponent(typeof(ConversationDisplayer)) as ConversationDisplayer;
 		Time.timeScale = 0;
 		if(currentQuest < questList.Length && questList[currentQuest].checkIfCompleted())

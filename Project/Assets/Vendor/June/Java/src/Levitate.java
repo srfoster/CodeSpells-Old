@@ -8,57 +8,39 @@ public class Levitate extends Spell
         //rocks to fire pit
         Enchanted startRegion = getTarget();
         Enchanted firePit = getByName("FirePit");
-        
-        for (int i=0; i<30; i++) {
-            startRegion.scale();
-        }
+        startRegion.grow(10);
         
         EnchantedList objects = startRegion.findWithin();
+        objects.setLocation(startRegion.getLocation());
         
-        for (Enchanted obj: objects) {
-            obj.setLocation(startRegion.getLocation());
-        }
-        
-        while ((objects.getLocation()).distanceBetween(firePit.getLocation()) > 3.5) {
-            objects.move(Direction.between(objects,firePit), 2.0);
+        while ((objects.get(0).getLocation()).distanceBetween(firePit.getLocation()) > 3.5) {
+            objects.move(Direction.between(objects.get(0),firePit), 2.0);
         }
         
         
         //fire pit to pond
         Enchanted pond = getByName("Pond");
         Enchanted firePit = getByName("FirePit");
-        
-        for (int i=0; i<30; i++) {
-            firePit.scale();
-        }
+        firePit.grow(10);
         
         EnchantedList objects = firePit.findWithin();
-        for (Enchanted obj: objects) {
-            obj.setLocation(firePit.getLocation());
-        }
+        objects.setLocation(firePit.getLocation());
         
-        
-        while ((objects.getLocation()).distanceBetween(pond.getLocation()) > 1.5) {
-            objects.move(Direction.between(objects,pond), 1.0);
+        while ((objects.get(0).getLocation()).distanceBetween(pond.getLocation()) > 1.5) {
+            objects.move(Direction.between(objects.get(0),pond), 1.0);
         }
         
         
         //pond to bakery
         Enchanted pond = getByName("Pond");
         Enchanted bakery = getByName("Bakery");
-        
-        for (int i=0; i<45; i++) {
-            pond.scale();
-        }
+        pond.grow(15);
         
         EnchantedList objects = pond.findWithin();
-        for (Enchanted obj: objects) {
-            obj.setLocation(pond.getLocation());
-        }
+        objects.setLocation(pond.getLocation());
         
-        
-        while ((objects.getLocation()).distanceBetween(bakery.getLocation()) > 0.8) {
-            objects.move(Direction.between(objects,bakery), 0.5);
+        while ((objects.get(0).getLocation()).distanceBetween(bakery.getLocation()) > 0.8) {
+            objects.move(Direction.between(objects.get(0),bakery), 0.5);
         }
         
 
