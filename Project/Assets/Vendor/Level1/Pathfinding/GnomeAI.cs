@@ -25,6 +25,8 @@ public class GnomeAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log(transform.gameObject.name + " is " + currentState.ToString());
+		
+		
 		if(currentState == ActionState.Find)
 		{
 			if(Find())
