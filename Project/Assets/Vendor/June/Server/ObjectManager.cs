@@ -55,6 +55,17 @@ public class ObjectManager {
 		return objects[id];	
 	}
 	
+	public static string GetID(GameObject g)
+	{
+		foreach(KeyValuePair<string,GameObject> entry in objects) {
+			if (entry.Value.GetHashCode().Equals(g.GetHashCode())) {
+				return entry.Key;
+				break;
+			}
+		}
+		return "UnregisteredObject";
+	}
+	
 	public static Dictionary<string, GameObject> GetObjects()
 	{
 		return objects;	

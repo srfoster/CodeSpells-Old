@@ -15,7 +15,10 @@ public abstract class ConvertOnEntry : MonoBehaviour {
 	
 	void convert(GameObject first, GameObject second)
 	{
+		string firstID = ObjectManager.GetID(first);
+		ObjectManager.Unregister(firstID);
 		 GameObject crate = (Instantiate(second, first.transform.position, first.transform.rotation) as GameObject);
+		ObjectManager.Register(crate, firstID);
 		
 		crate.transform.position = 
 			new Vector3(crate.transform.position.x, Terrain.activeTerrain.SampleHeight(crate.transform.position), crate.transform.position.z);

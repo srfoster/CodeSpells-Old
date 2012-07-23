@@ -113,7 +113,7 @@ public class June {
 				if(!isPlaying)
 					Stop();
 				
-				UnityEngine.Debug.Log("Waiting for Java process to exit: ");	
+				//UnityEngine.Debug.Log("Waiting for Java process to exit: ");	
 				
 				Thread.Sleep(500);
 				

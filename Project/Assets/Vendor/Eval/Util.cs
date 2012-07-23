@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Util {
+	public int numTimesCalled = 0;
 
 	public GameObject instantiate(GameObject obj, Vector3 loc, Quaternion rot)
 	{
@@ -18,10 +19,11 @@ public class Util {
 	
 	public string getWithin(string id)
 	{
-		Debug.Log ("------------------------ get within was called");
+		numTimesCalled++;
+		Debug.Log ("getWithinWasCalled: #"+numTimesCalled);
 		GameObject parent = ObjectManager.FindById(id);
-		Debug.Log ("parent is null? "+ (parent == null));
-		Debug.Log ("parent has been found");
+		//Debug.Log ("parent is null? "+ (parent == null));
+		//Debug.Log ("parent has been found");
 				
 		if(parent.GetComponent<ObjectTracker>() == null)
 			return "";
@@ -29,19 +31,19 @@ public class Util {
 		List<string> ids = new List<string>();
 		
 		parent.GetComponent<ObjectTracker>().getWithin();
-		Debug.Log ("getWithin() was called on the parent's component");
+		//Debug.Log ("getWithin() was called on the parent's component");
 		
 		foreach(GameObject child in parent.GetComponent<ObjectTracker>().getWithin())
 		{
-			Debug.Log ("Found a child GameObject: "+child);
+			//Debug.Log ("Found a child GameObject: "+child);
 			
 			if(child != null && child.GetComponent<Enchantable>() != null)
 			{
 				ids.Add(child.GetComponent<Enchantable>().getId());
-				Debug.Log ("enchantable object has been found");
+				//Debug.Log ("enchantable object has been found");
 			}
 		}
-		Debug.Log ("Has finished looping through enchantable objects");
+		//Debug.Log ("Has finished looping through enchantable objects");
 		
 		string[] id_array = ids.ToArray();
 		
@@ -52,16 +54,16 @@ public class Util {
 	{
 		GameObject parent = ObjectManager.FindById(id);
 		
-		Debug.Log("getting enchanted children.  parent = " + parent.name);
+		//Debug.Log("getting enchanted children.  parent = " + parent.name);
 		
 		List<string> ids = new List<string>();
 		
 		foreach(Transform child in parent.transform)
 		{
-			Debug.Log("Looking at child " + child.gameObject.name);
+			//Debug.Log("Looking at child " + child.gameObject.name);
 			if(child.gameObject.GetComponent<Enchantable>() != null)
 			{
-				Debug.Log("Found enchanted child = " + child.gameObject.name);
+				//Debug.Log("Found enchanted child = " + child.gameObject.name);
 
 				ids.Add(child.GetComponent<Enchantable>().getId());
 			}

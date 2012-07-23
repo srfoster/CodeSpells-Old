@@ -9,7 +9,7 @@ public class ObjectTracker : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{	
-		Debug.Log ("Tracker adding");
+		//Debug.Log ("Tracker adding");
 		within.Add(col.gameObject);
 	}
 	
