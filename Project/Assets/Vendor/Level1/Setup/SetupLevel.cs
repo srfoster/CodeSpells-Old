@@ -257,6 +257,21 @@ public class SetupLevel : MonoBehaviour {
 		Badgebook.BadgeUnlocked += (target) => {
 			main_audio.audio.PlayOneShot(badge_clip);	
 		};
+		
+		ConversationDisplayer.ConversationStarted += (target) => {
+			int i = Random.Range(1, 7);
+
+			AudioClip hi_clip = Resources.Load("GnomeHi" + i) as AudioClip;
+
+			main_audio.audio.PlayOneShot(hi_clip);	
+		};
+		
+		ConversationDisplayer.ConversationStopped += (target) => {
+			int i = Random.Range(1, 3);
+			AudioClip bye_clip = Resources.Load("GnomeBye" + i) as AudioClip;
+
+			main_audio.audio.PlayOneShot(bye_clip);	
+		};
 	}
 
 }

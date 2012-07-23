@@ -55,8 +55,8 @@ public class PickUpableItem : DraggableItem {
 	
 	public override void DroppedOnInventory(Vector3 mousePosition)
 	{
-		onDrop = true;
-		has_set_focus = false;
+		//onDrop = true;
+		//has_set_focus = false;
 		SetHidden(false);	
 	}
 }
