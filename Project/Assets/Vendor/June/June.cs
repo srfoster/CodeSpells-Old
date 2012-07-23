@@ -87,6 +87,7 @@ public class June {
 
 		
 		try{
+			
 			string class_name = java_file_name.Split('.')[0];
 			
 			Process compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
