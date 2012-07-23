@@ -3,6 +3,11 @@ using System.Collections;
 
 public class ConversationDisplayer : MonoBehaviour {
 	
+	public delegate void EventHandler(Conversation conversation);
+	public static event EventHandler ConversationStarted;
+	public static event EventHandler ConversationStopped;
+
+	
 	public int height = 300;
 	public int width = 300;
 	
@@ -26,10 +31,16 @@ public class ConversationDisplayer : MonoBehaviour {
 		this.previous_state = previous_state;
 		previous_state.active = false;
 		enabled = true;
+		
+		if(ConversationStarted != null)
+			ConversationStarted(conversation);
 	}
 	
 	void exit()
 	{
+		if(ConversationStarted != null)
+			ConversationStopped(conversation);
+		
 		conversation = null;
 		Time.timeScale = 1;	
 		enabled = false;
