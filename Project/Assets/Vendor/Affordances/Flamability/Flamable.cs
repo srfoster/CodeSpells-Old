@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Flamable : MonoBehaviour {
+	
 	public GameObject flames_prefab;
 	public bool flaming_at_start = false;
 	
@@ -64,12 +65,13 @@ public class Flamable : MonoBehaviour {
 		}
 	}
 	
-	void OnCollisionStay(Collision col)
+	
+	void OnCollisionEnter(Collision col)
 	{
 		DetermineIgniteOrExtinguish(col.gameObject);
 	}
 		
-	void OnTriggerStay(Collider col)
+	void OnTriggerEnter(Collider col)
 	{
 		DetermineIgniteOrExtinguish(col.gameObject);
 	}

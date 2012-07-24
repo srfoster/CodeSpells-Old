@@ -72,7 +72,7 @@ public abstract class Direction implements Vector3
 
     public static Direction between(Enchanted source, Enchanted target)
     {
-       String vector3_string = "("+source.getLocation()+"-"+target.getLocation()+").normalized";
+       String vector3_string = "("+target.getLocation()+"-"+source.getLocation()+").normalized";
             
        Direction dir = new LazyDirection(vector3_string);
 

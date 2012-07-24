@@ -42,6 +42,7 @@ public class Enchanted
     
     public static String executeCommand(String command) 
     {
+        Log.log("INSIDE EXECUTE COMMAND: string to be sent: "+command);
         try {
             long before = System.currentTimeMillis();
             Log.log("Java sends to Unity: "+command+"\n");
@@ -149,6 +150,13 @@ public class Enchanted
         return eList;
     }
     
+    /*public EnchantedList findLike(Enchanted ench, double rad) {
+        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
+        EnchantedList eList = new EnchantedList();
+        eList.addAllFromUnityString(list);
+        return eList;
+    }*/
+    
 
     public String growCommand(double amount) {
         String c = interpolateId("$target.transform.localScale = $target.transform.localScale + (new Vector3("+amount+","+amount+","+amount+"))");
@@ -157,7 +165,10 @@ public class Enchanted
 
     public void grow(double amount)
     {
-      executeCommand(growCommand(amount));
+        String temp = growCommand(amount);
+        //Log.log("To be sent to executeCommand: "+temp);
+        executeCommand(temp);
+      //executeCommand(growCommand(amount));
     }
 
     public double distanceTo(Enchanted ench) {

@@ -25,6 +25,8 @@ public class GnomeAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log(transform.gameObject.name + " is " + currentState.ToString());
+		
+		
 		if(currentState == ActionState.Find)
 		{
 			if(Find())
@@ -127,6 +129,11 @@ public class GnomeAI : MonoBehaviour {
 			{
 				(objToCollect.GetComponent("Evolvable") as Evolvable).enabled = false;
 			}
+			
+			if(objToCollect.GetComponent<PickUpableItem>() != null)
+			{
+				objToCollect.GetComponent<PickUpableItem>().enabled = false;
+			}
 			return true;
 		}
 		return false;
@@ -179,6 +186,11 @@ public class GnomeAI : MonoBehaviour {
 			if(objToCollect.GetComponent("Evolvable") != null)
 			{
 				(objToCollect.GetComponent("Evolvable") as Evolvable).enabled = true;
+			}
+			
+			if(objToCollect.GetComponent<PickUpableItem>() != null)
+			{
+				objToCollect.GetComponent<PickUpableItem>().enabled = true;
 			}
 			return true;
 		}

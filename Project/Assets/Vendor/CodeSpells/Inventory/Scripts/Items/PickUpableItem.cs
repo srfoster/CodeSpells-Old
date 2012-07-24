@@ -6,6 +6,7 @@ public class PickUpableItem : DraggableItem {
 	private bool onDrop = false;
 	private bool has_set_focus = false;
 	
+	/*
 	void OnGUI() {
 		
 		//Basically we draw a text field RIGHT on top of the inventory's label.
@@ -41,6 +42,7 @@ public class PickUpableItem : DraggableItem {
 			}
 		}
 	}
+	*/
 	
 	public override void DroppedOn(GameObject target)
 	{	
@@ -55,8 +57,8 @@ public class PickUpableItem : DraggableItem {
 	
 	public override void DroppedOnInventory(Vector3 mousePosition)
 	{
-		onDrop = true;
-		has_set_focus = false;
+		//onDrop = true;
+		//has_set_focus = false;
 		SetHidden(false);	
 	}
 }
