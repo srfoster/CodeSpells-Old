@@ -1,19 +1,19 @@
 Nodes
 0=I hear you are willing to help me?
-1=I tried using magic to send the other watch-gnomes bread but I didn't do it right. I just want to collect all the bread again. 
-2=I would try using a spell from your spellbook. Maybe you can teleport to one of the rocks across the river.
-3=Did you figure out how to get across the river?
-4=I would use a TELEPORTATION spell if I were you. You can copy it out of your spellbook and then cast it on one of the rocks that are across the river!
-5=Can you deliver my presents to my friend now?
+1=Since I'm all the way up here, the baker gnomes can't get bread to me. I tried summoning bread to me, but it only worked half-way!
+2=All of the bread I was trying to summon is stuck floating around. If you could fly around on your crate, when you run into the bread you will give it the magic it needs to complete the summon to me!
+3=Great! Thank you so much!
+4=I would use your FLYING spell, if you cast it on your crate (by looking down first) you will be able to fly using left, right, look up and look down.
+5=Can you collect my bread now?
 Responses
 0=Yes I am, what do you need?=0=1
-1=Then how do I cross the river?=1=2
-2=No, I didn't, can you help me?=3=4
-3=Yes I did!=3=5
+1=How can I help you?=1=2
+2=I can do that!=2=3
+3=How do I fly around?=2=4
 Exits
 0=Not Now.=0=0
-1=OK=1=2
-2=OK=2=3
-3=Exit=3=3
-4=OK=4=3
+1=Exit=1=2
+2=OK=2=4
+3=Exit=3=4
+4=OK=4=5
 5=OK=5=5

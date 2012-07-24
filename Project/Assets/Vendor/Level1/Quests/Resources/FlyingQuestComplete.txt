@@ -1,19 +1,11 @@
 Nodes
-0=Awesome! You picked up my presents! Can you deliver them to my friend now?
-1=He is across the river, but you have to be careful because if you touch the water or jump over the river the river monster will kill you.
-2=I would try using a spell from your spellbook. Maybe you can teleport to one of the rocks across the river.
-3=Did you figure out how to get across the river?
-4=I would use a TELEPORTATION spell if I were you. You can copy it out of your spellbook and then cast it on one of the rocks that are across the river!
-5=Can you deliver my presents to my friend now?
+0=Thank you for collecting all my bread for me!
+1=You know, I hear wizards are even more powerful when they have a staff. I just happen to have one here, but I'm obviously not magical enough to use it so...I'd like to give it to you.
+2=I'd like to give you my staff.
 Responses
-0=Of course, where is your friend?=0=1
-1=Then how do I cross the river?=1=2
-2=No, I didn't, can you help me?=3=4
-3=Yes I did!=3=5
+0=No problem!=0=1
+1=Yes Please!!=1=2
 Exits
-0=Not Now.=0=0
-1=OK=1=2
-2=OK=2=3
-3=Exit=3=3
-4=OK=4=3
-5=OK=5=5
+0=Exit=0=1
+1=Thank you!=1=2
+2=OK=2=2

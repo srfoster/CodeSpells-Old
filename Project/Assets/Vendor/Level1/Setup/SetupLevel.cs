@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-
 public class SetupLevel : MonoBehaviour {
 	CodeScrollItem item;
 	private bool crate1 = false;
@@ -35,33 +34,27 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupSpellbook()).Init();
 		(new SetupBadgebook()).Init();
 
-		
-		//ObjectManager.Register(GameObject.Find("First Person Controller"), "Me");
-		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
-
 		
 		setupSpecialEvents();  //i.e. do random shit
-		
 	}
-	
 	
 	void givePlayerAFlag() {
-		GameObject game_flag = new GameObject();
-		game_flag.AddComponent<Flag>();
-		//GameObject game_flag = Instantiate(Resources.Load("Flag") as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
-		game_flag.name = "game_flag";
-		
-		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
-		inventory.addItem(game_flag);
-		
-		game_flag.GetComponent<Item>().item_name = "Flag";
+		// If all the bread is collected, give them a staff/flag
+		FlyQuestChecker.UnlockedStaff += () => {
+			GameObject game_flag = new GameObject();
+			game_flag.AddComponent<Flag>();
+			//GameObject game_flag = Instantiate(Resources.Load("Flag") as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+			game_flag.name = "game_flag";
+			
+			Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+			inventory.addItem(game_flag);
+			
+			game_flag.GetComponent<Item>().item_name = "Flag";
+		};
 	}
-	
-	
-	
 	
 	void givePlayerASpellbook()
 	{
@@ -77,24 +70,16 @@ public class SetupLevel : MonoBehaviour {
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MySpell");
-
-		
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
-
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
-		
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Sentry");
-
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
-		
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
-
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
-
 	}
 	
 	void givePlayerABadgeBook()
@@ -131,8 +116,10 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
 		
-		//Set up the callbacks for unlocking the badges.
+		badgebook.Add("collecting_objects", 					"COLLECTING OBJECTS", 		"incomplete_collecting_objects", false);
+		badgebook.Add("collecting_objects_staff", 			"  Staff", 					"incomplete_collecting_objects_staff", false);
 		
+		//Set up the callbacks for unlocking the badges.
 		int num_unlocked = 0;
 		Enchantable.EnchantmentEnded += (spell_target, item_name) => {
 		
@@ -167,9 +154,15 @@ public class SetupLevel : MonoBehaviour {
 			}
 		};
 		
+		CollectBread.CollectedBread += () => {
+			badgebook.Complete("helping_others_collecting_something_high");	
+		};
+		
 		Inventory.PickedUp += (target) => {
 			if(target.name.Equals("Presents"))
 				badgebook.Complete("helping_others_picking_up_item");	
+			if(target.name.Equals("Flag"))
+				badgebook.Complete("collecting_objects_staff");
 		};
 		
 		Inventory.DroppedOff += (target) => {

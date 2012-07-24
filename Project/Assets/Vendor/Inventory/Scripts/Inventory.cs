@@ -58,7 +58,6 @@ public class Inventory : MonoBehaviour {
 		item_label_style = new GUIStyle();
 		item_label_style.normal.textColor = Color.white;
 		item_label_style.alignment = TextAnchor.MiddleCenter;
-		//item_label_style.fontSize = 20;
 		item_label_style.fontSize = 15;
 		item_label_style.wordWrap = true;
 		item_label_style.font = label_font;
