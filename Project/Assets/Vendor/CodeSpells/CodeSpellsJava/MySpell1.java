@@ -2,8 +2,10 @@ import june.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-    while(true){
-      getByName("Area 1").move(Direction.up(), .5);  
-    }
+    Enchanted me = getByName("Me");
+    Enchanted area = getByName("Area 1");
+    
+    
+    me.setLocation(area.getLocation());
   }
 }
