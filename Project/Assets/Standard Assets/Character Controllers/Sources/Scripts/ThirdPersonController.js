@@ -13,7 +13,7 @@ public var runMaxAnimationSpeed : float = 1.0;
 public var jumpAnimationSpeed : float = 1.15;
 public var landAnimationSpeed : float = 1.0;
 
-private var _animation : Animation;
+private var _animation;
 
 enum CharacterState {
 	Idle = 0,

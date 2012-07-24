@@ -12,9 +12,8 @@ public class AvoidRiver : MonoBehaviour {
 			return;
 		
 		if(detect_jump)
-		{
-			Debug.Log("ATTACKING");
-			if(GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMotor>().IsJumping())
+		{	
+			if(GameObject.Find("First Person Controller").GetComponent<CharacterMotor>().IsJumping())
 				GameObject.Find("Monster").GetComponent<Monster>().Attack();
 		} else {
 			GameObject.Find("Monster").GetComponent<Monster>().Attack();

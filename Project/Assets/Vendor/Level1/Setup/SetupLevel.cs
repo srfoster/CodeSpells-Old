@@ -230,6 +230,7 @@ public class SetupLevel : MonoBehaviour {
 		//Setup sounds
 		Monster.AttackStarted += (monster) => {
 			monster.audio.PlayOneShot(monster_clip);
+			Popup.mainPopup.popup("Monster awoken!  Hide in the swamp!");
 		};
 		
 		
