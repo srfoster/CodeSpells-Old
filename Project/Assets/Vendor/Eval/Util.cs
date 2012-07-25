@@ -22,8 +22,6 @@ public class Util {
 		numTimesCalled++;
 		Debug.Log ("getWithinWasCalled: #"+numTimesCalled);
 		GameObject parent = ObjectManager.FindById(id);
-		//Debug.Log ("parent is null? "+ (parent == null));
-		//Debug.Log ("parent has been found");
 				
 		if(parent.GetComponent<ObjectTracker>() == null)
 			return "";
@@ -31,19 +29,15 @@ public class Util {
 		List<string> ids = new List<string>();
 		
 		parent.GetComponent<ObjectTracker>().getWithin();
-		//Debug.Log ("getWithin() was called on the parent's component");
 		
 		foreach(GameObject child in parent.GetComponent<ObjectTracker>().getWithin())
 		{
-			//Debug.Log ("Found a child GameObject: "+child);
 			
 			if(child != null && child.GetComponent<Enchantable>() != null)
 			{
 				ids.Add(child.GetComponent<Enchantable>().getId());
-				//Debug.Log ("enchantable object has been found");
 			}
 		}
-		//Debug.Log ("Has finished looping through enchantable objects");
 		
 		string[] id_array = ids.ToArray();
 		
@@ -54,17 +48,12 @@ public class Util {
 	{
 		GameObject parent = ObjectManager.FindById(id);
 		
-		//Debug.Log("getting enchanted children.  parent = " + parent.name);
-		
 		List<string> ids = new List<string>();
 		
 		foreach(Transform child in parent.transform)
 		{
-			//Debug.Log("Looking at child " + child.gameObject.name);
 			if(child.gameObject.GetComponent<Enchantable>() != null)
 			{
-				//Debug.Log("Found enchanted child = " + child.gameObject.name);
-
 				ids.Add(child.GetComponent<Enchantable>().getId());
 			}
 		}
@@ -72,6 +61,29 @@ public class Util {
 		string[] id_array = ids.ToArray();
 		
 		return string.Join(";",id_array);
+	}
+	
+	public static bool isOfType(string id, int type) {
+		GameObject g = ObjectManager.FindById(id);
+		
+		switch(type) {
+		case 1://rock
+			return ((g.name).StartsWith("rock_with_collider"));
+		case 2://plant
+			return ((g.name).StartsWith("plant"));
+		case 3://seed
+			return ((g.name).Contains("Seed"));
+		case 4://rocksugar
+			return ((g.name).StartsWith("RockSugar"));
+		case 5://flour
+			return ((g.name).StartsWith("Flour"));
+		case 6://bread
+			return ((g.name).Contains("bread"));
+		case 7://hasIgnited
+			return g.GetComponent<Flamable>().isIgnited();
+		default:
+			return false;
+		}
 	}
 	
 	public static string getObjWith (string idCenter, string idName, double radius) {
@@ -84,14 +96,10 @@ public class Util {
 		
 		if (named.GetComponent("Enchantable")) {
 			Collider[] nearColliders = Physics.OverlapSphere(center.transform.position, (float)radius);
-			//Debug.Log ("nearColliders.Length() is "+nearColliders.);
 			foreach (Collider col in nearColliders) {
 				if ((col.gameObject.GetComponent("Enchantable") != null) && ((named.name).Equals (col.transform.name))) {
 					
-					//reset the ID to Found + i
 					counter++;
-					
-					//(col.gameObject.GetComponent("Enchantable") as Enchantable).setId ("Found "+counter);
 					ids += (isFirst) ? "" : ";";
 					isFirst = false;
 					ids += ((col.gameObject.GetComponent("Enchantable") as Enchantable).getId());

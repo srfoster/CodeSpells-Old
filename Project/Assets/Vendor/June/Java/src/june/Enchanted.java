@@ -42,10 +42,10 @@ public class Enchanted
     
     public static String executeCommand(String command) 
     {
-        Log.log("INSIDE EXECUTE COMMAND: string to be sent: "+command);
+        //Log.log("INSIDE EXECUTE COMMAND: string to be sent: "+command);
         try {
             long before = System.currentTimeMillis();
-            Log.log("Java sends to Unity: "+command+"\n");
+            //Log.log("Java sends to Unity: "+command+"\n");
             out.println(command);
             String response = in.readLine();
 
@@ -54,7 +54,7 @@ public class Enchanted
               throw new RuntimeException("Unity Error");
             }
 
-            Log.log("Java gets back from Unity: "+response);
+            //Log.log("Java gets back from Unity: "+response);
 
             
             long after = System.currentTimeMillis();
@@ -136,7 +136,7 @@ public class Enchanted
         String c = interpolateId(command);
         return c;
     }
-
+    
     public void setLocation(Location loc)
     {
         executeCommand(setLocationCommand(loc));
@@ -150,13 +150,34 @@ public class Enchanted
         return eList;
     }
     
-    /*public EnchantedList findLike(Enchanted ench, double rad) {
-        String list = commandGlobal("util.getObjWith(\""+this.getId()+"\",\""+ench.getId()+"\","+rad+")");
-        EnchantedList eList = new EnchantedList();
-        eList.addAllFromUnityString(list);
-        return eList;
-    }*/
+    public boolean isRock() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+1+")"));
+    }
     
+    public boolean isPlant() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+2+")"));
+        
+    }
+    
+    public boolean isSeed() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+3+")"));
+    }
+    
+    public boolean isRockSugar() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+4+")"));
+    }
+    
+    public boolean isFlour() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+5+")"));
+    }
+    
+    public boolean isBread() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+6+")"));
+    }
+    
+    public boolean isIgnited() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+7+")"));
+    }
 
     public String growCommand(double amount) {
         String c = interpolateId("$target.transform.localScale = $target.transform.localScale + (new Vector3("+amount+","+amount+","+amount+"))");

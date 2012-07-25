@@ -37,9 +37,16 @@ public class EnchantedList implements Iterable<Enchanted>
         eList.add(ench);
     }
     
-    //public void remove(Enchanted ench) {
-        
-    //}
+    public void remove(Enchanted ench) {
+        int index = 0;
+        for (Enchanted e : eList) {
+            if ((e.getId()).equals(ench.getId())) {
+                eList.remove(index);
+                Log.log("I have just removed object with Id: "+ench.getId());
+            }
+            index++;
+        }
+    }
     
     public Enchanted get(int index)
     {

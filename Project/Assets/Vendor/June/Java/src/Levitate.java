@@ -7,83 +7,77 @@ public class Levitate extends Spell
     { 
         //rocks to fire pit
         Enchanted startRegion = getTarget();
-        Enchanted firePit = getByName("FirePit");
+        Enchanted firePit = getByName("Area 1");
         startRegion.grow(10);
         
         EnchantedList objects = startRegion.findWithin();
+        
+        Log.log("before for loop");
+        
+        for (Enchanted e : objects) {
+            if (!(e.isRock())) {
+                objects.remove(e);
+            }
+        }
+        
+        Log.log("after for loop");
+        
         objects.setLocation(startRegion.getLocation());
         
-        while ((objects.get(0).getLocation()).distanceBetween(firePit.getLocation()) > 3.5) {
+        while ((objects.get(0).getLocation()).distanceBetween(firePit.getLocation()) > 1.5) {
             objects.move(Direction.between(objects.get(0),firePit), 2.0);
         }
         
         
         //fire pit to pond
-        Enchanted pond = getByName("Pond");
-        Enchanted firePit = getByName("FirePit");
+        Enchanted pond = getByName("Area 2");
+        Enchanted firePit = getByName("Area 1");
         firePit.grow(10);
         
         EnchantedList objects = firePit.findWithin();
+        
+        for (Enchanted e : objects) {
+            boolean isRock = e.isRock();
+            boolean isIgnited = e.isIgnited();
+            Log.log("isRock: "+isRock+" isIgnited: "+isIgnited);
+            if (!(e.isRock() && e.isIgnited())) {
+                objects.remove(e);
+            }
+        }
+        
+        
         objects.setLocation(firePit.getLocation());
         
         while ((objects.get(0).getLocation()).distanceBetween(pond.getLocation()) > 1.5) {
-            objects.move(Direction.between(objects.get(0),pond), 1.0);
+            objects.move(Direction.between(objects.get(0),pond), 2.0);
         }
         
         
         //pond to bakery
-        Enchanted pond = getByName("Pond");
-        Enchanted bakery = getByName("Bakery");
+        Enchanted pond = getByName("Area 2");
+        Enchanted bakery = getByName("Area 3");
         pond.grow(15);
         
         EnchantedList objects = pond.findWithin();
+                
+        for (Enchanted e : objects) {
+            if (!(e.isRockSugar() && !e.isIgnited())) {
+                objects.remove(e);
+            }
+        }                
+                
         objects.setLocation(pond.getLocation());
         
         while ((objects.get(0).getLocation()).distanceBetween(bakery.getLocation()) > 0.8) {
             objects.move(Direction.between(objects.get(0),bakery), 0.5);
         }
         
-
-        
-        
-
         
         
         
         
         
-        /*        
-        while ((objects.getLocaton()).distanceBetween(pond.getLocation()) > 3.5) {
-            objects.move(Direction.between(objects,pond), 2.0);
-        }
         
-        objects = pond.findWithin();
-        me.setLocation(pond.getLocation());
-        objects.move(Direction.up(), 10);*/
-        
-        
-
-
-        
-        
-        
-        //When I first get the flag region, I will move each item to the center one by one
-        //then move the enchanted list and keep the flag region in the same place
-        
-        
-        /*origLoc.freeze();
-
-        
-        while((center.getLocation()).distanceBetween(origLoc) > 3.5) {
-            center.move(Direction.between(center.getLocation(),origLoc), 2.0);
-        }*/
-        
-        
-        /*        while ((center.getLocation()).distanceBetween(pond.getLocation()) > 3.5) {
-         center.move(Direction.between(center,pond), 2.0);
-         }
- 
-         */
         
     }
 }
