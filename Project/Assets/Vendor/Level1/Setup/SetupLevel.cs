@@ -99,8 +99,8 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
-		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_reahing_up_high_badge", false);
-		badgebook.Add("helping_others_collecting_something_high", 	"  New Heights", 		"incomplete_collecting_something_high_badge", false);
+		badgebook.Add("helping_others_reaching_up_high", "  New Heights", 				"incomplete_reaching_up_high_badge", false);
+		badgebook.Add("helping_others_putting_something_high", 	"  Out of Reach", 		"incomplete_putting_something_high_badge", false);
 		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
@@ -115,9 +115,6 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
-		
-		badgebook.Add("collecting_objects", 					"COLLECTING OBJECTS", 		"incomplete_collecting_objects", false);
-		badgebook.Add("collecting_objects_staff", 			"  Staff", 					"incomplete_collecting_objects_staff", false);
 		
 		//Set up the callbacks for unlocking the badges.
 		int num_unlocked = 0;
@@ -153,19 +150,41 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("reading_your_book");
 			}
 		};
+		
 		int collectedBread = 0;
+		int helpingUnlocked = 0;
+		
+		FlyQuestChecker.Levitated += () => {
+			badgebook.Complete("helping_others_reaching_up_high");
+			helpingUnlocked++;
+		};
+		
 		CollectBread.CollectedBread += () => {
 			collectedBread++;
 			
 			if(collectedBread == 12)
-				badgebook.Complete("helping_others_collecting_something_high");	
+			{
+				badgebook.Complete("helping_others_putting_something_high");	
+				helpingUnlocked++;
+			}
+			
+			if(helpingUnlocked == 6)
+				badgebook.Complete("helping_others");
 		};
 		
 		Inventory.PickedUp += (target) => {
 			if(target.name.Equals("Presents"))
+			{
 				badgebook.Complete("helping_others_picking_up_item");	
+				helpingUnlocked++;
+			}
 			if(target.name.Equals("Flag"))
+			{
 				badgebook.Complete("collecting_objects_staff");
+				helpingUnlocked++;
+			}
+			if(helpingUnlocked == 6)
+				badgebook.Complete("helping_others");
 		};
 		
 		Inventory.DroppedOff += (target) => {
@@ -173,14 +192,22 @@ public class SetupLevel : MonoBehaviour {
 			GameObject presents = GameObject.Find("Presents");
 			
 			if(target.name.Equals("Presents") && Vector3.Distance(gnome.transform.position, presents.transform.position) < 10)
+			{
 				badgebook.Complete("helping_others_cross_river");
+				helpingUnlocked++;
+			}
+			if(helpingUnlocked == 6)
+				badgebook.Complete("helping_others");
 		};
 		
 		Flamable.Extinguished += (target) => {
 			if(target.name.Equals("QuestSummonCrate"))
 			{
 				badgebook.Complete("helping_others_put_out_fire");	
+				helpingUnlocked++;
 			}
+			if(helpingUnlocked == 6)
+				badgebook.Complete("helping_others");
 		};
 		
 		Flamable.CaughtFire += (target) => {
@@ -188,15 +215,23 @@ public class SetupLevel : MonoBehaviour {
 			{
 				crate1 = true;
 				if(crate2)
+				{
 					badgebook.Complete("helping_others_light_fire");	
+					helpingUnlocked++;
+				}
 			}
 			
 			if(!crate2 && target.name.Equals("QuestFlammingCrate1"))
 			{
 				crate2 = true;
 				if(crate1)
+				{
 					badgebook.Complete("helping_others_light_fire");
+					helpingUnlocked++;
+				}
 			}
+			if(helpingUnlocked == 6)
+				badgebook.Complete("helping_others");
 		};
 	}
 

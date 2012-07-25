@@ -5,13 +5,11 @@ public class CollectBread : MonoBehaviour {
 	public delegate void EventHandler();
 	public static event EventHandler CollectedBread;
 	
-	void OnControllerColliderHit(Collision col)
+	void OnTriggerEnter(Collider col)
 	{
-	    if(col.gameObject.tag == "Player")
+	    if(col.gameObject.tag.Equals("Player"))
 	    {
-		    Debug.Log("Destroying");
 			Destroy(this.gameObject);
-			Debug.Log("collecting bread!");
 			CollectedBread();
 	    }
 	}
