@@ -99,8 +99,8 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
-		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_reahing_up_high_badge", false);
-		badgebook.Add("helping_others_collecting_something_high", 	"  New Heights", 		"incomplete_collecting_something_high_badge", false);
+		badgebook.Add("helping_others_reaching_up_high", "  Out of Reach", 				"incomplete_reaching_up_high_badge", false);
+		badgebook.Add("helping_others_putting_something_high", 	"  New Heights", 		"incomplete_putting_something_high_badge", false);
 		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);

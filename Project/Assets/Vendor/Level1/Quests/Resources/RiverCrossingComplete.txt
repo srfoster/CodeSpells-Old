@@ -6,8 +6,8 @@ Nodes
 4=Do you want to help the watch-gnome now?
 Responses
 0=Do you need anything else?=0=1
-1=OK, what should I do to help him?=1=2
-2=How do I levitate the special crate?=2=3
+1=What should I do?=1=2
+2=How do I levitate?=2=3
 3=Yes!=4=2
 Exits
 0=No problem!=0=1

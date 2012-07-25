@@ -1,6 +1,6 @@
 Nodes
 0=Awesome! You picked up my presents! Can you deliver them to my friend now?
-1=He is across the river, but you have to be careful because if you touch the water or jump over the river the river monster will kill you.
+1=He is across the river, but you have to be careful because if any non-Gnome touches the water or jumps over the river, the river monster will wake up!
 2=I would try using a spell from your spellbook. Maybe you can teleport to one of the rocks across the river.
 3=Did you figure out how to get across the river?
 4=I would use a TELEPORTATION spell if I were you. You can copy it out of your spellbook and then cast it on one of the rocks that are across the river!
