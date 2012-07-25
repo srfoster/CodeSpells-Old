@@ -72,7 +72,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	void OnMouseDown()
 	{
 		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-		if(Vector3.Distance(transform.position, player.position)<10)
+		if(Vector3.Distance(transform.position, player.position)<30)
 			StartCoroutine(turnToFaceAndTalk());
 	}
 	

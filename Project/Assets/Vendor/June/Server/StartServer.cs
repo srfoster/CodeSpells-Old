@@ -56,7 +56,7 @@ public class StartServer : MonoBehaviour
 			CallResponse call = queue.remove();
 			
 			try{
-				Debug.Log("Trying to eval '" + call.getCall() + "'");
+				//Debug.Log("Trying to eval '" + call.getCall() + "'");
 				
 				if(call.getCall().Equals("\n"))
 				{
@@ -68,7 +68,7 @@ public class StartServer : MonoBehaviour
 					if(ret != null)
 					response = ret.ToString();
 				
-					Debug.Log("Response was " + response);
+					//Debug.Log("Response was " + response);
 					call.setResponse(response);
 				}
 				call.respond();

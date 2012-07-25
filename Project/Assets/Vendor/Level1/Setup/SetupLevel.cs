@@ -153,9 +153,12 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("reading_your_book");
 			}
 		};
-		
+		int collectedBread = 0;
 		CollectBread.CollectedBread += () => {
-			badgebook.Complete("helping_others_collecting_something_high");	
+			collectedBread++;
+			
+			if(collectedBread == 12)
+				badgebook.Complete("helping_others_collecting_something_high");	
 		};
 		
 		Inventory.PickedUp += (target) => {
@@ -166,9 +169,9 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		Inventory.DroppedOff += (target) => {
-			GameObject gnome = GameObject.Find("QuestSwampGnome");
+			GameObject gnome = GameObject.Find("QuestSwampGnomeEnd");
 			GameObject presents = GameObject.Find("Presents");
-			Debug.Log("The distance is: "+Vector3.Distance(gnome.transform.position, presents.transform.position));
+			
 			if(target.name.Equals("Presents") && Vector3.Distance(gnome.transform.position, presents.transform.position) < 10)
 				badgebook.Complete("helping_others_cross_river");
 		};

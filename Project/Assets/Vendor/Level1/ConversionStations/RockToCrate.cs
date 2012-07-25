@@ -7,8 +7,6 @@ public class RockToCrate : ConvertOnEntry {
 
 	protected override bool isInput(GameObject l)
 	{
-		/*if(l.transform.parent != null)
-			return false;*/
 		if(l.GetComponent("Flamable") == null)
 			return false;
 		if(!(l.GetComponent("Flamable") as Flamable).isIgnited())
