@@ -9,7 +9,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	public string convo_files;
 	public string quests;
 	
-	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport, None}; 
+	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport, None, Staff}; 
 	private int questIndex;
 	
 	private QuestChecker questObject;
@@ -49,6 +49,9 @@ public class NPCQuestTalk : MonoBehaviour {
 			case whichQuest.Transport:
 				questObject = new TransportQuestChecker();
 				break;
+			case whichQuest.Staff:
+				questObject = new StaffUnlocker();
+				break;
 			default:
 				questObject = new NonQuestChecker();
 				break;
@@ -69,7 +72,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	void OnMouseDown()
 	{
 		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-		if(Vector3.Distance(transform.position, player.position)<10)
+		if(Vector3.Distance(transform.position, player.position)<30)
 			StartCoroutine(turnToFaceAndTalk());
 	}
 	

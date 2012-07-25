@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Monster : MonoBehaviour {
 	
-		
 	public delegate void EventHandler(GameObject monster);
 	public static event EventHandler AttackStarted;
 	

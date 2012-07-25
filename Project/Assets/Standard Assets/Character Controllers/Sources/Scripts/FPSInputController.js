@@ -8,19 +8,7 @@ function Awake () {
 // Update is called once per frame
 function Update () {
 	// Get the input vector from kayboard or analog stick
-	var directionVector = new Vector3(0, 0, Input.GetAxis("Vertical"));
-	transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * 120 * Time.deltaTime);
-
-    if(Input.GetKey(KeyCode.Q))
-    {
-    	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
-    }
-
- 
-    if(Input.GetKey(KeyCode.E))
-    {
-   		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
-    }
+	var directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 	
 	if (directionVector != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it

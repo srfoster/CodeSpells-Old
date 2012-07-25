@@ -1,0 +1,9 @@
+Nodes
+0=I think you can use that staff to make areas around our village magical.
+1=Maybe you can use some of the more complex spells now that you have a staff!
+2=I would try the architecture spell, it looks pretty complex!
+Responses
+Exits
+0=OK=0=1
+1=OK=1=2
+2=OK=2=4

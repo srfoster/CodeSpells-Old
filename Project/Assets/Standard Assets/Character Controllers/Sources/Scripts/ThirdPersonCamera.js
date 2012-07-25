@@ -138,11 +138,11 @@ function Apply (dummyTarget : Transform, dummyCenter : Vector3)
 	}
 
 	// Damp the height
-	var currentHeight = cameraTransform.position.y;
+	currentHeight = cameraTransform.position.y;
 	currentHeight = Mathf.SmoothDamp (currentHeight, targetHeight, heightVelocity, heightSmoothLag);
 
 	// Convert the angle into a rotation, by which we then reposition the camera
-	var currentRotation = Quaternion.Euler (0, currentAngle, 0);
+	currentRotation = Quaternion.Euler (0, currentAngle, 0);
 	
 	// Set the position of the camera on the x-z plane to:
 	// distance meters behind the target

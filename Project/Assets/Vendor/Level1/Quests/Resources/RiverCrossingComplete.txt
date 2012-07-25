@@ -1,5 +1,5 @@
 Nodes
-0=Thank you for delivering my special crate for me! You are an amazing wizard!
+0=Thank you for delivering my special crate to me! You are an amazing wizard!
 1=The watch-gnome is on the roof of this building and he told me he needs some expert wizard help, I think you can help him.
 2=First, you need to get on my special crate and leviate up to the watch-gnome. He'll explain the rest. 
 3=Jump on top of the crate, look down, and cast the LEVITATE spell on it. That will make you levitate with the crate.
