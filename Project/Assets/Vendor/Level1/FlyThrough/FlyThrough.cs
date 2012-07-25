@@ -9,9 +9,12 @@ public class FlyThrough : MonoBehaviour {
 	bool record = false;
 	
 	string[] frames;
+		
 	int current = 0;
 	
 	bool done = false;
+	
+
 	
 	void Start(){
 		if(!record){
@@ -19,6 +22,7 @@ public class FlyThrough : MonoBehaviour {
 			
 			Camera.main.GetComponent<MouseLook>().enabled = false;
 		}
+		
 	}
 	
 	
@@ -40,6 +44,8 @@ public class FlyThrough : MonoBehaviour {
 		} else {
 			if(current < frames.Length)
 			{
+
+				
 				string[] info = frames[current++].Split(',');
 				
 				float loc_x = float.Parse(info[0]);

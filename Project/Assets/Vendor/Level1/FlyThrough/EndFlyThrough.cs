@@ -30,5 +30,12 @@ public class EndFlyThrough : MonoBehaviour {
     	}
   	}
 	
+	void Update()
+	{
+		if(!GameObject.Find("VoiceOver").audio.isPlaying)
+		{
+			Application.LoadLevel(1);	
+		}
+	}
 
 }
