@@ -2,7 +2,7 @@ Nodes
 0=Thank goodness you were smart enough to cross the river without getting eaten! I hear you are supposed to deliver a present to me.
 1=Do you have my presents?
 2=Oh, go back across the river and talk to my friend standing by the beach, he'll tell you what you need to do.
-3=Can you drag my present out of your inventory so that I can have it?
+3=Can you put my presents down beside me?
 Responses
 0=Yes, I am.=0=1
 1=I didn't know I was supposed to.=0=2
