@@ -1,5 +1,8 @@
 private var motor : CharacterMotor;
 
+var stop_up   = false;
+var stop_down = false;
+
 // Use this for initialization
 function Awake () {
 	motor = GetComponent(CharacterMotor);
@@ -11,6 +14,9 @@ function Update () {
 	var directionVector = new Vector3(0, 0, Input.GetAxis("Vertical"));
 	transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * 120 * Time.deltaTime);
 
+	
+
+/*
     if(Input.GetKey(KeyCode.Q))
     {
     	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
@@ -21,6 +27,27 @@ function Update () {
     {
    		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
     }
+    */
+    
+	var rotationX = GameObject.Find("Main Camera").transform.localEulerAngles.x;
+	var rotationY = GameObject.Find("Main Camera").transform.localEulerAngles.y;
+	var rotationZ = GameObject.Find("Main Camera").transform.localEulerAngles.z;
+
+
+	if (Input.GetKey(KeyCode.Q) && ((rotationX >= 0 && rotationX < 90) || (rotationX <= 360 && rotationX >= 270)))
+	{
+		rotationX += 120*Time.deltaTime;			
+	}
+	
+	if(Input.GetKey(KeyCode.E) && ((rotationX >= 0 && rotationX <= 90) || (rotationX <= 360 && rotationX > 270)))
+	{
+		rotationX += -120*Time.deltaTime;
+	}
+	
+	Debug.Log(rotationX);
+		GameObject.Find("Main Camera").transform.localEulerAngles = new Vector3(rotationX, rotationY, rotationZ);
+
+    
 
 	if (directionVector != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it

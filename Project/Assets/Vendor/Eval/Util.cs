@@ -12,6 +12,7 @@ public class Util {
 		return UnityEngine.Object.Instantiate (obj, loc, rot) as GameObject;	
 	}
 	
+
 	public void reregister(string old_id, string new_id)
 	{
 		ObjectManager.Reregister(ObjectManager.FindById(old_id), old_id, new_id);

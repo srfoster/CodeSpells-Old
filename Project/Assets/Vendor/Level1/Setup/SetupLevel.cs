@@ -101,7 +101,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
 		badgebook.Add("helping_others_reaching_up_high", "  New Heights", 				"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_putting_something_high", 	"  Out of Reach", 		"incomplete_putting_something_high_badge", false);
-		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
+		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
@@ -159,8 +159,16 @@ public class SetupLevel : MonoBehaviour {
 			helpingUnlocked++;
 		};
 		
+		
+		AudioSource main_audio = GameObject.Find("Voice").audio;
+			
+		AudioClip pickup_clip = Resources.Load("PickupArpeg") as AudioClip;
+
 		CollectBread.CollectedBread += () => {
 			collectedBread++;
+			
+			main_audio.PlayOneShot(pickup_clip);
+			Popup.mainPopup.popup("Got it! (" + (12 - collectedBread) + " left)");
 			
 			if(collectedBread == 12)
 			{
@@ -203,7 +211,7 @@ public class SetupLevel : MonoBehaviour {
 		Flamable.Extinguished += (target) => {
 			if(target.name.Equals("QuestSummonCrate"))
 			{
-				badgebook.Complete("helping_others_put_out_fire");	
+				badgebook.Complete("helping_others_putting_out_fire");	
 				helpingUnlocked++;
 			}
 			if(helpingUnlocked == 6)
