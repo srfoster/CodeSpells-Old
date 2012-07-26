@@ -431,7 +431,7 @@ public class IDE : MonoBehaviour {
 			Match match = matches[i];
 			int offset = match.Groups[0].Index;
 			int length = match.Groups[0].Length;
-			GUI.DrawTexture(new Rect(-2 + offset*12 - scroll_position.x,-2 + count * 24 - scroll_position.y, 5 + length * 12, 30), texture);
+			GUI.DrawTexture(new Rect(-2 + offset*12 - scroll_position.x,-2 + count * 23 - scroll_position.y, 5 + length * 12, 30), texture);
 		}
 	}
 	
