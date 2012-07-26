@@ -65,7 +65,6 @@ public class Flamable : MonoBehaviour {
 		}
 	}
 	
-	
 	void OnCollisionEnter(Collision col)
 	{
 		DetermineIgniteOrExtinguish(col.gameObject);
@@ -80,6 +79,7 @@ public class Flamable : MonoBehaviour {
 	{
 		if(col.GetComponent<Substance>() != null && col.GetComponent<Substance>().isWater())
 		{
+			Debug.Log("I did extinguish!");
 			Extinguish();
 		}
 		if(col.GetComponent("Flamable") == null)

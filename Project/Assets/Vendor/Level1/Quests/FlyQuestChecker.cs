@@ -10,7 +10,7 @@ public class FlyQuestChecker : QuestChecker {
 	{
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
 		
-		if(Levitated != null && badgebook.IsComplete("helping_others_reaching_up_high"))
+		if(Levitated != null && !badgebook.IsComplete("helping_others_reaching_up_high"))
 			Levitated();
 
 		if(badgebook.IsComplete("helping_others_putting_something_high"))
