@@ -33,6 +33,8 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupHighlighter()).Init();
 		(new SetupSpellbook()).Init();
 		(new SetupBadgebook()).Init();
+		(new SetupSpellKiller()).Init();
+
 
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
