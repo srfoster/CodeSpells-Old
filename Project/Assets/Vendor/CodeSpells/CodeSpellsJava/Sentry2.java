@@ -1,6 +1,6 @@
 import june.*;
 
-public class Sentry1 extends Spell{
+public class Sentry2 extends Spell{
   public void cast(){
     Enchanted thing = getTarget();
     

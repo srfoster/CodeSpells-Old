@@ -44,8 +44,7 @@ function Update () {
 		rotationX += -120*Time.deltaTime;
 	}
 	
-	Debug.Log(rotationX);
-		GameObject.Find("Main Camera").transform.localEulerAngles = new Vector3(rotationX, rotationY, rotationZ);
+	GameObject.Find("Main Camera").transform.localEulerAngles = new Vector3(rotationX, rotationY, rotationZ);
 
     
 

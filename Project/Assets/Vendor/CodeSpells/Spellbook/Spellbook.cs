@@ -38,6 +38,7 @@ public class Spellbook : MonoBehaviour {
 	public List<string> page_urls = new List<string>();
 	List<SpellbookPage> pages = new List<SpellbookPage>();
 	
+	Dictionary<string, int> copied_spells = new Dictionary<string,int>();
 
 	
 	IEnumerator Start()
@@ -141,16 +142,26 @@ public class Spellbook : MonoBehaviour {
 		item.item_name = "Blank";
 		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
 				
-		Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
-		inventory.addItem(initial_scroll);
+		if(!copied_spells.ContainsKey(currentPage().getName()))
+			copied_spells.Add(currentPage().name,0);
 		
-		List<GameObject> matching = inventory.getMatching(currentPage().name);
-		int number = matching.Count + 1;
 		
+		int number_so_far = copied_spells[currentPage().getName()];
+		int number = number_so_far + 1;
+		
+
+		
+		copied_spells[currentPage().name]++;
+		
+
+		Debug.Log("HERE " + number);
+
 		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
 		code_scroll_item_component.setCurrentFile(currentPage().getName() + number + ".java");
 		
 		code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));
+
+		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);
 	}
 	
 	void displayCurrentPage()
