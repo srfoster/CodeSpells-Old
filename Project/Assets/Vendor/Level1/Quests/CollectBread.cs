@@ -10,7 +10,8 @@ public class CollectBread : MonoBehaviour {
 	    if(col.gameObject.tag.Equals("Player"))
 	    {
 			Destroy(this.gameObject);
-			CollectedBread();
+			if(CollectedBread != null)
+				CollectedBread();
 	    }
 	}
 }

@@ -5,6 +5,7 @@ public class Monster : MonoBehaviour {
 	
 	public delegate void EventHandler(GameObject monster);
 	public static event EventHandler AttackStarted;
+	public static event EventHandler AttackEnded;
 	
 	//Because the actual monster asset is a child of the monster prefab
 	public GameObject child;
@@ -96,6 +97,8 @@ public class Monster : MonoBehaviour {
 	
 	public void LoosePlayer() 
 	{
+		AttackEnded(gameObject);
+		
 		//reset everything;
 		alive = true;
 		attacking = false;

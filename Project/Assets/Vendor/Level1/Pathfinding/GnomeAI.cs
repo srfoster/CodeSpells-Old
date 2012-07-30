@@ -13,6 +13,7 @@ public class GnomeAI : MonoBehaviour {
 	private Transform rightHand = null;
 	private bool armsUp = false;
 	private bool foundObject = false;
+	private float fastestWalkingSpeed = 6;
 	private float walkingSpeed = 6;
 	public string incomingTag = "";
 	public string outgoingTag = "";
@@ -106,7 +107,11 @@ public class GnomeAI : MonoBehaviour {
 		transform.LookAt (objToCollect.transform);
 		transform.Translate(Vector3.forward * Time.deltaTime * walkingSpeed);
 		transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
-		return (Vector3.Distance(transform.position, objToCollect.transform.position) < 2);
+		
+		Vector3 myPosition = transform.position;
+		Vector3 objPosition = new Vector3(objToCollect.transform.position.x, transform.position.y, objToCollect.transform.position.z);
+		
+		return (Vector3.Distance(myPosition, objPosition) < 2);
 	}
 	
 	public bool Collect()
@@ -202,7 +207,7 @@ public class GnomeAI : MonoBehaviour {
 		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
 			GetComponent<Seeker>().setDestination(FromObj);
 		
-		Seeker.WalkingState state = GetComponent<Seeker>().walk();
+		Seeker.WalkingState state = GetComponent<Seeker>().walk(walkingSpeed);
 		
 		return (state == Seeker.WalkingState.ReachedDestination);
 	}
@@ -219,14 +224,15 @@ public class GnomeAI : MonoBehaviour {
 				if(item != null && Vector3.Distance(transform.position, item.transform.position) <= 10)
 				{
 					Destroy(item);
+					if(walkingSpeed < 6)
+						walkingSpeed++;
 					return true;
 				}
 			}
 		}
-		else
-			return true;
-		
-		return false;
+		if(walkingSpeed > 1)
+			walkingSpeed--;
+		return true;
 	}
 	
 	public bool Walk()
@@ -234,7 +240,7 @@ public class GnomeAI : MonoBehaviour {
 		if(GetComponent<Seeker>().getState() == Seeker.WalkingState.NotStarted)
 			GetComponent<Seeker>().setDestination(ToObj);
 		
-		Seeker.WalkingState state = GetComponent<Seeker>().walk();
+		Seeker.WalkingState state = GetComponent<Seeker>().walk(walkingSpeed);
 		
 		return (state == Seeker.WalkingState.ReachedDestination);
 	}

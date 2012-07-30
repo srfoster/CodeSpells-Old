@@ -17,14 +17,14 @@ public class BreadStation : MonoBehaviour {
 		Vector3 breadPos;
 		GameObject actBread;
 		
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			randRadius = Random.Range (0f, (float)(transform.localScale.x/2-breadOffset));
 			randAngle = Random.Range (0f, 2*Mathf.PI);
 			xDistance = transform.position.x + randRadius*Mathf.Cos (randAngle);
 			zDistance = transform.position.z + randRadius*Mathf.Sin (randAngle);
 			
-			breadPos = new Vector3(xDistance, Terrain.activeTerrain.SampleHeight(transform.position), zDistance);
+			breadPos = new Vector3(xDistance, transform.position.y, zDistance);
 			
 			actBread = (Instantiate(bread, breadPos, Quaternion.identity) as GameObject);
 			breadList.Add(actBread);

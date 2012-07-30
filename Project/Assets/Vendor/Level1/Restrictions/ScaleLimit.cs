@@ -15,7 +15,8 @@ public class ScaleLimit : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
-				
+		if(collider != null)
+		{
 		float volume = collider.bounds.size.x * collider.bounds.size.y * collider.bounds.size.z;
 		
 		//We don't want the object to 'flip' -- i.e. it get so small that it starts getting big again.
@@ -25,5 +26,6 @@ public class ScaleLimit : MonoBehaviour {
 			transform.localScale = oldScale;
 		
 		oldScale = transform.localScale;
+		}
 	}
 }

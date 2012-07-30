@@ -4,11 +4,11 @@ Nodes
 2=Rock Sugar is an ingredient made by rocks being heated in a fire pit and then dunked in a magical pond.
 3=Flower Flour is an ingredient made by seeds being planted in a magical grove then grown into beautiful flowers.
 4=If you could craft some spells to help us make bread, we'd be eternally grateful!
-5=We gnomes have forgotten much of our magic over the years.  But I do know that you'll need a Spellbook.  If you have one, you have to "copy" a spell to a scroll before you can use it.
+5=We gnomes have forgotten much of our magic over the years.  But I do know that you'll need a Spellbook.  If you have one, you have to "copy" the SENTRY spell to a scroll before you can use it.
 6=Did you see your inventory?
 7=Great, in your inventory, you should have seen your spell book, did you see it?
 8=Awesome. Now I want you to click on your spell book, that will open it, then copy the first spell out of your spell book. It will then appear in your inventory, then click on me again.
-9=Did you copy the spell?
+9=Did you copy the SENTRY spell?
 10=After you copy a spell from your Spellbook, you can cast it.  Try casting a spell onto the crate next to me. 
 11=When you see something sparkling, that means it is enchanted.  Also, your spell scroll will become blank for the duration of the enchantment.  Try casting a "Sentry" spell on my crate.  This is a spell that last forever -- until you "capture" the spell with a blank scroll.
 12=There are some spells that don't last forever though. Go back into your Spellbook and copy the "Flame" spell. Then cast is onto my crate.
@@ -21,9 +21,9 @@ Responses
 1=Rock sugar?=1=2
 2=Flower flour?=1=3
 3=Flower flour?=2=3
-4=Rock sugar?=3=4
+4=How can I help?=3=4
 5=How can I help?=2=4
-6=How can I help?=3=4
+6=Rock sugar?=3=4
 7=I don't know any magic...=4=5
 8=Yes, I saw it=6=7
 9=Yes, I saw it=7=8

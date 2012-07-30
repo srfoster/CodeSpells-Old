@@ -79,7 +79,10 @@ public class Flamable : MonoBehaviour {
 	{
 		if(col.GetComponent<Substance>() != null && col.GetComponent<Substance>().isWater())
 		{
-			Debug.Log("I did extinguish!");
+			Debug.Log("Extinguished: "+this.gameObject.name);
+			if(Extinguished != null)
+				Extinguished(this.gameObject);
+			
 			Extinguish();
 		}
 		if(col.GetComponent("Flamable") == null)

@@ -46,13 +46,12 @@ public class SetupLevel : MonoBehaviour {
 		FlyQuestChecker.UnlockedStaff += () => {
 			GameObject game_flag = new GameObject();
 			game_flag.AddComponent<Flag>();
-			//GameObject game_flag = Instantiate(Resources.Load("Flag") as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
 			game_flag.name = "game_flag";
 			
 			Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
 			inventory.addItem(game_flag);
 			
-			game_flag.GetComponent<Item>().item_name = "Flag";
+			game_flag.GetComponent<Item>().item_name = "Staff";
 		};
 	}
 	
@@ -101,7 +100,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
 		badgebook.Add("helping_others_reaching_up_high", "  New Heights", 				"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_putting_something_high", 	"  Out of Reach", 		"incomplete_putting_something_high_badge", false);
-		badgebook.Add("helping_others_put_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
+		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 			"incomplete_putting_out_fire_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
@@ -115,6 +114,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
+		badgebook.Add("collecting_objects_staff", 			"  ", 							"", false);
 		
 		//Set up the callbacks for unlocking the badges.
 		int num_unlocked = 0;
@@ -201,9 +201,11 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		Flamable.Extinguished += (target) => {
+			Debug.Log("Extinguished was called with target: "+target.gameObject.name);
 			if(target.name.Equals("QuestSummonCrate"))
 			{
-				badgebook.Complete("helping_others_put_out_fire");	
+				Debug.Log("Completing the summoning quest");
+				badgebook.Complete("helping_others_putting_out_fire");	
 				helpingUnlocked++;
 			}
 			if(helpingUnlocked == 6)
@@ -264,6 +266,10 @@ public class SetupLevel : MonoBehaviour {
 			Popup.mainPopup.popup("Monster awoken!  Hide in the swamp!");
 		};
 		
+		Monster.AttackEnded += (monster) => {
+			monster.audio.PlayOneShot(monster_clip);
+			Popup.mainPopup.popup("You lost him!");
+		};
 		
 		AudioSource main_audio = GameObject.Find("Voice").audio;
 			

@@ -14,12 +14,12 @@ public class Flag : PickUpableItem {
 
 		int num = getNextNumber();
 		
-		Debug.Log ("Next is " + num);
+		//Debug.Log ("Next is " + num);
 		game_flag.GetComponent<Enchantable>().id = "Area "+num;
 		
 		
 				
-		Debug.Log ("Adding " + num);
+		//Debug.Log ("Adding " + num);
 
 		num_list.Add(num);	
 		
@@ -66,7 +66,7 @@ public class Flag : PickUpableItem {
 	
 	override public Texture2D getTexture()	
 	{
-		Texture2D flagImg = Resources.Load("flag_image") as Texture2D;
+		Texture2D flagImg = Resources.Load("staff") as Texture2D;
 		return flagImg;
 		
 	}

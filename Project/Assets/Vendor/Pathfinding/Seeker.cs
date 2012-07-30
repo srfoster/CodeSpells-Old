@@ -26,14 +26,14 @@ public class Seeker : MonoBehaviour {
 		currentState = WalkingState.OnPath;
 	}
 	
-	public WalkingState walk() { //code to walk
+	public WalkingState walk(float walkingSpeed) { //code to walk
 		if(pathIndex < movements.Count-1)
 		{
 			NPCFidget fidgets = GetComponent<NPCFidget>();
 	   		fidgets.StartWalking();
 			
 			transform.LookAt (movements[pathIndex]);
-			transform.Translate(Vector3.forward * Time.deltaTime * 6);
+			transform.Translate(Vector3.forward * Time.deltaTime * walkingSpeed);
 			transform.position = new Vector3(transform.position.x, Terrain.activeTerrain.SampleHeight(transform.position), transform.position.z);
 
 			if (Vector3.Distance(transform.position, movements[pathIndex]) < Random.Range(1,4)) {
