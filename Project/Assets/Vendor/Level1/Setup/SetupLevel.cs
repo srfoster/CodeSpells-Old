@@ -33,6 +33,8 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupHighlighter()).Init();
 		(new SetupSpellbook()).Init();
 		(new SetupBadgebook()).Init();
+		(new SetupSpellKiller()).Init();
+
 
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
@@ -70,9 +72,9 @@ public class SetupLevel : MonoBehaviour {
 		
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MySpell");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
+		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Sentry");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Sentry");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
@@ -100,7 +102,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
 		badgebook.Add("helping_others_reaching_up_high", "  New Heights", 				"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_putting_something_high", 	"  Out of Reach", 		"incomplete_putting_something_high_badge", false);
-		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 			"incomplete_putting_out_fire_badge", false);
+		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
@@ -159,8 +161,16 @@ public class SetupLevel : MonoBehaviour {
 			helpingUnlocked++;
 		};
 		
+		
+		AudioSource main_audio = GameObject.Find("Voice").audio;
+			
+		AudioClip pickup_clip = Resources.Load("PickupArpeg") as AudioClip;
+
 		CollectBread.CollectedBread += () => {
 			collectedBread++;
+			
+			main_audio.PlayOneShot(pickup_clip);
+			Popup.mainPopup.popup("Got it! (" + (12 - collectedBread) + " left)");
 			
 			if(collectedBread == 12)
 			{
@@ -204,7 +214,10 @@ public class SetupLevel : MonoBehaviour {
 			Debug.Log("Extinguished was called with target: "+target.gameObject.name);
 			if(target.name.Equals("QuestSummonCrate"))
 			{
+<<<<<<< HEAD
 				Debug.Log("Completing the summoning quest");
+=======
+>>>>>>> 5f64f3cc09689107498f351d86a9a3b1e36c60e0
 				badgebook.Complete("helping_others_putting_out_fire");	
 				helpingUnlocked++;
 			}

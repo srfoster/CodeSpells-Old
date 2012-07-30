@@ -162,6 +162,14 @@ public class Enchantable : MonoBehaviour {
 		}
 	}
 	
+	public string getFileName()
+	{
+		if(june != null)
+			return june.getFileName();	
+		
+		return "None";
+	}
+	
 	
 	//Kind of a bloated, over-worked method.  But I guess I don't fully understand coroutines well enough to modularize it yet.
 	private IEnumerator enchantAnimation(){
