@@ -40,7 +40,6 @@ function OnGUI ()
 			is_server = true;
 			Network.InitializeServer(32, listenPort, useNat);
 			// Notify our objects that the level and the network is ready
-			GameObject.Find("SpawnServer").SendMessage("OnNetworkLoadedLevel", SendMessageOptions.DontRequireReceiver);		
 		}
 		GUILayout.EndVertical();
 		if (useNat)
@@ -73,11 +72,14 @@ function OnServerInitialized()
 	if (useNat)
 		Debug.Log("==> GUID is " + Network.player.guid + ". Use this on clients to connect with NAT punchthrough.");
 	Debug.Log("==> Local IP/port is " + Network.player.ipAddress + "/" + Network.player.port + ". Use this on clients to connect directly.");
+	
+	GameObject.Find("SpawnServer").GetComponent("SpawnPlayer").Spawn();
+
 }
 
 function OnConnectedToServer() {
   if(!is_server)
-	GameObject.Find("SpawnClient").SendMessage("OnNetworkLoadedLevel", SendMessageOptions.DontRequireReceiver);
+	GameObject.Find("SpawnClient").GetComponent("SpawnPlayer").Spawn();
 }
 
 function OnDisconnectedFromServer () {
