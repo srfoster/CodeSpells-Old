@@ -45,7 +45,7 @@ public class SetupLevel : MonoBehaviour {
 	
 	void givePlayerAFlag() {
 		// If all the bread is collected, give them a staff/flag
-		FlyQuestChecker.UnlockedStaff += () => {
+	//	FlyQuestChecker.UnlockedStaff += () => {
 			GameObject game_flag = new GameObject();
 			game_flag.AddComponent<Flag>();
 			game_flag.name = "game_flag";
@@ -54,7 +54,7 @@ public class SetupLevel : MonoBehaviour {
 			inventory.addItem(game_flag);
 			
 			game_flag.GetComponent<Item>().item_name = "Staff";
-		};
+	//	};
 	}
 	
 	void givePlayerASpellbook()
@@ -120,8 +120,7 @@ public class SetupLevel : MonoBehaviour {
 		
 		//Set up the callbacks for unlocking the badges.
 		int num_unlocked = 0;
-		Enchantable.EnchantmentEnded += (spell_target, item_name) => {
-		
+		Enchantable.EnchantmentEnded += (spell_target, item_name) => {			
 			bool success = false;
 			if(item_name.StartsWith("Flame"))
 				success =  badgebook.Complete("reading_your_book_fire");
@@ -214,10 +213,7 @@ public class SetupLevel : MonoBehaviour {
 			Debug.Log("Extinguished was called with target: "+target.gameObject.name);
 			if(target.name.Equals("QuestSummonCrate"))
 			{
-<<<<<<< HEAD
-				Debug.Log("Completing the summoning quest");
-=======
->>>>>>> 5f64f3cc09689107498f351d86a9a3b1e36c60e0
+
 				badgebook.Complete("helping_others_putting_out_fire");	
 				helpingUnlocked++;
 			}

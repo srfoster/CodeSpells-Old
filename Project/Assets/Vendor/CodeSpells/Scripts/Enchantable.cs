@@ -105,8 +105,11 @@ public class Enchantable : MonoBehaviour {
 					if(EnchantmentEnded != null)
 						EnchantmentEnded(gameObject, june.getFileName());
 				} else {
+
 					if(EnchantmentFailed != null)
+					{
 						EnchantmentFailed(gameObject, june.getFileName());
+					}
 				}
 			}
 		}

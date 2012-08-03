@@ -1,7 +1,7 @@
 import june.*;
 import java.util.*;
 
-public class Flight1 extends Spell
+public class Flight21 extends Spell
 {
   public void cast()
   { 

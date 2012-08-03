@@ -16,6 +16,9 @@ public class NPCTurnHead : MonoBehaviour {
 	              
 	void LateUpdate () {
 		
+		if(head == null)
+			return;
+		
 		Vector3 forward = head.forward;
 		Vector3 direction = player.position - head.position;
 		

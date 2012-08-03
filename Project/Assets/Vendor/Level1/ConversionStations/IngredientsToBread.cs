@@ -10,7 +10,7 @@ public class IngredientsToBread : MonoBehaviour {
 	//takes in a generic bread object which it may or may not create
 	public GameObject breadRegion;
 		
-	void OnTriggerStay(Collider col)
+	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject.transform.parent != null)
 			return;

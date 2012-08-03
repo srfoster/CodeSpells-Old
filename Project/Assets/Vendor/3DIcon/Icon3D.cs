@@ -31,7 +31,10 @@ public class Icon3D : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {		
+	void Update () {	
+		if(icon == null)
+			return;
+		
 		icon.transform.LookAt(Camera.main.transform.position, Vector3.up);
 
 		

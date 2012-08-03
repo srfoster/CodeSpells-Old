@@ -7,11 +7,14 @@ public class MassiveFire1 extends Spell
   { 
     Enchanted area   = getByName("Area 1");
 
-
+    for(int i = 0; i < 10; i++)
+      area.grow(1);
 
     EnchantedList list = area.findWithin();
 
-    for(Enchanted e : list)
-      e.onFire(true);
+    for(Enchanted thing : list)
+    {
+      thing.onFire(true); 
+    }
   }
 }

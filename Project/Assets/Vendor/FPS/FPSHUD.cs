@@ -51,7 +51,7 @@ void OnGUI()
         frames = 0;
     }
 		
-	display(format,color);
+	//display(format,color);
 }
 	
 	void display(string format, Color color)

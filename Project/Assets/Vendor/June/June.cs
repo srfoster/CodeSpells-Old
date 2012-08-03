@@ -66,6 +66,7 @@ public class June {
 		
 		//is_stopped = true;
 		
+		success = true;
 				
 		try{
 			//Work-around because Unity is being stupid

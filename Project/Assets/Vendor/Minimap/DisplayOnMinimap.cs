@@ -7,7 +7,7 @@ public class DisplayOnMinimap : MonoBehaviour {
 	
 	public Color color = Color.green;
 
-    public float duration = 1.0F;
+    public float scale = 0.01f;
 	
 	void Start () {
 		GameObject trianglePrefab = (Resources.Load("Triangle") as GameObject);
@@ -19,6 +19,8 @@ public class DisplayOnMinimap : MonoBehaviour {
 		
 		triangle.transform.FindChild("Mesh").gameObject.renderer.material = my_material;
 		triangle.transform.FindChild("Mesh").gameObject.renderer.material.color = color;
+		
+		triangle.transform.localScale *= scale;
 	}
 	
 	void Update () {
