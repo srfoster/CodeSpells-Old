@@ -17,6 +17,10 @@ public class SpawnPlayer : MonoBehaviour {
 	{
 		//Destroy(actual);
 		
+		
+		
 		actual = Network.Instantiate(to_spawn, transform.position, transform.rotation, 0) as GameObject;
+		
+		
 	}
 }
