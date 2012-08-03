@@ -195,12 +195,15 @@ public class Enchantable : MonoBehaviour {
 		
 		
 		//Play the sound effect.
-		AudioSource audio_source = GameObject.Find("Voice").audio;
-		
-		if(audio_clip != null)
+		if(GameObject.Find("Voice") != null)
 		{
-			audio_source.audio.clip = audio_clip;
-			audio_source.audio.Play();
+			AudioSource audio_source = GameObject.Find("Voice").audio;
+			
+			if(audio_clip != null)
+			{
+				audio_source.audio.clip = audio_clip;
+				audio_source.audio.Play();
+			}
 		}
 		
 		//Starts the external Java program (the most important line of the method)

@@ -20,14 +20,16 @@ public class SpawnPlayer : MonoBehaviour {
 	{
 		//Destroy(actual);
 		
-		//Destroy(GameObject.Find("Main Camera"));
 		
 		actual = Network.Instantiate(to_spawn, transform.position, transform.rotation, 0) as GameObject;
+		actual.name = "First Person Controller";
 		
 		GameObject camera_prefab = Resources.Load("MainCamera") as GameObject;
 		GameObject minimap_camera_prefab = Resources.Load("MinimapCamera") as GameObject;
 		
 		GameObject camera = Instantiate(camera_prefab, actual.transform.position, actual.transform.rotation) as GameObject;
+		camera.name = "Main Camera";
+		camera.tag  = "MainCamera";
 		GameObject minimap_camera = Instantiate(minimap_camera_prefab, actual.transform.position, Quaternion.identity) as GameObject;
 
 		camera.transform.parent = actual.transform;
