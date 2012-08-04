@@ -21,6 +21,12 @@ public class SpawnPlayer : MonoBehaviour {
 		//Destroy(actual);
 		
 		
+		
+		GameObject sample_crate_prefab = Resources.Load("sample_crate") as GameObject;
+		
+		Network.Instantiate(sample_crate_prefab, transform.position, Quaternion.identity, 0);
+		
+		
 		actual = Network.Instantiate(to_spawn, transform.position, transform.rotation, 0) as GameObject;
 		actual.name = "First Person Controller";
 		
