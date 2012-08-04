@@ -6,7 +6,7 @@ public class Teleport1 extends Spell
   public void cast()
   { 
     Enchanted target = getTarget();            
-    Enchanted myself = getByName("Me");
+    Enchanted myself = getByName("Server");
 
     Location temp = target.getLocation();
     Location dest = temp.adjust(Direction.up(), 10);
