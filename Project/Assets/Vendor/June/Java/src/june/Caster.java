@@ -8,6 +8,14 @@ public class Caster
   {
     Spell spell = (Spell) Class.forName(args[0]).newInstance();
     spell.setTarget(args[1]);
-    spell.cast();
+
+
+    try{
+        spell.cast();
+    }catch(Exception e){
+      e.printStackTrace();
+
+      (new Enchanted("")).executeCommand("util.popup('"+e.getClass() + "\\n" + e.getMessage()+"')");
+    }
   }
 }

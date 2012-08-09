@@ -17,6 +17,7 @@ public class SetupDuelingMode : MonoBehaviour {
 		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
+		givePlayerAFlag();
 	}
 	
 	void givePlayerASpellbook()
@@ -72,4 +73,18 @@ public class SetupDuelingMode : MonoBehaviour {
 		*/
 	}
 		
+	
+	void givePlayerAFlag() {
+		// If all the bread is collected, give them a staff/flag
+	//	FlyQuestChecker.UnlockedStaff += () => {
+			GameObject game_flag = new GameObject();
+			game_flag.AddComponent<Flag>();
+			game_flag.name = "game_flag";
+			
+			Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+			inventory.addItem(game_flag);
+			
+			game_flag.GetComponent<Item>().item_name = "Staff";
+	//	};
+	}
 }
