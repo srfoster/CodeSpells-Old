@@ -91,7 +91,8 @@ public class June {
 			
 			string class_name = java_file_name.Split('.')[0];
 			
-			Process compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+JuneConfig.java_files_path+"/"+java_file_name);
+			
+			Process compile_process = Shell.shell_no_start("javac", "-classpath \"" + JuneConfig.june_files_path + "\" "+JuneConfig.java_files_path+"/"+java_file_name);
 			compile_process.Start();	
 			
 			var output = compile_process.StandardOutput.ReadToEnd();
@@ -104,8 +105,26 @@ public class June {
 				success = false;	
 			}
 			
+						
+			Process test = Shell.shell_no_start("java", "-version");
+			test.Start();	
 			
-			java_process = Shell.shell_no_start("java", "-classpath '" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"' june.Caster "+class_name+" '" + object_id +"'");	
+			var output2 = test.StandardOutput.ReadToEnd();
+	   		var error2 = test.StandardError.ReadToEnd();
+			
+			UnityEngine.Debug.Log (output2 + " " + error2);
+			
+			
+			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+			{
+				UnityEngine.Debug.Log("java " + "-classpath \"" + JuneConfig.june_files_path + ";" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");
+				java_process = Shell.shell_no_start("java", "-classpath \"" + JuneConfig.june_files_path + ";" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");
+			}
+			else
+			{
+				UnityEngine.Debug.Log("java " + "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");
+				java_process = Shell.shell_no_start("java", "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");	
+			}
 			java_process.Start();
 
 			
