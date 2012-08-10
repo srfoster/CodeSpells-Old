@@ -9,9 +9,9 @@ public class Summon1 extends Spell{
 
     crate.setLocation(me.getLocation());
 
-    while(crate.distanceTo(target) > 1){
+    while(crate.distanceTo(target) > 10){
       Direction d = Direction.between(crate,target);
-      crate.move(d, 1);s
+      crate.move(d, 5);
     }
   }
 }

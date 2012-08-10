@@ -5,7 +5,7 @@ public class Log {
     static BufferedWriter bf;
     static{
         try{
-            bf = new BufferedWriter(new FileWriter("./CodeSpells.log",true));
+            bf = new BufferedWriter(new FileWriter("./CodeSpellsJava.log",true));
         }catch(IOException e){
             e.printStackTrace();
         }

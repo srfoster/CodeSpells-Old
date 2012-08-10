@@ -48,10 +48,9 @@ public class Enchanted
     public static String executeCommand(String command) 
     {
 
-        //Log.log("INSIDE EXECUTE COMMAND: string to be sent: "+command);
         try {
             long before = System.currentTimeMillis();
-            //Log.log("Java sends to Unity: "+command+"\n");
+            Log.log("Java sends to Unity: "+command+"\n");
             out.println(command);
             String response = in.readLine();
 
@@ -61,7 +60,7 @@ public class Enchanted
               throw new RuntimeException("Unity Error");
             }
 
-            //Log.log("Java gets back from Unity: "+response);
+            Log.log("Java gets back from Unity: "+response);
 
             
             long after = System.currentTimeMillis();
