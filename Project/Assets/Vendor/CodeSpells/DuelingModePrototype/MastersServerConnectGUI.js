@@ -225,8 +225,32 @@ function MakeClientWindow(id : int)
 			GUILayout.Space(5);
 			GUILayout.FlexibleSpace();
 			if (GUILayout.Button("Connect"))
+			{
 				Network.Connect(element);
+				
+			}
 		}
 		GUILayout.EndHorizontal();	
 	}
+}
+
+
+function OnServerInitialized()
+{
+	if (useNat)
+		Debug.Log("==> GUID is " + Network.player.guid + ". Use this on clients to connect with NAT punchthrough.");
+	Debug.Log("==> Local IP/port is " + Network.player.ipAddress + "/" + Network.player.port + ". Use this on clients to connect directly.");
+	
+	Debug.Log("Spawning server");
+	GameObject.Find("SpawnServer").GetComponent("SpawnPlayer").Spawn();
+
+}
+
+function OnConnectedToServer() {
+//  if(!is_server)
+//  {
+  	Debug.Log("Spawning client");
+
+	GameObject.Find("SpawnClient").GetComponent("SpawnPlayer").Spawn();
+//  }
 }
