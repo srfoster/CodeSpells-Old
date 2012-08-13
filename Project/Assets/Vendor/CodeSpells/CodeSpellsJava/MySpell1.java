@@ -11,6 +11,7 @@ public class MySpell1 extends Spell{
     set(list.get(1), e, Direction.south());
     set(list.get(2), e, Direction.east());
     set(list.get(3), e, Direction.west());
+    set(list.get(4), e, Direction.west())
   }
 
   public void set(Enchanted crate, Enchanted target, Direction d)
@@ -20,4 +21,4 @@ public class MySpell1 extends Spell{
 
     crate.setLocation((Location)dest);
   }
-}
+ } 
