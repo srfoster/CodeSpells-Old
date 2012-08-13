@@ -12,6 +12,19 @@ public class Util {
 		return UnityEngine.Object.Instantiate (obj, loc, rot) as GameObject;	
 	}
 	
+	public string size(string id)
+	{
+		GameObject parent = ObjectManager.FindById(id);
+		string ret = parent.collider.bounds.size.x + "," + parent.collider.bounds.size.y + "," + parent.collider.bounds.size.z;
+		
+		return ret;
+	}
+	
+	public void popup(string s)
+	{
+		Popup.mainPopup.popup(s);	
+	}
+	
 
 	public void reregister(string old_id, string new_id)
 	{

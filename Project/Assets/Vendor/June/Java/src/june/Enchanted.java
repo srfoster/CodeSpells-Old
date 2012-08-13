@@ -35,26 +35,32 @@ public class Enchanted
 
   public void setName(String new_name)
   {
-    executeCommand("util.reregister(\""+id+"\",\""+new_name+"\");");
-    setId(id);
+    //executeCommand("util.reregister(\""+id+"\",\""+new_name+"\");");
+    //
+    String command = "$target.GetComponent('Enchantable').setId('"+new_name+"')";
+    command = interpolateId(command);
+    executeCommand(command); 
+
+    setId(new_name);
   }
     
     
     public static String executeCommand(String command) 
     {
-        //Log.log("INSIDE EXECUTE COMMAND: string to be sent: "+command);
+
         try {
             long before = System.currentTimeMillis();
-            //Log.log("Java sends to Unity: "+command+"\n");
+            Log.log("Java sends to Unity: "+command+"\n");
             out.println(command);
             String response = in.readLine();
 
             if(response.startsWith("Error"))
             {
+
               throw new RuntimeException("Unity Error");
             }
 
-            //Log.log("Java gets back from Unity: "+response);
+            Log.log("Java gets back from Unity: "+response);
 
             
             long after = System.currentTimeMillis();
@@ -63,6 +69,7 @@ public class Enchanted
         }
         catch(Exception e) {
             e.printStackTrace();
+
             Log.log("Error in command: " + e);
 
             System.exit(1);
@@ -198,6 +205,32 @@ public class Enchanted
         return Double.parseDouble(resp);
     }
     
+  public double sizeX()
+  {
+      String response = executeCommand("util.size('"+getId()+"')");
+
+      double ret = Double.parseDouble(response.split(",")[0]);
+
+      return ret;
+  }
+
+  public double sizeY()
+  {
+      String response = executeCommand("util.size('"+getId()+"')");
+
+      double ret = Double.parseDouble(response.split(",")[1]);
+
+      return ret;
+  }
+
+  public double sizeZ()
+  {
+      String response = executeCommand("util.size('"+getId()+"')");
+
+      double ret = Double.parseDouble(response.split(",")[2]);
+
+      return ret;
+  }
 
   public String onFireCommand(boolean bool)
   {
