@@ -45,6 +45,7 @@ public class SetupLevel : MonoBehaviour {
 	
 	void givePlayerAFlag() {
 		// If all the bread is collected, give them a staff/flag
+		//FlyQuestChecker.UnlockedStaff += () => {
 	//	FlyQuestChecker.UnlockedStaff += () => {
 			GameObject game_flag = new GameObject();
 			game_flag.AddComponent<Flag>();
@@ -53,6 +54,8 @@ public class SetupLevel : MonoBehaviour {
 			Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
 			inventory.addItem(game_flag);
 			
+			game_flag.GetComponent<Item>().item_name = "Flag";
+		//};
 			game_flag.GetComponent<Item>().item_name = "Staff";
 	//	};
 	}
@@ -210,9 +213,11 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		Flamable.Extinguished += (target) => {
-			Debug.Log("Extinguished was called with target: "+target.gameObject.name);
+			//Debug.Log("Extinguished was called with target: "+target.gameObject.name);
 			if(target.name.Equals("QuestSummonCrate"))
 			{
+				Debug.Log("Completing the summoning quest");
+				
 
 				badgebook.Complete("helping_others_putting_out_fire");	
 				helpingUnlocked++;
@@ -245,27 +250,64 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("helping_others");
 		};
 	}
+	
+	public string getSpellName(string cont) {
+		string title = "";
+		string[] lines = cont.Split("\n"[0]);
+		foreach (string ln in lines) {
+			Match mat = (new Regex("class")).Match (ln);
+			if (mat.Success) {
+				title = ln.Substring(mat.Groups[0].Index+6);
+				mat = (new Regex(" ")).Match (title);
+				if (mat.Success) {
+					title = title.Substring(0, mat.Groups[0].Index);
+				}
+				return title;
+			}
+		}
+		return title;
+	}
 
-	void setupSpecialEvents() // random shit
+	void setupSpecialEvents() 
 	{
+		Debug.Log ("Inside setupSpecialEvents");
 		//Remove a spell from the inventory if the user blanks out the file contents.
 		//  This is how we'll delete spells (for now).
 		IDE.IDEClosed += (file_name, contents) => {
-			string[] segs = file_name.Split('/');
-			string short_name = segs[segs.Length - 1].Replace(".java","");
 			
-			Debug.Log(short_name + " : " + contents);
+						
+			//	path += segs[i];
+
+			
+			
+			string newName = getSpellName(contents);
+			Debug.Log ("getSpellName is: "+newName);
+			string[] segs = file_name.Split('/');
+			//if (newName.Equals("")) {
+			//	return;
+			//}
+
+			string prevName = segs[segs.Length - 1].Replace(".java","");;
+			
+			
 			
 			Inventory i = GameObject.Find("Inventory").GetComponent<Inventory>();
 			
-			List<GameObject> matching_items = i.getMatching(short_name);
+			//previous name
+			List<GameObject> matching_items = i.getMatching(prevName);
 			
 			if(Regex.Match(contents.Replace("\n",""), "^\\s*$").Success && matching_items.Count > 0)
 			{
+				Debug.Log ("About to remove item");
 				i.removeItem(matching_items[0]);
+				return;
 			}
-		};	
-		
+			if (!prevName.Equals(newName)) {
+				//matching_items[0].GetComponent<Item>().item_name = newName;
+				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
+				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
+			}
+		};
 		
 		
 		AudioClip monster_clip = Resources.Load("Growls") as AudioClip;

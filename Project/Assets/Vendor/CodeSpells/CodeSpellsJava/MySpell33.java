@@ -1,6 +1,6 @@
 import june.*;
 
-public class MySp extends Spell{
+public class Spell99 extends Spell{
   public void cast(){
     //Do magic here.
   }
