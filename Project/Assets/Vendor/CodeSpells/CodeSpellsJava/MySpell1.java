@@ -1,18 +1,23 @@
 import june.*;
-import java.util.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-    Enchanted target  = getTarget();
-    Enchanted crate   = getByName("MyCrate");
-    Enchanted me      = getByName("Server");
+    Enchanted e = getTarget();
+    getByName("Area 1").grow(300);
 
-    crate.setLocation(me.getLocation());
+    EnchantedList list = getByName("Area 1").findWithin();
 
-    while(crate.distanceTo(target) > 10){
-      Direction d = Direction.between(crate,target);
-      crate.move(d, 5);
-    }
+    set(list.get(0), e, Direction.north());
+    set(list.get(1), e, Direction.south());
+    set(list.get(2), e, Direction.east());
+    set(list.get(3), e, Direction.west());
+  }
+
+  public void set(Enchanted crate, Enchanted target, Direction d)
+  {
+    Vector3 dest = target.getLocation();
+    dest = dest.add(d.times(crate.sizeX()));
+
+    crate.setLocation((Location)dest);
   }
 }
-
