@@ -270,18 +270,16 @@ public class SetupLevel : MonoBehaviour {
 
 	void setupSpecialEvents() 
 	{
-		Debug.Log ("Inside setupSpecialEvents");
 		//Remove a spell from the inventory if the user blanks out the file contents.
 		//  This is how we'll delete spells (for now).
 		IDE.IDEClosed += (file_name, contents) => {
 			
-						
 			//	path += segs[i];
 
 			
 			
 			string newName = getSpellName(contents);
-			Debug.Log ("getSpellName is: "+newName);
+
 			string[] segs = file_name.Split('/');
 			//if (newName.Equals("")) {
 			//	return;

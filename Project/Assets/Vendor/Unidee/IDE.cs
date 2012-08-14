@@ -232,8 +232,11 @@ public class IDE : MonoBehaviour {
 		paused = true;
 		Time.timeScale = 1;
 		
-		if(IDEClosed != null)
+		if(IDEClosed != null) {
+			
 			IDEClosed(file_name, current_code);
+			
+		}
 	}
 		
 	
@@ -399,6 +402,7 @@ public class IDE : MonoBehaviour {
 		
 		if (GUI.Button (new Rect (180,15,65,65), "X", remove_style))
 		{
+			Debug.Log ("remove button was pressed");
 			shouldPopup = true;
 	    }
 		

@@ -157,6 +157,14 @@ public class Enchanted
         return eList;
     }
     
+    /*
+     GameObject sample_crate_prefab = Resources.Load("sample_crate") as GameObject;
+     
+     Network.Instantiate(sample_crate_prefab, transform.position,
+     Quaternion.identity, 0);
+     
+     */
+    
     public boolean isRock() {
         return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+1+")"));
     }

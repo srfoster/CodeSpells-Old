@@ -10,6 +10,10 @@ public abstract class Spell
   public Spell(){
   }
     
+    public Enchanted spawn(String prefabName, Location targetLocation) {
+        String name = Enchanted.executeCommand("util.spawnOverNetwork(\""+prefabName+"\", "+((LazyLocation) targetLocation).evals_to_vector3+")");
+        return (new Enchanted(name));
+    }
 
   public void setTarget(String target_id)
   {
@@ -24,6 +28,8 @@ public abstract class Spell
   {
     return Enchant.byName(name);
   }
+    
+    
     
 
   public abstract void cast();
