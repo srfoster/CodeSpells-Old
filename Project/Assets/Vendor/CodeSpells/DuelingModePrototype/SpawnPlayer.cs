@@ -33,7 +33,7 @@ public class SpawnPlayer : MonoBehaviour {
 		
 		
 		actual = Network.Instantiate(to_spawn, transform.position, transform.rotation, 0) as GameObject;
-		actual.name = "First Person Controller";
+		//actual.name = "First Person Controller";
 		
 		GameObject camera_prefab = Resources.Load("MainCamera") as GameObject;
 		GameObject minimap_camera_prefab = Resources.Load("MinimapCamera") as GameObject;

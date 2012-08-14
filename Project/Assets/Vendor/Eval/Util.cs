@@ -12,6 +12,12 @@ public class Util {
 		return UnityEngine.Object.Instantiate (obj, loc, rot) as GameObject;	
 	}
 	
+	public String spawnOverNetwork(String prefabName, Vector3 pos) {
+		GameObject temp =  (GameObject) Network.Instantiate(Resources.Load(prefabName) as GameObject, pos, Quaternion.identity, 0);
+		ObjectManager.Register(temp, ""+temp.GetHashCode());
+		return ""+temp.GetHashCode();
+	}
+	
 	public string size(string id)
 	{
 		GameObject parent = ObjectManager.FindById(id);

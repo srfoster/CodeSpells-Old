@@ -24,6 +24,9 @@ public class Text3D : MonoBehaviour {
 	void Update () {
 		if(!text.Equals(""))
 			the_3d_text.GetComponent<TextMesh>().text = text;
+		if (GameObject.Find ("First Person Controller") == null) {
+			return;
+		}
 		the_3d_text.transform.rotation = GameObject.Find("First Person Controller").transform.rotation;
 		the_3d_text.transform.position = new Vector3(transform.position.x,
 			transform.position.y+1,

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class SetupDuelingMode : MonoBehaviour {
 
@@ -18,6 +20,7 @@ public class SetupDuelingMode : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
+		setupSpecialEvents();
 	}
 	
 	void givePlayerASpellbook()
@@ -85,6 +88,116 @@ public class SetupDuelingMode : MonoBehaviour {
 		};
 		
 		*/
+	}
+	
+		public string getSpellName(string cont) {
+		string title = "";
+		string[] lines = cont.Split("\n"[0]);
+		foreach (string ln in lines) {
+			Match mat = (new Regex("class")).Match (ln);
+			if (mat.Success) {
+				title = ln.Substring(mat.Groups[0].Index+6);
+				mat = (new Regex(" ")).Match (title);
+				if (mat.Success) {
+					title = title.Substring(0, mat.Groups[0].Index);
+				}
+				return title;
+			}
+		}
+		return title;
+	}
+	
+		void setupSpecialEvents() 
+	{
+		//Remove a spell from the inventory if the user blanks out the file contents.
+		//  This is how we'll delete spells (for now).
+		IDE.IDEClosed += (file_name, contents) => {
+			
+			//	path += segs[i];
+
+			
+			
+			string newName = getSpellName(contents);
+
+			string[] segs = file_name.Split('/');
+			//if (newName.Equals("")) {
+			//	return;
+			//}
+
+			string prevName = segs[segs.Length - 1].Replace(".java","");;
+			
+			
+			
+			Inventory i = GameObject.Find("Inventory").GetComponent<Inventory>();
+			
+			//previous name
+			List<GameObject> matching_items = i.getMatching(prevName);
+			
+			if(Regex.Match(contents.Replace("\n",""), "^\\s*$").Success && matching_items.Count > 0)
+			{
+				Debug.Log ("About to remove item");
+				i.removeItem(matching_items[0]);
+				return;
+			}
+			if (!prevName.Equals(newName)) {
+				//matching_items[0].GetComponent<Item>().item_name = newName;
+				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
+				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
+			}
+		};
+		
+		
+		AudioClip monster_clip = Resources.Load("Growls") as AudioClip;
+		//Setup sounds
+		Monster.AttackStarted += (monster) => {
+			monster.audio.PlayOneShot(monster_clip);
+			Popup.mainPopup.popup("Monster awoken!  Hide in the swamp!");
+		};
+		
+		Monster.AttackEnded += (monster) => {
+			monster.audio.PlayOneShot(monster_clip);
+			Popup.mainPopup.popup("You lost him!");
+		};
+		
+		AudioSource main_audio = GameObject.Find("Voice").audio;
+			
+		AudioClip spellbook_clip = Resources.Load("PageTurn") as AudioClip;
+		Spellbook.PageTurnedForward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.PageTurnedBackward += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		Spellbook.SpellCopied += (page) => {
+			main_audio.audio.PlayOneShot(spellbook_clip);
+		};
+		
+		
+		AudioClip drop_item_clip = Resources.Load("DropItem") as AudioClip;
+		Inventory.DroppedOff += (target) => {
+			main_audio.audio.PlayOneShot(drop_item_clip);	
+		};
+		
+				
+		AudioClip badge_clip = Resources.Load("BadgeUnlocked") as AudioClip;
+		Badgebook.BadgeUnlocked += (target) => {
+			main_audio.audio.PlayOneShot(badge_clip);	
+		};
+		
+		ConversationDisplayer.ConversationStarted += (target) => {
+			int i = Random.Range(1, 7);
+
+			AudioClip hi_clip = Resources.Load("GnomeHi" + i) as AudioClip;
+
+			main_audio.audio.PlayOneShot(hi_clip);	
+		};
+		
+		ConversationDisplayer.ConversationStopped += (target) => {
+			int i = Random.Range(1, 3);
+			AudioClip bye_clip = Resources.Load("GnomeBye" + i) as AudioClip;
+
+			main_audio.audio.PlayOneShot(bye_clip);	
+		};
 	}
 		
 	

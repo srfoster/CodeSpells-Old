@@ -19,6 +19,7 @@ public class Spellbook : MonoBehaviour {
 	bool enabled = false;
 	
 	public GUIStyle button_style = new GUIStyle();
+	public GUIStyle code_style = new GUIStyle();
 	
 	public Texture2D button_up_texture;
 	public Texture2D button_down_texture;
@@ -52,6 +53,12 @@ public class Spellbook : MonoBehaviour {
 		button_style.active.textColor = new Color(0.75f,0.75f,0.75f);
 		button_style.alignment = TextAnchor.MiddleCenter;
 		button_style.fontSize = 30;
+		
+		//set code_style
+		code_style.fontSize = 20;
+		code_style.normal.textColor = Color.black;
+		code_style.font = code_font;
+		code_style.wordWrap = false;
 		
 		ide = GameObject.Find("IDE").GetComponent<IDE>();
 				
@@ -149,12 +156,7 @@ public class Spellbook : MonoBehaviour {
 		int number_so_far = copied_spells[currentPage().getName()];
 		int number = number_so_far + 1;
 		
-
-		
 		copied_spells[currentPage().name]++;
-		
-
-		Debug.Log("HERE " + number);
 
 		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
 		code_scroll_item_component.setCurrentFile(currentPage().getName() + number + ".java");
@@ -183,16 +185,15 @@ public class Spellbook : MonoBehaviour {
 	}
 	
 	void showCode()
-	{
-		IDEInput input = new StringInput(currentPage().code, "");
-		ide.noEdit();
-		ide.SetInput(input);
-
-
+	{	
 		GUILayout.BeginArea(new Rect(Screen.width * 0.07f, Screen.height * 0.14f, Screen.width * 0.383f, Screen.height * 0.725f));
 		scroll_position = GUILayout.BeginScrollView (scroll_position, GUILayout.Width(Screen.width * 0.383f), GUILayout.Height(Screen.height * 0.725f)); // Should vary the size of the last rect by how much text we have??
-		ide.showCode();
-		ide.syntaxHighlight();
+
+		foreach (Tuple<Rect, Texture2D> tup in (new Highlight()).highlightPage(currentPage().code)) {
+			GUI.DrawTexture(tup.Item1, tup.Item2);
+		}
+		GUILayout.TextArea(currentPage().code, code_style);
+		
         GUILayout.EndScrollView();
 		GUILayout.EndArea();
 	}
