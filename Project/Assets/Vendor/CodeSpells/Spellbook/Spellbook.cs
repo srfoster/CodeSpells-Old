@@ -37,7 +37,7 @@ public class Spellbook : MonoBehaviour {
 	int current_page = 0;
 	
 	public List<string> page_urls = new List<string>();
-	List<SpellbookPage> pages = new List<SpellbookPage>();
+	public List<SpellbookPage> pages = new List<SpellbookPage>();
 	
 	Dictionary<string, int> copied_spells = new Dictionary<string,int>();
 
@@ -170,6 +170,8 @@ public class Spellbook : MonoBehaviour {
 	{
 		if(currentPage() == null || currentPage().texture == null || currentPage().code == null)
 		{
+			Debug.Log("Current " + currentPage().texture + " " + currentPage().code);
+			
 			enabled = false;
 			previous_state.active = true;
 

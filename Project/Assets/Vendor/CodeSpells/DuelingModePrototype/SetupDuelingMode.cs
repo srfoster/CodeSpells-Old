@@ -36,6 +36,8 @@ public class SetupDuelingMode : MonoBehaviour {
 		
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		
+		
+		/*
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MySpell");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Sentry");
@@ -47,6 +49,18 @@ public class SetupDuelingMode : MonoBehaviour {
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
 		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
+		*/
+		
+		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
+		spellbook.Add(new FilePage("Flame", "Flame/texture", "Flame/code"));
+		spellbook.Add(new FilePage("Sentry", "Sentry/texture", "Sentry/code"));
+		spellbook.Add(new FilePage("AdeptLevitate", "AdeptLevitate/texture", "AdeptLevitate/code"));
+		spellbook.Add(new FilePage("Teleport", "Teleport/texture", "Teleport/code"));
+		spellbook.Add(new FilePage("Flight", "Flight/texture", "Flight/code"));
+		spellbook.Add(new FilePage("Summon", "Summon/texture", "Summon/code"));
+		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
+		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
+		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
 	}
 	
 	void givePlayerABadgeBook()
