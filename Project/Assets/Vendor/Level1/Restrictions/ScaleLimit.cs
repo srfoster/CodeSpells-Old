@@ -7,7 +7,7 @@ public class ScaleLimit : MonoBehaviour {
 	
 	public float lower_limit = 1;
 
-	public float upper_limit = 100;
+	public float upper_limit = 4000;
 	
 	void Start(){
 		oldScale = transform.localScale;	

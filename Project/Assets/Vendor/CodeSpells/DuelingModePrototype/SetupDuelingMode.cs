@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 public class SetupDuelingMode : MonoBehaviour {
-
+	
 
 	// Use this for initialization
 	void Start () {
-		(new SetupInventory()).Init();		
+		
+		 (new SetupInventory()).Init();		
 		(new SetupUnidee()).Init();		
 		(new SetupPopup()).Init();		
 		(new SetupJune()).Init();		
@@ -16,11 +17,19 @@ public class SetupDuelingMode : MonoBehaviour {
 		(new SetupSpellbook()).Init();
 		(new SetupBadgebook()).Init();
 		(new SetupSpellKiller()).Init();
+		//GUI.DrawTexture(new Rect(0,0,500,500),health_bar_background);
+		
 		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
 		setupSpecialEvents();
+		
+		
+		//load inventory_area_background
+		
+		
+		
 	}
 	
 	void givePlayerASpellbook()
@@ -89,6 +98,7 @@ public class SetupDuelingMode : MonoBehaviour {
 		
 		*/
 	}
+	
 	
 		public string getSpellName(string cont) {
 		string title = "";
@@ -159,29 +169,29 @@ public class SetupDuelingMode : MonoBehaviour {
 			Popup.mainPopup.popup("You lost him!");
 		};
 		
-		AudioSource main_audio = GameObject.Find("Voice").audio;
+		//AudioSource main_audio = GameObject.Find("Voice").audio;
 			
 		AudioClip spellbook_clip = Resources.Load("PageTurn") as AudioClip;
 		Spellbook.PageTurnedForward += (page) => {
-			main_audio.audio.PlayOneShot(spellbook_clip);
+			//main_audio.audio.PlayOneShot(spellbook_clip);
 		};
 		Spellbook.PageTurnedBackward += (page) => {
-			main_audio.audio.PlayOneShot(spellbook_clip);
+			//main_audio.audio.PlayOneShot(spellbook_clip);
 		};
 		Spellbook.SpellCopied += (page) => {
-			main_audio.audio.PlayOneShot(spellbook_clip);
+			//main_audio.audio.PlayOneShot(spellbook_clip);
 		};
 		
 		
 		AudioClip drop_item_clip = Resources.Load("DropItem") as AudioClip;
 		Inventory.DroppedOff += (target) => {
-			main_audio.audio.PlayOneShot(drop_item_clip);	
+			//main_audio.audio.PlayOneShot(drop_item_clip);	
 		};
 		
 				
 		AudioClip badge_clip = Resources.Load("BadgeUnlocked") as AudioClip;
 		Badgebook.BadgeUnlocked += (target) => {
-			main_audio.audio.PlayOneShot(badge_clip);	
+			//main_audio.audio.PlayOneShot(badge_clip);	
 		};
 		
 		ConversationDisplayer.ConversationStarted += (target) => {
@@ -189,14 +199,14 @@ public class SetupDuelingMode : MonoBehaviour {
 
 			AudioClip hi_clip = Resources.Load("GnomeHi" + i) as AudioClip;
 
-			main_audio.audio.PlayOneShot(hi_clip);	
+			//main_audio.audio.PlayOneShot(hi_clip);	
 		};
 		
 		ConversationDisplayer.ConversationStopped += (target) => {
 			int i = Random.Range(1, 3);
 			AudioClip bye_clip = Resources.Load("GnomeBye" + i) as AudioClip;
 
-			main_audio.audio.PlayOneShot(bye_clip);	
+			//main_audio.audio.PlayOneShot(bye_clip);	
 		};
 	}
 		
