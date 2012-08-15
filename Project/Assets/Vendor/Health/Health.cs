@@ -18,12 +18,12 @@ public class Health : MonoBehaviour {
     //return Math.Round((myHealth - minHealth)/maxHealth*100.0, 1)+"%";
   //}
 
-  void decreaseHealth(double dec) {
+  public void decreaseHealth(double dec) {
    //implement
 	myHealth -= dec;
   }
 
-  void increaseHealth(double inc) {
+  public void increaseHealth(double inc) {
    //implement
 	myHealth += inc;
   }

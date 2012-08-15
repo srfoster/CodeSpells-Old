@@ -27,7 +27,7 @@ public class ExampleDisplayHealth : MonoBehaviour {
 		
 		float currentHealth = (float) health.myHealth;
 		
-		Debug.Log (currentHealth);
+		//Debug.Log (currentHealth);
 		
 		int numHearts = Mathf.CeilToInt(currentHealth / maxNumHearts);
 		
