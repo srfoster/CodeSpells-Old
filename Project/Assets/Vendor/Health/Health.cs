@@ -7,7 +7,7 @@ public class Health : MonoBehaviour {
   public double myHealth;
 
   void Start () {
-	myHealth = 10;
+	
   }
 
   double getHealth() {
