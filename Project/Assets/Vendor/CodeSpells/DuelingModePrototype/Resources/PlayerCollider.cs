@@ -6,23 +6,26 @@ public class PlayerCollider : MonoBehaviour {
 	public System.Timers.Timer crateCollisionTimer;
 	public int timeInterval;
 	public double hitDamage;
+	public string heartColor;
 	
-	void OnColliderEnter(Collision col) {
+	
+	void OnTriggerEnter(Collider col) {
 		//start timed event
 		//if (col.gameObject().equals ())
+		Debug.Log ("Inside OnColliderEnter" + col.gameObject);
 		decreaseHealth(hitDamage, col);
 		//crateCollisionTimer = new System.Timers.Timer();
 		//crateCollisionTimer.Elapsed+=new ElapsedEventHandler(OnTimedEvent);
 	}
 	
 	
-	void OnColliderExit(Collision col) {
+	void OnCollisionExit(Collision col) {
 		//end timed event
 	}
 	
 	
-	void decreaseHealth(double amount, Collision col) {
-		if(col.gameObject.GetComponent<Health>() != null)
+	void decreaseHealth(double amount, Collider col) {
+		if(col.gameObject.GetComponent<Health>() != null && col.gameObject.GetComponent<ExampleDisplayHealth>().heart_texture.name == heartColor)
 			col.gameObject.GetComponent<Health>().decreaseHealth(amount);
 	}
 	
