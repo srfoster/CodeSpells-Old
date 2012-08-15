@@ -2,10 +2,10 @@ import june.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-    Location l = getTarget().getLocation();
-    for (int i = 0; i < 100; i++)
-    {
-       spawn("blueCrate", l);
-    }
+    Enchanted area1 = getTarget();
+    area1.grow(40.0);
+    for (int i=0; i<30; i++) {
+      spawn("redCrate", area1.getLocation()).grow(2.0);
+      }
   }
 }
