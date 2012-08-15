@@ -125,7 +125,7 @@ public class EclipseInput : FileInput {
 	virtual public void javaCompile()
 	{			
 		try{					
-			compile_process = Shell.shell_no_start("javac", "-classpath '" + JuneConfig.june_files_path + "' "+GetFileName());
+			compile_process = Shell.shell_no_start("javac", "-classpath \"" + JuneConfig.june_files_path + "\" "+GetFileName());
 			compile_process.Start();	
 			
 			var output = compile_process.StandardOutput.ReadToEnd();
