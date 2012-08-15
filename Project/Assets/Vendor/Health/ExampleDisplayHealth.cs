@@ -25,6 +25,7 @@ public class ExampleDisplayHealth : MonoBehaviour {
 	
 	void OnGUI() {
 		
+		
 		float currentHealth = (float) health.myHealth;
 		
 		//Debug.Log (currentHealth);
@@ -37,10 +38,13 @@ public class ExampleDisplayHealth : MonoBehaviour {
 	
 	void drawHearts(Texture2D heart_texture, float x,float y,int numHearts) {
 		
-		int i = 0;
-		while( i!=numHearts ){
-			GUI.DrawTexture (new Rect(x+heart_dim*i, y, heart_dim,heart_dim), heart_texture);
-			i++;
+		if(numHearts >=0)
+		{
+			int i = 0;
+			while( i!=numHearts ){
+				GUI.DrawTexture (new Rect(x+heart_dim*i, y, heart_dim,heart_dim), heart_texture);
+				i++;
+			}
 		}
 	}
 }
