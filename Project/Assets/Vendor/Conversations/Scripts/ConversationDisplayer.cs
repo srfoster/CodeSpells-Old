@@ -28,6 +28,8 @@ public class ConversationDisplayer : MonoBehaviour {
 	
 	public void show(GameObject previous_state)
 	{
+		//temporarily remove the minimap
+		((Camera) GameObject.Find ("MinimapCamera").camera).enabled = false;
 		this.previous_state = previous_state;
 		previous_state.active = false;
 		enabled = true;
@@ -38,6 +40,7 @@ public class ConversationDisplayer : MonoBehaviour {
 	
 	void exit()
 	{
+		((Camera) GameObject.Find ("MinimapCamera").camera).enabled = true;
 		if(ConversationStarted != null)
 			ConversationStopped(conversation);
 		

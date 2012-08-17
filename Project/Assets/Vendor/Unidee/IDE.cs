@@ -30,7 +30,8 @@ public class IDE : MonoBehaviour {
 	public GUIStyle code_style = new GUIStyle();
 	
 	
-	private string current_code = "";	
+	private string current_code = "";
+	private string stored_code;
 	private IDEInput input;
 	private string file_name;	
 	private TextEditor stateObj;
@@ -81,6 +82,7 @@ public class IDE : MonoBehaviour {
 	
 	public int LineNumber()
 	{
+		Debug.Log ("current_code.length is "+current_code.Length+", cursorposition is "+GetCursorPosition());
 		return NumberOfNewLines(current_code.Substring(0,GetCursorPosition()));	//Number of newlines before cursor
 	}
 	
@@ -136,7 +138,6 @@ public class IDE : MonoBehaviour {
 		previous_state.active = false;
 		enabled = true;
 		paused = false;
-		no_edit = false;
 		
 		Time.timeScale = 0;
 		
@@ -171,6 +172,8 @@ public class IDE : MonoBehaviour {
 		code_style.normal.textColor = Color.black;
 		code_style.font = ide_font;
 		code_style.wordWrap = false;
+		
+		shouldPopup = shouldRemove = false;
 	}
 	
 	void DoWindow0 (int windowID) {
@@ -201,6 +204,8 @@ public class IDE : MonoBehaviour {
 			}
 			
 			if (GUI.Button(new Rect(Screen.width/2+30, Screen.height/2+box_height/2-20, 50, 30), "No")) {
+				no_edit = false;
+				current_code = stored_code;
 				shouldPopup = false;
 			}
 		}
@@ -322,7 +327,6 @@ public class IDE : MonoBehaviour {
 	
 	void insertTab(int tab_width)
 	{
-		Debug.Log ("insertTab was called");
 		string spaces = "";
 		
 		for(int i = 0; i < tab_width; i++)
@@ -383,26 +387,29 @@ public class IDE : MonoBehaviour {
 	void rightPanel()
 	{
 		GUI.BeginGroup(new Rect(Screen.width*3/4+5,0,Screen.width*1/4-5,Screen.height));
-		//Rect windowRect = new Rect(20, 20, 500, 500);
 		if (GUI.Button (new Rect (10,15,130,65), "Back", button_style))
 		{
-			//back button will change the SpellBook page name
-	        input.SetCode(current_code);
-	
-			enabled = false;
-	        previous_state.active = true;
-			paused = true;
-			Time.timeScale = 1;
-			
+			if (!shouldPopup) {
+				//back button will change the SpellBook page name
+	        	input.SetCode(current_code);
+				
+				enabled = false;
+	        	previous_state.active = true;
+				paused = true;
+				Time.timeScale = 1;
 					
-			if(IDEClosed != null)
-				IDEClosed(file_name, current_code);
+				if(IDEClosed != null)
+					IDEClosed(file_name, current_code);
+			}
 	    }
 		
 		
 		if (GUI.Button (new Rect (180,15,65,65), "X", remove_style))
 		{
-			Debug.Log ("remove button was pressed");
+			if (!current_code.Equals (""))
+				stored_code = current_code;
+			current_code = "";
+			no_edit = true;
 			shouldPopup = true;
 	    }
 		
@@ -432,10 +439,6 @@ public class IDE : MonoBehaviour {
 	{
 		writeOut();
 		input.Process(this);			
-	}
-	
-	public void noEdit(){
-		no_edit = true;	
 	}
 	
 	public void setErrorMessage(string error)

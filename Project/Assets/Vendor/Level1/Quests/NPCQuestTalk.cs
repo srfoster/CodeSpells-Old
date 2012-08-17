@@ -71,6 +71,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	
 	void OnMouseDown()
 	{
+		StopCoroutine("turnToFaceAndTalk");
 		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 		if(Vector3.Distance(transform.position, player.position)<50)
 			StartCoroutine(turnToFaceAndTalk());
@@ -80,6 +81,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	{
 		//Does an sudden, jumpy turn which actually looks okayish.  But this method is called as a
 		// coroutine in order to facilitate a smoother turn if we want to implement that.
+		
 		transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
 		
 		yield return new WaitForSeconds(0.2f);

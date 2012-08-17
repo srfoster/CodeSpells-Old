@@ -12,6 +12,7 @@ public class Item : MonoBehaviour {
 	
 	private bool is_active = false;
 	private bool is_hidden = false;
+	public NoUnderground nucomp;
 	
 	public bool GetActive()
 	{
@@ -63,7 +64,11 @@ public class Item : MonoBehaviour {
 		
 		try{
 			getInventory().addItem(gameObject);
-			this.gameObject.transform.position = new Vector3(0f,-10000f,0f); //SetActiveRecursively(false);
+			if (this.gameObject.GetComponent<NoUnderground>()) {
+				nucomp = this.gameObject.GetComponent<NoUnderground>();
+				nucomp.enabled = false;
+			}
+			this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x,-10000f,this.gameObject.transform.position.z); //SetActiveRecursively(false);
 		}catch(NullReferenceException e){
 			
 		}
