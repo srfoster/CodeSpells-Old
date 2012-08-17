@@ -36,7 +36,6 @@ public class Spellbook : MonoBehaviour {
 	
 	int current_page = 0;
 	
-	public List<string> page_urls = new List<string>();
 	public List<SpellbookPage> pages = new List<SpellbookPage>();
 	
 	Dictionary<string, int> copied_spells = new Dictionary<string,int>();
@@ -61,27 +60,6 @@ public class Spellbook : MonoBehaviour {
 		code_style.wordWrap = false;
 		
 		ide = GameObject.Find("IDE").GetComponent<IDE>();
-				
-		
-		foreach(string url in page_urls)
-		{
-			//Gotta parse out the name
-			string[] split = url.Split(new char[]{'/'});
-			string name = split[split.Length - 1];
-			
-			
-			string new_url = "";
-			
-			for(int i = 0; i < split.Length-1; i++)
-			{
-				new_url += split[i] + "/";
-			}
-			
-			SpellbookPage page = new WebSpellbookPage(new_url, name);
-			pages.Add(page);
-			StartCoroutine(page.load());
-		}
-		
 		
 		return null;
 

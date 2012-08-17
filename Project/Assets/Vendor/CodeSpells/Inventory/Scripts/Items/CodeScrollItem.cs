@@ -11,9 +11,16 @@ public class CodeScrollItem : DraggableItem {
 	
 	private Texture2D still_icon;
 	private Texture2D[] animated_icon;
+	
+	private bool on_drag = false;
+	private float time_started;
 
 	
     override protected void Drag(){
+		if (!on_drag) {
+			time_started = Time.time;
+			on_drag = true;
+		}
 		base.Drag();
 		
 		GameObject obj = objectUnderCursor();
@@ -52,15 +59,18 @@ public class CodeScrollItem : DraggableItem {
 	}
 	
 	public override void DroppedOnInventory(Vector3 mousePosition){
+		on_drag = false;
 		SetHidden(false);
-		
-		if(isEmpty())
-			return;
-
-		IDEInput input = getIDEInput();
-		IDE ide = (GameObject.Find("IDE").GetComponent("IDE") as IDE);
-		ide.SetInput(input);
-		ide.show(GameObject.Find("Inventory"));
+		if ((Time.time-time_started) < 0.5f) {
+			
+			if(isEmpty())
+				return;
+			
+			IDEInput input = getIDEInput();
+			IDE ide = (GameObject.Find("IDE").GetComponent("IDE") as IDE);
+			ide.SetInput(input);
+			ide.show(GameObject.Find("Inventory"));
+		}
 	}
 	
 	public IDEInput getIDEInput(){

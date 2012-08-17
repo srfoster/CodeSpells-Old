@@ -27,10 +27,18 @@ public class Monster : MonoBehaviour {
 	}
 	
 	public void Attack () {
+		if (!attacking) {
+			audio.clip = Resources.Load("MonsterRunning") as AudioClip;
+			audio.Play();
+			audio.loop = true;
+			AttackStarted(gameObject);
+			GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().startShakeMode();
+		}
+		
 		StartRunning();
 		attacking = true;
 		
-		AttackStarted(gameObject);
+		
 	}
 	
 	void Update()
@@ -83,6 +91,9 @@ public class Monster : MonoBehaviour {
 		
 		if(Vector3.Distance(destination, transform.position) <= 5 && alive)
 		{
+			GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
+			audio.Stop();
+			Debug.Log ("audio stoped");
 			StartCoroutine(KillPlayer());
 			alive = false;
 		}	
@@ -97,7 +108,9 @@ public class Monster : MonoBehaviour {
 	
 	public void LoosePlayer() 
 	{
+		audio.Stop();
 		AttackEnded(gameObject);
+		GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
 		
 		//reset everything;
 		alive = true;
@@ -116,7 +129,7 @@ public class Monster : MonoBehaviour {
 		alphaFadeValue = 1;
 		
 		GameObject.Find("Voice").audio.PlayOneShot(Resources.Load("Dying") as AudioClip);  
-
+		
 		yield return new WaitForSeconds(2);
 		
 		GameObject start = GameObject.FindGameObjectWithTag("Respawn");
