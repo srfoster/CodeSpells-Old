@@ -6,7 +6,7 @@ public class Flight1 extends Spell
   public void cast()
   { 
     Enchanted my_target = getTarget();
-    Enchanted me = getByName("Client");            
+    Enchanted me = getByName("Me");            
 
     int counter = 0;
     while(counter < 30)
