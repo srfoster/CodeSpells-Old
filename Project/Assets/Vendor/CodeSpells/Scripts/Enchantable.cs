@@ -88,9 +88,11 @@ public class Enchantable : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (gameObject.GetComponent<Text3D>())
+		if(gameObject.GetComponent<Text3D>() != null)
+		{	
 			gameObject.GetComponent<Text3D>().text = id;
-
+		}
+		
 		if(!isEnchanted())
 		{
 			disenchantAnimation();
