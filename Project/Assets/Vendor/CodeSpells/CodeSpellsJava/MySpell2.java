@@ -1,8 +1,9 @@
 import june.*;
 
-public class Up extends Spell{
+public class Fly extends Spell{
   public void cast(){
-    Enchanted me = getByName("Me");
-    me.move(Direction.up(), 10.0f);
+    Location l = getTarget().getLocation();
+    for(int i=0; i < 10; i++)
+      spawn("redCrate", l);
   }
 }

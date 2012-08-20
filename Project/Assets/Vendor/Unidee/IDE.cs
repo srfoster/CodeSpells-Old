@@ -136,7 +136,7 @@ public class IDE : MonoBehaviour {
 		enabled = true;
 		paused = false;
 		
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
 		
 		if(IDEOpened != null)
 			IDEOpened(file_name, current_code);

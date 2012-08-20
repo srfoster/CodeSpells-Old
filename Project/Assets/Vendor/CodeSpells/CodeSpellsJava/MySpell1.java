@@ -2,7 +2,8 @@ import june.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-    Enchanted area1 = getByName("Area 1");
-    
+    Location l = getTarget().getLocation();
+    for(int i = 0; i < 10; i++)
+      spawn("redCrate", l);
   }
 }
