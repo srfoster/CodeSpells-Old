@@ -37,6 +37,7 @@ public class SpawnPlayer : MonoBehaviour {
 		
 		actual.AddComponent<Enchantable>();
 		actual.GetComponent<Enchantable>().setId("Me");
+
 		
 		GameObject camera_prefab = Resources.Load("MainCamera") as GameObject;
 		GameObject minimap_camera_prefab = Resources.Load("MinimapCamera") as GameObject;
