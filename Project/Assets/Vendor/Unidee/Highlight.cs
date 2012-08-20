@@ -46,7 +46,8 @@ public class Highlight {
 		List<Tuple<Rect, Texture2D>> allHighlights = new List<Tuple<Rect, Texture2D>>();
 		string[] lines = code.Split("\n"[0]);
 		foreach(int errLn in errorLines) {
-			allHighlights = getHighlights(".*", error_syntax_highlight, lines[errLn], errLn, allHighlights);
+			if(errLn < lines.Length)
+				allHighlights = getHighlights(".*", error_syntax_highlight, lines[errLn], errLn, allHighlights);
 		}
 		return allHighlights;
 	}

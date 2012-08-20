@@ -102,7 +102,7 @@ public class Util {
 			/*
 			 * 
 			 * ((g.name).StartsWith("Flag"));
-			 * /
+			 */
 			
 		case 7://hasIgnited
 			return g.GetComponent<Flamable>().isIgnited();
