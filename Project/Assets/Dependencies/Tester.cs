@@ -1,25 +1,19 @@
 using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 public class Tester : MonoBehaviour {
 
-	// Use this for initialization
-	int value;
 	void Start () {
-		//create empty gameobject 4 units away
-		//create new Vector3 with a dirrerent x position
-		GameObject g = new GameObject();
-		//Transform t;
-		Instantiate (g, new Vector3(transform.position.x+2, transform.position.y, transform.position.z), Quaternion.identity);
-		//g.transform.position.
-		Terrain.activeTerrain.SampleHeight(transform.position);
+		string input = "3: class MySpel is public, should be declared in a file named MySpel.java sadfhjkdasfjhadfsfdsa";
+		//string pattern = @"^Information regarding (.+) sent orangejava";
+		string pattern = @"^(.+) class (.+) is public, should be declared in a file named (.+)";
+		Debug.Log ("-------> "+Regex.IsMatch(input, pattern));
 		
-		value = 0;
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		value += 1;
-		//Debug.Log ("value is now "+value);
+		
+		
 	}
 }
