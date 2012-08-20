@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.IO;
@@ -31,7 +30,6 @@ public class IDE : MonoBehaviour {
 	
 	
 	private string current_code = "";
-	private string stored_code;
 	private IDEInput input;
 	private string file_name;	
 	private TextEditor stateObj;
@@ -82,7 +80,6 @@ public class IDE : MonoBehaviour {
 	
 	public int LineNumber()
 	{
-		Debug.Log ("current_code.length is "+current_code.Length+", cursorposition is "+GetCursorPosition());
 		return NumberOfNewLines(current_code.Substring(0,GetCursorPosition()));	//Number of newlines before cursor
 	}
 	
@@ -189,9 +186,16 @@ public class IDE : MonoBehaviour {
 		
 		stateObj = GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl) as TextEditor;
 		
-		leftPanel();
 		
 		if (shouldPopup) {
+		GUI.DrawTexture(new Rect(0,0,Screen.width*3/4,Screen.height),left_panel_background);
+		GUILayout.BeginArea(new Rect(120,40,Screen.width*3/4,Screen.height));
+		
+		scroll_position = GUILayout.BeginScrollView (scroll_position, GUILayout.Width(Screen.width*3/4-200), GUILayout.Height(Screen.height-60 )); // Should vary the size of the last rect by how much text we have??
+			
+		GUILayout.EndScrollView ();	
+		GUILayout.EndArea();
+			
 			int boxWidth = 300;
 			int boxHeight = 75;
 			GUIStyle style = GUI.skin.box;
@@ -199,18 +203,18 @@ public class IDE : MonoBehaviour {
 			GUI.Box(new Rect (Screen.width/2-boxWidth/2, Screen.height/2-boxHeight/2, boxWidth, boxHeight), "Are you sure you want to delete your script?", style);
 			
 			if (GUI.Button(new Rect(Screen.width/2-60, Screen.height/2+box_height/2-20, 50, 30), "Yes")) {
+				no_edit = false;
 				shouldRemove = true;
 				shouldPopup = false;
 			}
 			
 			if (GUI.Button(new Rect(Screen.width/2+30, Screen.height/2+box_height/2-20, 50, 30), "No")) {
 				no_edit = false;
-				current_code = stored_code;
 				shouldPopup = false;
 			}
 		}
 		else {
-			popupWindow = GUI.Window(0, new Rect(0, 0, 0, 0), DoWindow0, "Alert");
+			leftPanel();
 		}
 		
 		if (shouldRemove)
@@ -406,9 +410,6 @@ public class IDE : MonoBehaviour {
 		
 		if (GUI.Button (new Rect (180,15,65,65), "X", remove_style))
 		{
-			if (!current_code.Equals (""))
-				stored_code = current_code;
-			current_code = "";
 			no_edit = true;
 			shouldPopup = true;
 	    }
@@ -418,7 +419,12 @@ public class IDE : MonoBehaviour {
 		style.alignment = TextAnchor.UpperLeft;
 		style.wordWrap = true;
 		
-		GUI.Box(new Rect (10,100,230,500), current_error, style);
+		string pattern = @"^(.+) class (.+) is public, should be declared in a file named (.+)";
+		if (!Regex.IsMatch(current_error, pattern))
+			GUI.Box(new Rect (10,100,230,500), current_error, style);
+		else {
+			GUI.Box(new Rect (10,100,230,500), "------------", style);
+		}
 		
 		GUI.EndGroup();
 	}
@@ -447,9 +453,17 @@ public class IDE : MonoBehaviour {
 	}
 	
 	public void addStyle(int number, string type){
+		string pattern = @"^(.+) class (.+) is public, should be declared in a file named (.+)";
+		Debug.Log ("IS: "+Regex.IsMatch(current_error, pattern));
+		Debug.Log ("current_error string is --->"+current_error);
+		if (Regex.IsMatch(current_error, pattern))
+			return;
 		
-		if(type.Equals("error"))
+		
+		
+		if(type.Equals("error"));
 		{
+			Debug.Log ("error_lines was added");
 			error_lines.Add(number);	
 		}
 

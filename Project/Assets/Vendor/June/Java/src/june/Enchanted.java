@@ -23,7 +23,7 @@ public class Enchanted
 		this.id = id;
 	}
 
-	protected String getId()
+	public String getId()
 	{
 		return id;
 	}
@@ -189,6 +189,12 @@ public class Enchanted
     public boolean isBread() {
         return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+6+")"));
     }
+    /*
+     public boolean isFlag() {
+        return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+7+")"));
+     
+     }
+     */
     
     public boolean isIgnited() {
         return Boolean.parseBoolean(executeCommand("util.isOfType(\""+this.getId()+"\","+7+")"));

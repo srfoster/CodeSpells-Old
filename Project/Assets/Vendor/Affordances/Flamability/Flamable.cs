@@ -29,6 +29,12 @@ public class Flamable : MonoBehaviour {
 		if(CaughtFire != null)
 			CaughtFire(this.gameObject);
 		
+		
+		//scale flames_prefab
+		
+		//flames_prefab.transform.localScale = new Vector3();
+		
+		
 		flames_actual = Instantiate(flames_prefab, transform.position, Quaternion.identity) as GameObject;
 		flames_actual.transform.parent = transform;
 		
