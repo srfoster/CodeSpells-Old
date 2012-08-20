@@ -99,10 +99,14 @@ public class Util {
 			return ((g.name).StartsWith("Flour"));
 		case 6://bread
 			return ((g.name).Contains("bread"));
+<<<<<<< HEAD
 			/*
 			 * 
 			 * ((g.name).StartsWith("Flag"));
 			 */
+=======
+
+>>>>>>> 01dc103bd9c44c213fd0ae75a36cd54826f77a9b
 			
 		case 7://hasIgnited
 			return g.GetComponent<Flamable>().isIgnited();
