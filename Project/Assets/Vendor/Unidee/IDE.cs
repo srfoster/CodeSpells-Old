@@ -41,7 +41,7 @@ public class IDE : MonoBehaviour {
 	private int box_width = 300;
 	private int box_height = 40;
 	
-	private bool thread_started = false;
+	private Thread inputThread;
 	
 	private double unpause_count = 0;
 	
@@ -256,14 +256,12 @@ public class IDE : MonoBehaviour {
 		if(Event.current.isKey)
 		{	
 			unpause_count = 0;
-			thread_started = false;
 		}
 		
-		if(unpause_count > 2 && !thread_started)  // Unpause stuff like compilation after every 5 seconds of inactivity
+		if(unpause_count > 2 && (inputThread == null || !inputThread.IsAlive))  // Unpause stuff like compilation after every 5 seconds of inactivity
 		{
 			Debug.Log("Starting thread");
-			thread_started = true;
-			Thread inputThread  = new Thread (inputProcessing);
+			inputThread = new Thread (inputProcessing);
 			inputThread.Start();
 		}
 	}
