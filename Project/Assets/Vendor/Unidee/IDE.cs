@@ -454,8 +454,6 @@ public class IDE : MonoBehaviour {
 	
 	public void addStyle(int number, string type){
 		string pattern = @"^(.+) class (.+) is public, should be declared in a file named (.+)";
-		Debug.Log ("IS: "+Regex.IsMatch(current_error, pattern));
-		Debug.Log ("current_error string is --->"+current_error);
 		if (Regex.IsMatch(current_error, pattern))
 			return;
 		
@@ -463,7 +461,6 @@ public class IDE : MonoBehaviour {
 		
 		if(type.Equals("error"));
 		{
-			Debug.Log ("error_lines was added");
 			error_lines.Add(number);	
 		}
 

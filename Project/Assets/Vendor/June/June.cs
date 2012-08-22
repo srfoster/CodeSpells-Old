@@ -126,7 +126,12 @@ public class June {
 				java_process = Shell.shell_no_start("java", "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");	
 			}
 			java_process.Start();
-
+			
+			var output3 = java_process.StandardOutput.ReadToEnd();
+	   		var error3 = java_process.StandardError.ReadToEnd();
+			
+			UnityEngine.Debug.Log (output3 + " " + error3);
+			
 			
 			Boolean has_exited = Convert.ToBoolean(java_process.GetType().GetProperty( "HasExited" ).GetValue(java_process, new object[]{}));
 			while(!has_exited )

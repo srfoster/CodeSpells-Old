@@ -10,6 +10,6 @@ public class Fireball extends Spell
 
     Location dest = target.getLocation();
 
-    myself.setLocation(dest); 
+    flamingRock.setLocation(dest); 
   }
 }

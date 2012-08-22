@@ -1,2 +1,2 @@
-javac june\*.java
-move june\*.class ..\bin\june\
+javac june/*.java
+mv june/*.class ../bin/june/

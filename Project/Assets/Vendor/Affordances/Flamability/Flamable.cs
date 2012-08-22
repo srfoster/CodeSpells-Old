@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Flamable : MonoBehaviour {
 	
-	public GameObject flames_prefab;
 	public bool flaming_at_start = false;
 	
 	private GameObject flames_actual;
@@ -29,14 +28,19 @@ public class Flamable : MonoBehaviour {
 		if(CaughtFire != null)
 			CaughtFire(this.gameObject);
 		
-		
-		//scale flames_prefab
-		
-		//flames_prefab.transform.localScale = new Vector3();
-		
-		
-		flames_actual = Instantiate(flames_prefab, transform.position, Quaternion.identity) as GameObject;
+			if (transform.name.Equals ("Monster")) Debug.Log ("Monster Ignite");
+		//look at collider dimensions
+		if ((transform.collider.bounds.size.x > 10) || (transform.collider.bounds.size.y > 10) || (transform.collider.bounds.size.z > 10)) {
+			flames_actual = Instantiate(Resources.Load ("TallFire"), transform.position, Quaternion.identity) as GameObject;
+		}
+		else if ((transform.collider.bounds.size.x > 3) || (transform.collider.bounds.size.y > 3) || (transform.collider.bounds.size.z > 3)) {
+			flames_actual = Instantiate(Resources.Load ("MedFire"), transform.position, Quaternion.identity) as GameObject;
+		}
+		else {
+			flames_actual = Instantiate(Resources.Load ("Fire"), transform.position, Quaternion.identity) as GameObject;			
+		}
 		flames_actual.transform.parent = transform;
+		
 		
 		if(gameObject.GetComponent<Item>() != null)
 		{
@@ -73,11 +77,13 @@ public class Flamable : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision col)
 	{
+		if (transform.name.Equals("Monster")) Debug.Log ("oncollisionenter");
 		DetermineIgniteOrExtinguish(col.gameObject);
 	}
 		
 	void OnTriggerEnter(Collider col)
 	{
+		if (transform.name.Equals("Monster")) Debug.Log ("ontriggerenter");
 		DetermineIgniteOrExtinguish(col.gameObject);
 	}
 	
