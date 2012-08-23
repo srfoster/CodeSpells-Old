@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import june.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-
+    Location l = getTarget().getLocation();
+    Enchanted s = spawn("redCrate", l);
+    s.grow(2);
   }
 }
-=======
->>>>>>> 01dc103bd9c44c213fd0ae75a36cd54826f77a9b
