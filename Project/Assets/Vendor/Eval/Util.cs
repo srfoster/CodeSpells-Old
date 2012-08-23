@@ -40,7 +40,6 @@ public class Util {
 	public string getWithin(string id)
 	{
 		numTimesCalled++;
-		Debug.Log ("getWithinWasCalled: #"+numTimesCalled);
 		GameObject parent = ObjectManager.FindById(id);
 				
 		if(parent.GetComponent<ObjectTracker>() == null)

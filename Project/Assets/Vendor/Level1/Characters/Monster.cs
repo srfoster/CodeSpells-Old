@@ -43,6 +43,8 @@ public class Monster : MonoBehaviour {
 	
 	void Update()
 	{
+		//check if the monster is on fire
+		//transform.GetComponent<"Flamable">().
 	   	if(attacking)
 	   	{
 			UpdateAttack();

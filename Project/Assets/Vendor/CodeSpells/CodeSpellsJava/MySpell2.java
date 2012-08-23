@@ -2,7 +2,6 @@ import june.*;
 
 public class MySpell2 extends Spell{
   public void cast(){
-    Enchanted s = getTarget();
-    s.move(Direction.North(), 300);
+    getTarget().move(Direction.north(), 20);
   }
 }
