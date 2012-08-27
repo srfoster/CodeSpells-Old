@@ -3,15 +3,12 @@ import java.util.*;
 
 public class Summon1 extends Spell{
   public void cast(){
-    Enchanted target  = getTarget();
-    Enchanted crate   = getByName("MyCrate");
-    Enchanted me      = getByName("Client");
-    
-    crate.setLocation(me.getLocation());
+    Enchanted rain    = getByName("Rain");
+    Enchanted myself  = getByName("Me");
 
-    while(crate.distanceTo(target) > 1){
-      Direction d = Direction.between(crate,target);
-      crate.move(d, 1);
+    while(rain.distanceTo(myself) > 65){
+      Direction toward_me = Direction.between(rain,myself);
+      rain.move(toward_me, 5);
     }
   }
 }

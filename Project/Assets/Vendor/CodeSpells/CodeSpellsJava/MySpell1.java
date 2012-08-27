@@ -1,10 +1,13 @@
-<<<<<<< HEAD
 import june.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-
+    Enchanted target = getTarget();
+    target.grow(10);
+    EnchantedList eList = target.findWithin();
+    for (Enchanted e : eList) {
+      e.onFire(true);
+      e.move(Direction.up(), 10);
+      }
   }
 }
-=======
->>>>>>> 01dc103bd9c44c213fd0ae75a36cd54826f77a9b

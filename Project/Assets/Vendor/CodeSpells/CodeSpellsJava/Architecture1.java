@@ -9,6 +9,7 @@ public class Architecture1 extends Spell
         Enchanted start = getByName("Area 2");
 
         Enchanted rock_area = getByName("Area 3");
+    rock_area.grow(10);
         
         EnchantedList list = rock_area.findWithin();
 

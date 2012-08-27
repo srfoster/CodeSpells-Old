@@ -1,14 +1,15 @@
 import june.*;
 import java.util.*;
 
-public class Fireball extends Spell
+public class Teleport1 extends Spell
 {
   public void cast()
   { 
     Enchanted target = getTarget();            
-    Enchanted flamingRock = getByName("FlamingRock");
+    Enchanted myself = getByName("Me");
 
-    Location dest = target.getLocation();
+    Location temp = target.getLocation();
+    Location dest = temp.adjust(Direction.up(), 10);
 
     myself.setLocation(dest); 
   }
