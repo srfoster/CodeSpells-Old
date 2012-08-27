@@ -24,6 +24,9 @@ public class LazyLocation extends Location
         String y_string = split[1];
         String z_string = split[2].substring(0, split[2].length() - 1);
         evals_to_vector3 = "(new Vector3("+x_string+","+y_string+","+z_string+"))";
+        post_x = "";
+        post_y = "";
+        post_z = "";
     }
     
     @Override
