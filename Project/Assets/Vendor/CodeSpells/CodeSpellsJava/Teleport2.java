@@ -1,16 +1,10 @@
 import june.*;
-import java.util.*;
 
-public class Tower extends Spell
-{
-  public void cast()
-  { 
-    Enchanted target = getTarget();            
-    Enchanted myself = getByName("Me");
-
-    Location temp = target.getLocation();
-    Location dest = temp.adjust(Direction.up(), 10);
-
-    myself.setLocation(dest); 
+public class MySpell2 extends Spell{
+  public void cast(){
+    for(int i=0; i<30; i++) {
+      spawn("blueCrate", getTarget().getLocation());
+      
+      }
   }
 }

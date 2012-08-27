@@ -43,6 +43,11 @@ public class Monster : MonoBehaviour {
 	
 	void Update()
 	{
+		//check if the monster is on fire
+		if (transform.GetComponent<Flamable>().isIgnited()) {
+			if (attacking) LoosePlayer();
+			attacking = false;
+		}
 	   	if(attacking)
 	   	{
 			UpdateAttack();

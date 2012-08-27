@@ -40,7 +40,6 @@ public class Util {
 	public string getWithin(string id)
 	{
 		numTimesCalled++;
-		Debug.Log ("getWithinWasCalled: #"+numTimesCalled);
 		GameObject parent = ObjectManager.FindById(id);
 				
 		if(parent.GetComponent<ObjectTracker>() == null)
@@ -99,12 +98,15 @@ public class Util {
 			return ((g.name).StartsWith("Flour"));
 		case 6://bread
 			return ((g.name).Contains("bread"));
+<<<<<<< HEAD
 			/*
 			 * 
 			 * ((g.name).StartsWith("Flag"));
 			 */
 
 			
+=======
+>>>>>>> 5a47f81e5b867c44bb855a53a7aa044efbff684f
 		case 7://hasIgnited
 			return g.GetComponent<Flamable>().isIgnited();
 		default:

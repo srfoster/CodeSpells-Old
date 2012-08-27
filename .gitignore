@@ -1,5 +1,6 @@
 Project/*
 !Project/Assets/
+Project/Assets/Vendor/CodeSpells/CodeSpellsJava/*
 .DS_Store
 *.class
 *.class.meta

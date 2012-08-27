@@ -1,6 +1,6 @@
 import june.*;
 
-public class Spell3 extends Spell{
+public class ManyCrates extends Spell{
   public void cast(){
     int currentNum = 1;
     Enchanted massiveArea = getTarget();

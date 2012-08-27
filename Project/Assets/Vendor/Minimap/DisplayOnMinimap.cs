@@ -11,7 +11,6 @@ public class DisplayOnMinimap : MonoBehaviour {
 	
 	void Start () {
 		GameObject trianglePrefab = (Resources.Load("Triangle") as GameObject);
-		Debug.Log ("instantiate was called");
 		triangle = (Instantiate(trianglePrefab, transform.position, Quaternion.identity) as GameObject);
 		triangle.name = "Triangle";
 
