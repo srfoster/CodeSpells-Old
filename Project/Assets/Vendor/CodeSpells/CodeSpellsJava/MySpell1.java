@@ -1,8 +1,8 @@
 import june.*;
- 
-public class CrateRain extends Spell{
+
+public class MySpell1 extends Spell{
   public void cast(){
-    EnchantedList all = new EnchantedList();
+       EnchantedList all = new EnchantedList();
     Location loc = getTarget().getLocation();
     Enchanted me = getByName("Me");
  
