@@ -66,7 +66,7 @@ public class LazyLocation extends Location
     @Override
     public Vector3 add(Vector3 loc)
     {
-      LazyLocation ret = new LazyLocation(evals_to_vector3);
+      LazyLocation ret = new LazyLocation(toString());
       ret.appendPostX("+" + loc.getXString());
       ret.appendPostY("+" + loc.getYString());
       ret.appendPostZ("+" + loc.getZString());
