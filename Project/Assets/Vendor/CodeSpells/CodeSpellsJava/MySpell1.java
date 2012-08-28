@@ -1,27 +1,30 @@
 import june.*;
  
-public class CrateRain extends Spell{
+public class MySpell1 extends Spell{
   public void cast(){
-    EnchantedList all = new EnchantedList();
-    Location loc = getTarget().getLocation();
+    Enchanted e = getByName("Area 1");
     Enchanted me = getByName("Me");
+    EnchantedList list = new EnchantedList();
  
-    for(int i=0; i < 30; i++)
+    for(int i = 0; i < 30; i++)
     {
-      Enchanted e = spawn("redCrate", loc);
-      all.add(e);
+      Enchanted c = spawn("blueCrate", me.getLocation());
+      list.add(c);
     }
  
-    while(true)
-    {
+ 
+    while(true){
       Direction dir = Direction.forward();
  
       Vector3 dest = me.getLocation();
-      dest = dest.add(dir.times(20));
  
-      for(Enchanted e : all)
+      int x = 70;
+      for(Enchanted c : list)
       {
-        e.setLocation((Location)dest);
+        dest = dest.add(dir.times(x));
+ 
+        c.setLocation((Location)dest);
+        x += 10;
       }
     }
   }
