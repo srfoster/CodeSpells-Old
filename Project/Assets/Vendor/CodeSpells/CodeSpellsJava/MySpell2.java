@@ -1,17 +1,23 @@
 import june.*;
 
-public class MySpell2 extends Spell{
+public class TrickyShoot extends Spell{
   public void cast(){
-    Enchanted en = spawn("blueCrateNG", getTarget().getLocation());
-en.setName("myCrate");
-    en.move(Direction.up(), 25);
-          
-    Enchanted myself = getByName("Me");
+    Enchanted me = getByName("Me");
 
-    Location temp = en.getLocation();
-    Location dest = temp.adjust(Direction.up(), 10);
+    Enchanted c1 = spawn("redCrate", me.getLocation());
 
-    myself.setLocation(dest);
+    double i = 0;
+    while(true){
+      double x = Math.sin(i)*20;
 
+      Direction dir = Direction.forward();
+
+      Vector3 dest = me.getLocation();
+      dest = dest.add(dir.times(25+x));
+
+      c1.setLocation((Location)dest);
+
+      i++;
+    }
   }
 }

@@ -16,7 +16,7 @@ function Update () {
 
 	
 
-/*
+
     if(Input.GetKey(KeyCode.Q))
     {
     	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
@@ -27,11 +27,13 @@ function Update () {
     {
    		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
     }
-    */
+    
+     /*
     
 	var rotationX = GameObject.Find("Main Camera").transform.localEulerAngles.x;
 	var rotationY = GameObject.Find("Main Camera").transform.localEulerAngles.y;
 	var rotationZ = GameObject.Find("Main Camera").transform.localEulerAngles.z;
+
 
 
 	if (Input.GetKey(KeyCode.Q) && ((rotationX >= 0 && rotationX < 90) || (rotationX <= 360 && rotationX >= 270)))
@@ -46,7 +48,7 @@ function Update () {
 	
 	GameObject.Find("Main Camera").transform.localEulerAngles = new Vector3(rotationX, rotationY, rotationZ);
 
-    
+    */
 
 	if (directionVector != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it
