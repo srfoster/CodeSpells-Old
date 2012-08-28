@@ -11,7 +11,8 @@ public abstract class Spell
   }
     
     public Enchanted spawn(String prefabName, Location targetLocation) {
-        String name = Enchanted.executeCommand("util.spawnOverNetwork(\""+prefabName+"\", "+((LazyLocation) targetLocation).evals_to_vector3+")");
+        String vstring = targetLocation.toString();
+        String name = Enchanted.executeCommand("util.spawnOverNetwork(\""+prefabName+"\", "+vstring+")");
         return (new Enchanted(name));
     }
 

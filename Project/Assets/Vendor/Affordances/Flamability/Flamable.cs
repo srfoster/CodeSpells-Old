@@ -28,7 +28,6 @@ public class Flamable : MonoBehaviour {
 		if(CaughtFire != null)
 			CaughtFire(this.gameObject);
 		
-			if (transform.name.Equals ("Monster")) Debug.Log ("Monster Ignite");
 		//look at collider dimensions
 		if ((transform.collider.bounds.size.x > 10) || (transform.collider.bounds.size.y > 10) || (transform.collider.bounds.size.z > 10)) {
 			flames_actual = Instantiate(Resources.Load ("TallFire"), transform.position, Quaternion.identity) as GameObject;
@@ -77,13 +76,11 @@ public class Flamable : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision col)
 	{
-		if (transform.name.Equals("Monster")) Debug.Log ("oncollisionenter");
 		DetermineIgniteOrExtinguish(col.gameObject);
 	}
 		
 	void OnTriggerEnter(Collider col)
 	{
-		if (transform.name.Equals("Monster")) Debug.Log ("ontriggerenter");
 		DetermineIgniteOrExtinguish(col.gameObject);
 	}
 	
