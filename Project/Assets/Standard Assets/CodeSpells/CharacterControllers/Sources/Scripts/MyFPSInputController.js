@@ -16,7 +16,7 @@ function Update () {
 
 	
 
-/*
+
     if(Input.GetKey(KeyCode.Q))
     {
     	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
@@ -27,7 +27,7 @@ function Update () {
     {
    		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
     }
-    */
+    
      /*
     
 	var rotationX = GameObject.Find("Main Camera").transform.localEulerAngles.x;
