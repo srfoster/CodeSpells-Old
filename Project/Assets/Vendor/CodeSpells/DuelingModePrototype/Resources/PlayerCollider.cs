@@ -26,7 +26,7 @@ public class PlayerCollider : MonoBehaviour {
 	
 	void decreaseHealth(double amount, Collider col) {
 		if(col.gameObject.GetComponent<Health>() != null && col.gameObject.GetComponent<ExampleDisplayHealth>().heart_texture.name == heartColor)
-			col.gameObject.GetComponent<Health>().decreaseHealth(amount);
+			col.gameObject.GetComponent<Health>().decreaseHealth(10);
 	}
 	
 	
