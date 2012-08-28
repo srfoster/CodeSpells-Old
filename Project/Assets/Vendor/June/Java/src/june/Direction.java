@@ -81,4 +81,5 @@ public abstract class Direction implements Vector3
 
     public abstract Vector3 add(Vector3 v);
     public abstract Vector3 times(double d);
+    public abstract void freeze();
 }
