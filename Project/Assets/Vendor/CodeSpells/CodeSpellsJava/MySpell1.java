@@ -2,27 +2,15 @@ import june.*;
 
 public class MySpell1 extends Spell{
   public void cast(){
-       EnchantedList all = new EnchantedList();
-    Location loc = getTarget().getLocation();
-    Enchanted me = getByName("Me");
- 
-    for(int i=0; i < 30; i++)
-    {
-      Enchanted e = spawn("redCrate", loc);
-      all.add(e);
-    }
- 
-    while(true)
-    {
-      Direction dir = Direction.forward();
- 
-      Vector3 dest = me.getLocation();
-      dest = dest.add(dir.times(20));
- 
-      for(Enchanted e : all)
-      {
-        e.setLocation((Location)dest);
-      }
-    }
+    Enchanted en = spawn("redCrateNG", getTarget().getLocation());
+en.setName("myCrate");
+    en.move(Direction.up(), 25);
+
+    Enchanted myself = getByName("Me");
+
+    Location temp = en.getLocation();
+    Location dest = temp.adjust(Direction.up(), 10);
+
+    myself.setLocation(dest);
   }
 }
