@@ -22,8 +22,6 @@ public class CrateCancelOut : MonoBehaviour {
 			Destroy(col.gameObject);	
 			Destroy(gameObject);
 		}
-		
-		
 	}
 	
 }

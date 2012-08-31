@@ -1,21 +1,23 @@
 import june.*;
-
-public class Tower extends Spell{
+ 
+public class TrickyShoot extends Spell{
   public void cast(){
-    Enchanted e = getByName("Area 1");
     Enchanted me = getByName("Me");
-    EnchantedList list = new EnchantedList();
-
-
-    Vector3 dest = e.getLocation();
-    for(int i = 0; i < 10; i++)
-    {
-      Direction dir = Direction.up();
-
-      dest = dest.add(dir.times(i*2.5));
-
-      Enchanted c = spawn("redCrate", (Location)dest);
-      list.add(c);
+ 
+    Enchanted c1 = spawn("redCrate", me.getLocation());
+ 
+    double i = 0;
+    while(true){
+      double x = Math.sin(i)*20;
+ 
+      Direction dir = Direction.forward();
+ 
+      Vector3 dest = me.getLocation();
+      dest = dest.add(dir.times(25+x));
+ 
+      c1.setLocation((Location)dest);
+ 
+      i++;
     }
   }
 }
