@@ -8,7 +8,7 @@ public class CrateCancelOut : MonoBehaviour {
 		
 		if(col.gameObject.name.StartsWith(to_kill))
 		{
-			Destroy(col.gameObject);	
+			//Destroy(col.gameObject);	
 			Destroy(gameObject);
 		}
 		
@@ -19,7 +19,7 @@ public class CrateCancelOut : MonoBehaviour {
 		
 		if(col.gameObject.name.StartsWith(to_kill))
 		{
-			Destroy(col.gameObject);	
+			//Destroy(col.gameObject);	
 			Destroy(gameObject);
 		}
 	}
