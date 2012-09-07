@@ -21,6 +21,7 @@ public class CrateGUI : MonoBehaviour {
 			client_count++;
 			
 		}
+		else
 		{
 			server_count++;
 			networkView.RPC("TellClientToIncrementServer", RPCMode.Others);
@@ -28,13 +29,13 @@ public class CrateGUI : MonoBehaviour {
 	}
 	
 	[RPC]
-	public void TellClientToIncrementServer(int count)
+	public void TellClientToIncrementServer()
 	{
 		server_count ++;
 	}
 	
 	[RPC]
-	public void TellServerToIncrementClient(int count)
+	public void TellServerToIncrementClient()
 	{
 		client_count ++;
 	}
@@ -42,8 +43,15 @@ public class CrateGUI : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		GUI.Label (new Rect (10, Screen.height - 75, 100, 20), ""+client_count);
-		GUI.Label (new Rect (10, Screen.height - 85, 100, 20), ""+server_count);
+		GUIStyle red = new GUIStyle();
+		GUIStyle blue = new GUIStyle();
+		red.normal.textColor = Color.red;
+		blue.normal.textColor = Color.blue;
+		red.fontSize = 20;
+		blue.fontSize = 20;
+		
+		GUI.Label (new Rect (260, Screen.height - 30, 100, 20), ""+client_count, blue);
+		GUI.Label (new Rect (260, Screen.height - 50, 100, 20), ""+server_count, red);
 	}
 
 }
