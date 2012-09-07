@@ -35,7 +35,8 @@ public class SpawnPlayer : MonoBehaviour {
 			GameObject crate_gui_prefab = Resources.Load("CrateGUI") as GameObject;
 			crate_gui_prefab.name = "CrateGUI";
 			
-			Network.Instantiate(crate_gui_prefab, transform.position, Quaternion.identity, 0);
+			Network.Instantiate(crate_gui_prefab, transform.position, Quaternion.identity,0);
+
 		}
 		
 		

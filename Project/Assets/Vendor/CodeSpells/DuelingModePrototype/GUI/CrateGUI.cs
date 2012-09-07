@@ -6,6 +6,12 @@ public class CrateGUI : MonoBehaviour {
 	int client_count = 0;
 	int server_count = 0;
 	
+	void Start()
+	{
+		name = "CrateGUI";
+		
+	}
+	
 	[RPC]
 	public void IncrementCrateCount()
 	{
