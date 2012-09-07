@@ -243,6 +243,11 @@ function OnServerInitialized()
 	
 	Debug.Log("Spawning server");
 	GameObject.Find("SpawnServer").GetComponent("SpawnPlayer").Spawn();
+	
+			
+	GameObject crate_gui_prefab = Resources.Load("CrateGUI") as GameObject;
+		
+	Network.Instantiate(crate_gui_prefab, transform.position, Quaternion.identity, 0);
 
 }
 
