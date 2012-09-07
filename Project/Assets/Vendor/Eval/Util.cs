@@ -13,6 +13,9 @@ public class Util {
 	}
 	
 	public String spawnOverNetwork(String prefabName, Vector3 pos) {
+		
+		GameObject.Find("CrateGUI").GetComponent<CrateGUI>().IncrementCrateCount();
+		
 		GameObject temp =  (GameObject) Network.Instantiate(Resources.Load(prefabName) as GameObject, pos, Quaternion.identity, 0);
 		ObjectManager.Register(temp, ""+temp.GetHashCode());
 		return ""+temp.GetHashCode();
