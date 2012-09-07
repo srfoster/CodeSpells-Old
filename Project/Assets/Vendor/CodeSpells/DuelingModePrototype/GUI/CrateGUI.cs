@@ -17,20 +17,26 @@ public class CrateGUI : MonoBehaviour {
 	{
 		if(Network.isClient)
 		{
-			networkView.RPC("IncrementCrateCount", RPCMode.Server);
-		}
-		else
-		{
+			networkView.RPC("TellServerToIncrementClient", RPCMode.Server);
 			client_count++;
 			
-			networkView.RPC("CrateCountChangedClient", RPCMode.Others, client_count);
+		}
+		{
+			server_count++;
+			networkView.RPC("TellClientToIncrementServer", RPCMode.Others);
 		}		
 	}
 	
 	[RPC]
-	public void CrateCountChangedClient(int count)
+	public void TellClientToIncrementServer(int count)
 	{
-		client_count = count;
+		server_count ++;
+	}
+	
+	[RPC]
+	public void TellServerToIncrementClient(int count)
+	{
+		client_count ++;
 	}
 
 	
