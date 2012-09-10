@@ -5,7 +5,7 @@ public class PlayerCollider : MonoBehaviour {
 	
 	public System.Timers.Timer crateCollisionTimer;
 	public int timeInterval;
-	public double hitDamage;
+	public double hitDamage = 10.0;
 	public string heartColor;
 	
 	
@@ -38,7 +38,7 @@ public class PlayerCollider : MonoBehaviour {
 
 	void decreaseHealth(double amount, GameObject gameObject) {
 		if(gameObject.GetComponent<Health>() != null && gameObject.GetComponent<ExampleDisplayHealth>().heart_texture.name == heartColor)
-			gameObject.GetComponent<Health>().decreaseHealth(10.0);
+			gameObject.GetComponent<Health>().decreaseHealth(amount);
 
 	}
 	

@@ -5,10 +5,20 @@ public class CrateGUI : MonoBehaviour {
 	
 	int client_count = 0;
 	int server_count = 0;
+	GameObject selectedPlayer;
 	
 	void Start()
 	{
 		name = "CrateGUI";
+		if(Network.isClient)
+		{
+			selectedPlayer = GameObject.Find("Dueling First Person Controller Client(Clone)");
+		}
+		else
+		{
+			selectedPlayer = GameObject.Find("Dueling First Person Controller(Clone)");	
+
+		}
 		
 	}
 	
@@ -52,6 +62,21 @@ public class CrateGUI : MonoBehaviour {
 		
 		GUI.Label (new Rect (260, Screen.height - 30, 100, 20), ""+client_count, blue);
 		GUI.Label (new Rect (260, Screen.height - 50, 100, 20), ""+server_count, red);
+		
+		float frameInterval = Time.deltaTime;
+		if(Network.isClient && client_count > 30)
+		{
+			decrementHealth (frameInterval, selectedPlayer);
+		}
+		else if(Network.isServer && server_count > 30)
+		{
+			decrementHealth (frameInterval, selectedPlayer);
+		}
+			
+	}
+	
+	void decrementHealth(double amount, GameObject gameObject) {
+			gameObject.GetComponent<Health>().decreaseHealth(amount);
 	}
 
 }
