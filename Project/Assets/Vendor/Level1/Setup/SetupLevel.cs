@@ -45,19 +45,16 @@ public class SetupLevel : MonoBehaviour {
 	
 	void givePlayerAFlag() {
 		// If all the bread is collected, give them a staff/flag
-		//FlyQuestChecker.UnlockedStaff += () => {
-	//	FlyQuestChecker.UnlockedStaff += () => {
+		FlyQuestChecker.UnlockedStaff += () => {
 			GameObject game_flag = new GameObject();
 			game_flag.AddComponent<Flag>();
 			game_flag.name = "game_flag";
 			
 			Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
 			inventory.addItem(game_flag);
-			
-			game_flag.GetComponent<Item>().item_name = "Flag";
-		//};
+
 			game_flag.GetComponent<Item>().item_name = "Staff";
-	//	};
+		};
 	}
 	
 	void givePlayerASpellbook()
@@ -112,11 +109,11 @@ public class SetupLevel : MonoBehaviour {
 	
 		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"incomplete_helping_others_badge", false);
 		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
-		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
 		badgebook.Add("helping_others_reaching_up_high", "  New Heights", 				"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_putting_something_high", 	"  Out of Reach", 		"incomplete_putting_something_high_badge", false);
 		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
+		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		
 		badgebook.Add("blank_line_hack1", 					"", 			"", false);
 		badgebook.Add("blank_line_hack2", 					"", 			"", false);
