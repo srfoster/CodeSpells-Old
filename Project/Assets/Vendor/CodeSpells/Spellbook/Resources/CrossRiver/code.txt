@@ -1,0 +1,14 @@
+import june.*;
+import java.util.*;
+
+public class CrossRiver extends Spell
+{
+  public void cast()
+  { 
+	Enchanted target = getTarget(); 
+	Location temp = target.getLocation();
+	Location dest = temp.adjust(Direction.east(), 20);
+
+	target.setLocation(dest); 
+  }
+}

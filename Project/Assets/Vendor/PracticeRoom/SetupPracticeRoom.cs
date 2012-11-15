@@ -53,21 +53,27 @@ public class SetupPracticeRoom : MonoBehaviour {
 	
 	void givePlayerASolutionScroll()
 	{
+		Debug.Log ("Trying to give player a scroll, creating a scroll gameobject");
 		//Creates the actual scroll
 		GameObject solution_scroll = new GameObject();
 		solution_scroll.name = "Solution";
 		
+		Debug.Log ("Adding a codescrollitem");
 		//Give the gameobject a CodeScrollItem
 		solution_scroll.AddComponent<CodeScrollItem>();
 		
+		Debug.Log ("Setting fields of code scroll item");
 		//Getting the CodeScrollItem so that we can set the file and texture
 		CodeScrollItem item = solution_scroll.GetComponent<CodeScrollItem>();
 		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
 		item.setCurrentFile("PracticeRoomSolution.java");
 		item.getIDEInput().SetCode("import june.*;\n\npublic class PracticeRoomSolution extends Spell{\n\n    public void cast(){\n\n\n    }\n}");
 		
+		Debug.Log ("Adding item to inventory");
 		//Add the CodeScrollItem to the inventory
 		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(solution_scroll);
+		
+		Debug.Log("Done!");
 	}
 	
 	void givePlayerASpellbook()

@@ -1,0 +1,13 @@
+import june.*;
+import java.util.*;
+
+public class JumpWall extends Spell
+{
+  public void cast()
+  { 
+    Enchanted target = getTarget();  
+	target.move(Direction.up(), 5);
+    target.move(Direction.east(), 15);
+	target.move(Direction.down(), 5);
+  }
+}
