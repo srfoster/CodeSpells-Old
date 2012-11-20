@@ -11,7 +11,8 @@ using System.Collections;
 
 public class Server
 {
-    private TcpListener tcpListener;
+    private static Server currInstance;
+	private TcpListener tcpListener;
     private Thread listenThread;
 	public String last_message = "";
 	private CallResponseQueue queue;
@@ -19,8 +20,22 @@ public class Server
 	
     public Server(CallResponseQueue queue)
     {
-
+		Debug.Log ("In constructor for Server, setting applicationRunning to true");
+		
+		Debug.Log ("Killing any existing Servers...currInstance = " + currInstance);
+		if (currInstance != null)
+		{
+			currInstance.tcpListener.Stop(); // Kill the old listener so it doesn't interfere with new spells
+		}
+		currInstance = this;
+		applicationRunning = true;
 	  this.queue = queue;
+		
+		if (this.tcpListener != null)
+		{
+			Debug.Log ("Killing accept socket");
+			this.tcpListener.Stop();
+		}
       this.tcpListener = new TcpListener(IPAddress.Loopback, 3000);
       this.listenThread = new Thread(new ThreadStart(ListenForClients));
 	  this.listenThread.IsBackground = true;
@@ -30,6 +45,7 @@ public class Server
 	
 	private void ListenForClients()
     {
+		Debug.Log ("Starting TCP Listener");
       this.tcpListener.Start();
 
 	  while (true)
@@ -54,6 +70,7 @@ public class Server
 	
 	private void HandleClientComm(object client)
 	{
+	  Debug.Log ("Called HandleClientComm, applicationRunning is: " + applicationRunning.ToString());
 	  FileLogger.Log("New TCP Client accepted.");	
 	  TcpClient tcpClient = (TcpClient)client;
 	  NetworkStream clientStream = tcpClient.GetStream();
@@ -115,7 +132,7 @@ public class Server
 	  }
 	
 	  FileLogger.Log("Closing TCP connection.");
-
+	  Debug.Log ("Closing TCP connection, applicationRunning is: " + applicationRunning.ToString());
 	  tcpClient.Close();
 	}
 	

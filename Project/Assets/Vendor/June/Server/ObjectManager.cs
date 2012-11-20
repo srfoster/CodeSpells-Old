@@ -21,12 +21,14 @@ public class ObjectManager {
 	
 	public static void Register(GameObject obj, string id)
 	{
+	
 		Debug.Log ("Trying to register " + id);
 		objects.Add(id, obj);
 	}
 	
 	public static void Unregister(string id)
 	{
+		Debug.Log ("Unregistering " + id);
 		objects.Remove(id);	
 	}
 	
