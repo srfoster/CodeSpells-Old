@@ -33,7 +33,7 @@ public class SetupPracticeRoom : MonoBehaviour {
 		(new SetupInventory()).Init();		
 		(new SetupUnidee()).Init();		
 		(new SetupPopup()).Init();		
-		//(new SetupJune()).Init();			
+		(new SetupJune()).Init();			
 		(new SetupHighlighter()).Init();
 		(new SetupPracticeRoomSpellbook()).Init();
 		(new SetupObstacles()).Init(startCrate);
