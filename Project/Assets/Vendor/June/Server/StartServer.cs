@@ -42,13 +42,27 @@ public class StartServer : MonoBehaviour
 	public CallResponseQueue queue;
 
 	void Start () {
-		queue = new CallResponseQueue();
-		server = new Server(queue);
+		Debug.Log ("Starting new StartServer");
 	}
 	
 	void OnApplicationQuit(){
+		Debug.Log ("Called onApplicationQuit - StartServer, setting applicationRunning to false");
 		server.applicationRunning = false;	
 	}
+	
+	void OnDestroy()
+	{
+		Debug.Log ("Called onDestroy - StartServer, settingApplicationRunning to false");
+	}
+	
+	void OnEnable()
+	{
+		Debug.Log ("Called OnEnable - StartServer");
+		queue = new CallResponseQueue();
+		server = new Server(queue);
+		Debug.Log ("New Server's application running: " + server.applicationRunning.ToString());
+	}
+	
 	
 	void Update () {
 		if(queue.notEmpty())

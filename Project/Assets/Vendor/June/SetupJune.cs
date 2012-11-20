@@ -10,6 +10,10 @@ public class SetupJune : MonoBehaviour {
 	
 	public void Init()
 	{
+		GameObject oldServer = GameObject.Find("Server");
+		
+		Debug.Log ("Init in SetupJune, old server: " + oldServer);
+		
 		GameObject prefab = Resources.Load("Server") as GameObject;
 		
 		GameObject obj = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;	

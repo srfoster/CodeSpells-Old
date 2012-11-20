@@ -7,6 +7,9 @@ public class EnterPracticeRoom : MonoBehaviour {
 	void OnTriggerStay(Collider col)
 	{
 		if(col.gameObject.tag.Equals("Player"))
+		{
+			Debug.Log ("Loading level 1");
 			Application.LoadLevel(1);
+		}
 	}
 }
