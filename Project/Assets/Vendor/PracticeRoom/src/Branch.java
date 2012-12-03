@@ -5,15 +5,19 @@ public abstract class Branch extends Node{
 		super(parent, name);
 	}
 	
-	public Node AddChild()
+	public void AddChild()
 	{
 		SkeletonNode winningChildType = Lottery.getWinner(nodeTypes.nodeTypes, nodeTypes.getTotalNodeTypeTickets());
 		
+		this.AddChild(winningChildType.create(this, winningChildType.getBaseName()));
+	}
+	
+	public void AddChild(Node newChild)
+	{
 		int id = TreeBuilder.getLiveListSize();
-		Node child = winningChildType.create(this, winningChildType.getBaseName()+id);
+		newChild.name = newChild.name+id;
 		
-		TreeBuilder.addToLiveList(child);
-		this.getChildren().add(child);
-		return child;
+		TreeBuilder.addToLiveList(newChild);
+		this.getChildren().add(newChild);
 	}
 }

@@ -14,7 +14,7 @@ public abstract class Node implements TicketHolder {
 	private int liveListTickets = 0;
 	private ArrayList<Action> actionTickets = null;
 	private int totalActionTickets = 0;
-	private boolean hasLeafAsDescendant = false;
+	protected boolean hasLeafAsDescendant = false;
 	
 	// Constructor
 	public Node(Node parent, String name)
@@ -78,16 +78,32 @@ public abstract class Node implements TicketHolder {
 
 	public void setHasLeafAsDescendant(boolean hasLeafAsDescendant) {
 		// First, set it for ourselves
-		this.hasLeafAsDescendant = hasLeafAsDescendant;
+		if (this.HasLeafAsDescendantCanBeSet())
+		{
+			this.hasLeafAsDescendant = hasLeafAsDescendant;
+		}
 		
-		// Now, set it for our parent
+		// Now, set it for our parent, if we set it for ourselves
 		Node parent = this.getParent();
 		
-		if(parent != null && !parent.hasLeafAsDescendant())
+		if(parent != null && !parent.hasLeafAsDescendant() && this.hasLeafAsDescendant)
 		{
 			// This sets it all the way up to the root if needed =)
 			parent.setHasLeafAsDescendant(true);
 		}
+	}
+
+	/**
+	 * Mostly, this is when a child calls SetLeafAsDescendant of parent
+	 * or when the node is a leaf itself, which is always true.
+	 * 
+	 * Special cases can override this method as needed, for example:
+	 * 1. Conditional Nodes can only set themselves as HavingLeafAsDescendant
+	 * if BOTH their children have leaves down the path, not just one of them.
+	 * @return
+	 */
+	public boolean HasLeafAsDescendantCanBeSet() {
+		return true;
 	}
 
 	public int getTotalActionTickets() {

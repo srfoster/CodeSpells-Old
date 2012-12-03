@@ -11,14 +11,16 @@ public class NodeTypes {
 		nodeTypes.add(new SkeletonRiver());
 		nodeTypes.add(new SkeletonWall());
 		nodeTypes.add(new SkeletonLoop());
+		nodeTypes.add(new SkeletonConditional());
 	}
 	
-	public void changeProbability(int river, int wall, int loop)
+	public void changeProbability(int river, int wall, int loop, int conditional)
 	{
 		nodeTypes.get(0).setCreatingMeTickets(river);
 		nodeTypes.get(1).setCreatingMeTickets(wall);
 		nodeTypes.get(2).setCreatingMeTickets(loop);
-		setTotalNodeTypeTickets(river + wall + loop);
+		nodeTypes.get(3).setCreatingMeTickets(conditional);
+		setTotalNodeTypeTickets(river + wall + loop + conditional);
 	}
 	
 	public int size()

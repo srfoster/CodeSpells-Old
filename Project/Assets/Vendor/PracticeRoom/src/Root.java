@@ -5,7 +5,7 @@ public class Root extends Branch {
 		// Roots have no parent
 		super(null, "root");
 		TreeStats.setTickets(this, TreeStats.rootLiveListProbability, TreeStats.rootActionProbability);
-		this.nodeTypes.changeProbability(10, 10, 80); // Probability for picking certain nodes as children
+		this.nodeTypes.changeProbability(10, 10, 0, 80); // Probability for picking certain nodes as children
 	}
 
 	@Override

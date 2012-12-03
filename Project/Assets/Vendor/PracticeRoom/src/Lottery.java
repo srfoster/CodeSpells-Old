@@ -45,6 +45,17 @@ public class Lottery {
 		return null;
 	}
 	
+	/**
+	 * Returns a random element from a given list
+	 */
+	public static <T> T getRandomElement(ArrayList<T> list)
+	{
+		return list.get(randomGenerator.nextInt(list.size()));
+	}
+	
+	/**
+	 * Returns a random number between the given bounds
+	 */
 	public static int getRandomNumber(int lowerBound, int upperBound)
 	{
 		return randomGenerator.nextInt(upperBound-lowerBound) + lowerBound;
