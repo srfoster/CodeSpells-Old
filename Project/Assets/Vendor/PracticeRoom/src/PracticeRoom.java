@@ -5,6 +5,7 @@ public class PracticeRoom {
 	
 	public static void main(String [] args)
 	{
+		//I made a change homie G dawg
 		outputFile = args[0];
 		
 		TreeBuilder.setUpNodes();
