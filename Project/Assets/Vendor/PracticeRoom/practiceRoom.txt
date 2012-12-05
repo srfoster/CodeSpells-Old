@@ -4,11 +4,11 @@ WALL
 WALL
 [Merge to Conditional3]
 [FalseCase2]
-WALL
 RIVER
 WALL
 RIVER
 RIVER
+WALL
 WALL
 [Merge to Conditional3]
 [End Conditional3]
