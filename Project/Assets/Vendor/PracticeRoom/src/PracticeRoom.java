@@ -14,7 +14,10 @@ public class PracticeRoom {
 			currNode = TreeBuilder.getRandomNode();
 			currNode.PerformRandomAction();
 		}
-	
+		
+		// The following code breaks conditionals...because we prune away the true/false case if they've got no children
+		TreeBuilder.cleanup(TreeBuilder.getRoot());
+		
 		String obstacle = TreeBuilder.getRoot().createObstacle();
 		String solution  = TreeBuilder.getRoot().createSolution();
 

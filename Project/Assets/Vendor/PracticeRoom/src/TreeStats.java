@@ -15,6 +15,12 @@ public class TreeStats {
 	public static final int loopLiveListProbability = 20;
 	public static final int[] loopActionProbability = new int[]{3,1};
 	
+	public static final int conditionalLiveListProbability = 20;
+	public static final int[] conditionalActionProbability = new int[]{1};
+	
+	public static final int caseLiveListProbability = 30;
+	public static final int[] caseActionProbability = new int[]{1};
+	
 	public static final int rootLiveListProbability = 10;
 	public static final int[] rootActionProbability = new int[]{1};
 	
