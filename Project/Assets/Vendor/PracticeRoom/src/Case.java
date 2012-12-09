@@ -12,12 +12,10 @@ public class Case<T> extends Branch {
 	@Override
 	public String createObstacle() {
 		StringBuilder obstacle = new StringBuilder();
-		obstacle.append("["+this.name+"]\n");
 		for(Node child : this.children)
 		{
 			obstacle.append(child.createObstacle());
 		}
-		obstacle.append("[Merge to "+this.parent.name+"]\n");
 		return obstacle.toString();
 	}
 
