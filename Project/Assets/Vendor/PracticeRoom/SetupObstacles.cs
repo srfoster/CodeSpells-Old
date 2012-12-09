@@ -31,13 +31,13 @@ public class SetupObstacles : MonoBehaviour {
 		createWorld();
 	}
 	
-	public void Setup (string obstacle, int direction)
+	public void Setup (string obstacle)
 	{
 		String nextObstacle = "";
 		int trueCounter = 0;
 		int falseCounter = 0;
 		distance = 5.0f;
-		int ifOffset = 10.0f;
+		float ifOffset = 10.0f;
 		
 		//Add the obstacle 
 		switch (obstacle)
@@ -62,11 +62,13 @@ public class SetupObstacles : MonoBehaviour {
 			break;
 			
 		case "IF_LEFT":
+			UnityEngine.Debug.Log("True is to the left");
 			//CREATE THE IF GATE
 			GameObject newIfGate = Instantiate (ifGatePrefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
-							prevObject.transform.rotation) as GameObject;
+							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+20, prevObject.transform.position.z), 
+							ifGatePrefab.transform.rotation) as GameObject;
 			
+			UnityEngine.Debug.Log("Created an ifgate");
 			prevObject = newIfGate;
 			
 			try {
@@ -74,13 +76,14 @@ public class SetupObstacles : MonoBehaviour {
 				GameObject trueCrate = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z-ifOffset), 
 							prevObject.transform.rotation) as GameObject;
-				
+				UnityEngine.Debug.Log("Created an trueCrate on the left");
 				prevObject = trueCrate;
 				
 				//Read what goes on the left side
-				while(!(nextObstacle = sr.ReadLine()).equals("ELSE"))
+				while(!(nextObstacle = sr.ReadLine()).Equals("ELSE"))
 				{
-					setup(nextObstacle);
+					UnityEngine.Debug.Log("Obstacle on the left: "+nextObstacle);
+					Setup(nextObstacle);
 					trueCounter++;
 				}
 				
@@ -88,20 +91,21 @@ public class SetupObstacles : MonoBehaviour {
 				GameObject mergeTrue = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
-				
+				UnityEngine.Debug.Log("Created an merge on the left");
 				prevObject = newIfGate;
 				
 				//CREATE A FALSE CRATE THAT IS OFFSET AND IS PREVOBJECT
 				GameObject falseCrate = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z+ifOffset), 
 							prevObject.transform.rotation) as GameObject;
-				
+				UnityEngine.Debug.Log("Created an falseCrate on the right");
 				prevObject = falseCrate;
 				
 				//Read what goes on the left side
-				while(!(nextObstacle = sr.ReadLine()).equals("ENDIF"))
+				while(!(nextObstacle = sr.ReadLine()).Equals("ENDIF"))
 				{
-					setup(nextObstacle);
+					UnityEngine.Debug.Log("Obstacle on the right: "+nextObstacle);
+					Setup(nextObstacle);
 					falseCounter++;
 				}
 				
@@ -109,10 +113,10 @@ public class SetupObstacles : MonoBehaviour {
 				GameObject mergeFalse = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
-				
+				UnityEngine.Debug.Log("Created an merge on the right");
 				//SET PREVOBSTACLES TO IFGATE FOR MERGENODE and update distance
 				prevObject = newIfGate;
-				distance = 30*(Math.max(trueCounter, falseCounter));
+				distance = 30*(Math.Max(trueCounter, falseCounter));
 			}
 			catch (Exception e)
 	        {
@@ -122,57 +126,60 @@ public class SetupObstacles : MonoBehaviour {
 	        }
 			break;
 		case "IF_RIGHT":
+			UnityEngine.Debug.Log("True is to the right");
 			//CREATE THE IF GATE
-			GameObject newIfGate = Instantiate (ifGatePrefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
-							prevObject.transform.rotation) as GameObject;
-			
-			prevObject = newIfGate;
+			GameObject newIfGate_right = Instantiate (ifGatePrefab, 
+							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+20, prevObject.transform.position.z), 
+							ifGatePrefab.transform.rotation) as GameObject;
+			UnityEngine.Debug.Log("created an if gate");
+			prevObject = newIfGate_right;
 			
 			try {
 				//CREATE A TRUE CRATE THAT IS OFFSET AND IS PREVOBJECT
-				GameObject trueCrate = Instantiate (prefab, 
+				GameObject trueCrate_right = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z+ifOffset), 
 							prevObject.transform.rotation) as GameObject;
-				
-				prevObject = trueCrate;
+				UnityEngine.Debug.Log("Created an trueCrate on the right");
+				prevObject = trueCrate_right;
 				
 				//Read what goes on the left side
-				while(!(nextObstacle = sr.ReadLine()).equals("ELSE"))
+				while(!(nextObstacle = sr.ReadLine()).Equals("ELSE"))
 				{
-					setup(nextObstacle);
+					UnityEngine.Debug.Log("Obstacle on the right: "+nextObstacle);
+					Setup(nextObstacle);
 					trueCounter++;
 				}
 				
 				//MAKE A MERGE FROM NODE
-				GameObject mergeTrue = Instantiate (prefab, 
+				GameObject mergeTrue_right = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
-				
-				prevObject = newIfGate;
+				UnityEngine.Debug.Log("Created an merge on the right");
+				prevObject = newIfGate_right;
 				
 				//CREATE A FALSE CRATE THAT IS OFFSET AND IS PREVOBJECT
-				GameObject falseCrate = Instantiate (prefab, 
+				GameObject falseCrate_right = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z-ifOffset), 
 							prevObject.transform.rotation) as GameObject;
-				
-				prevObject = falseCrate;
+				UnityEngine.Debug.Log("Created an falseCrate on the left");
+				prevObject = falseCrate_right;
 				
 				//Read what goes on the left side
-				while(!(nextObstacle = sr.ReadLine()).equals("ENDIF"))
+				while(!(nextObstacle = sr.ReadLine()).Equals("ENDIF"))
 				{
-					setup(nextObstacle);
+					UnityEngine.Debug.Log("Obstacle on the left: "+nextObstacle);
+					Setup(nextObstacle);
 					falseCounter++;
 				}
 				
 				//MAKE A MERGE FROM NODE
-				GameObject mergeFalse = Instantiate (prefab, 
+				GameObject mergeFalse_right = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
-				
+				UnityEngine.Debug.Log("Created an merge on the left");
 				//SET PREVOBSTACLES TO IFGATE FOR MERGENODE and update distance
-				prevObject = newIfGate;
-				distance = 30*(Math.max(trueCounter, falseCounter));
+				prevObject = newIfGate_right;
+				distance = 30*(Math.Max(trueCounter, falseCounter));
 			}
 			catch (Exception e)
 	        {
@@ -226,8 +233,10 @@ public class SetupObstacles : MonoBehaviour {
 			sr = new StreamReader(text_files_path);
 			while((firstObstacle = sr.ReadLine()) != null)
 			{
+				UnityEngine.Debug.Log("I just read: "+firstObstacle);
 				//Actually build the obstacle in Unity
-				setup(firstObstacle);;
+				Setup(firstObstacle);
+				UnityEngine.Debug.Log("I'm back from setup and about to read again");
 			}
 		}
 		catch (Exception e)
