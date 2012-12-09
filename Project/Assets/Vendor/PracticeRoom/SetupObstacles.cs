@@ -10,6 +10,7 @@ public class SetupObstacles : MonoBehaviour {
 	float distance = 10.0f;
 	GameObject wallPrefab;
 	GameObject prefab;
+	GameObject ifGatePrefab;
 	float height = 0.0f;
 	float adjust = 0.0f;
 	protected Thread java_thread;
@@ -21,15 +22,23 @@ public class SetupObstacles : MonoBehaviour {
 	public void Init (GameObject p_prevCrate) {
 		prefab = Resources.Load("PracticeRoomCrate") as GameObject;
 		wallPrefab = Resources.Load("Wall") as GameObject;
+		ifGatePrefab = Resources.Load("IfGate") as GameObject;
 		
 		//The first preObject is the start crate
 		prevObject = p_prevCrate;
 		UnityEngine.Debug.Log("Initializing the obstacles");
+		
 		createWorld();
 	}
 	
-	public void Setup (string obstacle)
+	public void Setup (string obstacle, int direction)
 	{
+		String nextObstacle = "";
+		int trueCounter = 0;
+		int falseCounter = 0;
+		distance = 5.0f;
+		int ifOffset = 10.0f;
+		
 		//Add the obstacle 
 		switch (obstacle)
 		{
@@ -50,6 +59,127 @@ public class SetupObstacles : MonoBehaviour {
 			adjust = -2.0f;
 			prevObject = newWall;
 			
+			break;
+			
+		case "IF_LEFT":
+			//CREATE THE IF GATE
+			GameObject newIfGate = Instantiate (ifGatePrefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
+							prevObject.transform.rotation) as GameObject;
+			
+			prevObject = newIfGate;
+			
+			try {
+				//CREATE A TRUE CRATE THAT IS OFFSET AND IS PREVOBJECT
+				GameObject trueCrate = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z-ifOffset), 
+							prevObject.transform.rotation) as GameObject;
+				
+				prevObject = trueCrate;
+				
+				//Read what goes on the left side
+				while(!(nextObstacle = sr.ReadLine()).equals("ELSE"))
+				{
+					setup(nextObstacle);
+					trueCounter++;
+				}
+				
+				//MAKE A MERGE FROM NODE
+				GameObject mergeTrue = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
+							prevObject.transform.rotation) as GameObject;
+				
+				prevObject = newIfGate;
+				
+				//CREATE A FALSE CRATE THAT IS OFFSET AND IS PREVOBJECT
+				GameObject falseCrate = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z+ifOffset), 
+							prevObject.transform.rotation) as GameObject;
+				
+				prevObject = falseCrate;
+				
+				//Read what goes on the left side
+				while(!(nextObstacle = sr.ReadLine()).equals("ENDIF"))
+				{
+					setup(nextObstacle);
+					falseCounter++;
+				}
+				
+				//MAKE A MERGE FROM NODE
+				GameObject mergeFalse = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
+							prevObject.transform.rotation) as GameObject;
+				
+				//SET PREVOBSTACLES TO IFGATE FOR MERGENODE and update distance
+				prevObject = newIfGate;
+				distance = 30*(Math.max(trueCounter, falseCounter));
+			}
+			catch (Exception e)
+	        {
+				UnityEngine.Debug.Log("It didn't open because: "+e.Message);
+	            Console.WriteLine("The file could not be read:");
+	            Console.WriteLine(e.Message);
+	        }
+			break;
+		case "IF_RIGHT":
+			//CREATE THE IF GATE
+			GameObject newIfGate = Instantiate (ifGatePrefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
+							prevObject.transform.rotation) as GameObject;
+			
+			prevObject = newIfGate;
+			
+			try {
+				//CREATE A TRUE CRATE THAT IS OFFSET AND IS PREVOBJECT
+				GameObject trueCrate = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z+ifOffset), 
+							prevObject.transform.rotation) as GameObject;
+				
+				prevObject = trueCrate;
+				
+				//Read what goes on the left side
+				while(!(nextObstacle = sr.ReadLine()).equals("ELSE"))
+				{
+					setup(nextObstacle);
+					trueCounter++;
+				}
+				
+				//MAKE A MERGE FROM NODE
+				GameObject mergeTrue = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
+							prevObject.transform.rotation) as GameObject;
+				
+				prevObject = newIfGate;
+				
+				//CREATE A FALSE CRATE THAT IS OFFSET AND IS PREVOBJECT
+				GameObject falseCrate = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z-ifOffset), 
+							prevObject.transform.rotation) as GameObject;
+				
+				prevObject = falseCrate;
+				
+				//Read what goes on the left side
+				while(!(nextObstacle = sr.ReadLine()).equals("ENDIF"))
+				{
+					setup(nextObstacle);
+					falseCounter++;
+				}
+				
+				//MAKE A MERGE FROM NODE
+				GameObject mergeFalse = Instantiate (prefab, 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
+							prevObject.transform.rotation) as GameObject;
+				
+				//SET PREVOBSTACLES TO IFGATE FOR MERGENODE and update distance
+				prevObject = newIfGate;
+				distance = 30*(Math.max(trueCounter, falseCounter));
+			}
+			catch (Exception e)
+	        {
+				UnityEngine.Debug.Log("It didn't open because: "+e.Message);
+	            Console.WriteLine("The file could not be read:");
+	            Console.WriteLine(e.Message);
+	        }
 			break;
 		default:
 			distance = 10.0f;
@@ -92,25 +222,20 @@ public class SetupObstacles : MonoBehaviour {
 		UnityEngine.Debug.Log("I still have the new text file: "+File.Exists(text_files_path));
 		
 		string firstObstacle = "";
-		try
-        {
-			//Read the file that represents the random world
-            using (sr = new StreamReader(text_files_path))
-            {
-				UnityEngine.Debug.Log("Reading!");
-				while((firstObstacle = sr.ReadLine()) != null)
-				{
-					//Actually build the obstacle in Unity
-					Setup(firstObstacle);
-				}
-            }
-        }
-        catch (Exception e)
+		try{
+			sr = new StreamReader(text_files_path);
+			while((firstObstacle = sr.ReadLine()) != null)
+			{
+				//Actually build the obstacle in Unity
+				setup(firstObstacle);;
+			}
+		}
+		catch (Exception e)
         {
 			UnityEngine.Debug.Log("It didn't open because: "+e.Message);
             Console.WriteLine("The file could not be read:");
             Console.WriteLine(e.Message);
-        }
+        }	
 	}
 	
 	void javaCompileAndRun()
