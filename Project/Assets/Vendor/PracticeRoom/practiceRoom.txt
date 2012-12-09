@@ -1,14 +1,11 @@
-RIVER
-RIVER
-RIVER
-[Begin Conditional6]
-[TrueCase4]
-RIVER
-[Merge to Conditional6]
-[FalseCase5]
-RIVER
+IF_LEFT
 WALL
 RIVER
 RIVER
-[Merge to Conditional6]
-[End Conditional6]
+ELSE
+WALL
+WALL
+RIVER
+RIVER
+RIVER
+ENDIF

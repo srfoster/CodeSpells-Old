@@ -7,8 +7,8 @@ public class Conditional extends Branch {
 	// Let's try this for now
 	private static ArrayList<String> conditions = new ArrayList<String>(
 				Arrays.asList(
-								"leftDoor.isOpen()",
-								"rightDoor.isOpen()"
+								"LEFT",
+								"RIGHT"
 							 )
 			);
 	
@@ -25,14 +25,13 @@ public class Conditional extends Branch {
 	@Override
 	public String createObstacle() {
 		StringBuilder obstacle = new StringBuilder();
-		obstacle.append("[Begin "+this.name+"]\n");
-		
-		for(Node child : this.children)
-		{
-			obstacle.append(child.createObstacle());
-		}
+		obstacle.append("IF_"+this.condition+"\n");
+		obstacle.append(this.getChildren().get(0).createObstacle());
 			
-		obstacle.append("[End "+this.name+"]\n");
+		obstacle.append("ELSE\n");
+		obstacle.append(this.getChildren().get(1).createObstacle());
+		
+		obstacle.append("ENDIF\n");
 		return obstacle.toString();
 	}
 
