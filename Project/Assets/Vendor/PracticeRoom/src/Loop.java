@@ -7,7 +7,7 @@ public class Loop extends Branch {
 	public Loop(Node parent, String name) {
 		super(parent, name);
 		TreeStats.setTickets(this, TreeStats.loopLiveListProbability, TreeStats.loopActionProbability);
-		this.nodeTypes.changeProbability(0, 100	, 0, 0); // Probability for picking certain nodes as children
+		this.nodeTypes.changeProbability(50, 50	, 0, 0); // Probability for picking certain nodes as children
 	}
 
 	@Override

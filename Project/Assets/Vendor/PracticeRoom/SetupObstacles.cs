@@ -65,7 +65,7 @@ public class SetupObstacles : MonoBehaviour {
 			UnityEngine.Debug.Log("True is to the left");
 			//CREATE THE IF GATE
 			GameObject newIfGate = Instantiate (ifGatePrefab, 
-							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+20, prevObject.transform.position.z), 
+							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+5, prevObject.transform.position.z), 
 							ifGatePrefab.transform.rotation) as GameObject;
 			
 			UnityEngine.Debug.Log("Created an ifgate");
@@ -129,7 +129,7 @@ public class SetupObstacles : MonoBehaviour {
 			UnityEngine.Debug.Log("True is to the right");
 			//CREATE THE IF GATE
 			GameObject newIfGate_right = Instantiate (ifGatePrefab, 
-							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+20, prevObject.transform.position.z), 
+							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+5, prevObject.transform.position.z), 
 							ifGatePrefab.transform.rotation) as GameObject;
 			UnityEngine.Debug.Log("created an if gate");
 			prevObject = newIfGate_right;
