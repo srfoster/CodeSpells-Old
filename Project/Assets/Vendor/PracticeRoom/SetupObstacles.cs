@@ -62,11 +62,11 @@ public class SetupObstacles : MonoBehaviour {
 			break;
 			
 		case "IF_LEFT":
-			height = 5.0f;
+			height = 6.0f;
 			UnityEngine.Debug.Log("True is to the left");
 			//CREATE THE IF GATE
 			GameObject newIfGate = Instantiate (ifGatePrefab, 
-							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+5, prevObject.transform.position.z), 
+							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height, prevObject.transform.position.z+2.5f), 
 							ifGatePrefab.transform.rotation) as GameObject;
 			UnityEngine.Debug.Log("Created an ifgate");
 			prevObject = newIfGate;
@@ -74,10 +74,12 @@ public class SetupObstacles : MonoBehaviour {
 			try {
 				//CREATE A TRUE CRATE THAT IS OFFSET AND IS PREVOBJECT
 				GameObject trueCrate = Instantiate (prefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y-height, prevObject.transform.position.z-ifOffset), 
+							new Vector3(prevObject.transform.position.x+5, prevObject.transform.position.y-height, prevObject.transform.position.z-ifOffset), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an trueCrate on the left");
 				prevObject = trueCrate;
+				
+				height = 0.0f;
 				
 				//Read what goes on the left side
 				while(!(nextObstacle = sr.ReadLine()).Equals("ELSE"))
@@ -89,16 +91,19 @@ public class SetupObstacles : MonoBehaviour {
 				
 				//MAKE A MERGE FROM NODE
 				GameObject mergeTrue = Instantiate (prefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y-height, prevObject.transform.position.z), 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an merge on the left");
+				
 				prevObject = newIfGate;
 				
 				//CREATE A FALSE CRATE THAT IS OFFSET AND IS PREVOBJECT
 				GameObject falseCrate = Instantiate (prefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z+ifOffset), 
+							new Vector3(prevObject.transform.position.x+5, prevObject.transform.position.y-6.0f, prevObject.transform.position.z+ifOffset-5), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an falseCrate on the right");
+				
+				
 				prevObject = falseCrate;
 				
 				//Read what goes on the left side
@@ -127,20 +132,22 @@ public class SetupObstacles : MonoBehaviour {
 			break;
 		case "IF_RIGHT":
 			UnityEngine.Debug.Log("True is to the right");
-			height = 5.0f; // adjust for if gate
+			height = 6.0f; // adjust for if gate
 			//CREATE THE IF GATE
 			GameObject newIfGate_right = Instantiate (ifGatePrefab, 
-							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height+5, prevObject.transform.position.z), 
+							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height, prevObject.transform.position.z+2.5f), 
 							ifGatePrefab.transform.rotation) as GameObject;
 			UnityEngine.Debug.Log("created an if gate");
 			prevObject = newIfGate_right;
 			try {
 				//CREATE A TRUE CRATE THAT IS OFFSET AND IS PREVOBJECT
 				GameObject trueCrate_right = Instantiate (prefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y-height, prevObject.transform.position.z+ifOffset), 
+							new Vector3(prevObject.transform.position.x+5.0f, prevObject.transform.position.y-height, prevObject.transform.position.z+ifOffset-5), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an trueCrate on the right");
 				prevObject = trueCrate_right;
+				
+				height = 0.0f;
 				
 				//Read what goes on the left side
 				while(!(nextObstacle = sr.ReadLine()).Equals("ELSE"))
@@ -152,14 +159,15 @@ public class SetupObstacles : MonoBehaviour {
 				
 				//MAKE A MERGE FROM NODE
 				GameObject mergeTrue_right = Instantiate (prefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y-height, prevObject.transform.position.z), 
+							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an merge on the right");
+				
 				prevObject = newIfGate_right;
 				
 				//CREATE A FALSE CRATE THAT IS OFFSET AND IS PREVOBJECT
 				GameObject falseCrate_right = Instantiate (prefab, 
-							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z-ifOffset), 
+							new Vector3(prevObject.transform.position.x+5.0f, prevObject.transform.position.y-6.0f, prevObject.transform.position.z-ifOffset), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an falseCrate on the left");
 				prevObject = falseCrate_right;
