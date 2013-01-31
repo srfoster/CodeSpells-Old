@@ -38,6 +38,7 @@ public class SetupObstacles : MonoBehaviour {
 		int falseCounter = 0;
 		distance = 5.0f;
 		float ifOffset = 10.0f;
+		RandomDoor rD;
 		
 		//Add the obstacle 
 		switch (obstacle)
@@ -69,6 +70,9 @@ public class SetupObstacles : MonoBehaviour {
 							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height, prevObject.transform.position.z+2.5f), 
 							ifGatePrefab.transform.rotation) as GameObject;
 			UnityEngine.Debug.Log("Created an ifgate");
+			UnityEngine.Debug.Log("About to make ones of the walls disappear because we have a left if!!!!!");
+			rD = newIfGate.GetComponent<RandomDoor>();
+			rD.changeDoor();
 			prevObject = newIfGate;
 			
 			try {
@@ -77,6 +81,7 @@ public class SetupObstacles : MonoBehaviour {
 							new Vector3(prevObject.transform.position.x+5, prevObject.transform.position.y-height, prevObject.transform.position.z-ifOffset), 
 							prevObject.transform.rotation) as GameObject;
 				UnityEngine.Debug.Log("Created an trueCrate on the left");
+				
 				prevObject = trueCrate;
 				
 				height = 0.0f;
@@ -137,6 +142,11 @@ public class SetupObstacles : MonoBehaviour {
 			GameObject newIfGate_right = Instantiate (ifGatePrefab, 
 							new Vector3(prevObject.transform.position.x+distance+20, prevObject.transform.position.y+height, prevObject.transform.position.z+2.5f), 
 							ifGatePrefab.transform.rotation) as GameObject;
+			
+			UnityEngine.Debug.Log("About to make ones of the walls disappear because we have a new right gate!!!!!");
+			rD = newIfGate_right.GetComponent<RandomDoor>();
+			rD.changeDoor();
+			
 			UnityEngine.Debug.Log("created an if gate");
 			prevObject = newIfGate_right;
 			try {
@@ -201,10 +211,11 @@ public class SetupObstacles : MonoBehaviour {
 			break;
 		}
 		
-		//Add Crate
+		//End Crate
 		GameObject newCrate = Instantiate (prefab, 
 							new Vector3(prevObject.transform.position.x+distance, prevObject.transform.position.y+height, prevObject.transform.position.z), 
 							prevObject.transform.rotation) as GameObject;
+		
 		height = 0.0f;
 		adjust = 0.0f;
 		prevObject = newCrate;

@@ -18,6 +18,15 @@ public class RestartPracticeRoom : MonoBehaviour {
 			GameObject gnome = GameObject.FindGameObjectWithTag("Gnome");
 			Vector3 newPosition = new Vector3(start.transform.position.x + 2, start.transform.position.y - 2, start.transform.position.z);
 			gnome.transform.position = newPosition;	
+			
+			Debug.Log("About to make ones of the walls disappear");
+			GameObject[] ifGates;
+        	ifGates = GameObject.FindGameObjectsWithTag("IfGate");
+        	foreach (GameObject ifGate in ifGates) {
+				Debug.Log("Woo hoo! chose a wall!");
+            	RandomDoor rD = ifGate.GetComponent<RandomDoor>();
+				rD.changeDoor();
+        	}
 		}
 	}
 }
