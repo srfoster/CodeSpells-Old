@@ -27,27 +27,29 @@ public class Monster : MonoBehaviour {
 	}
 	
 	public void Attack () {
+		Debug.Log("ATTACK!");
 		if (!attacking) {
 			audio.clip = Resources.Load("MonsterRunning") as AudioClip;
+			Debug.Log("About to start the audio clip");
 			audio.Play();
 			audio.loop = true;
+			Debug.Log("About to start attacking!");
 			AttackStarted(gameObject);
-			GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().startShakeMode();
+			//Debug.Log("About to start shaking the camera");
+			//GameObject.Find("Main Camera").GetComponent<ShakeCamera>().startShakeMode();
 		}
-		
+		Debug.Log("About to start running");
 		StartRunning();
 		attacking = true;
-		
-		
 	}
 	
 	void Update()
 	{
 		//check if the monster is on fire
-		if (transform.GetComponent<Flamable>().isIgnited()) {
-			if (attacking) LoosePlayer();
-			attacking = false;
-		}
+		//if (transform.GetComponent<Flamable>().isIgnited()) {
+		//	if (attacking) LoosePlayer();
+		//	attacking = false;
+		//}
 	   	if(attacking)
 	   	{
 			UpdateAttack();
@@ -92,11 +94,9 @@ public class Monster : MonoBehaviour {
 			LoosePlayer();	
 		}
 		
-
-		
 		if(Vector3.Distance(destination, transform.position) <= 5 && alive)
 		{
-			GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
+			//GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
 			audio.Stop();
 			Debug.Log ("audio stoped");
 			StartCoroutine(KillPlayer());
@@ -115,7 +115,7 @@ public class Monster : MonoBehaviour {
 	{
 		audio.Stop();
 		AttackEnded(gameObject);
-		GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
+		//GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
 		
 		//reset everything;
 		alive = true;

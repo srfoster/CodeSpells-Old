@@ -14,20 +14,18 @@ function Update () {
 	var directionVector = new Vector3(0, 0, Input.GetAxis("Vertical"));
 	transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * 120 * Time.deltaTime);
 
-	
+	// To look up, push R
+	if(Input.GetKey(KeyCode.R))
+    {
+   		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
+    }
 
-
-    if(Input.GetKey(KeyCode.R))
+	// To look down, push F
+    if(Input.GetKey(KeyCode.F))
     {
     	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
     }
 
- 
-    if(Input.GetKey(KeyCode.F))
-    {
-   		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
-    }
-    
      /*
     
 	var rotationX = GameObject.Find("Main Camera").transform.localEulerAngles.x;
