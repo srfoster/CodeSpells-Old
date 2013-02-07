@@ -10,6 +10,8 @@ public class Architecture extends Spell
 
         Enchanted rock_area = getByName("Area 2");
         
+        rock_area.grow(10);
+        
         EnchantedList list = rock_area.findWithin();
 
         Direction direction = Direction.between(start,end);
