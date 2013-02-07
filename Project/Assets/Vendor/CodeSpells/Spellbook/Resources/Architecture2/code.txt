@@ -5,10 +5,10 @@ public class Architecture extends Spell
 {
     public void cast()
     { 
-        Enchanted end = getByName("Area 1");
-        Enchanted start = getByName("Area 2");
+        Enchanted end = getByName("Area 0");
+        Enchanted start = getByName("Area 1");
 
-        Enchanted rock_area = getByName("Area 3");
+        Enchanted rock_area = getByName("Area 2");
         
         EnchantedList list = rock_area.findWithin();
 

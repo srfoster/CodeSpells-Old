@@ -17,13 +17,13 @@ function Update () {
 	
 
 
-    if(Input.GetKey(KeyCode.Q))
+    if(Input.GetKey(KeyCode.R))
     {
     	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
     }
 
  
-    if(Input.GetKey(KeyCode.E))
+    if(Input.GetKey(KeyCode.F))
     {
    		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
     }

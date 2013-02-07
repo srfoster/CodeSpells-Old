@@ -5,7 +5,7 @@ public class MassiveFire extends Spell
 {
   public void cast()
   { 
-    Enchanted area   = getByName("Area 1");
+    Enchanted area   = getByName("Area 0");
 
     for(int i = 0; i < 10; i++)
       area.grow(1);
