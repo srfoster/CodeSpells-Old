@@ -40,7 +40,6 @@ public class Flamable : MonoBehaviour {
 		}
 		flames_actual.transform.parent = transform;
 		
-		
 		if(gameObject.GetComponent<Item>() != null)
 		{
 			old_texture = gameObject.GetComponent<Item>().inventoryTexture;
@@ -88,7 +87,6 @@ public class Flamable : MonoBehaviour {
 	{
 		if(col.GetComponent<Substance>() != null && col.GetComponent<Substance>().isWater())
 		{
-			Debug.Log("Extinguished: "+this.gameObject.name);
 			if(Extinguished != null)
 				Extinguished(this.gameObject);
 			

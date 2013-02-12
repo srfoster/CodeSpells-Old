@@ -35,8 +35,8 @@ public class Monster : MonoBehaviour {
 			audio.loop = true;
 			Debug.Log("About to start attacking!");
 			AttackStarted(gameObject);
-			//Debug.Log("About to start shaking the camera");
-			//GameObject.Find("Main Camera").GetComponent<ShakeCamera>().startShakeMode();
+			Debug.Log("About to start shaking the camera");
+			GameObject.Find("Main Camera").GetComponent<ShakeCamera>().startShakeMode();
 		}
 		Debug.Log("About to start running");
 		StartRunning();
@@ -81,7 +81,7 @@ public class Monster : MonoBehaviour {
 	void UpdateAttack()
 	{
 		Vector3 destination = GameObject.FindWithTag("Player").transform.position;
-			
+		GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().UpdateShake();
 		transform.LookAt(destination);
 		transform.Translate(Vector3.forward * Time.deltaTime * speed);
 			
@@ -96,7 +96,7 @@ public class Monster : MonoBehaviour {
 		
 		if(Vector3.Distance(destination, transform.position) <= 5 && alive)
 		{
-			//GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
+			GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
 			audio.Stop();
 			Debug.Log ("audio stoped");
 			StartCoroutine(KillPlayer());
@@ -115,7 +115,7 @@ public class Monster : MonoBehaviour {
 	{
 		audio.Stop();
 		AttackEnded(gameObject);
-		//GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
+		GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
 		
 		//reset everything;
 		alive = true;

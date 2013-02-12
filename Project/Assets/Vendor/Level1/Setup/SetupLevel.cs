@@ -35,7 +35,6 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupBadgebook()).Init();
 		(new SetupSpellKiller()).Init();
 
-
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
@@ -80,18 +79,6 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
 		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
 		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
-		
-		/*spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MySpell");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Sentry");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");*/
 	}
 	
 	void givePlayerABadgeBook()
@@ -121,6 +108,7 @@ public class SetupLevel : MonoBehaviour {
 
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
 		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"incomplete_cast_flame_badge", false);
+		badgebook.Add("reading_your_book_sentry", 			"  Sentry", 					"incomplete_cast_sentry_badge", false);
 		badgebook.Add("reading_your_book_adv_levitate", 	"  Adept Levitation", 			"incomplete_cast_levitate_badge", false);
 		badgebook.Add("reading_your_book_flight", 			"  Flight", 					"incomplete_cast_flight_badge", false);
 		badgebook.Add("reading_your_book_teleport", 		"  Teleportation", 				"incomplete_cast_teleport_badge", false);
@@ -135,6 +123,9 @@ public class SetupLevel : MonoBehaviour {
 			bool success = false;
 			if(item_name.StartsWith("Flame"))
 				success =  badgebook.Complete("reading_your_book_fire");
+			
+			if(item_name.StartsWith("Sentry"))
+				success =  badgebook.Complete("reading_your_book_sentry");
 			
 			if(item_name.StartsWith("Massive"))
 				success = badgebook.Complete("reading_your_book_massive");
