@@ -67,7 +67,7 @@ public class Enchantable : MonoBehaviour {
 		if(do_restrictions)
 		{
 			gameObject.AddComponent<NoUnderground>();
-			gameObject.AddComponent<ScaleLimit>();
+			//gameObject.AddComponent<ScaleLimit>();
 		}
 		//gameObject.GetComponent<ScaleLimit>().upper_limit = 100;
 		//gameObject.GetComponent<ScaleLimit>().lower_limit = 0;

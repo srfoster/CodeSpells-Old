@@ -16,10 +16,7 @@ public class Icon3D : MonoBehaviour {
 	
 	Transform mesh;
 
-	
 	void Start () {
-
-		
 		icon = Instantiate(icon, new Vector3(0,0,0), icon.transform.rotation) as GameObject;	
 		
 		Material my_material = new Material(Shader.Find("Icon/Unlit"));
