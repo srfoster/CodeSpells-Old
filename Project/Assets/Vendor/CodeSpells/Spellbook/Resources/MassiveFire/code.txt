@@ -13,7 +13,8 @@ public class MassiveFire extends Spell
 
     for(Enchanted thing : list)
     {
-      thing.onFire(true); 
+      //thing.onFire(true); 
+	  Flame.doMagicOn(thing);
     }
   }
 }
