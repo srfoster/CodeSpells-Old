@@ -38,6 +38,7 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
+		givePlayerAScroll();
 		
 		setupSpecialEvents();  //i.e. do random shit
 	}
@@ -79,6 +80,25 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
 		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
 		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
+	}
+	
+	void givePlayerAScroll()
+	{
+		CodeScrollItem item;
+
+		GameObject initial_scroll = new GameObject();
+		initial_scroll.name = "InitialScroll";
+		initial_scroll.AddComponent<CodeScrollItem>();
+		item = initial_scroll.GetComponent<CodeScrollItem>();
+		item.item_name = "Blank";
+		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
+		
+		CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
+		code_scroll_item_component.setCurrentFile("Test.java");
+		
+		code_scroll_item_component.getIDEInput().SetCode("import june.*;public class Test extends Spell{public void cast(){Enchanted target = getTarget();target.onFire(true);}}");
+
+		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);
 	}
 	
 	void givePlayerABadgeBook()

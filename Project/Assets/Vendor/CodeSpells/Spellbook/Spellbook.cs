@@ -45,7 +45,6 @@ public class Spellbook : MonoBehaviour {
 	{
 		background_texture = Resources.Load("SpellbookMock") as Texture2D;
 		
-			
 		button_style.normal.background = button_up_texture;
 		button_style.active.background = button_down_texture;
 		button_style.normal.textColor = Color.white;
