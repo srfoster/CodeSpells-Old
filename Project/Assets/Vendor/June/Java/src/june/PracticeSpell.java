@@ -2,7 +2,7 @@ package june;
 
 import june.*;
 
-public abstract class PracticeRoom extends Spell
+public abstract class PracticeSpell extends Spell
 {
   public PracticeSpell(){
       super();

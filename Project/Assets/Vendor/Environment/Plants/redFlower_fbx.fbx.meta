@@ -5,6 +5,7 @@ ModelImporter:
     4300000: Mesh
     7400000: Default Take //// redflower 1
     7400002: Default Take //// redflower_fbx
+    7400004: Default Take //// redFlower_fbx
   serializedVersion: 10
   materials:
     importMaterials: 1

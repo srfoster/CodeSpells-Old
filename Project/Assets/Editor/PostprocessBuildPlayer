@@ -3,7 +3,7 @@
 require 'fileutils'
 
 
-logfile = "/Users/stephenfoster/Desktop/my_log"
+logfile = "/Users/sarahesper/Desktop/my_log"
 
 File.open(logfile,"a") do |f|
 	f.write("Started\n")
@@ -24,7 +24,7 @@ begin
 	FileUtils.mv(install_path.join("/"), folder_name)
 
 	FileUtils.cp_r("./Assets/Vendor/June", folder_name)
-	FileUtils.cp_r("./Assets/Vendor/June/MyJune", folder_name)
+	FileUtils.cp_r("./Assets/Vendor/CodeSpells/CodeSpellsJava", folder_name)
 
 	File.open(logfile,"a") do |f|
 		f.write("Okay\n")

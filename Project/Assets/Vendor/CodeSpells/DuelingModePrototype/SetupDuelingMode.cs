@@ -45,21 +45,6 @@ public class SetupDuelingMode : MonoBehaviour {
 		
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		
-		
-		/*
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MySpell");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flame");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Sentry");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Levitate");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/AdeptLevitate");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Teleport");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Flight");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Summon");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/MassiveFire");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture");
-		spellbook.page_urls.Add("http://cseweb.ucsd.edu/~srfoster/code_spells/Architecture2");
-		*/
-		
 		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
 		spellbook.Add(new FilePage("Flame", "Flame/texture", "Flame/code"));
 		spellbook.Add(new FilePage("Sentry", "Sentry/texture", "Sentry/code"));

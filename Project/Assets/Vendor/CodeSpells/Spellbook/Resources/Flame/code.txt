@@ -1,15 +1,8 @@
-package spells;
 import june.*;
-import spells.*;
 
 public class Flame extends Spell{
   public void cast(){
-    Enchanted thing = getTarget();
-	Flame.doMagicOn(thing);
-  }
-  
-  public static void doMagicOn(Enchanted target)
-  {
-    target.onFire(true);
+    Enchanted target = getTarget();
+	target.onFire(true);
   }
 }

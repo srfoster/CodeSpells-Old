@@ -38,7 +38,7 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
-		givePlayerAScroll();
+		//givePlayerAScroll();
 		
 		setupSpecialEvents();  //i.e. do random shit
 	}
@@ -73,6 +73,7 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
 		spellbook.Add(new FilePage("Flame", "Flame/texture", "Flame/code"));
 		spellbook.Add(new FilePage("Sentry", "Sentry/texture", "Sentry/code"));
+		spellbook.Add(new FilePage("Levitate", "Levitate/texture", "Levitate/code"));
 		spellbook.Add(new FilePage("AdeptLevitate", "AdeptLevitate/texture", "AdeptLevitate/code"));
 		spellbook.Add(new FilePage("Teleport", "Teleport/texture", "Teleport/code"));
 		spellbook.Add(new FilePage("Flight", "Flight/texture", "Flight/code"));

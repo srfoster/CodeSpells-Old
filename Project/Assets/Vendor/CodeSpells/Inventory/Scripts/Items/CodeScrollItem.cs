@@ -74,7 +74,7 @@ public class CodeScrollItem : DraggableItem {
 	}
 	
 	public IDEInput getIDEInput(){
-		return new EclipseInput("CodeSpellsJava", Application.dataPath + "/Vendor/CodeSpells/CodeSpellsJava/"+file_name);
+		return new EclipseInput("CodeSpellsJava", JuneConfig.java_files_path+"/"+file_name);
 	}
 	
 	public override void DroppedOn(GameObject target)

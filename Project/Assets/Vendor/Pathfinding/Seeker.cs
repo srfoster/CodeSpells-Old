@@ -42,6 +42,9 @@ public class Seeker : MonoBehaviour {
 			return currentState;
 		}
 		
+		//Maybe here we can choose a random direction to face and a random small amount to move forward and make them move that much
+		
+		
 		currentState = WalkingState.NotStarted;
 		return WalkingState.ReachedDestination;
 	}

@@ -57,6 +57,8 @@ public abstract class Waterable : MonoBehaviour {
 	
 	public virtual void onUpdate()
 	{
+		//Debug.Log("For this object: "+transform.name +" the waterlogAmount is: "+waterlogAmount);
+		//Debug.Log("This object: "+transform.name +" is waterlogged: "+isWaterlogged());
 		if(beingWatered && !isWaterlogged())
 		{
 			waterEffectOnObject();
