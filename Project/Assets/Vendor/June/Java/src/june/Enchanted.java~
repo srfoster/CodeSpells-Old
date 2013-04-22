@@ -22,10 +22,7 @@ public class Enchanted
     in  = UnityConnection.getIncomingReader();
     
 		this.id = id;
-		if ( !this.id.equals("") ) {
-		    this.typeName = executeCommand("util.getType(\""+this.getId()+"\")");
-		}
-		EventLog.logEvent(this.typeName);
+		this.typeName = executeCommand("util.getType(\""+this.getId()+"\")");
 	}
 
 	public String getId()
@@ -267,7 +264,6 @@ public class Enchanted
 
   public void onFire(boolean bool)
   {
-    EventLog.logEvent("running onFire");
     String c = onFireCommand(bool);
     executeCommand(c);
   }

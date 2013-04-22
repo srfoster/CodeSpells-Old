@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.IO;
-
+using System;
 
 
 
@@ -73,6 +73,13 @@ public class IDE : MonoBehaviour {
 		return file_name;
 	}
 	
+	public string getSpellName()
+	{
+	    char[] seps = {'.'};
+	    string s = file_name.Substring(file_name.LastIndexOf("/")+1);
+	    return s.Split(seps)[0];
+	}
+	
 	public int GetCursorPosition()
 	{
 		return stateObj.selectPos;
@@ -137,6 +144,8 @@ public class IDE : MonoBehaviour {
 		paused = false;
 		
 		//Time.timeScale = 0;
+		
+		ProgramLogger.LogKV("open", getSpellName()+", "+Time.time);
 		
 		if(IDEOpened != null)
 			IDEOpened(file_name, current_code);
@@ -228,6 +237,14 @@ public class IDE : MonoBehaviour {
 		
 		detectKeyboardActivity();
 		
+		Event e = Event.current;
+		if (e.isKey) {
+		    ProgramLogger.LogKV("key", LineNumber()+", "+ColumnNumber()+", "+e.keyCode+", "+Time.time);
+		    //ProgramLogger.LogKV("edit", input.GetCode());
+		}
+		//if (e.type == EventType.KeyDown)
+		//    ProgramLogger.LogKV("character", ""+e.character);
+		
 	}
 	
 	void removeScript()
@@ -240,6 +257,9 @@ public class IDE : MonoBehaviour {
 	    previous_state.active = true;
 		paused = true;
 		Time.timeScale = 1;
+		
+		ProgramLogger.LogKV("edit", "delete all");
+		ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
 		
 		if(IDEClosed != null) {
 			
@@ -399,6 +419,8 @@ public class IDE : MonoBehaviour {
 	        	previous_state.active = true;
 				paused = true;
 				Time.timeScale = 1;
+				
+				ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
 					
 				if(IDEClosed != null)
 					IDEClosed(file_name, current_code);
@@ -447,7 +469,12 @@ public class IDE : MonoBehaviour {
 	
 	public void setErrorMessage(string error)
 	{
+	    //if (! String.Equals(error, current_error)) {
+	        //string cleanerror = String.Copy(error).Replace("------------\n", null);
+	        //ProgramLogger.LogSS("error", error);
+	    //}
 		current_error = error;
+		//ProgramLogger.LogSS("error", current_error);
 	}
 	
 	public void addStyle(int number, string type){

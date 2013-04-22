@@ -101,6 +101,7 @@ public class Badgebook : MonoBehaviour {
 		if(!Contains("complete_"+name))
 		{
 			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
+			TraceLogger.LogKV("completed", name);
 			return true;
 		} else {
 			return false;

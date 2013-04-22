@@ -109,6 +109,17 @@ public class Util {
 			return false;
 		}
 	}
+
+	public static string getType(string id) {
+	       GameObject g = ObjectManager.FindById(id);
+	       
+	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position);
+	       
+	       //TraceLogger.Log(g.name);
+	       //TraceLogger.Log(g.transform.position);
+
+	       return g.name;
+	}
 	
 	public static string getObjWith (string idCenter, string idName, double radius) {
 		int counter = 0;
@@ -131,5 +142,36 @@ public class Util {
 			}
 		}
 		return ids;
+	}
+	
+	public void log(string msg) {
+	    // Function for sending messages to Unity to be added to the log and requesting Unity to add current game state to the log
+	    
+	    // spell name and time of execution
+	    float spelltime = Time.time;
+	    TraceLogger.LogKV("spell", msg+", "+spelltime);
+	    ProgramLogger.LogKV("spell", msg+", "+spelltime);
+	    string spellname = msg.Split(new char[] {' '})[0];
+	    ProgramLogger.LogSS("code", (new FileInput(JuneConfig.java_files_path+"/"+spellname+".java")).GetCode());
+	    
+	    // player's position
+	    GameObject me = ObjectManager.FindById("Me");
+	    TraceLogger.LogKV("player", ""+me.transform.position);
+	    
+	    // inventory
+	    Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+	    //string inventoryContents = inventory.listInventory();
+	    List <GameObject> inventoryContents = inventory.getMatching("");
+	    string s = "";
+	    foreach (GameObject item in inventoryContents) {
+	        if (!item.name.StartsWith("Book") && !item.name.StartsWith("Badges") && !item.name.StartsWith("InitialScroll")) {
+	            s += item.name +", "+ item.GetInstanceID() + "; ";
+	        }
+	    }
+	    char[] trim = {';',' '};
+	    s = s.TrimEnd(trim);
+	    TraceLogger.LogKV("inventory", s);
+	    
+	    return;
 	}
 }

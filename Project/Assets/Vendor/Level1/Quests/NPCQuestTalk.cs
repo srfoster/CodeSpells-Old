@@ -93,6 +93,8 @@ public class NPCQuestTalk : MonoBehaviour {
 			currentQuest++;
 		}
 		
+		TraceLogger.LogKV("conversation", name+", "+transform.position);
+		
 		c.Converse(((Conversation)conversationList[currentQuest]));
 		
 		c.show(GameObject.Find("Inventory"));

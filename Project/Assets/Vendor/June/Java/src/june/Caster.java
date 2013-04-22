@@ -8,7 +8,10 @@ public class Caster
   {
     Spell spell = (Spell) Class.forName(args[0]).newInstance();
     spell.setTarget(args[1]);
-
+    
+    EventLog.logEvent("\n\nCasting\n"+args[0]);
+    
+    (new Enchanted("")).executeCommand("util.log(\""+(args[0]).trim()+"\")");
 
     try{
         spell.cast();

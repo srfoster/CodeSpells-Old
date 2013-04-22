@@ -40,6 +40,8 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerAFlag();
 		
 		setupSpecialEvents();  //i.e. do random shit
+		
+		logStart();
 	}
 	
 	void givePlayerAFlag() {
@@ -358,6 +360,19 @@ public class SetupLevel : MonoBehaviour {
 
 			main_audio.audio.PlayOneShot(bye_clip);	
 		};
+	}
+	
+	void logStart()
+	{
+	    TraceLogger.LogKV("session", "start");
+	    ProgramLogger.LogKV("session", "start");
+	    
+	    // log all the gnomes you can talk to and their positions
+	    NPCQuestTalk[] gnomes = Object.FindObjectsOfType(typeof(NPCQuestTalk)) as NPCQuestTalk[];
+	    foreach (NPCQuestTalk gnome in gnomes) {
+	        if (gnome.name.Contains("Gnome"))
+	            TraceLogger.LogKV("gnome", gnome.name+", "+gnome.transform.position);
+	    }
 	}
 
 }
