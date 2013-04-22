@@ -9,10 +9,7 @@ public class Evolvable : Waterable {
 
 	public override void waterEffectOnObject()
 	{
-		//if(nearGround())
-		//{
-			convert(gameObject, output);
-		//}
+		convert(gameObject, output);
 	}
 
 	void convert(GameObject first, GameObject second)

@@ -12,6 +12,7 @@ public class Growable : Waterable {
 	{
 		originalScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 		scaleOffset = originalScale * scaleFactor;
+		Debug.Log("For this object: "+transform.name +" the original scale is: "+originalScale);
 	}
 	
 	public override void waterEffectOnObject()
