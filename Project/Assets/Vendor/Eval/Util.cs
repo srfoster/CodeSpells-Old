@@ -113,7 +113,7 @@ public class Util {
 	public static string getType(string id) {
 	       GameObject g = ObjectManager.FindById(id);
 	       
-	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position);
+	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position));
 	       
 	       //TraceLogger.Log(g.name);
 	       //TraceLogger.Log(g.transform.position);
@@ -148,11 +148,11 @@ public class Util {
 	    // Function for sending messages to Unity to be added to the log and requesting Unity to add current game state to the log
 	    
 	    // spell name and time of execution
-	    float spelltime = Time.time;
-	    TraceLogger.LogKV("spell", msg+", "+spelltime);
-	    ProgramLogger.LogKV("spell", msg+", "+spelltime);
-	    string spellname = msg.Split(new char[] {' '})[0];
-	    ProgramLogger.LogSS("code", (new FileInput(JuneConfig.java_files_path+"/"+spellname+".java")).GetCode());
+	    //float spelltime = Time.time;
+	    //TraceLogger.LogKV("spell", msg+", "+spelltime);
+	    //ProgramLogger.LogKV("spell", msg+", "+spelltime);
+	    //string spellname = msg.Split(new char[] {' '})[0];
+	    //ProgramLogger.LogCode(spellname, (new FileInput(JuneConfig.java_files_path+"/"+spellname+".java")).GetCode());
 	    
 	    // player's position
 	    GameObject me = ObjectManager.FindById("Me");
@@ -174,4 +174,25 @@ public class Util {
 	    
 	    return;
 	}
+	
+	public static string logObj(string id) {
+	       GameObject g = ObjectManager.FindById(id);
+	       
+	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position));
+	       
+	       //TraceLogger.Log(g.name);
+	       //TraceLogger.Log(g.transform.position);
+
+	       return g.name;
+	}
+	
+	public void endCast(string spellname) {
+	    //spellname, time, position of objects and player
+	    TraceLogger.LogKV("endspell", spellname+", "+Time.time);
+	}
+	
+// 	public object trace(string spell, string effects) {
+// 	    TraceLogger.LogTrace(spell, effects);
+// 	    return Eval.eval(effects, ObjectManager.GetObjects(), new Util());
+// 	}
 }

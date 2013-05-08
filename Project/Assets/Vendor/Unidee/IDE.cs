@@ -58,6 +58,12 @@ public class IDE : MonoBehaviour {
 	private TestAutoCompletionManager auto_completion_manager = new TestAutoCompletionManager();
 	
 	private string current_error;
+	private string last_error = "";
+	
+	private string selected = "";
+	private string clipboard = "";
+	private int selStart = 0;
+	private int selStop = 0;
 	
 	private List<int> error_lines = new List<int>();
 	
@@ -237,13 +243,9 @@ public class IDE : MonoBehaviour {
 		
 		detectKeyboardActivity();
 		
-		Event e = Event.current;
-		if (e.isKey) {
-		    ProgramLogger.LogKV("key", LineNumber()+", "+ColumnNumber()+", "+e.keyCode+", "+Time.time);
-		    //ProgramLogger.LogKV("edit", input.GetCode());
-		}
-		//if (e.type == EventType.KeyDown)
-		//    ProgramLogger.LogKV("character", ""+e.character);
+		logKeyboardActivity();
+				
+		logNewErrors();
 		
 	}
 	
@@ -258,8 +260,9 @@ public class IDE : MonoBehaviour {
 		paused = true;
 		Time.timeScale = 1;
 		
-		ProgramLogger.LogKV("edit", "delete all");
+		ProgramLogger.LogKVtime("delete", "all");
 		ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
+		ProgramLogger.LogCode(getSpellName(), current_code);
 		
 		if(IDEClosed != null) {
 			
@@ -284,6 +287,85 @@ public class IDE : MonoBehaviour {
 			inputThread = new Thread (inputProcessing);
 			inputThread.Start();
 		}
+	}
+	
+	
+	void logKeyboardActivity()
+	{
+	    if (GUI.changed) {
+		    //ProgramLogger.LogKV("gui", "changed");
+		
+		//if (Event.current.type == EventType.Used) {
+		    Event e = Event.current;
+		    if ( ((int)e.character) != 0 && String.Equals("None", e.keyCode+"") ) {  //type a character
+		        if (selStart == selStop)
+		            ProgramLogger.LogEdit("insert", stateObj.pos-1, stateObj.pos, e.character+"");
+		        else {
+		            ProgramLogger.LogEdit("remove", selStart, selStop, selected);
+		            ProgramLogger.LogEdit("insert", stateObj.pos-1, stateObj.pos, e.character+"");
+		        }
+		    } else if ((e.functionKey && String.Equals(e.keyCode+"", "Backspace")) || (e.character == 'x' && (e.command || e.control))) {   //delete or cut
+		        if (selStart == selStop)
+		            ProgramLogger.LogEdit("remove", stateObj.pos, selStart, "");
+		        else
+		            ProgramLogger.LogEdit("remove", selStart, selStop, selected);
+		    } else if ((e.command || e.control) && e.character == 'v') {    //paste
+		        if (selStart == selStop)
+		            ProgramLogger.LogEdit("insert", stateObj.pos-clipboard.Length, stateObj.pos, clipboard);
+		        else {
+		            ProgramLogger.LogEdit("remove", selStart, selStop, selected);
+		            ProgramLogger.LogEdit("insert", stateObj.pos-clipboard.Length, stateObj.pos, clipboard);
+		        }
+		    }
+		    
+		    //update clipboard from copy or cut
+		    if ( (e.command || e.control) ) {
+		        if (e.character == 'c')
+		            clipboard = stateObj.SelectedText;
+		        else if (e.character == 'x')
+		            clipboard = selected;
+		    }
+		    
+// 		    if ( ((int)e.character) != 0 && String.Equals("None", e.keyCode+""))
+// 		        ProgramLogger.LogKV("char", stateObj.pos+","+LineNumber()+","+ColumnNumber()+","+(int)Event.current.character+","+Time.time);
+// 		    else if (e.functionKey)
+// 		        ProgramLogger.LogKV("key", stateObj.pos+","+LineNumber()+","+ColumnNumber()+","+Event.current.keyCode+","+Time.time);
+// 		    else
+// 		        ProgramLogger.LogKV("otherkey", stateObj.pos+","+LineNumber()+","+ColumnNumber()+","+Event.current.character+","+Event.current.keyCode+","+Event.current.modifiers);
+// 		    ProgramLogger.LogKV("selected", selStart+","+selStop+","+selected); //pos, selectPos
+		}
+		
+		selected = stateObj.SelectedText+"";
+		selStart = Math.Min(stateObj.pos, stateObj.selectPos);
+		selStop = Math.Max(stateObj.pos, stateObj.selectPos);
+	
+// 	    Event e = Event.current;
+// 	    string keychar = "";
+// 	    string keycode = e.keyCode + "";
+// 	    if (e.alt) keychar += "&";
+// 	    if (e.command) keychar += "%";
+// 	    if (e.control) keychar += "^";
+// 	    if (e.shift) keychar += "#";
+// 	    if (e.capsLock) {
+// 	        if ( ! keycode.StartsWith("Alpha") )
+// 	            keychar += "#";
+// 	    }
+// 	    keycode = keycode.Replace("Alpha", "");
+// 	    keychar += keycode;
+// 	    
+// 	    ProgramLogger.LogKV("key", LineNumber()+", "+ColumnNumber()+", "+Event.KeyboardEvent(keychar).character+", "+keychar+", "+Time.time);
+	}
+	
+	
+	void logNewErrors()
+	{
+	    if (! String.Equals(current_error, last_error)) {
+            char[] trimchars = {'-', '\n', ' '};
+            string cleanerror = current_error.Trim(trimchars);
+            if (!String.IsNullOrEmpty(cleanerror))
+                ProgramLogger.LogError(cleanerror);
+            last_error = current_error;
+        }
 	}
 	
 	
@@ -355,6 +437,7 @@ public class IDE : MonoBehaviour {
 			spaces += " ";
 		
 		current_code = current_code.Substring(0,GetCursorPosition()) + spaces + current_code.Substring(GetCursorPosition());
+		ProgramLogger.LogEdit("insert", GetCursorPosition(), GetCursorPosition()+tab_width, spaces);
 		
 		for(int i = 0; i < tab_width; i++)
 			stateObj.MoveRight();
@@ -421,6 +504,7 @@ public class IDE : MonoBehaviour {
 				Time.timeScale = 1;
 				
 				ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
+				ProgramLogger.LogCode(getSpellName(), current_code);
 					
 				if(IDEClosed != null)
 					IDEClosed(file_name, current_code);

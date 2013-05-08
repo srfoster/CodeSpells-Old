@@ -77,7 +77,7 @@ public class StartServer : MonoBehaviour
 					call.setResponse("");
 				} else{ 
 				    if (! call.getCall().StartsWith("util.") )
-				        TraceLogger.Log(call.getCall());
+				        TraceLogger.LogTrace(call.getCall());
 				    
 					object ret = Eval.eval(call.getCall(), ObjectManager.GetObjects(), new Util());
 				

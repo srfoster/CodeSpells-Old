@@ -267,7 +267,6 @@ public class Enchanted
 
   public void onFire(boolean bool)
   {
-    EventLog.logEvent("running onFire");
     String c = onFireCommand(bool);
     executeCommand(c);
   }

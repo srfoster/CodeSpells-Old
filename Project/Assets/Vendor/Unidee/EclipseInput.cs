@@ -18,6 +18,7 @@ public class EclipseInput : FileInput {
 	Process compile_process;
 	
 	String current_error = "";
+	//String last_error = "";
 	
 	public EclipseInput(string project_name, string file_name) : base(file_name)
 	{
@@ -149,6 +150,13 @@ public class EclipseInput : FileInput {
 			
 			new_java_error_string += new_err + "------------\n";
 		}
+		
+		//char[] trimchars = {'-', '\n', ' '};
+		//string cleanerror = new_java_error_string.Trim(trimchars);
+		//if (! String.Equals(new_java_error_string, last_error) && !String.IsNullOrEmpty(cleanerror)) {
+		//    ProgramLogger.LogSS("error", cleanerror);
+		//}
+		//last_error = new_java_error_string;
 		
 		return new_java_error_string;
 	}

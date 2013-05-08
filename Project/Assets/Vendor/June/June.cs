@@ -26,6 +26,7 @@ public class June {
 	
 	
 	private bool success = true;
+	private bool exitHandled = false;
 
 		
 	public June(GameObject game_object, string java_file_name)
@@ -36,6 +37,7 @@ public class June {
 		this.java_file_name = java_file_name;
 		
 		this.object_id = game_object.GetInstanceID().ToString();
+		
 	}
 	
 	public void setObjectId(string id)
@@ -67,20 +69,38 @@ public class June {
 		//is_stopped = true;
 		
 		success = true;
+		
+		
 				
 		try{
 			//Work-around because Unity is being stupid
-			java_process.GetType().GetMethod( "Kill" ).Invoke( java_process, new object[]{} );
+			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor) {
+			    java_process.GetType().GetMethod( "Kill" ).Invoke( java_process, new object[]{} );
+			} else {
+                Process killer = Shell.shell_no_start("kill", "-15 "+java_process.Id);
+                killer.Start();                
+			}
 		}catch(Exception e){
 			UnityEngine.Debug.Log(e);
 		}
+		//TraceLogger.LogKV("endspell", getSpellName()+", "+Time.time);
 		
-		
+	}
+	
+	private void onJavaExit(object sender, System.EventArgs e)
+	{
+	    exitHandled = true;
+	    TraceLogger.LogKV("endspell", getSpellName()+", "+Time.time);
 	}
 	
 	public string getFileName()
 	{
 		return java_file_name;	
+	}
+	
+	public string getSpellName()
+	{
+	    return java_file_name.Split(new char[] {'.'})[0];
 	}
 	
 	virtual public void javaCompileAndRun()
@@ -125,6 +145,8 @@ public class June {
 				UnityEngine.Debug.Log("java " + "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");
 				java_process = Shell.shell_no_start("java", "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");	
 			}
+			//java_process.EnableRaisingEvents = true;
+			//java_process.Exited += new EventHandler(onJavaExit);
 			java_process.Start();
 			
 			var output3 = java_process.StandardOutput.ReadToEnd();
@@ -148,7 +170,7 @@ public class June {
 
 
 			}
-		
+			
 							
 			if(java_process.ExitCode != 0)
 			{

@@ -139,6 +139,8 @@ public class Spellbook : MonoBehaviour {
 		code_scroll_item_component.setCurrentFile(currentPage().getName() + number + ".java");
 		
 		code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));
+		
+		ProgramLogger.LogCode(currentPage().getName() + number, code_scroll_item_component.getIDEInput().GetCode());
 
 		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);
 	}

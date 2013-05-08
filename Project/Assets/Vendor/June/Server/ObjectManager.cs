@@ -11,6 +11,7 @@ public class ObjectManager {
 	public static void Register(GameObject obj)
 	{
 //		Debug.Log("Enchantable: " + obj.name + " " + obj.GetInstanceID().ToString());
+//		FileLogger.Log("Enchantable: " + obj.name);
 		
 		try{
 			objects.Add(obj.GetInstanceID().ToString(), obj);

@@ -130,6 +130,11 @@ public class Server
 		queue.add(call_response);
 			
 	  }
+	  
+	  // Need to wait for the queue to be emptied of things trying to write on this stream before we close it
+	  //while (queue.hasCallOnClient(clientStream)) {
+	  //  Thread.Sleep(1000);
+	  //}
 	
 	  FileLogger.Log("Closing TCP connection.");
 	  //Debug.Log ("Closing TCP connection, applicationRunning is: " + applicationRunning.ToString());

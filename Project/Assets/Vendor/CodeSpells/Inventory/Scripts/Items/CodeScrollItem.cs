@@ -123,17 +123,25 @@ public class CodeScrollItem : DraggableItem {
 		this.animate = true;	
 	}
 	
+	public string getSpellName()
+	{
+	    return file_name.Split('.')[0];
+	}
+	
 	public void castSpell(GameObject target)
 	{
 		if(target.GetComponent("Enchantable") == null)
 		{
-			
+			TraceLogger.LogKVtime("attempt", getSpellName());
+			TraceLogger.LogKV("target", target.GetInstanceID().ToString()+", "+target.name+", "+target.transform.position);
 			(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("Target ("+target.name+") immune to magic.");
 			SetHidden(false);
 			return;
 		}
 		
-		
+		TraceLogger.LogKVtime("spell", getSpellName());
+		ProgramLogger.LogKVtime("spell", getSpellName());
+		TraceLogger.LogKV("target", target.GetInstanceID().ToString()+", "+target.name+", "+target.transform.position);
 		
 		June june = new June(target, file_name);
 

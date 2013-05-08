@@ -6,7 +6,7 @@ using System.Text;
 
 
 public class CallResponseQueue {
-	private ArrayList queue = new ArrayList();
+	private ArrayList queue = ArrayList.Synchronized(new ArrayList());
 	
 	public int crLength() 
 	{
@@ -33,6 +33,24 @@ public class CallResponseQueue {
 	public bool notEmpty()
 	{
 		return queue.Count > 0;	
+	}
+	
+	public bool hasCallOnClient(NetworkStream client_stream)
+	{
+	    bool ret = false;
+	    if (this.notEmpty()) {
+            lock(queue.SyncRoot)
+            {
+                foreach (CallResponse cr in queue)
+                {
+                    if (cr.getClientStream().Equals(client_stream)) {
+                        ret = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return ret;
 	}
 }
 
@@ -67,6 +85,11 @@ public class CallResponse
 	public string getResponse()
 	{
 		return this.response;	
+	}
+	
+	public NetworkStream getClientStream()
+	{
+	    return client_stream;
 	}
 	
 	public void respond()
