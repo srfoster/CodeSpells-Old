@@ -110,9 +110,9 @@ public class CodeScrollItem : DraggableItem {
 			return;
 		}
 		
-		enchantable.disenchant();
+		string file_name = enchantable.disenchant();
 		
-		string file_name = enchantable.getJune().getFileName();
+		//string file_name = enchantable.getJune().getFileName();
 		setCurrentFile(file_name);
 
 	}

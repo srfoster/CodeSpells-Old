@@ -2,8 +2,6 @@ package june;
 
 import june.*;
 import java.util.*;
-//import java.util.Observer;
-//import java.util.Observable;
 
 public abstract class Spell implements Observer
 {
@@ -45,15 +43,14 @@ public abstract class Spell implements Observer
   }
   
   private void addObject(Enchanted e) {
-    objectList.add(e);
+    if (!e.getId().equals(""))
+        objectList.add(e);
   }
   
   public void sendObjectListToUnity() {
     for (int i = 0; i < objectList.size(); i++) {
         Enchanted obj = objectList.get(i);
-        if ( !obj.getId().equals("") ) {
-            Enchanted.executeCommand("util.logObj(\""+obj.getId()+"\")");
-        }
+        Enchanted.executeCommand("util.logObj(\""+obj.getId()+"\")");
 	 }
   }
   

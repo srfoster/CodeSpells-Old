@@ -114,9 +114,6 @@ public class Util {
 	       GameObject g = ObjectManager.FindById(id);
 	       
 	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position));
-	       
-	       //TraceLogger.Log(g.name);
-	       //TraceLogger.Log(g.transform.position);
 
 	       return g.name;
 	}
@@ -147,13 +144,6 @@ public class Util {
 	public void log(string msg) {
 	    // Function for sending messages to Unity to be added to the log and requesting Unity to add current game state to the log
 	    
-	    // spell name and time of execution
-	    //float spelltime = Time.time;
-	    //TraceLogger.LogKV("spell", msg+", "+spelltime);
-	    //ProgramLogger.LogKV("spell", msg+", "+spelltime);
-	    //string spellname = msg.Split(new char[] {' '})[0];
-	    //ProgramLogger.LogCode(spellname, (new FileInput(JuneConfig.java_files_path+"/"+spellname+".java")).GetCode());
-	    
 	    // player's position
 	    GameObject me = ObjectManager.FindById("Me");
 	    TraceLogger.LogKV("player", ""+me.transform.position);
@@ -179,9 +169,6 @@ public class Util {
 	       GameObject g = ObjectManager.FindById(id);
 	       
 	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position));
-	       
-	       //TraceLogger.Log(g.name);
-	       //TraceLogger.Log(g.transform.position);
 
 	       return g.name;
 	}
@@ -190,9 +177,5 @@ public class Util {
 	    //spellname, time, position of objects and player
 	    TraceLogger.LogKV("endspell", spellname+", "+Time.time);
 	}
-	
-// 	public object trace(string spell, string effects) {
-// 	    TraceLogger.LogTrace(spell, effects);
-// 	    return Eval.eval(effects, ObjectManager.GetObjects(), new Util());
-// 	}
+
 }

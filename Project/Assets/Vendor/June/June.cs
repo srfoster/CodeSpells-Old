@@ -77,20 +77,13 @@ public class June {
 			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor) {
 			    java_process.GetType().GetMethod( "Kill" ).Invoke( java_process, new object[]{} );
 			} else {
+			    //Send a "friendly" SIGTERM to java so that we can log some stuff before the program exits
                 Process killer = Shell.shell_no_start("kill", "-15 "+java_process.Id);
                 killer.Start();                
 			}
 		}catch(Exception e){
 			UnityEngine.Debug.Log(e);
-		}
-		//TraceLogger.LogKV("endspell", getSpellName()+", "+Time.time);
-		
-	}
-	
-	private void onJavaExit(object sender, System.EventArgs e)
-	{
-	    exitHandled = true;
-	    TraceLogger.LogKV("endspell", getSpellName()+", "+Time.time);
+		}		
 	}
 	
 	public string getFileName()
@@ -145,8 +138,6 @@ public class June {
 				UnityEngine.Debug.Log("java " + "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");
 				java_process = Shell.shell_no_start("java", "-classpath \"" + JuneConfig.june_files_path + ":" + JuneConfig.java_files_path+"\" june.Caster "+class_name+" \"" + object_id +"\"");	
 			}
-			//java_process.EnableRaisingEvents = true;
-			//java_process.Exited += new EventHandler(onJavaExit);
 			java_process.Start();
 			
 			var output3 = java_process.StandardOutput.ReadToEnd();

@@ -50,8 +50,9 @@ public class Flag : PickUpableItem {
 	override public void handleMouseDown() {
 		
 		int to_remove = int.Parse(gameObject.GetComponent<Enchantable>().getId().Split(' ')[1]);
-
-		if(gameObject.GetComponent<Enchantable>().isEnchanted())
+		
+        if (gameObject.GetComponent<Enchantable>().hasRunningEnchantment())
+		//if(gameObject.GetComponent<Enchantable>().isEnchanted())
 			return;
 		
 		

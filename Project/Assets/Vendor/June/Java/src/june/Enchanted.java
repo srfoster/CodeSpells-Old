@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 public class Enchanted
 {
 	private String id;
-    private String typeName;
+    //private String typeName;
 
 	static PrintWriter out;
 	static BufferedReader in;
@@ -23,9 +23,10 @@ public class Enchanted
     
 		this.id = id;
 		if ( !this.id.equals("") ) {
-		    this.typeName = executeCommand("util.getType(\""+this.getId()+"\")");
+		    //this.typeName = executeCommand("util.getType(\""+this.getId()+"\")");
+		    executeCommand("util.logObj(\""+this.getId()+"\")");
 		}
-		EventLog.logEvent(this.typeName);
+		//EventLog.logEvent(this.typeName);
 	}
 
 	public String getId()

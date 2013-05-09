@@ -22,11 +22,14 @@ public class SpellKillerGUI : MonoBehaviour {
 		label_style.normal.textColor = Color.white;
 
 		Enchantable.EnchantmentStarted += (target, class_name) => {
-			enchanted_objects.Add(target);
+		    if (!enchanted_objects.Contains(target))
+			    enchanted_objects.Add(target);
 		};
 		
 		Enchantable.EnchantmentEnded += (target, class_name) => {
-			enchanted_objects.Remove(target);
+		    //enchanted_objects.RemoveAt(enchanted_objects.LastIndexOf(target));
+		    if (!target.GetComponent<Enchantable>().hasRunningEnchantment())
+			    enchanted_objects.Remove(target);
 		};
 	}
 	
@@ -36,12 +39,15 @@ public class SpellKillerGUI : MonoBehaviour {
 		
 		foreach(GameObject obj in enchanted_objects)
 		{
-			if(!obj.GetComponent<Enchantable>().isEnchanted())
+		    if (!obj.GetComponent<Enchantable>().hasRunningEnchantment())
+			//if(!obj.GetComponent<Enchantable>().isEnchanted())
 				to_remove.Add(obj);
 		}
 		
-		foreach(GameObject obj in to_remove)
+		foreach(GameObject obj in to_remove) {
+		    //enchanted_objects.RemoveAt(enchanted_objects.LastIndexOf(obj));
 			enchanted_objects.Remove(obj);
+		}
 		
 		
 		
@@ -53,18 +59,26 @@ public class SpellKillerGUI : MonoBehaviour {
 		foreach(GameObject obj in enchanted_objects)
 		{
 			Enchantable e = obj.GetComponent<Enchantable>();
-			string name = e.getFileName();
+			//string name = e.getFileName();
+			List<string> names = e.getFileNames();
 			
 			
-			if(GUI.Button(new Rect(0,count * 55, 200, 40), ""))
-			{
-				obj.GetComponent<Enchantable>().disenchant();	
+// 			if(GUI.Button(new Rect(0,count * 55, 200, 40), ""))
+// 			{
+// 				obj.GetComponent<Enchantable>().disenchant();	
+// 			}
+			
+			foreach (string name in names) {
+			    if(GUI.Button(new Rect(0,count * 55, 200, 40), ""))
+                {
+                    //ProgramLogger.LogKV("button", name);
+                    obj.GetComponent<Enchantable>().disenchant(name);	
+                }
+                GUI.DrawTexture(new Rect(10,count * 55 + 7,25,25),texture);
+                GUI.Label(new Rect(55, count * 55 + 10, 100, 25), name);
+        
+                count++;
 			}
-			
-			GUI.DrawTexture(new Rect(10,count * 55 + 7,25,25),texture);
-			GUI.Label(new Rect(55, count * 55 + 10, 100, 25), name);
-		
-			count++;
 		}
 		GUI.EndGroup();
 	}
