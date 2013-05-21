@@ -17,11 +17,8 @@ public class Caster
     
     EventLog.logEvent("\n\nCasting\n"+args[0]);
     
-    (new Enchanted("")).executeCommand("util.log(\""+(args[0]).trim()+"\")");
-
     try{
         spell.cast();
-        (new Enchanted("")).executeCommand("util.endCast(\""+(args[0]).trim()+"\")");
         spell.sendObjectListToUnity();
     }catch(Exception e){
       e.printStackTrace();

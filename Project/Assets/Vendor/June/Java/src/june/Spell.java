@@ -43,14 +43,16 @@ public abstract class Spell implements Observer
   }
   
   private void addObject(Enchanted e) {
-    if (!e.getId().equals(""))
+    if (!e.getId().equals("")) {
         objectList.add(e);
+        Enchanted.executeCommand("util.logObj(\"start\", \""+e.getId()+"\", \""+this.getClass().getName()+"\")");
+    }
   }
   
   public void sendObjectListToUnity() {
     for (int i = 0; i < objectList.size(); i++) {
         Enchanted obj = objectList.get(i);
-        Enchanted.executeCommand("util.logObj(\""+obj.getId()+"\")");
+        Enchanted.executeCommand("util.logObj(\"end\", \""+obj.getId()+"\", \""+this.getClass().getName()+"\")");
 	 }
   }
   
@@ -61,7 +63,7 @@ public abstract class Spell implements Observer
      // each other up.
      //System.out.println( "Received signal: "+arg );
      Log.log("Received signal: "+arg);
-     Enchanted.executeCommand("util.endCast(\""+this.getClass().getName()+"\")");
+     //Enchanted.executeCommand("util.endCast(\""+this.getClass().getName()+"\")");
      sendObjectListToUnity();
      System.exit(1);
  }

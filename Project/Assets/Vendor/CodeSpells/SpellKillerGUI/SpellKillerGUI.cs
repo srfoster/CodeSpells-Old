@@ -82,4 +82,10 @@ public class SpellKillerGUI : MonoBehaviour {
 		}
 		GUI.EndGroup();
 	}
+	
+	// Kill all running spells when the application exits
+	void OnApplicationQuit() {
+	    foreach (GameObject obj in enchanted_objects)
+	        obj.GetComponent<Enchantable>().stopAll();
+	}
 }

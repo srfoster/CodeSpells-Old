@@ -216,6 +216,7 @@ public class Inventory : MonoBehaviour {
 	{
 		items.Add(item);
 		item_infos.Add(item, new ItemInfo());
+		TraceLogger.LogKVtime("pickedup", item.GetInstanceID()+", "+item.name+", "+item.transform.position+", "+ObjectManager.FindById("Me").transform.position);
 		if(PickedUp != null)
 		{
 			PickedUp(item);
@@ -225,6 +226,7 @@ public class Inventory : MonoBehaviour {
 	public void removeItem(GameObject item)
 	{
 		to_remove.Add(item);
+		TraceLogger.LogKVtime("droppedoff", item.GetInstanceID()+", "+item.name+", "+item.transform.position+", "+ObjectManager.FindById("Me").transform.position);
 		if(DroppedOff != null)
 		{
 			DroppedOff(item);	

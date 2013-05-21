@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.IO;
 using System;
+using System.Reflection;
 
 
 
@@ -43,7 +44,7 @@ public class IDE : MonoBehaviour {
 	
 	private Thread inputThread;
 	
-	private double unpause_count = 0;
+	private bool changed = false;
 	
 	private bool no_edit = false;
 	
@@ -61,6 +62,7 @@ public class IDE : MonoBehaviour {
 	private string last_error = "";
 	
 	private string selected = "";
+	//private string clipboard = (string) typeof(GUIUtility).GetProperty("systemCopyBuffer", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null,null);
 	private string clipboard = "";
 	private int selStart = 0;
 	private int selStop = 0;
@@ -242,10 +244,8 @@ public class IDE : MonoBehaviour {
 		catchTabs();
 		
 		detectKeyboardActivity();
-		
-		logKeyboardActivity();
 				
-		logNewErrors();
+		logKeyboardActivity();
 		
 	}
 	
@@ -274,18 +274,15 @@ public class IDE : MonoBehaviour {
 	
 	void detectKeyboardActivity()
 	{
-		unpause_count += .1;
-
-		if(Event.current.isKey)
-		{	
-			unpause_count = 0;
-		}
-		
-		if(unpause_count > 2 && (inputThread == null || !inputThread.IsAlive))  // Unpause stuff like compilation after every 5 seconds of inactivity
+		if (GUI.changed || changed)
 		{
-			Debug.Log("Starting thread");
-			inputThread = new Thread (inputProcessing);
-			inputThread.Start();
+		    if (inputThread == null || !inputThread.IsAlive) {
+		        changed = false;
+                Debug.Log("Starting thread");
+                inputThread = new Thread (inputProcessing);
+                inputThread.Start();
+			} else
+			    changed = true;
 		}
 	}
 	
@@ -293,9 +290,8 @@ public class IDE : MonoBehaviour {
 	void logKeyboardActivity()
 	{
 	    if (GUI.changed) {
-		    //ProgramLogger.LogKV("gui", "changed");
+		    clipboard = (string) typeof(GUIUtility).GetProperty("systemCopyBuffer", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null,null);
 		
-		//if (Event.current.type == EventType.Used) {
 		    Event e = Event.current;
 		    if ( ((int)e.character) != 0 && String.Equals("None", e.keyCode+"") ) {  //type a character
 		        if (selStart == selStop)
@@ -317,43 +313,12 @@ public class IDE : MonoBehaviour {
 		            ProgramLogger.LogEdit("insert", stateObj.pos-clipboard.Length, stateObj.pos, clipboard);
 		        }
 		    }
-		    
-		    //update clipboard from copy or cut
-		    if ( (e.command || e.control) ) {
-		        if (e.character == 'c')
-		            clipboard = stateObj.SelectedText;
-		        else if (e.character == 'x')
-		            clipboard = selected;
-		    }
-		    
-// 		    if ( ((int)e.character) != 0 && String.Equals("None", e.keyCode+""))
-// 		        ProgramLogger.LogKV("char", stateObj.pos+","+LineNumber()+","+ColumnNumber()+","+(int)Event.current.character+","+Time.time);
-// 		    else if (e.functionKey)
-// 		        ProgramLogger.LogKV("key", stateObj.pos+","+LineNumber()+","+ColumnNumber()+","+Event.current.keyCode+","+Time.time);
-// 		    else
-// 		        ProgramLogger.LogKV("otherkey", stateObj.pos+","+LineNumber()+","+ColumnNumber()+","+Event.current.character+","+Event.current.keyCode+","+Event.current.modifiers);
-// 		    ProgramLogger.LogKV("selected", selStart+","+selStop+","+selected); //pos, selectPos
 		}
 		
 		selected = stateObj.SelectedText+"";
 		selStart = Math.Min(stateObj.pos, stateObj.selectPos);
 		selStop = Math.Max(stateObj.pos, stateObj.selectPos);
-	
-// 	    Event e = Event.current;
-// 	    string keychar = "";
-// 	    string keycode = e.keyCode + "";
-// 	    if (e.alt) keychar += "&";
-// 	    if (e.command) keychar += "%";
-// 	    if (e.control) keychar += "^";
-// 	    if (e.shift) keychar += "#";
-// 	    if (e.capsLock) {
-// 	        if ( ! keycode.StartsWith("Alpha") )
-// 	            keychar += "#";
-// 	    }
-// 	    keycode = keycode.Replace("Alpha", "");
-// 	    keychar += keycode;
-// 	    
-// 	    ProgramLogger.LogKV("key", LineNumber()+", "+ColumnNumber()+", "+Event.KeyboardEvent(keychar).character+", "+keychar+", "+Time.time);
+
 	}
 	
 	
@@ -548,17 +513,13 @@ public class IDE : MonoBehaviour {
 	void inputProcessing()
 	{
 		writeOut();
-		input.Process(this);			
+		input.Process(this);		
 	}
 	
 	public void setErrorMessage(string error)
 	{
-	    //if (! String.Equals(error, current_error)) {
-	        //string cleanerror = String.Copy(error).Replace("------------\n", null);
-	        //ProgramLogger.LogSS("error", error);
-	    //}
 		current_error = error;
-		//ProgramLogger.LogSS("error", current_error);
+		logNewErrors();
 	}
 	
 	public void addStyle(int number, string type){

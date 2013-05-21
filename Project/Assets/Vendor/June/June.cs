@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using System.Threading;
 using System.Diagnostics;
+using System.IO;
 
 public class June {
 	
@@ -104,7 +105,8 @@ public class June {
 			
 			string class_name = java_file_name.Split('.')[0];
 			
-			
+			File.Delete(JuneConfig.java_files_path + "/" + class_name + ".class");
+			//ProgramLogger.LogKV("filedeleted", JuneConfig.java_files_path + "/" + class_name + ".class");
 			Process compile_process = Shell.shell_no_start("javac", "-classpath \"" + JuneConfig.june_files_path + "\" "+JuneConfig.java_files_path+"/"+java_file_name);
 			compile_process.Start();	
 			
@@ -117,15 +119,22 @@ public class June {
 			{
 				success = false;	
 			}
+			ProgramLogger.LogKV("compile", getSpellName()+", "+success);
+			
+			if (!success) {
+			    is_stopped = true;
+			    TraceLogger.LogKV("failedspell", getSpellName());
+			    return;
+			}
 			
 						
-			Process test = Shell.shell_no_start("java", "-version");
-			test.Start();	
-			
-			var output2 = test.StandardOutput.ReadToEnd();
-	   		var error2 = test.StandardError.ReadToEnd();
-			
-			UnityEngine.Debug.Log (output2 + " " + error2);
+// 			Process test = Shell.shell_no_start("java", "-version");
+// 			test.Start();	
+// 			
+// 			var output2 = test.StandardOutput.ReadToEnd();
+// 	   		var error2 = test.StandardError.ReadToEnd();
+// 			
+// 			UnityEngine.Debug.Log (output2 + " " + error2);
 			
 			
 			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
@@ -167,7 +176,8 @@ public class June {
 			{
 				success = false;
 			}
-
+            
+            TraceLogger.LogKV("endspell", getSpellName());
 			
 			is_stopped = true;
 		}catch(Exception e){

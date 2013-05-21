@@ -104,18 +104,12 @@ public class Util {
 
 
 		case 7://hasIgnited
-			return g.GetComponent<Flamable>().isIgnited();
+		    if (g.GetComponent<Flamable>())
+			    return g.GetComponent<Flamable>().isIgnited();
+			return false;
 		default:
 			return false;
 		}
-	}
-
-	public static string getType(string id) {
-	       GameObject g = ObjectManager.FindById(id);
-	       
-	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position));
-
-	       return g.name;
 	}
 	
 	public static string getObjWith (string idCenter, string idName, double radius) {
@@ -141,41 +135,21 @@ public class Util {
 		return ids;
 	}
 	
-	public void log(string msg) {
-	    // Function for sending messages to Unity to be added to the log and requesting Unity to add current game state to the log
-	    
-	    // player's position
-	    GameObject me = ObjectManager.FindById("Me");
-	    TraceLogger.LogKV("player", ""+me.transform.position);
-	    
-	    // inventory
-	    Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
-	    //string inventoryContents = inventory.listInventory();
-	    List <GameObject> inventoryContents = inventory.getMatching("");
-	    string s = "";
-	    foreach (GameObject item in inventoryContents) {
-	        if (!item.name.StartsWith("Book") && !item.name.StartsWith("Badges") && !item.name.StartsWith("InitialScroll")) {
-	            s += item.name +", "+ item.GetInstanceID() + "; ";
-	        }
-	    }
-	    char[] trim = {';',' '};
-	    s = s.TrimEnd(trim);
-	    TraceLogger.LogKV("inventory", s);
-	    
-	    return;
-	}
-	
-	public static string logObj(string id) {
+	public static string logObj(string when, string id, string spellname) {
 	       GameObject g = ObjectManager.FindById(id);
 	       
-	       TraceLogger.LogKV("object", id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position));
+	       // Object id, type/name, position, ground height at position, is on fire
+	       bool flaming = false;
+	       if (g.GetComponent<Flamable>())
+	            flaming = g.GetComponent<Flamable>().isIgnited();
+	       TraceLogger.LogKV("object"+when, spellname+", "+id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position)+", "+flaming);
 
 	       return g.name;
 	}
 	
-	public void endCast(string spellname) {
-	    //spellname, time, position of objects and player
-	    TraceLogger.LogKV("endspell", spellname+", "+Time.time);
-	}
+// 	public void endCast(string spellname) {
+// 	    //spellname, time, position of objects and player
+// 	    TraceLogger.LogKV("endspell", spellname+", "+Time.time);
+// 	}
 
 }

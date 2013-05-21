@@ -47,6 +47,11 @@ public class TraceLogger {
 	    file.Flush();
 	}
 
+    public static void LogError(string errors) {
+	    file.WriteLine("error: "+ProgramLogger.EncodeTo64(errors)+", "+Time.time);
+	    file.Flush();
+	}
+
 }
 
 
@@ -73,18 +78,18 @@ public class ProgramLogger {
 	}
 	
 	public static void LogEdit(string etype, int start, int stop, string text) {
-	    file.WriteLine(etype+": "+start+", "+stop+", \""+EncodeTo64(text)+"\", "+Time.time);
+	    file.WriteLine(etype+": "+start+", "+stop+", "+EncodeTo64(text)+", "+Time.time);
 	    file.Flush();
 	}
 	
 	public static void LogError(string errors) {
-	    file.WriteLine("error: \""+EncodeTo64(errors)+"\", "+Time.time);
+	    file.WriteLine("error: "+EncodeTo64(errors)); //+", "+Time.time);
 	    file.Flush();
 	}
 	
 	public static void LogCode(string name, string message)
 	{
-	    file.WriteLine("code: "+name+", "+Time.time+", \""+EncodeTo64(message)+"\"");
+	    file.WriteLine("code: "+name+", "+Time.time+", "+EncodeTo64(message));
 	    file.Flush();
 	}
 

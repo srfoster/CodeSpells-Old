@@ -93,8 +93,7 @@ public class EclipseInput : FileInput {
 		string completions=eclipse.JavaCompleteString(short_file_name,project_name,cursor);
 		Debug.Log(completions);
 		*/
-		
-		
+				
 		javaCompile();
 		
 		ide.setErrorMessage(noviceClean(current_error));
@@ -133,6 +132,7 @@ public class EclipseInput : FileInput {
 	   		var error = compile_process.StandardError.ReadToEnd();
 			
 			current_error = error;		
+
 		}catch(Exception e){
 		}
 	}
@@ -150,13 +150,6 @@ public class EclipseInput : FileInput {
 			
 			new_java_error_string += new_err + "------------\n";
 		}
-		
-		//char[] trimchars = {'-', '\n', ' '};
-		//string cleanerror = new_java_error_string.Trim(trimchars);
-		//if (! String.Equals(new_java_error_string, last_error) && !String.IsNullOrEmpty(cleanerror)) {
-		//    ProgramLogger.LogSS("error", cleanerror);
-		//}
-		//last_error = new_java_error_string;
 		
 		return new_java_error_string;
 	}

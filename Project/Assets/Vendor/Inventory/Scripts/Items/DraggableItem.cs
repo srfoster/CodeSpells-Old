@@ -10,6 +10,13 @@ public class DraggableItem : Item {
 		{
 			Drag();
 		} else {
+		    // make "uncastable" (uncompilable) spells not draggable
+		    if (this.GetType() == typeof(CodeScrollItem) && !((CodeScrollItem)this).IsCompilable()) {
+		        SetActive(false);
+	            if(getInventory().MouseOverInventory())
+			        DroppedOnInventory(Input.mousePosition);
+			    return;
+		    }
 			Drop();
 		}
 	}

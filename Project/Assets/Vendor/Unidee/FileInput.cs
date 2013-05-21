@@ -21,6 +21,13 @@ public class FileInput : IDEInput {
 		return file_name;	
 	}
 	
+	public string GetSpellName()
+	{
+	    char[] seps = {'.'};
+	    string s = file_name.Substring(file_name.LastIndexOf("/")+1);
+	    return s.Split(seps)[0];
+	}
+	
 	public override void SetCode(string code_string)
 	{
 		StreamWriter sw = new StreamWriter(file_name, false);

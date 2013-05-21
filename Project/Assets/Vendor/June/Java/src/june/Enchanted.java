@@ -22,11 +22,6 @@ public class Enchanted
     in  = UnityConnection.getIncomingReader();
     
 		this.id = id;
-		if ( !this.id.equals("") ) {
-		    //this.typeName = executeCommand("util.getType(\""+this.getId()+"\")");
-		    executeCommand("util.logObj(\""+this.getId()+"\")");
-		}
-		//EventLog.logEvent(this.typeName);
 	}
 
 	public String getId()

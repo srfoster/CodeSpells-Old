@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class CodeScrollItem : DraggableItem {
 	
@@ -14,9 +15,16 @@ public class CodeScrollItem : DraggableItem {
 	
 	private bool on_drag = false;
 	private float time_started;
+	
+	private bool compilable = true;
 
 	
     override protected void Drag(){
+        // make "uncastable" (uncompilable) spells not draggable
+        if (!compilable) {
+            time_started = Time.time;
+            return;
+        }
 		if (!on_drag) {
 			time_started = Time.time;
 			on_drag = true;
@@ -37,7 +45,13 @@ public class CodeScrollItem : DraggableItem {
 	
 	override public Texture2D getTexture()	
 	{
-		if(still_icon == null)
+	    if (!compilable) {
+	        if (still_icon == null || !still_icon.ToString().Contains("UncastableScroll")) {
+	            still_icon = Resources.Load("Textures/UncastableScroll") as Texture2D;
+	        }
+	        return still_icon;
+	    }
+		if(still_icon == null || still_icon.ToString().Contains("UncastableScroll"))
 			still_icon = Resources.Load("Textures/Scroll") as Texture2D;
 		
 		if(animated_icon == null)
@@ -134,6 +148,7 @@ public class CodeScrollItem : DraggableItem {
 		{
 			TraceLogger.LogKVtime("attempt", getSpellName());
 			TraceLogger.LogKV("target", target.GetInstanceID().ToString()+", "+target.name+", "+target.transform.position);
+            TraceLogger.LogKV("player", ""+ObjectManager.FindById("Me").transform.position);
 			(GameObject.Find("Popup").GetComponent("Popup") as Popup).popup("Target ("+target.name+") immune to magic.");
 			SetHidden(false);
 			return;
@@ -142,6 +157,7 @@ public class CodeScrollItem : DraggableItem {
 		TraceLogger.LogKVtime("spell", getSpellName());
 		ProgramLogger.LogKVtime("spell", getSpellName());
 		TraceLogger.LogKV("target", target.GetInstanceID().ToString()+", "+target.name+", "+target.transform.position);
+		TraceLogger.LogKV("player", ""+ObjectManager.FindById("Me").transform.position);
 		
 		June june = new June(target, file_name);
 
@@ -163,6 +179,27 @@ public class CodeScrollItem : DraggableItem {
 	private bool isEmpty()
 	{
 		return file_name == null || file_name.Equals("");		
+	}
+	
+	public void SetCompilable()
+	{
+	    Process compile_process = Shell.shell_no_start("javac", "-classpath \"" + JuneConfig.june_files_path + "\" "+JuneConfig.java_files_path+"/"+file_name);
+        compile_process.Start();	
+        
+        var output = compile_process.StandardOutput.ReadToEnd();
+        var error = compile_process.StandardError.ReadToEnd();
+        
+//		Popup.mainPopup.popup(""  + output + " " + error);
+
+        if(!error.Equals(""))
+            compilable = false;
+        else
+            compilable = true;
+	}
+	
+	public bool IsCompilable()
+	{
+	    return compilable;
 	}
 }
 		 

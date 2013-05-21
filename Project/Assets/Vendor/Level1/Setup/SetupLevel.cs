@@ -224,7 +224,7 @@ public class SetupLevel : MonoBehaviour {
 		Inventory.DroppedOff += (target) => {
 			GameObject gnome = GameObject.Find("QuestSwampGnomeEnd");
 			GameObject presents = GameObject.Find("Presents");
-			
+						
 			if(target.name.Equals("Presents") && Vector3.Distance(gnome.transform.position, presents.transform.position) < 10)
 			{
 				badgebook.Complete("helping_others_cross_river");
@@ -327,6 +327,7 @@ public class SetupLevel : MonoBehaviour {
 				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
 				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
 			}
+			matching_items[0].GetComponent<CodeScrollItem>().SetCompilable();
 		};
 		
 		
@@ -394,6 +395,12 @@ public class SetupLevel : MonoBehaviour {
 	        if (gnome.name.Contains("Gnome"))
 	            TraceLogger.LogKV("gnome", gnome.name+", "+gnome.transform.position);
 	    }
+	}
+	
+	void OnApplicationQuit()
+	{
+	    TraceLogger.LogKVtime("session", "stop");
+	    ProgramLogger.LogKVtime("session", "stop");
 	}
 
 }

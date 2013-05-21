@@ -208,6 +208,11 @@ public class Enchantable : MonoBehaviour {
 		return this.june;
 	}
 	
+	public void stopAll() {
+	    foreach (June j in junes)
+	        j.Stop();
+	}
+	
 	public string disenchant(){
 		if(isEnchanted()) {
 			june.Stop();
