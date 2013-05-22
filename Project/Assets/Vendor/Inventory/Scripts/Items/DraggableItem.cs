@@ -10,13 +10,6 @@ public class DraggableItem : Item {
 		{
 			Drag();
 		} else {
-		    // make "uncastable" (uncompilable) spells not draggable
-		    if (this.GetType() == typeof(CodeScrollItem) && !((CodeScrollItem)this).IsCompilable()) {
-		        SetActive(false);
-	            if(getInventory().MouseOverInventory())
-			        DroppedOnInventory(Input.mousePosition);
-			    return;
-		    }
 			Drop();
 		}
 	}
@@ -29,6 +22,13 @@ public class DraggableItem : Item {
 	
 	virtual protected void Drop()
 	{
+	    // make "uncastable" (uncompilable) spells not draggable
+        if (this.GetType() == typeof(CodeScrollItem) && !((CodeScrollItem)this).IsCompilable()) {
+            SetActive(false);
+            if(getInventory().MouseOverInventory())
+                DroppedOnInventory(Input.mousePosition);
+            return;
+        }
 		SetActive(false);
 		getInventory().SetDragged(null);
 		
