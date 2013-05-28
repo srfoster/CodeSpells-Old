@@ -7,6 +7,7 @@ public class SetupLevel : MonoBehaviour {
 	CodeScrollItem item;
 	private bool crate1 = false;
 	private bool crate2 = false;
+	private bool hintstart = true;
 	
 	void Start()
 	{
@@ -34,6 +35,8 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupSpellbook()).Init();
 		(new SetupBadgebook()).Init();
 		(new SetupSpellKiller()).Init();
+		
+		logStart();
 
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
@@ -41,8 +44,6 @@ public class SetupLevel : MonoBehaviour {
 		//givePlayerAScroll();
 		
 		setupSpecialEvents();  //i.e. do random shit
-		
-		logStart();
 	}
 	
 	void givePlayerAFlag() {
@@ -401,6 +402,15 @@ public class SetupLevel : MonoBehaviour {
 	{
 	    TraceLogger.LogKVtime("session", "stop");
 	    ProgramLogger.LogKVtime("session", "stop");
+	}
+
+	void OnGUI()
+	{
+	    if (GUI.Button(new Rect(Screen.width-30, Screen.height-30, 30, 30), "H")) {
+	        TraceLogger.LogKVtime("hint", ""+hintstart);
+	        ProgramLogger.LogKVtime("hint", ""+hintstart);
+	        hintstart = !hintstart;
+	    }
 	}
 
 }
