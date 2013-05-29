@@ -163,16 +163,6 @@ public class Util {
 	       return g.name;
 	}
 	
-	public static bool isFlammable(string id) {
-	    GameObject g = ObjectManager.FindById(id);
-	    if (g.GetComponent<Flamable>()) {
-	        TraceLogger.LogKV("flammable", id+", "+g.name+", True");
-	        return true;
-	    }
-	    TraceLogger.LogKV("flammable", id+", "+g.name+", False");
-	    return false;
-	}
-	
 // 	public void endCast(string spellname) {
 // 	    //spellname, time, position of objects and player
 // 	    TraceLogger.LogKV("endspell", spellname+", "+Time.time);

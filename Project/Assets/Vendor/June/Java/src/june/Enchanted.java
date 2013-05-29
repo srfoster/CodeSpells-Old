@@ -250,12 +250,12 @@ public class Enchanted
 
   public String onFireCommand(boolean bool)
   {
-    String c = "";
+    String c = "if (objects['"+getId()+"'].GetComponent('Flamable')) ";
     if(bool)
     {
-      c = interpolateId("GetComponent('Flamable').Ignite()");
+      c += interpolateId("GetComponent('Flamable').Ignite()");
     } else {
-      c = interpolateId("GetComponent('Flamable').Extinguish()");
+      c += interpolateId("GetComponent('Flamable').Extinguish()");
     }
 
     return c;
@@ -263,9 +263,7 @@ public class Enchanted
 
   public void onFire(boolean bool)
   {
-    if (Boolean.parseBoolean(executeCommand("util.isFlammable('"+getId()+"')"))) {
-        String c = onFireCommand(bool);
-        executeCommand(c);
-    }
+    String c = onFireCommand(bool);
+    executeCommand(c);
   }
 }
