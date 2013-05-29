@@ -143,8 +143,30 @@ public class Util {
 	       if (g.GetComponent<Flamable>())
 	            flaming = g.GetComponent<Flamable>().isIgnited();
 	       TraceLogger.LogKV("object"+when, spellname+", "+id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position)+", "+flaming);
+	       Util util = new Util();
+	       if (g.name.Equals("Flag(Clone)")) {
+	            foreach (string i in util.getWithin(id).Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries)) {
+	                GameObject gobj = ObjectManager.FindById(i);
+           
+                    // Object id, type/name, position, ground height at position, is on fire
+                    flaming = false;
+                    if (gobj.GetComponent<Flamable>())
+                        flaming = gobj.GetComponent<Flamable>().isIgnited();
+                    TraceLogger.LogKV("object"+when, spellname+", "+i+", "+gobj.name+", "+gobj.transform.position+", "+Terrain.activeTerrain.SampleHeight(gobj.transform.position)+", "+flaming);
+	            }
+	       }
 
 	       return g.name;
+	}
+	
+	public static bool isFlammable(string id) {
+	    GameObject g = ObjectManager.FindById(id);
+	    if (g.GetComponent<Flamable>()) {
+	        TraceLogger.LogKV("flammable", id+", "+g.name+", True");
+	        return true;
+	    }
+	    TraceLogger.LogKV("flammable", id+", "+g.name+", False");
+	    return false;
 	}
 	
 // 	public void endCast(string spellname) {

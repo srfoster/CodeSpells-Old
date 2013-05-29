@@ -263,7 +263,9 @@ public class Enchanted
 
   public void onFire(boolean bool)
   {
-    String c = onFireCommand(bool);
-    executeCommand(c);
+    //if (Boolean.parseBoolean(executeCommand("util.isFlammable('"+getId()+"')"))) {
+        String c = onFireCommand(bool);
+        executeCommand(c);
+    //}
   }
 }
