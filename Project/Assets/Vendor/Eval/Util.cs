@@ -62,6 +62,9 @@ public class Util {
 		}
 		
 		string[] id_array = ids.ToArray();
+		foreach (string i in id_array) {
+		    logObj("area", i, id);
+		}
 		
 		return string.Join(";",id_array);		
 	}
@@ -144,16 +147,17 @@ public class Util {
 	            flaming = g.GetComponent<Flamable>().isIgnited();
 	       TraceLogger.LogKV("object"+when, spellname+", "+id+", "+g.name+", "+g.transform.position+", "+Terrain.activeTerrain.SampleHeight(g.transform.position)+", "+flaming);
 	       Util util = new Util();
-	       if (g.name.Equals("Flag(Clone)")) {
-	            foreach (string i in util.getWithin(id).Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries)) {
-	                GameObject gobj = ObjectManager.FindById(i);
-           
-                    // Object id, type/name, position, ground height at position, is on fire
-                    flaming = false;
-                    if (gobj.GetComponent<Flamable>())
-                        flaming = gobj.GetComponent<Flamable>().isIgnited();
-                    TraceLogger.LogKV("object"+when, spellname+", "+i+", "+gobj.name+", "+gobj.transform.position+", "+Terrain.activeTerrain.SampleHeight(gobj.transform.position)+", "+flaming);
-	            }
+	       if (when.Equals("end") && g.name.Equals("Flag(Clone)")) {
+	            util.getWithin(id);
+// 	            foreach (string i in util.getWithin(id).Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries)) {
+// 	                GameObject gobj = ObjectManager.FindById(i);
+//            
+//                     // Object id, type/name, position, ground height at position, is on fire
+//                     flaming = false;
+//                     if (gobj.GetComponent<Flamable>())
+//                         flaming = gobj.GetComponent<Flamable>().isIgnited();
+//                     TraceLogger.LogKV("object"+when, spellname+", "+i+", "+gobj.name+", "+gobj.transform.position+", "+Terrain.activeTerrain.SampleHeight(gobj.transform.position)+", "+flaming);
+// 	            }
 	       }
 
 	       return g.name;
