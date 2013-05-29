@@ -1,0 +1,7 @@
+import june.*;
+
+public class MassiveLevitation extends Spell{
+  public void cast(){
+    //Make everything in Area 0 levitate with this spell
+  }
+}
