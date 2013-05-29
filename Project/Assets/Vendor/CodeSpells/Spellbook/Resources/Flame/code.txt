@@ -3,6 +3,6 @@ import june.*;
 public class Flame extends Spell{
   public void cast(){
     Enchanted target = getTarget();
-	target.onFire(true);
+    target.onFire(true);
   }
 }

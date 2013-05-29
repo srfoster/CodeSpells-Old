@@ -84,6 +84,8 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
 		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
 		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
+		spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
+		spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
 	}
 	
 	void givePlayerAScroll()

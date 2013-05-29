@@ -1,0 +1,8 @@
+import june.*;
+
+public class FollowTheLeader extends Spell{
+  public void cast(){
+    //Make the object that you cast 
+    //the spell on follow you
+  }
+}
