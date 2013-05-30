@@ -8,7 +8,8 @@ public class DraggableItem : Item {
 	{
 		if(Input.GetMouseButton(0))
 		{
-			Drag();
+		    if (!(getInventory().DraggingOtherItem(gameObject)))
+			    Drag();
 		} else {
 			Drop();
 		}

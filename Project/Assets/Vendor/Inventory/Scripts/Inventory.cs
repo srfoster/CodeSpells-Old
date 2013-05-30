@@ -74,6 +74,13 @@ public class Inventory : MonoBehaviour {
 		dragged = item;
 	}
 	
+	public bool DraggingOtherItem(GameObject item)
+	{
+	    if (dragged != null && dragged != item)
+	        return true;
+	    return false;
+	}
+	
 	public bool MouseOverInventory()
 	{
 		return (new Rect(Screen.width - inventory_width,0,inventory_width,Screen.height)).Contains(Input.mousePosition);
