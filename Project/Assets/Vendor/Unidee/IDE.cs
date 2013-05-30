@@ -291,7 +291,7 @@ public class IDE : MonoBehaviour {
 	{
 	    if (GUI.changed) {
 		    clipboard = (string) typeof(GUIUtility).GetProperty("systemCopyBuffer", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null,null);
-		
+		    
 		    Event e = Event.current;
 		    if ( ((int)e.character) != 0 && String.Equals("None", e.keyCode+"") ) {  //type a character
 		        if (selStart == selStop)
@@ -300,12 +300,12 @@ public class IDE : MonoBehaviour {
 		            ProgramLogger.LogEdit("remove", selStart, selStop, selected);
 		            ProgramLogger.LogEdit("insert", stateObj.pos-1, stateObj.pos, e.character+"");
 		        }
-		    } else if ((e.functionKey && String.Equals(e.keyCode+"", "Backspace")) || (e.character == 'x' && (e.command || e.control))) {   //delete or cut
+		    } else if ((e.functionKey && String.Equals(e.keyCode+"", "Backspace")) || (String.Equals(""+e.keyCode, "X") && (e.command || e.control))) {   //delete or cut
 		        if (selStart == selStop)
 		            ProgramLogger.LogEdit("remove", stateObj.pos, selStart, "");
 		        else
 		            ProgramLogger.LogEdit("remove", selStart, selStop, selected);
-		    } else if ((e.command || e.control) && e.character == 'v') {    //paste
+		    } else if ((e.command || e.control) && String.Equals(""+e.keyCode, "V")) {    //paste
 		        if (selStart == selStop)
 		            ProgramLogger.LogEdit("insert", stateObj.pos-clipboard.Length, stateObj.pos, clipboard);
 		        else {
