@@ -329,6 +329,7 @@ public class SetupLevel : MonoBehaviour {
 				//matching_items[0].GetComponent<Item>().item_name = newName;
 				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
 				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
+				ProgramLogger.LogKVtime("rename", prevName+", "+newName);
 			}
 			matching_items[0].GetComponent<CodeScrollItem>().SetCompilable();
 		};
