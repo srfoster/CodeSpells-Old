@@ -49,6 +49,7 @@ public class Inventory : MonoBehaviour {
 	private GameObject dragged = null;
 	
 	private GUIStyle item_label_style;
+	private GUIStyle empty_style;
 	
 	public delegate void EventHandler(GameObject target);
 	public static event EventHandler PickedUp;
@@ -61,6 +62,7 @@ public class Inventory : MonoBehaviour {
 		item_label_style.fontSize = 15;
 		item_label_style.wordWrap = true;
 		item_label_style.font = label_font;
+		empty_style = new GUIStyle();
 	}
 	
 	void Update(){
@@ -87,7 +89,7 @@ public class Inventory : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-	
+	    
 		GUI.BeginGroup(new Rect(Screen.width - inventory_width,0,inventory_width,Screen.height));
 	
 		//Draw Background
@@ -100,7 +102,10 @@ public class Inventory : MonoBehaviour {
 		GUI.EndGroup();
 		
 		displayDragged();
-	
+		
+		//make it so that we can't click through the inventory
+		// NOTE: This must appear LAST in the OnGUI. Otherwise, other buttons won't work!
+	    GUI.Button(new Rect(Screen.width - inventory_width,0,inventory_width,Screen.height), "", empty_style);
 	}
 	
 	void displayDragged(){

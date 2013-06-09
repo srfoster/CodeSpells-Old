@@ -31,6 +31,7 @@ public class Badgebook : MonoBehaviour {
 	GameObject previous_state;
 	
 	public GUIStyle button_style = new GUIStyle();
+	private GUIStyle empty_style = new GUIStyle();
 		
 	public Texture2D button_up_texture;
 	public Texture2D button_down_texture;
@@ -54,6 +55,10 @@ public class Badgebook : MonoBehaviour {
 				enabled = false;
 	        	previous_state.active = true;
 	    	}
+	    	
+	    	// make it so that we can't click through to the game
+			// NOTE: This must appear LAST in the OnGUI. Otherwise, other buttons won't work!
+		    GUI.Button(new Rect(0,0,Screen.width,Screen.height), "", empty_style);
 		}	
 	}
 	
