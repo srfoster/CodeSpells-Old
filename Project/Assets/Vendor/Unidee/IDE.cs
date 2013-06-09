@@ -49,6 +49,7 @@ public class IDE : MonoBehaviour {
 	public Texture2D button_down_texture;
 	public Texture2D red_button_up_texture;
 	public Texture2D red_button_down_texture;
+	private Texture2D trashcan;
 	
 	public Font ide_font;	
 	public GUIStyle button_style = new GUIStyle();
@@ -242,6 +243,8 @@ public class IDE : MonoBehaviour {
 		//errorPanel.move(-200, 500);
 		//errorPanel = new Rectangle(Screen.width*3/4+5,0,Screen.width*1/4-5,Screen.height);
 		buttonPanel = new ButtonPanel(this);
+		trashcan = Resources.Load("hrum_trash3") as Texture2D;
+		//trashcan.Resize(32, 32);
 	}
 	
 	void DoWindow0 (int windowID) {
@@ -629,11 +632,15 @@ public class IDE : MonoBehaviour {
 	}
 	
 	public void checkRemoveButton(Rect r) {
-	    if (GUI.Button (r, "X", remove_style))
+	    
+	    //if (GUI.Button (r, "X", remove_style))
+	    //if (GUI.Button (r, trashcan, remove_style))
+	    if (GUI.Button (r, "", remove_style))
 		{
 			no_edit = true;
 			shouldPopup = true;
 	    }
+	    GUI.DrawTexture(new Rect(r.x+10, r.y+10, r.width-20, r.height-20), trashcan);
 	}
 
 	
