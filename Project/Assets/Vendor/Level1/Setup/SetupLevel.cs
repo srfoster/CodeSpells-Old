@@ -8,10 +8,14 @@ public class SetupLevel : MonoBehaviour {
 	CodeScrollItem item;
 	private bool crate1 = false;
 	private bool crate2 = false;
-	private bool hintstart = true;
+	private bool hintstart = false;
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
+	
+	private GUIStyle helpButtonStyle = new GUIStyle();
+	private Texture2D yellowBorder;
+	private bool showYellowBorder = false;
 	
 	void Start()
 	{
@@ -48,6 +52,14 @@ public class SetupLevel : MonoBehaviour {
 		//givePlayerAScroll();
 		
 		setupSpecialEvents();  //i.e. do random shit
+		
+		createYellowBorderTexture();
+		helpButtonStyle.normal.background = Resources.Load("Textures/red_button") as Texture2D;
+		helpButtonStyle.active.background = Resources.Load("Textures/darker_red_button") as Texture2D;
+		helpButtonStyle.normal.textColor = Color.yellow;
+		helpButtonStyle.active.textColor = new Color(0.75f, 0.68f, 0.016f);
+		helpButtonStyle.alignment = TextAnchor.MiddleCenter;
+		helpButtonStyle.fontSize = 20;
 	}
 	
 	void givePlayerAFlag() {
@@ -442,11 +454,36 @@ public class SetupLevel : MonoBehaviour {
 
 	void OnGUI()
 	{
-	    if (GUI.Button(new Rect(Screen.width-30, Screen.height-30, 30, 30), "H")) {
-	        TraceLogger.LogKVtime("hint", ""+hintstart);
-	        ProgramLogger.LogKVtime("hint", ""+hintstart);
-	        hintstart = !hintstart;
+	    string redButtonText = "Help";
+	    // If help has been requested, display a yellow border
+	    if (showYellowBorder) {
+	        redButtonText = "Ok";
+	        int thick = 10;
+	        GUI.DrawTexture(new Rect(0, 0, Screen.width, thick), yellowBorder, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(new Rect(0, 0, thick, Screen.height), yellowBorder, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(new Rect(Screen.width-thick, 0, thick, Screen.height), yellowBorder, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(new Rect(0, Screen.height-thick, Screen.width, thick), yellowBorder, ScaleMode.StretchToFill, false);
 	    }
+	    bool oldhint = hintstart;
+	    // Toggle control for marking start/end of giving a hint
+	    hintstart = GUI.Toggle(new Rect(Screen.width-30, Screen.height-30, 30, 30), hintstart, "H");
+	    if (oldhint != hintstart) {
+	        showYellowBorder = false;
+            TraceLogger.LogKVtime("hint", ""+hintstart);
+            ProgramLogger.LogKVtime("hint", ""+hintstart);
+        }
+        // Display a button that requests help or cancels a call for help
+        if (GUI.Button(new Rect(0, Screen.height-64, 64, 64), redButtonText+"!", helpButtonStyle)) {
+            TraceLogger.LogKVtime("hint", redButtonText);
+            ProgramLogger.LogKVtime("hint", redButtonText);
+            showYellowBorder = !showYellowBorder;
+        }
+	}
+	
+	void createYellowBorderTexture() {
+	    yellowBorder = new Texture2D(1,1);
+	    yellowBorder.SetPixel(0, 0, Color.yellow);
+	    yellowBorder.Apply();
 	}
 
 }
