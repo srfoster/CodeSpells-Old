@@ -132,7 +132,21 @@ public class Spellbook : MonoBehaviour {
 		}
 	}
 	
-	void givePlayerAScroll()
+	public string copyBlankSpell() {
+	    int temp_curr = current_page;
+	    current_page = pages.FindIndex(
+	        delegate(SpellbookPage p)
+            {
+                return p.getName() == "MySpell";
+            }
+        );
+	    string fname = givePlayerAScroll();
+	    SpellCopied(currentPage());
+	    current_page = temp_curr;
+	    return fname;
+	}
+	
+	string givePlayerAScroll()
 	{
 		CodeScrollItem item;
 
@@ -160,6 +174,7 @@ public class Spellbook : MonoBehaviour {
 		ProgramLogger.LogCode(currentPage().getName() + number, code_scroll_item_component.getIDEInput().GetCode());
 
 		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);
+		return currentPage().getName() + number + ".java";
 	}
 	
 	void displayCurrentPage()

@@ -17,6 +17,15 @@ public class FileLogger {
 }
 
 
+public class BadgeLogger {
+	public static StreamWriter file = File.AppendText("./CodeSpellsBadges.log");
+
+	public static void Log(string message)		
+	{
+		file.WriteLine(message);
+		file.Flush();
+	}
+}
 
 
 public class TraceLogger {

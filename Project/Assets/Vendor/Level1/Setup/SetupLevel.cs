@@ -2,12 +2,16 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.IO;
 
 public class SetupLevel : MonoBehaviour {
 	CodeScrollItem item;
 	private bool crate1 = false;
 	private bool crate2 = false;
 	private bool hintstart = true;
+	
+	private int helpingUnlocked = 0;
+	private int num_unlocked = 0;
 	
 	void Start()
 	{
@@ -54,8 +58,8 @@ public class SetupLevel : MonoBehaviour {
 			game_flag.name = "game_flag";
 			
 			Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+			
 			inventory.addItem(game_flag);
-
 			game_flag.GetComponent<Item>().item_name = "Staff";
 		};
 	}
@@ -143,8 +147,11 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
 		badgebook.Add("collecting_objects_staff", 			"  ", 							"", false);
 		
+		// mark badges as already complete
+		markCompletedBadges();
+		
 		//Set up the callbacks for unlocking the badges.
-		int num_unlocked = 0;
+		//int num_unlocked = 0;
 		Enchantable.EnchantmentEnded += (spell_target, item_name) => {			
 			bool success = false;
 			if(item_name.StartsWith("Flame"))
@@ -181,7 +188,7 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		int collectedBread = 0;
-		int helpingUnlocked = 0;
+		//int helpingUnlocked = 0;
 		
 		FlyQuestChecker.Levitated += () => {
 			badgebook.Complete("helping_others_reaching_up_high");
@@ -215,7 +222,7 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("helping_others_picking_up_item");	
 				helpingUnlocked++;
 			}
-			if(target.name.Equals("Flag"))
+			if(target.name.Equals("game_flag"))
 			{
 				badgebook.Complete("collecting_objects_staff");
 				helpingUnlocked++;
@@ -386,6 +393,32 @@ public class SetupLevel : MonoBehaviour {
 
 			main_audio.audio.PlayOneShot(bye_clip);	
 		};
+	}
+	
+	void markCompletedBadges() {
+	    if (File.Exists("./CodeSpellsBadges.log")) {
+            string[] lines = File.ReadAllLines("./CodeSpellsBadges.log");
+            Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
+            foreach (string line in lines) {
+                if (badgebook.MarkAlreadyComplete(line.Trim())) {
+                    if (line.StartsWith("helping_others_"))
+                        helpingUnlocked++;
+                    else if (line.StartsWith("reading_your_book_"))
+                        num_unlocked++;
+                    else if (line.StartsWith("collecting_objects_staff")) {
+                        helpingUnlocked++;
+                        GameObject game_flag = new GameObject();
+                        game_flag.AddComponent<Flag>();
+                        game_flag.name = "game_flag";
+            
+                        Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+                        inventory.addItem(game_flag);
+
+                        game_flag.GetComponent<Item>().item_name = "Staff";
+                    }
+                }
+            }
+	    }
 	}
 	
 	void logStart()

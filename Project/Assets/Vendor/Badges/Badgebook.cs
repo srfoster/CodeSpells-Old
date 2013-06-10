@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.IO;
 
 /**
  * 
@@ -101,12 +102,23 @@ public class Badgebook : MonoBehaviour {
 		}
 	}
 	
+	public bool MarkAlreadyComplete(string name) {
+	    if(!Contains("complete_"+name))
+		{
+			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), false);
+			TraceLogger.LogKV("alreadycompleted", name);
+			return true;
+		}
+		return false;
+	}
+	
 	public bool Complete(string name)
 	{
 		if(!Contains("complete_"+name))
 		{
 			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
 			TraceLogger.LogKV("completed", name);
+			BadgeLogger.Log(name);
 			return true;
 		} else {
 			return false;
@@ -201,4 +213,13 @@ public class Badgebook : MonoBehaviour {
 		previous_state.active = false;
 		enabled = true;
 	}
+	
+// 	public void OnApplicationQuit() {
+// 	    using (StreamWriter file = File.CreateText("./CodeSpellsBadges.log")) {
+//             for (int i=0; i<badgeStore.Size(); i++) {
+//                 if (badgeStore.name(i).Contains("complete_")) //.Contains("incomplete") && ! badgeStore.path(i).Equals(""))
+//                     file.WriteLine((badgeStore.name(i)).Substring("complete_".Length));
+//             }
+//         }
+// 	}
 }
