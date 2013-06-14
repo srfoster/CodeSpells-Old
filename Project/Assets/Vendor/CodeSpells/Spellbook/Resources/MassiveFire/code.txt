@@ -11,9 +11,9 @@ public class MassiveFire extends Spell
 
     EnchantedList list = area.findWithin();
 
-    for(Enchanted thing : list)
+    for(Enchanted target : list)
     {
-      thing.onFire(true);
+      target.onFire(true);
     }
   }
 }

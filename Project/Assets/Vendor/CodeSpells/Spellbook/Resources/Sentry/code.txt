@@ -2,25 +2,25 @@ import june.*;
 
 public class Sentry extends Spell{
   public void cast(){
-    Enchanted thing = getTarget();
+    Enchanted target = getTarget();
     
     while(true){
-      moveEast(thing);
-      moveWest(thing);
+      moveEast(target);
+      moveWest(target);
     }
   }
   
-  public void moveEast(Enchanted e){
+  public void moveEast(Enchanted target){
     for(int i = 0; i <100; i++)
     {
-      e.move(Direction.east(), 0.2);
+      target.move(Direction.east(), 0.2);
     } 
   } 
   
-  public void moveWest(Enchanted e){
+  public void moveWest(Enchanted target){
     for(int i = 0; i <100; i++)
     {
-      e.move(Direction.west(), 0.2);
+      target.move(Direction.west(), 0.2);
     } 
   } 
 }

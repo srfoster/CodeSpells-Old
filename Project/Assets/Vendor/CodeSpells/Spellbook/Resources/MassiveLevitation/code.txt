@@ -1,7 +1,25 @@
 import june.*;
 
 public class MassiveLevitation extends Spell{
+  //Make everything in Area 0 levitate with this spell
   public void cast(){
-    //Make everything in Area 0 levitate with this spell
+    //This line names Area 0 "area"
+    Enchanted area   = getByName("Area 0");
+
+    //This line grows the area to be 10 times bigger
+    area.grow(10);
+
+    //This line gets everything inside the area 
+    //and puts it in a list
+    EnchantedList list = area.findWithin();
+
+    //This line takes each object out of 
+    //the list and names them all "thing"
+    for(Enchanted target : list)
+    {
+      //CHANGE THIS LINE: Instead of catching "thing"
+      //on fire, you should levitate it
+      target.onFire(true);
+    }
   }
 }

@@ -18,11 +18,11 @@ public class Architecture extends Spell
 
         Location last = start.getLocation();
         
-        for(Enchanted e : list)
+        for(Enchanted target : list)
         {
             last.add(direction);
-            e.setLocation(last);
-            last = e.getLocation();
+            target.setLocation(last);
+            last = target.getLocation();
         }
 
     }

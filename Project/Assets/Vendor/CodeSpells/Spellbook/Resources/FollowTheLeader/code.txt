@@ -1,8 +1,54 @@
 import june.*;
 
 public class FollowTheLeader extends Spell{
+  //Make the object that you cast 
+  //the spell on follow you
   public void cast(){
-    //Make the object that you cast 
-    //the spell on follow you
+     //This summons the rain to you
+     summonRain();
+     
+     //Comment out the line above and
+     //uncomment the line below. Ask
+     //Sarah or Sam if you need help!
+     //makeObjectFollow();
+  }
+  
+  public void summonRain()
+  {
+    //This line names the rain cloud "rain"
+    Enchanted rain    = getByName("Rain");
+    
+    //This line names you "myself"
+    Enchanted myself  = getByName("Me");
+
+    //This line says to do everything inside of { } 
+    //until the rain is 65 feet away
+    while(rain.distanceTo(myself) > 65)
+    {
+      //This line names the direction that the rain needs
+      //to go so that it moves towards you
+      Direction toward_me = Direction.between(rain,myself);
+      
+      //This line makes the rain move towards you
+      rain.move(toward_me, 5);
+    }
+  }
+  
+  public void makeObjectFollow();
+  {
+    //CHANGE THIS LINE: Should get the target, not the rain
+    Enchanted rain    = getByName("Rain");
+    
+    //This line names you "myself"
+    Enchanted myself  = getByName("Me");
+
+    //CHANGE THIS LINE: This should do everything inside of { }
+    //forever, instead of stopping when it is 65 feet away
+    while(rain.distanceTo(myself) > 65)
+    {
+      //This line names the direction that the rain is 
+      Direction toward_me = Direction.between(rain,myself);
+      rain.move(toward_me, 5);
+    }
   }
 }
