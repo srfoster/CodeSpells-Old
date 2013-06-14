@@ -45,6 +45,11 @@ public class BadgeStore {
 		return badges[names[i]].path;	
 	}
 	
+	public string name(int i)
+	{
+	    return names[i];
+	}
+	
 	public string label(string i)
 	{
 		return badges[i].label;

@@ -10,6 +10,8 @@ public class DraggableItem : Item {
 		{
 		    if (!(getInventory().DraggingOtherItem(gameObject)))
 			    Drag();
+			else
+			    SetActive(false);
 		} else {
 			Drop();
 		}

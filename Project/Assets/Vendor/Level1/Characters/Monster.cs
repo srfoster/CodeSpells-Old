@@ -29,6 +29,7 @@ public class Monster : MonoBehaviour {
 	public void Attack () {
 		Debug.Log("ATTACK!");
 		if (!attacking) {
+		    TraceLogger.LogKVtime("monster", "attack");
 			audio.clip = Resources.Load("MonsterRunning") as AudioClip;
 			Debug.Log("About to start the audio clip");
 			audio.Play();
@@ -113,6 +114,7 @@ public class Monster : MonoBehaviour {
 	
 	public void LoosePlayer() 
 	{
+	    TraceLogger.LogKVtime("monster", "lost");
 		audio.Stop();
 		AttackEnded(gameObject);
 		GameObject.Find ("Main Camera").GetComponent<ShakeCamera>().endShakeMode();
@@ -131,6 +133,7 @@ public class Monster : MonoBehaviour {
 	
  	IEnumerator KillPlayer() 
 	{
+	    TraceLogger.LogKVtime("monster", "killed");
 		alphaFadeValue = 1;
 		
 		GameObject.Find("Voice").audio.PlayOneShot(Resources.Load("Dying") as AudioClip);  

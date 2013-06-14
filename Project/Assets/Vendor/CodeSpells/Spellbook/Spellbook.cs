@@ -17,9 +17,12 @@ public class Spellbook : MonoBehaviour {
 	GameObject previous_state;
 	
 	bool enabled = false;
+	bool noCopyDisplay = false;
 	
 	public GUIStyle button_style = new GUIStyle();
 	public GUIStyle code_style = new GUIStyle();
+	public GUIStyle half_code_style = new GUIStyle();
+	private GUIStyle empty_style = new GUIStyle();
 	
 	public Texture2D button_up_texture;
 	public Texture2D button_down_texture;
@@ -58,6 +61,12 @@ public class Spellbook : MonoBehaviour {
 		code_style.font = code_font;
 		code_style.wordWrap = false;
 		
+		//set code_style for display of small spellbook
+		half_code_style.fontSize = 20; //will be reset based on scaling
+		half_code_style.normal.textColor = Color.black;
+		half_code_style.font = code_font;
+		half_code_style.wordWrap = false;
+		
 		ide = GameObject.Find("IDE").GetComponent<IDE>();
 		
 		return null;
@@ -71,30 +80,33 @@ public class Spellbook : MonoBehaviour {
 	
 	void OnGUI(){
 		if(enabled){
+		    
 			displayCurrentPage();
 
-			if (GUI.Button (new Rect (Screen.width - 200,30,130,65), "Back", button_style))
-			{	
-				enabled = false;
-	        	previous_state.active = true;
-	    	}
-			
-			GUIStyle copy_button_style = new GUIStyle();
-			copy_button_style.normal.background = copy_button_texture;
-			copy_button_style.normal.textColor = Color.black;
-			copy_button_style.active.textColor = new Color(0.75f,0.75f,0.75f);
-			copy_button_style.alignment = TextAnchor.MiddleCenter;
-			copy_button_style.fontSize = 30;
-			
-			if (GUI.Button (new Rect (Screen.width * 0.17f, Screen.height * 0.86f, 210, 50), "Copy", copy_button_style)){
-				enabled = false;
-	        	previous_state.active = true;
-				
-				givePlayerAScroll();
-				
-				SpellCopied(currentPage());
-			}
-			
+            if (GUI.Button (new Rect (Screen.width - 200,30,130,65), "Back", button_style))
+            {	
+                enabled = false;
+                previous_state.active = true;
+                setNoCopyDisplay(false);
+            }
+        
+            if (!noCopyDisplay) {
+                GUIStyle copy_button_style = new GUIStyle();
+                copy_button_style.normal.background = copy_button_texture;
+                copy_button_style.normal.textColor = Color.black;
+                copy_button_style.active.textColor = new Color(0.75f,0.75f,0.75f);
+                copy_button_style.alignment = TextAnchor.MiddleCenter;
+                copy_button_style.fontSize = 30;
+        
+                if (GUI.Button (new Rect (Screen.width * 0.17f, Screen.height * 0.86f, 210, 50), "Copy", copy_button_style)){
+                    enabled = false;
+                    previous_state.active = true;
+            
+                    givePlayerAScroll();
+            
+                    SpellCopied(currentPage());
+                }
+            }
 			
 			GUIStyle prev_button_style = new GUIStyle();
 			prev_button_style.normal.background = prev_button_texture;
@@ -107,15 +119,34 @@ public class Spellbook : MonoBehaviour {
 			
 			GUIStyle next_button_style = new GUIStyle();
 			next_button_style.normal.background = next_button_texture;
+
 			if(current_page != pages.Count - 1 && GUI.Button (new Rect (Screen.width * 0.95f, Screen.height * 0.5f, 35, 35), "", next_button_style))
 			{
 				current_page++;
 				PageTurnedForward(currentPage());
 			}
+			
+			// make it so that we can't click through to the game
+			// NOTE: This must appear LAST in the OnGUI. Otherwise, other buttons won't work!
+		    GUI.Button(new Rect(0,0,Screen.width,Screen.height), "", empty_style);
 		}
 	}
 	
-	void givePlayerAScroll()
+	public string copyBlankSpell() {
+	    int temp_curr = current_page;
+	    current_page = pages.FindIndex(
+	        delegate(SpellbookPage p)
+            {
+                return p.getName() == "MySpell";
+            }
+        );
+	    string fname = givePlayerAScroll();
+	    SpellCopied(currentPage());
+	    current_page = temp_curr;
+	    return fname;
+	}
+	
+	string givePlayerAScroll()
 	{
 		CodeScrollItem item;
 
@@ -143,6 +174,7 @@ public class Spellbook : MonoBehaviour {
 		ProgramLogger.LogCode(currentPage().getName() + number, code_scroll_item_component.getIDEInput().GetCode());
 
 		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);
+		return currentPage().getName() + number + ".java";
 	}
 	
 	void displayCurrentPage()
@@ -156,7 +188,7 @@ public class Spellbook : MonoBehaviour {
 
 			return;	
 		}
-			
+		
 		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),currentPage().texture);
 		
 		if(!currentPage().code.Equals(""))
@@ -171,7 +203,45 @@ public class Spellbook : MonoBehaviour {
 		foreach (Tuple<Rect, Texture2D> tup in (new Highlight()).highlightPage(currentPage().code)) {
 			GUI.DrawTexture(tup.Item1, tup.Item2);
 		}
+		GUI.SetNextControlName("ReferenceCode");
 		GUILayout.TextArea(currentPage().code, code_style);
+		//GUILayout.Label(currentPage().code, code_style);
+		//GUILayout.Box(currentPage().code, code_style);
+		
+        GUILayout.EndScrollView();
+		GUILayout.EndArea();
+	}
+	
+	public void displayScaledPage(HalfBook halfbook) {
+	    Rect textRect = halfbook.getTextRect();
+	    Rect bookRect = halfbook.getBookRect();
+	    
+	    half_code_style.fontSize = (int) (code_style.fontSize * bookRect.width / Screen.width);
+	    float fontScale = half_code_style.fontSize / ((float) code_style.fontSize);
+	    //float fontScale = bookRect.width / Screen.width;
+	    
+	    //GUI.SetNextControlName("SpellbookPage");
+	    GUI.DrawTexture(bookRect,currentPage().texture);
+	    //if (GUI.Button(bookRect,currentPage().texture))
+	    //    halfbook.setFocus();
+	    
+	    //GUI.SetNextControlName("ReferenceCode");
+	    GUILayout.BeginArea(textRect);
+		scroll_position = GUILayout.BeginScrollView (scroll_position, GUILayout.Width(textRect.width), GUILayout.Height(textRect.height)); // Should vary the size of the last rect by how much text we have??
+
+		foreach (Tuple<Rect, Texture2D> tup in (new Highlight()).highlightPage(currentPage().code)) {
+		    //since we changed the font size, need to rescale the highlighting
+		    Rect h = tup.Item1;
+		    h.x = (h.x) * fontScale;
+		    h.y = (h.y+2) /23 * half_code_style.lineHeight - 2*fontScale;
+		    h.width *= fontScale;
+		    h.height *= fontScale;
+			GUI.DrawTexture(h, tup.Item2);
+		}
+		
+		GUILayout.TextArea(currentPage().code, half_code_style);
+		//GUILayout.Label(currentPage().code, code_style);
+		//GUILayout.Box(currentPage().code, code_style);
 		
         GUILayout.EndScrollView();
 		GUILayout.EndArea();
@@ -187,5 +257,28 @@ public class Spellbook : MonoBehaviour {
 	
 	SpellbookPage currentPage(){
 		return pages[current_page];	
+	}
+	
+	public void pageChangeButtons(Rect prev, Rect next) {
+	    GUIStyle prev_button_style = new GUIStyle();
+        prev_button_style.normal.background = prev_button_texture;
+        if(current_page != 0 && GUI.Button (prev, "", prev_button_style))
+        {
+            current_page--;
+            PageTurnedBackward(currentPage());
+        }
+        
+        
+        GUIStyle next_button_style = new GUIStyle();
+        next_button_style.normal.background = next_button_texture;
+        if(current_page != pages.Count - 1 && GUI.Button (next, "", next_button_style))
+        {
+            current_page++;
+            PageTurnedForward(currentPage());
+        }
+	}
+	
+	public void setNoCopyDisplay(bool b) {
+	    noCopyDisplay = b;
 	}
 }
