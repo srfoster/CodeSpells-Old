@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 
 public class Spellbook : MonoBehaviour {
@@ -114,6 +115,7 @@ public class Spellbook : MonoBehaviour {
 			{
 				current_page--;
 				PageTurnedBackward(currentPage());
+				logCurrentPage();
 			}
 			
 			
@@ -124,6 +126,7 @@ public class Spellbook : MonoBehaviour {
 			{
 				current_page++;
 				PageTurnedForward(currentPage());
+				logCurrentPage();
 			}
 			
 			// make it so that we can't click through to the game
@@ -144,6 +147,45 @@ public class Spellbook : MonoBehaviour {
 	    SpellCopied(currentPage());
 	    current_page = temp_curr;
 	    return fname;
+	}
+	
+	public void addExistingSpell(string name) {
+	    int page = pages.FindIndex(
+	        delegate(SpellbookPage p)
+            {
+                return name.StartsWith(p.getName());
+            }
+        );
+        
+        
+        CodeScrollItem item;
+
+		GameObject initial_scroll = new GameObject();
+		initial_scroll.name = "InitialScroll";
+		initial_scroll.AddComponent<CodeScrollItem>();
+		item = initial_scroll.GetComponent<CodeScrollItem>();
+		item.item_name = "Blank";
+		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
+		
+		if (page >= 0) {
+		    if (!copied_spells.ContainsKey(pages[page].getName()))
+	            copied_spells.Add(pages[page].name,0);
+	        int number_so_far = copied_spells[pages[page].getName()];
+	        Regex r = new Regex(@"[0-9]+");
+	        Match m = r.Match(name);
+	        Capture c = m.Groups[0].Captures[0];
+			int thisnum = int.Parse(c.ToString());
+			copied_spells[pages[page].getName()] = Mathf.Max(number_so_far, thisnum);
+	    }
+	    CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
+		code_scroll_item_component.setCurrentFile(name + ".java");
+		//code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));
+		
+		ProgramLogger.LogCode(name, code_scroll_item_component.getIDEInput().GetCode());
+		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);
+        
+	    //string fname = givePlayerAScroll();
+	    //SpellCopied(currentPage());
 	}
 	
 	string givePlayerAScroll()
@@ -256,7 +298,12 @@ public class Spellbook : MonoBehaviour {
 	}
 	
 	SpellbookPage currentPage(){
+	    Debug.Log(""+current_page);
 		return pages[current_page];	
+	}
+	
+	public void logCurrentPage() {
+	    ProgramLogger.LogKVtime("page", currentPage().getName());
 	}
 	
 	public void pageChangeButtons(Rect prev, Rect next) {
@@ -266,6 +313,7 @@ public class Spellbook : MonoBehaviour {
         {
             current_page--;
             PageTurnedBackward(currentPage());
+            logCurrentPage();
         }
         
         
@@ -275,6 +323,7 @@ public class Spellbook : MonoBehaviour {
         {
             current_page++;
             PageTurnedForward(currentPage());
+            logCurrentPage();
         }
 	}
 	

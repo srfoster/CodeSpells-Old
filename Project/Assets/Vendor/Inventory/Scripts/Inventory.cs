@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class Inventory : MonoBehaviour {
 	
@@ -300,5 +301,14 @@ public class Inventory : MonoBehaviour {
 		
 		public float label_x;
 		public float label_y;
+	}
+	
+	void OnApplicationQuit() {
+	    using (StreamWriter file = new StreamWriter("./CodeSpellsSpells.log")) {
+	        foreach (GameObject item in items) {
+	            if (item.name.Equals("InitialScroll"))
+	                file.WriteLine(item.GetComponent<Item>().getName());
+	        }
+	    }
 	}
 }

@@ -105,7 +105,10 @@ public class Badgebook : MonoBehaviour {
 	public bool MarkAlreadyComplete(string name) {
 	    if(!Contains("complete_"+name))
 		{
-			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), false);
+		    if (badgeStore.label(name).Trim() == "")
+		        Replace(name, "complete_" + name, badgeStore.label(name), badgeStore.path(name).Replace("incomplete","complete"), false);
+		    else
+			    Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), false);
 			TraceLogger.LogKV("alreadycompleted", name);
 			return true;
 		}
@@ -116,7 +119,10 @@ public class Badgebook : MonoBehaviour {
 	{
 		if(!Contains("complete_"+name))
 		{
-			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
+		    if (badgeStore.label(name).Trim() == "")
+		        Replace(name, "complete_" + name, badgeStore.label(name), badgeStore.path(name).Replace("incomplete","complete"), true);
+		    else
+			    Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
 			TraceLogger.LogKV("completed", name);
 			BadgeLogger.Log(name);
 			return true;

@@ -50,6 +50,7 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerABadgeBook();
 		givePlayerAFlag();
 		//givePlayerAScroll();
+		givePlayerExistingSpells();
 		
 		setupSpecialEvents();  //i.e. do random shit
 		
@@ -295,6 +296,16 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 	
+	void givePlayerExistingSpells() {
+	    if (File.Exists("./CodeSpellsSpells.log")) {
+            string[] lines = File.ReadAllLines("./CodeSpellsSpells.log");
+            Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+            foreach (string line in lines) {
+	            spellbook.addExistingSpell(line);
+	        }
+	    }
+	}
+	
 	public string getSpellName(string cont) {
 		string title = "";
 		string[] lines = cont.Split("\n"[0]);
@@ -351,6 +362,7 @@ public class SetupLevel : MonoBehaviour {
 				ProgramLogger.LogKVtime("rename", prevName+", "+newName);
 			}
 			matching_items[0].GetComponent<CodeScrollItem>().SetCompilable();
+			ProgramLogger.LogKV("compilable", newName+", "+matching_items[0].GetComponent<CodeScrollItem>().IsCompilable());
 		};
 		
 		
