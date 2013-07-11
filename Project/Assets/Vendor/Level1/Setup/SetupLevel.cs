@@ -136,7 +136,8 @@ public class SetupLevel : MonoBehaviour {
 		inventory.addItem(book);
 		
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
-	
+	    
+	    badgebook.AddColumn(7);
 		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"incomplete_helping_others_badge", false);
 		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
@@ -145,10 +146,11 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		
-		badgebook.Add("blank_line_hack1", 					"", 			"", false);
-		badgebook.Add("blank_line_hack2", 					"", 			"", false);
-		badgebook.Add("blank_line_hack3", 					"", 			"", false);
+		//badgebook.Add("blank_line_hack1", 					"", 			"", false);
+		//badgebook.Add("blank_line_hack2", 					"", 			"", false);
+		//badgebook.Add("blank_line_hack3", 					"", 			"", false);
 
+        badgebook.AddColumn(9);
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
 		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"incomplete_cast_flame_badge", false);
 		badgebook.Add("reading_your_book_sentry", 			"  Sentry", 					"incomplete_cast_sentry_badge", false);

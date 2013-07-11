@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 /**
  * 
@@ -38,6 +39,8 @@ public class Badgebook : MonoBehaviour {
 	public Texture2D button_down_texture;
 	
 	public Font font;
+	
+	private List<int> columnHeights = new List<int>();
 
 	bool enabled = false;
 		
@@ -145,6 +148,10 @@ public class Badgebook : MonoBehaviour {
 		return badgeStore.Contains(name);	
 	}
 	
+	public void AddColumn(int height) {
+	    columnHeights.Add(height);
+	}
+	
 	void displayPages()
 	{
 		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),background);
@@ -177,12 +184,14 @@ public class Badgebook : MonoBehaviour {
 		int field_width  = (int) (Screen.width * .40f);
 		int field_height = 50;
 		
-		int per_page = (table_width / field_width) * (table_height / field_height);
-		int page_max = per_page * page_number;
+		int per_page = columnHeights[page_number-1]; //(table_width / field_width) * (table_height / field_height);
+		int page_max = 0;//columnHeights.Take(page_number).Sum(); //per_page; // * page_number;
+		for (int i=0; i<page_number-1; i++)
+		    page_max += columnHeights[i];
 		
 		int height_so_far = 0;
 				
-		for(int i = page_max - per_page; i < Mathf.Min(badgeStore.Size(), page_max); i++)
+		for(int i = page_max /*- per_page*/; i < Mathf.Min(badgeStore.Size(), page_max+per_page); i++)
 		{					
 			int x = col * field_width;
 			int y = row * field_height;
