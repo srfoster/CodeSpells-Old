@@ -19,6 +19,7 @@ public class Spellbook : MonoBehaviour {
 	
 	bool enabled = false;
 	bool noCopyDisplay = false;
+	bool canCopyAll = false;
 	
 	public GUIStyle button_style = new GUIStyle();
 	public GUIStyle code_style = new GUIStyle();
@@ -91,7 +92,7 @@ public class Spellbook : MonoBehaviour {
                 setNoCopyDisplay(false);
             }
         
-            if (!noCopyDisplay) {
+            if (!noCopyDisplay && (canCopyAll || currentPage().getName() == "MySpell" || currentPage().getName() == "Flame")) {
                 GUIStyle copy_button_style = new GUIStyle();
                 copy_button_style.normal.background = copy_button_texture;
                 copy_button_style.normal.textColor = Color.black;
@@ -149,13 +150,28 @@ public class Spellbook : MonoBehaviour {
 	    return fname;
 	}
 	
+	public string getIncName(string name) {
+	    string root = name;
+	    Regex r = new Regex(@"[0-9]+");
+        Match m = r.Match(name);
+        if (m.Success) {
+            Capture c = m.Groups[0].Captures[0];
+            int thisnum = int.Parse(c.ToString());
+            root = name.Replace(c.ToString(), "");
+        }
+	    if (!copied_spells.ContainsKey(root))
+	        copied_spells.Add(root, 0);
+	    copied_spells[root]++;
+	    return root + copied_spells[root];
+	}
+	
 	public void addExistingSpell(string name) {
-	    int page = pages.FindIndex(
-	        delegate(SpellbookPage p)
-            {
-                return name.StartsWith(p.getName());
-            }
-        );
+// 	    int page = pages.FindIndex(
+// 	        delegate(SpellbookPage p)
+//             {
+//                 return name.StartsWith(p.getName());
+//             }
+//         );
         
         
         CodeScrollItem item;
@@ -167,16 +183,32 @@ public class Spellbook : MonoBehaviour {
 		item.item_name = "Blank";
 		item.inventoryTexture = Resources.Load( "Textures/Scroll") as Texture2D;
 		
-		if (page >= 0) {
-		    if (!copied_spells.ContainsKey(pages[page].getName()))
-	            copied_spells.Add(pages[page].name,0);
-	        int number_so_far = copied_spells[pages[page].getName()];
-	        Regex r = new Regex(@"[0-9]+");
-	        Match m = r.Match(name);
-	        Capture c = m.Groups[0].Captures[0];
-			int thisnum = int.Parse(c.ToString());
-			copied_spells[pages[page].getName()] = Mathf.Max(number_so_far, thisnum);
-	    }
+// 		if (page >= 0) {
+// 		    if (!copied_spells.ContainsKey(pages[page].getName()))
+// 	            copied_spells.Add(pages[page].name,0);
+// 	        int number_so_far = copied_spells[pages[page].getName()];
+// 	        Regex r = new Regex(@"[0-9]+");
+// 	        Match m = r.Match(name);
+// 	        Capture c = m.Groups[0].Captures[0];
+// 			int thisnum = int.Parse(c.ToString());
+// 			copied_spells[pages[page].getName()] = Mathf.Max(number_so_far, thisnum);
+// 	    }
+
+        string root = name;
+        int thisnum = 0;
+	    Regex r = new Regex(@"[0-9]+");
+        Match m = r.Match(name);
+        if (m.Success) {
+            Capture c = m.Groups[0].Captures[0];
+            thisnum = int.Parse(c.ToString());
+            root = name.Replace(c.ToString(), "");
+        }
+	    if (!copied_spells.ContainsKey(root))
+	        copied_spells.Add(root, 0);
+	    int number_so_far = copied_spells[root];
+
+        copied_spells[root] = Mathf.Max(number_so_far, thisnum);
+	    
 	    CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
 		code_scroll_item_component.setCurrentFile(name + ".java");
 		//code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));

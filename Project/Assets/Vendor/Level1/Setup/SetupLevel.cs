@@ -358,6 +358,11 @@ public class SetupLevel : MonoBehaviour {
 				return;
 			}
 			if (!prevName.Equals(newName)) {
+			    // this spell already exists in the inventory so we need to automatically rename it
+                Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+                string newNameAdjusted = spellbook.getIncName(newName);
+                contents = contents.Replace(newName, newNameAdjusted);
+                newName = newNameAdjusted;
 				//matching_items[0].GetComponent<Item>().item_name = newName;
 				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
 				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
