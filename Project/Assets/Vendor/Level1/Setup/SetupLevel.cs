@@ -203,7 +203,6 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		int collectedBread = 0;
-		//int helpingUnlocked = 0;
 		
 		FlyQuestChecker.Levitated += () => {
 			if (badgebook.Complete("helping_others_reaching_up_high"))
@@ -236,7 +235,12 @@ public class SetupLevel : MonoBehaviour {
 		
 		SummonObject.SummonObjectQuest += () => {
 			if (badgebook.Complete("helping_others_summonObject"))
-			    helpingUnlocked++;
+			{
+				//Debug.Log("Trying to disable the Icon3D");
+				
+				//GameObject.Find("SummonObjectGnome").GetComponent<DisplayOnMinimap>().scale = 0;
+				helpingUnlocked++;
+			}
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
