@@ -119,7 +119,7 @@ public class June {
 			{
 				success = false;	
 			}
-			ProgramLogger.LogKV("compile", getSpellName()+", "+success);
+			//ProgramLogger.LogKV("compile", getSpellName()+", "+success);
 			
 			if (!success) {
 			    is_stopped = true;

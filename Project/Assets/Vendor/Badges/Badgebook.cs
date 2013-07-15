@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 /**
  * 
@@ -38,6 +39,8 @@ public class Badgebook : MonoBehaviour {
 	public Texture2D button_down_texture;
 	
 	public Font font;
+	
+	private List<int> columnHeights = new List<int>();
 
 	bool enabled = false;
 		
@@ -105,7 +108,10 @@ public class Badgebook : MonoBehaviour {
 	public bool MarkAlreadyComplete(string name) {
 	    if(!Contains("complete_"+name))
 		{
-			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), false);
+		    if (badgeStore.label(name).Trim() == "")
+		        Replace(name, "complete_" + name, badgeStore.label(name), badgeStore.path(name).Replace("incomplete","complete"), false);
+		    else
+			    Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), false);
 			TraceLogger.LogKV("alreadycompleted", name);
 			return true;
 		}
@@ -116,7 +122,10 @@ public class Badgebook : MonoBehaviour {
 	{
 		if(!Contains("complete_"+name))
 		{
-			Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
+		    if (badgeStore.label(name).Trim() == "")
+		        Replace(name, "complete_" + name, badgeStore.label(name), badgeStore.path(name).Replace("incomplete","complete"), true);
+		    else
+			    Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
 			TraceLogger.LogKV("completed", name);
 			BadgeLogger.Log(name);
 			return true;
@@ -137,6 +146,10 @@ public class Badgebook : MonoBehaviour {
 	public bool Contains(string name)
 	{
 		return badgeStore.Contains(name);	
+	}
+	
+	public void AddColumn(int height) {
+	    columnHeights.Add(height);
 	}
 	
 	void displayPages()
@@ -171,12 +184,14 @@ public class Badgebook : MonoBehaviour {
 		int field_width  = (int) (Screen.width * .40f);
 		int field_height = 50;
 		
-		int per_page = (table_width / field_width) * (table_height / field_height);
-		int page_max = per_page * page_number;
+		int per_page = columnHeights[page_number-1]; //(table_width / field_width) * (table_height / field_height);
+		int page_max = 0;//columnHeights.Take(page_number).Sum(); //per_page; // * page_number;
+		for (int i=0; i<page_number-1; i++)
+		    page_max += columnHeights[i];
 		
 		int height_so_far = 0;
 				
-		for(int i = page_max - per_page; i < Mathf.Min(badgeStore.Size(), page_max); i++)
+		for(int i = page_max /*- per_page*/; i < Mathf.Min(badgeStore.Size(), page_max+per_page); i++)
 		{					
 			int x = col * field_width;
 			int y = row * field_height;

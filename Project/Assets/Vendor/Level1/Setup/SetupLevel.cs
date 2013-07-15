@@ -49,8 +49,8 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
-		startPlayerWithAFlag();
 		//givePlayerAScroll();
+		givePlayerExistingSpells();
 		
 		setupSpecialEvents();  //i.e. do random shit
 		
@@ -77,17 +77,6 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 	
-	void startPlayerWithAFlag() {
-		GameObject game_flag = new GameObject();
-		game_flag.AddComponent<Flag>();
-		game_flag.name = "game_flag";
-		
-		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
-		
-		inventory.addItem(game_flag);
-		game_flag.GetComponent<Item>().item_name = "Staff";
-	}
-	
 	void givePlayerASpellbook()
 	{
 		GameObject book = new GameObject();
@@ -102,6 +91,8 @@ public class SetupLevel : MonoBehaviour {
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		
 		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
+		//spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
+		//spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
 		spellbook.Add(new FilePage("Flame", "Flame/texture", "Flame/code"));
 		spellbook.Add(new FilePage("Sentry", "Sentry/texture", "Sentry/code"));
 		spellbook.Add(new FilePage("Levitate", "Levitate/texture", "Levitate/code"));
@@ -112,8 +103,6 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
 		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
 		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
-		spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
-		spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
 	}
 	
 	void givePlayerAScroll()
@@ -147,7 +136,8 @@ public class SetupLevel : MonoBehaviour {
 		inventory.addItem(book);
 		
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
-	
+	    
+	    badgebook.AddColumn(7);
 		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"incomplete_helping_others_badge", false);
 		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
 		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
@@ -156,10 +146,11 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
 		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
 		
-		badgebook.Add("blank_line_hack1", 					"", 			"", false);
-		badgebook.Add("blank_line_hack2", 					"", 			"", false);
-		badgebook.Add("blank_line_hack3", 					"", 			"", false);
+		//badgebook.Add("blank_line_hack1", 					"", 			"", false);
+		//badgebook.Add("blank_line_hack2", 					"", 			"", false);
+		//badgebook.Add("blank_line_hack3", 					"", 			"", false);
 
+        badgebook.AddColumn(9);
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
 		badgebook.Add("reading_your_book_fire", 			"  Flames", 					"incomplete_cast_flame_badge", false);
 		badgebook.Add("reading_your_book_sentry", 			"  Sentry", 					"incomplete_cast_sentry_badge", false);
@@ -307,6 +298,24 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 	
+	void givePlayerExistingSpells() {
+	    if (File.Exists("./CodeSpellsSpells.log")) {
+            string[] lines = File.ReadAllLines("./CodeSpellsSpells.log");
+            Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+            string[] parts;
+            foreach (string line in lines) {
+                parts = line.Split(new char[] {','});
+                if (parts.Length == 1)
+	                spellbook.addExistingSpell(line, "");
+	            else {
+	                byte[] bs = System.Convert.FromBase64String(parts[1].Trim());
+	                string code = System.Text.Encoding.UTF8.GetString(bs, 0, bs.Length);
+	                spellbook.addExistingSpell(parts[0].Trim(), code);
+	            }
+	        }
+	    }
+	}
+	
 	public string getSpellName(string cont) {
 		string title = "";
 		string[] lines = cont.Split("\n"[0]);
@@ -357,12 +366,18 @@ public class SetupLevel : MonoBehaviour {
 				return;
 			}
 			if (!prevName.Equals(newName)) {
+			    // this spell already exists in the inventory so we need to automatically rename it
+                Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+                string newNameAdjusted = spellbook.getIncName(newName);
+                contents = contents.Replace(newName, newNameAdjusted);
+                newName = newNameAdjusted;
 				//matching_items[0].GetComponent<Item>().item_name = newName;
 				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
 				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
 				ProgramLogger.LogKVtime("rename", prevName+", "+newName);
 			}
 			matching_items[0].GetComponent<CodeScrollItem>().SetCompilable();
+			ProgramLogger.LogKV("compilable", newName+", "+matching_items[0].GetComponent<CodeScrollItem>().IsCompilable());
 		};
 		
 		
@@ -447,8 +462,10 @@ public class SetupLevel : MonoBehaviour {
 	
 	void logStart()
 	{
-	    TraceLogger.LogKV("session", "start");
-	    ProgramLogger.LogKV("session", "start");
+	    //TraceLogger.LogKV("session", "start");
+	    //ProgramLogger.LogKV("session", "start");
+	    TraceLogger.LogStart();
+	    ProgramLogger.LogStart();
 	    
 	    // log all the gnomes you can talk to and their positions
 	    NPCQuestTalk[] gnomes = Object.FindObjectsOfType(typeof(NPCQuestTalk)) as NPCQuestTalk[];
@@ -460,8 +477,11 @@ public class SetupLevel : MonoBehaviour {
 	
 	void OnApplicationQuit()
 	{
-	    TraceLogger.LogKVtime("session", "stop");
-	    ProgramLogger.LogKVtime("session", "stop");
+	    //TraceLogger.LogKVtime("session", "stop");
+	    //ProgramLogger.LogKVtime("session", "stop");
+	    
+	    TraceLogger.LogStop();
+	    ProgramLogger.LogStop();
 	}
 
 	void OnGUI()
