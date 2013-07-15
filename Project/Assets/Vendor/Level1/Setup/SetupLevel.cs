@@ -49,6 +49,7 @@ public class SetupLevel : MonoBehaviour {
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
+		startPlayerWithAFlag();
 		//givePlayerAScroll();
 		
 		setupSpecialEvents();  //i.e. do random shit
@@ -76,6 +77,17 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 	
+	void startPlayerWithAFlag() {
+		GameObject game_flag = new GameObject();
+		game_flag.AddComponent<Flag>();
+		game_flag.name = "game_flag";
+		
+		Inventory inventory = GameObject.Find("Inventory").GetComponent(typeof(Inventory)) as Inventory;
+		
+		inventory.addItem(game_flag);
+		game_flag.GetComponent<Item>().item_name = "Staff";
+	}
+	
 	void givePlayerASpellbook()
 	{
 		GameObject book = new GameObject();
@@ -90,8 +102,6 @@ public class SetupLevel : MonoBehaviour {
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		
 		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
-		spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
-		spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
 		spellbook.Add(new FilePage("Flame", "Flame/texture", "Flame/code"));
 		spellbook.Add(new FilePage("Sentry", "Sentry/texture", "Sentry/code"));
 		spellbook.Add(new FilePage("Levitate", "Levitate/texture", "Levitate/code"));
@@ -102,6 +112,8 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
 		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
 		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
+		spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
+		spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
 	}
 	
 	void givePlayerAScroll()
