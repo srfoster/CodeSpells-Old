@@ -19,7 +19,7 @@ public class Spellbook : MonoBehaviour {
 	
 	bool enabled = false;
 	bool noCopyDisplay = false;
-	bool canCopyAll = false;
+	bool canCopyAll = true;
 	
 	public GUIStyle button_style = new GUIStyle();
 	public GUIStyle code_style = new GUIStyle();
@@ -165,7 +165,7 @@ public class Spellbook : MonoBehaviour {
 	    return root + copied_spells[root];
 	}
 	
-	public void addExistingSpell(string name) {
+	public void addExistingSpell(string name, string code) {
 // 	    int page = pages.FindIndex(
 // 	        delegate(SpellbookPage p)
 //             {
@@ -212,6 +212,8 @@ public class Spellbook : MonoBehaviour {
 	    CodeScrollItem code_scroll_item_component = initial_scroll.GetComponent<CodeScrollItem>();
 		code_scroll_item_component.setCurrentFile(name + ".java");
 		//code_scroll_item_component.getIDEInput().SetCode(currentPage().code.Replace(currentPage().getName(), currentPage().getName() + number));
+		if (code != "")
+		    code_scroll_item_component.getIDEInput().SetCode(code);
 		
 		ProgramLogger.LogCode(name, code_scroll_item_component.getIDEInput().GetCode());
 		GameObject.Find("Inventory").GetComponent<Inventory>().addItem(initial_scroll);

@@ -306,8 +306,10 @@ public class Inventory : MonoBehaviour {
 	void OnApplicationQuit() {
 	    using (StreamWriter file = new StreamWriter("./CodeSpellsSpells.log")) {
 	        foreach (GameObject item in items) {
-	            if (item.name.Equals("InitialScroll"))
-	                file.WriteLine(item.GetComponent<Item>().getName());
+	            if (item.name.Equals("InitialScroll")) {
+	                string code = item.GetComponent<CodeScrollItem>().getIDEInput().GetCode();
+	                file.WriteLine(item.GetComponent<Item>().getName()+", "+ProgramLogger.EncodeTo64(code));
+	            }
 	        }
 	    }
 	}

@@ -60,6 +60,16 @@ public class TraceLogger {
 	    file.WriteLine("error: "+ProgramLogger.EncodeTo64(errors)+", "+Time.time);
 	    file.Flush();
 	}
+	
+	public static void LogStart() {
+	    file.WriteLine("session: start, "+DateTime.Now);
+	    file.Flush();
+	}
+	
+	public static void LogStop() {
+	    file.WriteLine("session: stop, "+Time.time+", "+DateTime.Now);
+	    file.Flush();
+	}
 
 }
 
@@ -99,6 +109,16 @@ public class ProgramLogger {
 	public static void LogCode(string name, string message)
 	{
 	    file.WriteLine("code: "+name+", "+Time.time+", "+EncodeTo64(message));
+	    file.Flush();
+	}
+	
+	public static void LogStart() {
+	    file.WriteLine("session: start, "+DateTime.Now);
+	    file.Flush();
+	}
+	
+	public static void LogStop() {
+	    file.WriteLine("session: stop, "+Time.time+", "+DateTime.Now);
 	    file.Flush();
 	}
 

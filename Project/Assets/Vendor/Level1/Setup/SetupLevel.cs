@@ -91,8 +91,8 @@ public class SetupLevel : MonoBehaviour {
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		
 		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
-		spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
-		spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
+		//spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
+		//spellbook.Add(new FilePage("FollowTheLeader", "FollowTheLeader/texture", "FollowTheLeader/code"));
 		spellbook.Add(new FilePage("Flame", "Flame/texture", "Flame/code"));
 		spellbook.Add(new FilePage("Sentry", "Sentry/texture", "Sentry/code"));
 		spellbook.Add(new FilePage("Levitate", "Levitate/texture", "Levitate/code"));
@@ -302,8 +302,16 @@ public class SetupLevel : MonoBehaviour {
 	    if (File.Exists("./CodeSpellsSpells.log")) {
             string[] lines = File.ReadAllLines("./CodeSpellsSpells.log");
             Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+            string[] parts;
             foreach (string line in lines) {
-	            spellbook.addExistingSpell(line);
+                parts = line.Split(new char[] {','});
+                if (parts.Length == 1)
+	                spellbook.addExistingSpell(line, "");
+	            else {
+	                byte[] bs = System.Convert.FromBase64String(parts[1].Trim());
+	                string code = System.Text.Encoding.UTF8.GetString(bs, 0, bs.Length);
+	                spellbook.addExistingSpell(parts[0].Trim(), code);
+	            }
 	        }
 	    }
 	}
@@ -454,8 +462,10 @@ public class SetupLevel : MonoBehaviour {
 	
 	void logStart()
 	{
-	    TraceLogger.LogKV("session", "start");
-	    ProgramLogger.LogKV("session", "start");
+	    //TraceLogger.LogKV("session", "start");
+	    //ProgramLogger.LogKV("session", "start");
+	    TraceLogger.LogStart();
+	    ProgramLogger.LogStart();
 	    
 	    // log all the gnomes you can talk to and their positions
 	    NPCQuestTalk[] gnomes = Object.FindObjectsOfType(typeof(NPCQuestTalk)) as NPCQuestTalk[];
@@ -467,8 +477,11 @@ public class SetupLevel : MonoBehaviour {
 	
 	void OnApplicationQuit()
 	{
-	    TraceLogger.LogKVtime("session", "stop");
-	    ProgramLogger.LogKVtime("session", "stop");
+	    //TraceLogger.LogKVtime("session", "stop");
+	    //ProgramLogger.LogKVtime("session", "stop");
+	    
+	    TraceLogger.LogStop();
+	    ProgramLogger.LogStop();
 	}
 
 	void OnGUI()
