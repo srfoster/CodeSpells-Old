@@ -1,0 +1,22 @@
+Nodes
+0=Welcome to our village!  We rarely get visitors anymore.
+1=I want to first tell you that there are some gnomes walking around making bread.
+2=Well, we are famous for our bread, so we export a lot.
+3=Yeah, but you don't need to worry about the gnomes making bread.
+4=Well, your job will be to talk to the gnomes that have colorful arrows above their head, like mine!
+5=Yeah! Just talk to the gnomes, they will ask you to help them in some way.
+6=Well you will have to use your SpellBook!
+7=Great! And you will earn badges that you can see in your BadgeBook when you help them!
+8=And if you need any more help, you can just ask Sam!
+9=Just talk to more gnomes to eanr badges, or create your own new spells!
+Responses
+0=I'm excited to be here!=0=1
+1=Oh neat!=1=3
+2=What do I do?=3=4
+3=I can do that!=4=5 
+4=How can I help?=5=6
+5=Oh cool!=6=7
+6=Awesome!=7=8
+Exits
+0=Ok!=8=9
+1=Ok!=9=9

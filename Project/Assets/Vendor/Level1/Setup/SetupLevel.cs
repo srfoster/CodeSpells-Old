@@ -12,6 +12,7 @@ public class SetupLevel : MonoBehaviour {
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
+	private const int NUMBER_OF_QUESTS = 8;
 	
 	private GUIStyle helpButtonStyle = new GUIStyle();
 	private Texture2D yellowBorder;
@@ -137,18 +138,16 @@ public class SetupLevel : MonoBehaviour {
 		
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
 	    
-	    badgebook.AddColumn(7);
-		badgebook.Add("helping_others", 				"HELPING OTHERS", 				"incomplete_helping_others_badge", false);
-		badgebook.Add("helping_others_picking_up_item",	"  Pickin up Stuff", 			"incomplete_picking_up_item_badge", false);
-		badgebook.Add("helping_others_cross_river", 	"  Cross River", 				"incomplete_crossing_river_badge", false);
-		badgebook.Add("helping_others_reaching_up_high", "  New Heights", 				"incomplete_reaching_up_high_badge", false);
+	    badgebook.AddColumn(NUMBER_OF_QUESTS+1);
+		badgebook.Add("helping_others", 						"HELPING OTHERS", 		"incomplete_helping_others_badge", false);
+		badgebook.Add("helping_others_picking_up_item",			"  Pickin up Stuff", 	"incomplete_picking_up_item_badge", false);
+		badgebook.Add("helping_others_cross_river", 			"  Cross River", 		"incomplete_crossing_river_badge", false);
+		badgebook.Add("helping_others_reaching_up_high", 		"  New Heights", 		"incomplete_reaching_up_high_badge", false);
 		badgebook.Add("helping_others_putting_something_high", 	"  Out of Reach", 		"incomplete_putting_something_high_badge", false);
-		badgebook.Add("helping_others_putting_out_fire", 	"  Firefighter", 				"incomplete_putting_out_fire_badge", false);
-		badgebook.Add("helping_others_light_fire", 		"  Light Fire", 				"incomplete_light_fire_badge", false);
-		
-		//badgebook.Add("blank_line_hack1", 					"", 			"", false);
-		//badgebook.Add("blank_line_hack2", 					"", 			"", false);
-		//badgebook.Add("blank_line_hack3", 					"", 			"", false);
+		badgebook.Add("helping_others_putting_out_fire", 		"  Firefighter", 		"incomplete_putting_out_fire_badge", false);
+		badgebook.Add("helping_others_light_fire", 				"  Light Fire", 		"incomplete_light_fire_badge", false);
+		badgebook.Add("helping_others_unlevitate",				"  Unlevitate",			"incomplete_unlevitate_badge", false);
+		badgebook.Add("helping_others_summonObject",			"  Summon Object",		"incomplete_summonObject_badge", false);
 
         badgebook.AddColumn(9);
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
@@ -208,13 +207,40 @@ public class SetupLevel : MonoBehaviour {
 		FlyQuestChecker.Levitated += () => {
 			badgebook.Complete("helping_others_reaching_up_high");
 			helpingUnlocked++;
+			
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
+				badgebook.Complete("helping_others");
 		};
 		
 		
 		AudioSource main_audio = GameObject.Find("Voice").audio;
 			
 		AudioClip pickup_clip = Resources.Load("PickupArpeg") as AudioClip;
-
+		
+		int unlevitatingBoxes = 0;
+		Unlevitate.UnlevitateQuest += () => {
+			unlevitatingBoxes++;
+			main_audio.PlayOneShot(pickup_clip);
+			Popup.mainPopup.popup("Got it! (" + (3 - unlevitatingBoxes) + " left)");
+			
+			if(unlevitatingBoxes == 3)
+			{
+				badgebook.Complete("helping_others_unlevitate");	
+				helpingUnlocked++;
+			}
+			
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
+				badgebook.Complete("helping_others");
+		};
+		
+		SummonObject.SummonObjectQuest += () => {
+			badgebook.Complete("helping_others_summonObject");	
+			helpingUnlocked++;
+			
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
+				badgebook.Complete("helping_others");
+		};
+		
 		CollectBread.CollectedBread += () => {
 			collectedBread++;
 			
@@ -227,13 +253,15 @@ public class SetupLevel : MonoBehaviour {
 				helpingUnlocked++;
 			}
 			
-			if(helpingUnlocked == 6)
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
 		};
 		
 		Inventory.PickedUp += (target) => {
 			if(target.name.Equals("Presents"))
 			{
+				//GameObject.Find("QuestSwampGnome").GetComponent<Icon3D>().enabled = false;
+				
 				badgebook.Complete("helping_others_picking_up_item");	
 				helpingUnlocked++;
 			}
@@ -242,7 +270,7 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("collecting_objects_staff");
 				helpingUnlocked++;
 			}
-			if(helpingUnlocked == 6)
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
 		};
 		
@@ -252,10 +280,11 @@ public class SetupLevel : MonoBehaviour {
 						
 			if(target.name.Equals("Presents") && Vector3.Distance(gnome.transform.position, presents.transform.position) < 10)
 			{
+				//GameObject.Find("QuestSwampGnomeEnd").GetComponent<Icon3D>().enabled = false;
 				badgebook.Complete("helping_others_cross_river");
 				helpingUnlocked++;
 			}
-			if(helpingUnlocked == 6)
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
 		};
 		
@@ -269,7 +298,7 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("helping_others_putting_out_fire");	
 				helpingUnlocked++;
 			}
-			if(helpingUnlocked == 6)
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
 		};
 		
@@ -293,7 +322,7 @@ public class SetupLevel : MonoBehaviour {
 					helpingUnlocked++;
 				}
 			}
-			if(helpingUnlocked == 6)
+			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
 		};
 	}

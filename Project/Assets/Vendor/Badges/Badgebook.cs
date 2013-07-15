@@ -53,7 +53,6 @@ public class Badgebook : MonoBehaviour {
 		if(enabled){
 			displayPages();
 			
-			
 			if (GUI.Button (new Rect (Screen.width - 200,30,130,65), "Back", button_style))
 			{	
 				enabled = false;

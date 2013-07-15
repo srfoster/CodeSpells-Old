@@ -1,0 +1,12 @@
+Nodes
+0=Thank you so much for bringing my crates down for me!
+1=I think you are a pro at unlevitating now! It's too bad it doesn't work on bread!
+2=Now you can levitate objects but always bring them back down!
+3=I don't have anything else to teach you!
+Responses
+0=No Problem!=0=1
+Exits
+0=Exit=0=1
+1=That's OK=1=2
+2=I know! :)=2=3
+3=OK=3=3

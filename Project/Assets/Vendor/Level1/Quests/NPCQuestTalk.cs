@@ -9,7 +9,7 @@ public class NPCQuestTalk : MonoBehaviour {
 	public string convo_files;
 	public string quests;
 	
-	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport, None, Staff}; 
+	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport, None, Staff, Unlevitate, SummonObject}; 
 	private int questIndex;
 	
 	private QuestChecker questObject;
@@ -51,6 +51,12 @@ public class NPCQuestTalk : MonoBehaviour {
 				break;
 			case whichQuest.Staff:
 				questObject = new StaffUnlocker();
+				break;
+			case whichQuest.Unlevitate:
+				questObject = new UnlevitateUnlocker();
+				break;
+			case whichQuest.SummonObject:
+				questObject = new SummonObjectUnlocker();
 				break;
 			default:
 				questObject = new NonQuestChecker();

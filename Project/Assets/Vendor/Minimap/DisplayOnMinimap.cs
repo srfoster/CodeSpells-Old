@@ -14,7 +14,6 @@ public class DisplayOnMinimap : MonoBehaviour {
 		triangle = (Instantiate(trianglePrefab, transform.position, Quaternion.identity) as GameObject);
 		triangle.name = "Triangle";
 
-		
 		Material my_material = new Material(Shader.Find("Diffuse"));
 		
 		triangle.transform.FindChild("Mesh").gameObject.renderer.material = my_material;
@@ -24,12 +23,9 @@ public class DisplayOnMinimap : MonoBehaviour {
 	}
 	
 	void Update () {
-		
 		//draw on minimap
 		Vector3 adjPos = new Vector3(transform.position.x, 60,transform.position.z);
 		triangle.transform.rotation = Quaternion.Euler(0.0f, transform.eulerAngles.y, 0.0f);
 		triangle.transform.position = adjPos;
-
-
     }
 }
