@@ -12,7 +12,7 @@ public class SetupLevel : MonoBehaviour {
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
-	private const int NUMBER_OF_QUESTS = 8;
+	private const int NUMBER_OF_QUESTS = 8 + 1; //extra 1 for staff, though it's not exactly a quest, it is used to unlock helping_others
 	
 	private GUIStyle helpButtonStyle = new GUIStyle();
 	private Texture2D yellowBorder;
@@ -148,6 +148,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("helping_others_light_fire", 				"  Light Fire", 		"incomplete_light_fire_badge", false);
 		badgebook.Add("helping_others_unlevitate",				"  Unlevitate",			"incomplete_unlevitate_badge", false);
 		badgebook.Add("helping_others_summonObject",			"  Summon Object",		"incomplete_summonObject_badge", false);
+		badgebook.Add("collecting_objects_staff", 			    "  Staff", 				"incomplete_collecting_objects_staff", false);
 
         badgebook.AddColumn(9);
 		badgebook.Add("reading_your_book", 					"READING YOUR BOOK", 			"incomplete_reading_your_book_badge", false);
@@ -159,7 +160,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
-		badgebook.Add("collecting_objects_staff", 			"  ", 							"", false);
+		
 		
 		// mark badges as already complete
 		markCompletedBadges();
@@ -195,7 +196,7 @@ public class SetupLevel : MonoBehaviour {
 			if(success)
 				num_unlocked++;
 			
-			if(num_unlocked == 7)
+			if(num_unlocked == 8)
 			{
 				badgebook.Complete("reading_your_book");
 			}
@@ -205,8 +206,8 @@ public class SetupLevel : MonoBehaviour {
 		//int helpingUnlocked = 0;
 		
 		FlyQuestChecker.Levitated += () => {
-			badgebook.Complete("helping_others_reaching_up_high");
-			helpingUnlocked++;
+			if (badgebook.Complete("helping_others_reaching_up_high"))
+			    helpingUnlocked++;
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
@@ -225,8 +226,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(unlevitatingBoxes == 3)
 			{
-				badgebook.Complete("helping_others_unlevitate");	
-				helpingUnlocked++;
+				if (badgebook.Complete("helping_others_unlevitate"))
+				    helpingUnlocked++;
 			}
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
@@ -234,8 +235,8 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		SummonObject.SummonObjectQuest += () => {
-			badgebook.Complete("helping_others_summonObject");	
-			helpingUnlocked++;
+			if (badgebook.Complete("helping_others_summonObject"))
+			    helpingUnlocked++;
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
@@ -249,8 +250,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(collectedBread == 12)
 			{
-				badgebook.Complete("helping_others_putting_something_high");	
-				helpingUnlocked++;
+				if (badgebook.Complete("helping_others_putting_something_high"))
+				    helpingUnlocked++;
 			}
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
@@ -262,13 +263,13 @@ public class SetupLevel : MonoBehaviour {
 			{
 				//GameObject.Find("QuestSwampGnome").GetComponent<Icon3D>().enabled = false;
 				
-				badgebook.Complete("helping_others_picking_up_item");	
-				helpingUnlocked++;
+				if (badgebook.Complete("helping_others_picking_up_item"))	
+				    helpingUnlocked++;
 			}
 			if(target.name.Equals("game_flag"))
 			{
-				badgebook.Complete("collecting_objects_staff");
-				helpingUnlocked++;
+				if (badgebook.Complete("collecting_objects_staff"))
+				    helpingUnlocked++;
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
@@ -281,8 +282,8 @@ public class SetupLevel : MonoBehaviour {
 			if(target.name.Equals("Presents") && Vector3.Distance(gnome.transform.position, presents.transform.position) < 10)
 			{
 				//GameObject.Find("QuestSwampGnomeEnd").GetComponent<Icon3D>().enabled = false;
-				badgebook.Complete("helping_others_cross_river");
-				helpingUnlocked++;
+				if (badgebook.Complete("helping_others_cross_river"))
+				    helpingUnlocked++;
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
@@ -295,8 +296,8 @@ public class SetupLevel : MonoBehaviour {
 				Debug.Log("Completing the summoning quest");
 				
 
-				badgebook.Complete("helping_others_putting_out_fire");	
-				helpingUnlocked++;
+				if (badgebook.Complete("helping_others_putting_out_fire"))
+				    helpingUnlocked++;
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
@@ -308,8 +309,8 @@ public class SetupLevel : MonoBehaviour {
 				crate1 = true;
 				if(crate2)
 				{
-					badgebook.Complete("helping_others_light_fire");	
-					helpingUnlocked++;
+					if (badgebook.Complete("helping_others_light_fire"))
+					    helpingUnlocked++;
 				}
 			}
 			
@@ -318,8 +319,8 @@ public class SetupLevel : MonoBehaviour {
 				crate2 = true;
 				if(crate1)
 				{
-					badgebook.Complete("helping_others_light_fire");
-					helpingUnlocked++;
+					if (badgebook.Complete("helping_others_light_fire"))
+					    helpingUnlocked++;
 				}
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
