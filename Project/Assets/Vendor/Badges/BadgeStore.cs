@@ -50,6 +50,11 @@ public class BadgeStore {
 	    return names[i];
 	}
 	
+	public BadgeInfo Get(int i)
+	{
+		return badges[names[i]];	
+	}
+	
 	public string label(string i)
 	{
 		return badges[i].label;
@@ -84,12 +89,18 @@ public class BadgeStore {
 		public Texture2D texture;	
 		public string label;
 		public string path;
+		public bool buttonUnlockable;
 		
 		public BadgeInfo(string label, string path)
 		{
 			texture = Resources.Load(path) as Texture2D;
 			this.label = label;
 			this.path = path;
+			buttonUnlockable = false;
+		}
+		
+		public void MakeButtonUnlockable() {
+		    buttonUnlockable = true;
 		}
 	}
 }

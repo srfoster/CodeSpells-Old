@@ -138,6 +138,7 @@ public class Util {
 		return ids;
 	}
 	
+	// log information about each object used in a spell
 	public static string logObj(string when, string id, string spellname) {
 	       GameObject g = ObjectManager.FindById(id);
 	       
@@ -149,23 +150,9 @@ public class Util {
 	       Util util = new Util();
 	       if (when.Equals("end") && g.name.Equals("Flag(Clone)")) {
 	            util.getWithin(id);
-// 	            foreach (string i in util.getWithin(id).Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries)) {
-// 	                GameObject gobj = ObjectManager.FindById(i);
-//            
-//                     // Object id, type/name, position, ground height at position, is on fire
-//                     flaming = false;
-//                     if (gobj.GetComponent<Flamable>())
-//                         flaming = gobj.GetComponent<Flamable>().isIgnited();
-//                     TraceLogger.LogKV("object"+when, spellname+", "+i+", "+gobj.name+", "+gobj.transform.position+", "+Terrain.activeTerrain.SampleHeight(gobj.transform.position)+", "+flaming);
-// 	            }
 	       }
 
 	       return g.name;
 	}
 	
-// 	public void endCast(string spellname) {
-// 	    //spellname, time, position of objects and player
-// 	    TraceLogger.LogKV("endspell", spellname+", "+Time.time);
-// 	}
-
 }

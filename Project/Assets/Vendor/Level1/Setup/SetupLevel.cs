@@ -18,6 +18,8 @@ public class SetupLevel : MonoBehaviour {
 	private Texture2D yellowBorder;
 	private bool showYellowBorder = false;
 	
+	private Texture2D orangeBorder;
+	
 	void Start()
 	{
 		if(Application.isPlaying)
@@ -55,6 +57,7 @@ public class SetupLevel : MonoBehaviour {
 		
 		setupSpecialEvents();  //i.e. do random shit
 		
+		// Setup help button
 		createYellowBorderTexture();
 		helpButtonStyle.normal.background = Resources.Load("Textures/red_button") as Texture2D;
 		helpButtonStyle.active.background = Resources.Load("Textures/darker_red_button") as Texture2D;
@@ -62,6 +65,9 @@ public class SetupLevel : MonoBehaviour {
 		helpButtonStyle.active.textColor = new Color(0.75f, 0.68f, 0.016f);
 		helpButtonStyle.alignment = TextAnchor.MiddleCenter;
 		helpButtonStyle.fontSize = 20;
+		
+		// Setup quest check border
+		createOrangeBorderTexture();
 	}
 	
 	void givePlayerAFlag() {
@@ -160,6 +166,11 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_summon", 			"  Summoning", 					"incomplete_cast_summoning_badge", false);
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
+		
+		// To make a badge unlockable by an instructor, add
+		// badgebook.MakeButtonUnlockable(<badge_name>);
+		// example:
+		// badgebook.MakeButtonUnlockable("reading_your_book");
 		
 		
 		// mark badges as already complete
@@ -464,6 +475,8 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 	
+	
+	// Reads a log of completed badges and marks them as already complete
 	void markCompletedBadges() {
 	    if (File.Exists("./CodeSpellsBadges.log")) {
             string[] lines = File.ReadAllLines("./CodeSpellsBadges.log");
@@ -492,8 +505,6 @@ public class SetupLevel : MonoBehaviour {
 	
 	void logStart()
 	{
-	    //TraceLogger.LogKV("session", "start");
-	    //ProgramLogger.LogKV("session", "start");
 	    TraceLogger.LogStart();
 	    ProgramLogger.LogStart();
 	    
@@ -507,9 +518,6 @@ public class SetupLevel : MonoBehaviour {
 	
 	void OnApplicationQuit()
 	{
-	    //TraceLogger.LogKVtime("session", "stop");
-	    //ProgramLogger.LogKVtime("session", "stop");
-	    
 	    TraceLogger.LogStop();
 	    ProgramLogger.LogStop();
 	}
@@ -517,8 +525,24 @@ public class SetupLevel : MonoBehaviour {
 	void OnGUI()
 	{
 	    string redButtonText = "Help";
+	    Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
+	    // If quest check has been requested, display an orange border
+	    if (badgebook.showOrangeBorder) {
+	        int thick = 10;
+	        GUI.DrawTexture(new Rect(0, 0, Screen.width, thick), orangeBorder, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(new Rect(0, 0, thick, Screen.height), orangeBorder, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(new Rect(Screen.width-thick, 0, thick, Screen.height), orangeBorder, ScaleMode.StretchToFill, false);
+	        GUI.DrawTexture(new Rect(0, Screen.height-thick, Screen.width, thick), orangeBorder, ScaleMode.StretchToFill, false);
+	        if (showYellowBorder) {
+                redButtonText = "Ok";
+                GUI.DrawTexture(new Rect(thick, thick, Screen.width-2*thick, thick), yellowBorder, ScaleMode.StretchToFill, false);
+                GUI.DrawTexture(new Rect(thick, thick, thick, Screen.height-2*thick), yellowBorder, ScaleMode.StretchToFill, false);
+                GUI.DrawTexture(new Rect(Screen.width-2*thick, thick, thick, Screen.height-2*thick), yellowBorder, ScaleMode.StretchToFill, false);
+                GUI.DrawTexture(new Rect(thick, Screen.height-2*thick, Screen.width-2*thick, thick), yellowBorder, ScaleMode.StretchToFill, false);
+            }
+	    }
 	    // If help has been requested, display a yellow border
-	    if (showYellowBorder) {
+	    else if (showYellowBorder) {
 	        redButtonText = "Ok";
 	        int thick = 10;
 	        GUI.DrawTexture(new Rect(0, 0, Screen.width, thick), yellowBorder, ScaleMode.StretchToFill, false);
@@ -542,10 +566,18 @@ public class SetupLevel : MonoBehaviour {
         }
 	}
 	
+	// Yellow border shows up around screen if help is requested
 	void createYellowBorderTexture() {
 	    yellowBorder = new Texture2D(1,1);
 	    yellowBorder.SetPixel(0, 0, Color.yellow);
 	    yellowBorder.Apply();
+	}
+	
+	// Orange border shows up around screen if quest check is requested
+	void createOrangeBorderTexture() {
+	    orangeBorder = new Texture2D(1,1);
+	    orangeBorder.SetPixel(0, 0, new Color(1,.5f,0,1));
+	    orangeBorder.Apply();
 	}
 
 }

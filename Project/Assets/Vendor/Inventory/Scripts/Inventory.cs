@@ -304,6 +304,7 @@ public class Inventory : MonoBehaviour {
 	}
 	
 	void OnApplicationQuit() {
+	    // Save all the spells that are in the inventory
 	    using (StreamWriter file = new StreamWriter("./CodeSpellsSpells.log")) {
 	        foreach (GameObject item in items) {
 	            if (item.name.Equals("InitialScroll")) {
