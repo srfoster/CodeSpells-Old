@@ -1,0 +1,25 @@
+Nodes
+0=Hi! My friend figured out how to make his crate dance.
+1=I'm trying to make my crate dance too. Do you see the crate with the same color arrow that I have?
+2=Awesome! So, I want to make it dance in a square, can you help me?
+3=Great!! In your Spellbook, I think you have a spell that makes an object move like a sentry.
+4=You can probably change that spell to make any object dance in a square!
+5=If you need help, just ask Sam!
+6=When you think you're done, press the lock in the Badge Book and Sam will come give you a badge!
+7=Did Sam unlock your Square Dance badge?
+8=That's great! Now that you've made my crate dance in a square, try making your own creative dance!
+9=Don't forget to ask Sam to unlock the badge for you!
+Responses
+0=That's cool!=0=1
+1=Yes, I see it!=1=2
+2=Sure!=2=3
+3=I sure do!=3=4
+4=Cool!=4=5
+5=OK!=5=6
+6=Yes!=7=8
+7=I like being creative!=8=9
+Exits
+0=Oooo! Yay!=6=7
+1=No. I'll ask her.=7=7
+2=Not now.=8=8
+3=Ok!=9=9

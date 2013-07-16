@@ -38,6 +38,16 @@ public class Badgebook : MonoBehaviour {
 	public Texture2D button_up_texture;
 	public Texture2D button_down_texture;
 	
+	public Texture2D prev_button_texture;
+	public Texture2D next_button_texture;
+	private int current_page = 0;
+	
+	private GUIStyle unlock_button_style = new GUIStyle();
+	public bool showOrangeBorder = false;
+	private bool unlockPopup = false;
+	private string unlockName = "";
+	private string pword = "";
+	
 	public Font font;
 	
 	private List<int> columnHeights = new List<int>();
@@ -49,6 +59,11 @@ public class Badgebook : MonoBehaviour {
 	GUIStyle label_style;
 	GUIStyle icon_style;
 	
+	int getNumberOfPages() {
+	    return columnHeights.Count / 2 + columnHeights.Count % 2;
+	    //return System.ToInt64(System.Math.Ceiling(System.ToDouble(columnHeights.Count) / 2)) ;
+	}
+	
 	void OnGUI(){
 		if(enabled){
 			displayPages();
@@ -58,6 +73,32 @@ public class Badgebook : MonoBehaviour {
 				enabled = false;
 	        	previous_state.active = true;
 	    	}
+	    	if (GUI.Button (new Rect (Screen.width - 135,110,65,65), "", unlock_button_style)) {
+	    	    showOrangeBorder = !showOrangeBorder;
+	    	    TraceLogger.LogKVtime("unlockbutton", ""+showOrangeBorder);
+	    	}
+	    	
+	    	
+	    	GUIStyle prev_button_style = new GUIStyle();
+			prev_button_style.normal.background = prev_button_texture;
+			if(current_page != 0 && GUI.Button (new Rect (Screen.width * 0.025f, Screen.height * 0.5f, 35, 35), "", prev_button_style))
+			{
+				current_page--;
+				//PageTurnedBackward(currentPage());
+				//logCurrentPage();
+			}
+			
+			
+			GUIStyle next_button_style = new GUIStyle();
+			next_button_style.normal.background = next_button_texture;
+
+			if(current_page != getNumberOfPages() - 1 && GUI.Button (new Rect (Screen.width * 0.95f, Screen.height * 0.5f, 35, 35), "", next_button_style))
+			{
+				current_page++;
+				//PageTurnedForward(currentPage());
+				//logCurrentPage();
+			}
+	    	
 	    	
 	    	// make it so that we can't click through to the game
 			// NOTE: This must appear LAST in the OnGUI. Otherwise, other buttons won't work!
@@ -81,6 +122,13 @@ public class Badgebook : MonoBehaviour {
 		label_style.wordWrap = true;
 		
 		icon_style = new GUIStyle();
+		
+		unlock_button_style.normal.background = Resources.Load("unlock") as Texture2D;
+		unlock_button_style.active.background = Resources.Load("unlock_darker") as Texture2D;
+		
+		//Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+		prev_button_texture = Resources.Load("WoodenLeftArrow") as Texture2D; //spellbook.prev_button_texture;
+		next_button_texture = Resources.Load("WoodenRightArrow") as Texture2D; //spellbook.next_button_texture;
 
 	}
 	
@@ -102,6 +150,10 @@ public class Badgebook : MonoBehaviour {
 			Popup.mainPopup.popup("Badge unlocked!");
 			BadgeUnlocked(badgeStore.Get(new_name));
 		}
+	}
+	
+	public void MakeButtonUnlockable(string name) {
+	    badgeStore.Get(name).MakeButtonUnlockable();
 	}
 	
 	public bool MarkAlreadyComplete(string name) {
@@ -159,18 +211,25 @@ public class Badgebook : MonoBehaviour {
 		int table_width = (int) (Screen.width * .45);
 		int table_height = (int) (Screen.height * .8);
 		
+		int left = current_page * 2 + 1;
+		int right = current_page * 2 + 2;
+		
 
 		GUI.BeginGroup(new Rect(50f,30f, table_width, table_height));
 
-		displayPage(1, table_width, table_height);		
+		displayPage(left, table_width, table_height);		
 
 		GUI.EndGroup();
 		
 		GUI.BeginGroup(new Rect(50f + table_width + 100, 30f, table_width, table_height));
-
-		displayPage(2, table_width, table_height);		
+        
+        if (right < columnHeights.Count)
+		    displayPage(right, table_width, table_height);		
 
 		GUI.EndGroup();
+		
+		if (unlockPopup)
+		    tryUnlock();
 	}
 	
 	void displayPage(int page_number, int table_width, int table_height)
@@ -204,8 +263,16 @@ public class Badgebook : MonoBehaviour {
 			} else {
 				label_style.normal.textColor = Color.black;	
 			}
-
-			GUI.Label(new Rect(x + 55, y, Screen.width * .40f - 50, 50), badgeStore.label(i), label_style);
+            
+            // make the name a button
+            if ((badgeStore.Get(i)).buttonUnlockable && !unlockPopup) {
+                if (GUI.Button(new Rect(x + 55, y, Screen.width * .40f - 50, 50), badgeStore.label(i), label_style)) {
+                    unlockPopup = true;
+                    unlockName = badgeStore.name(i);
+                    Debug.Log(unlockName+" clicked");
+                }
+            } else
+			    GUI.Label(new Rect(x + 55, y, Screen.width * .40f - 50, 50), badgeStore.label(i), label_style);
 			
 			height_so_far += field_height;
 			row++;
@@ -220,6 +287,36 @@ public class Badgebook : MonoBehaviour {
 		}	
 	}
 	
+	private void tryUnlock() {
+	    int boxWidth = 300;
+        int boxHeight = 115;
+        GUIStyle style = GUI.skin.box;
+        style.alignment = TextAnchor.UpperCenter;
+        GUI.Box(new Rect (Screen.width/2-boxWidth/2, Screen.height/2-boxHeight/2, boxWidth, boxHeight), "Do you want to unlock\n"+unlockName+"?", style);
+        
+        pword = GUI.PasswordField(new Rect(Screen.width/2-100, Screen.height/2-15, 200, 20), pword, "*"[0]);
+        
+        
+        if (GUI.Button(new Rect(Screen.width/2-60, Screen.height/2+15, 50, 30), "Yes")) {
+            if (pword == "LaJo11a")
+                Complete(unlockName);
+            else
+                TraceLogger.LogKVtime("unlockbutton", "Yes");
+            unlockPopup = false;
+            unlockName = "";
+            showOrangeBorder = false;
+            pword = "";
+        }
+        
+        if (GUI.Button(new Rect(Screen.width/2+30, Screen.height/2+15, 50, 30), "No")) {
+            unlockPopup = false;
+            unlockName = "";
+            showOrangeBorder = false;
+            pword = "";
+            TraceLogger.LogKVtime("unlockbutton", "No");
+        }
+	}
+	
 		
 	public void show(GameObject previous_state)
 	{
@@ -227,13 +324,5 @@ public class Badgebook : MonoBehaviour {
 		previous_state.active = false;
 		enabled = true;
 	}
-	
-// 	public void OnApplicationQuit() {
-// 	    using (StreamWriter file = File.CreateText("./CodeSpellsBadges.log")) {
-//             for (int i=0; i<badgeStore.Size(); i++) {
-//                 if (badgeStore.name(i).Contains("complete_")) //.Contains("incomplete") && ! badgeStore.path(i).Equals(""))
-//                     file.WriteLine((badgeStore.name(i)).Substring("complete_".Length));
-//             }
-//         }
-// 	}
+
 }

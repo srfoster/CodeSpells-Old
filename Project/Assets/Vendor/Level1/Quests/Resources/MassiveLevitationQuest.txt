@@ -1,0 +1,48 @@
+Nodes
+0=Hi! I'm trying to make some of these rocks levitate, but it's taking too long to levitate each one individually.
+1=Can you help me craft a spell that will levitate all the objects in an area?
+2=Awesome! First, you'll need a staff. Do you have one?
+3=Try flying around to collect the bread. If you talk to the gnomes with blue arrows in front of and on top of the house, they'll help you!
+4=Did you get your staff?
+5=Great! Now try creating an area over by the rocks. Just drag the staff into the game and drop it. Then talk to me again.
+6=Did you get an area made?
+7=Try to create an area. If you need help, just ask Sam!
+8=Yippee! You should have a spell in your Spellbook that puts everything in an area on fire.
+9=Did you find the spell? It's called MassiveFire.
+10=Perfect. Try changing the spell so that it levitates everything in the area instead of putting it on fire.
+11=When you think you're done, press the lock in the Badge Book and Sam will come give you a badge!
+12=Did Sam unlock your Massive Levitate badge?
+13=That's great! Now that you've made everything in the area levitate, try changing the spell to put everything back on the ground.
+14=Don't forget to ask Sam to unlock the badge for you!
+15=Did Sam unlock your Massive Unlevitate badge?
+16=Wow! You're doing so well. Maybe now you could change your spell to make everything in the area do a creative dance?
+17=When you finish, get Sam to unlock your badge!
+Responses
+0=That's true...=0=1
+1=Sure!=1=2
+2=No. How do I get that?=2=3
+3=Yes!=4=5
+4=No.=4=3
+5=Yes!=6=8
+6=No...=6=7
+7=Yes! I know that spell.=8=10
+8=Yes!=9=10
+9=Ok!=10=11
+10=Yes!=12=13
+11=Ok!=13=14
+12=She did!=15=16
+13=That sounds fun!=16=17
+14=Yes!=2=5
+Exits
+0=Ok! I'll try that.=3=4
+1=Ok! I can do that.=5=6
+2=Ok! I'll try again.=7=6
+3=Hmm... Let me go look.=8=9
+4=Oh! Let me check for it.=9=9
+5=Yay! I love getting badges.=11=12
+6=No. I'll ask her.=12=12
+7=Not now.=13=13
+8=Got it!=14=15
+9=Not yet. I'll ask her.=15=15
+10=Ok! I will.=17=17
+11=Maybe later.=16=16

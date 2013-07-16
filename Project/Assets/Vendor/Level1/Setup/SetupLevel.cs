@@ -167,6 +167,20 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
 		
+		badgebook.AddColumn(5);
+		badgebook.Add("square_dance", "  Square Dance", "incomplete_square_dance", false);
+		badgebook.MakeButtonUnlockable("square_dance");
+		badgebook.Add("creative_dance", "  Creative Dance", "incomplete_creative_dance", false);
+		badgebook.MakeButtonUnlockable("creative_dance");
+		badgebook.Add("massive_levitate", "  Massive Levitate", "incomplete_massive_levitate", false);
+		badgebook.MakeButtonUnlockable("massive_levitate");
+		badgebook.Add("massive_unlevitate", "  Massive Unlevitate", "incomplete_massive_unlevitate", false);
+		badgebook.MakeButtonUnlockable("massive_unlevitate");
+		badgebook.Add("massive_dance", "  Massive Dance", "incomplete_massive_dance", false);
+		badgebook.MakeButtonUnlockable("massive_dance");
+		
+		//badgebook.AddColumn(0);
+		
 		// To make a badge unlockable by an instructor, add
 		// badgebook.MakeButtonUnlockable(<badge_name>);
 		// example:
