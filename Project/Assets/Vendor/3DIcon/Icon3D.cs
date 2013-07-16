@@ -34,11 +34,9 @@ public class Icon3D : MonoBehaviour {
 		
 		icon.transform.LookAt(Camera.main.transform.position, Vector3.up);
 
-		
 		icon.transform.position = new Vector3(transform.position.x + x_adj,
 			transform.position.y+ y_adj + bounce(),
 			transform.position.z + z_adj);
-	
 	}
 	
 	void findMeshRecursive(Transform parent)
