@@ -1,0 +1,21 @@
+Nodes
+0=Hi! My friend taught me how to summon my crate to me, but now I want to make it follow me wherever I go.
+1=Did you learn how to summon an object from my friend with the yellow arrow?
+2=Try talking to my friend with the yellow arrow to learn how to summon an object first.
+3=Awesome! Try changing your summoning spell so that the object will follow you around forever.
+4=I would try looking at your Sentry spell for some ideas. I think it runs forever. The spellbook might give you some clues.
+5=If you need help, just ask Sam!
+6=When you think you're done, press the lock in the Badge Book and Sam will come give you a badge!
+7=That's all I have to teach you. Ask Sam if you need help!
+Responses
+0=That's cool!=0=1
+1=Yes!=1=3
+2=Not yet.=1=2
+3=Ok! I can do that!=3=5
+4=How do I make it do something forever?=3=4
+5=Ok! Thanks!=4=5
+6=Ok!=5=6
+Exits
+0=Ok, I'll talk to him!=2=1
+1=Ooo! I want another badge!=6=7
+2=Ok!=7=7
