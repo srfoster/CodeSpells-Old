@@ -80,7 +80,9 @@ public class June {
 			} else {
 			    //Send a "friendly" SIGTERM to java so that we can log some stuff before the program exits
                 Process killer = Shell.shell_no_start("kill", "-15 "+java_process.Id);
-                killer.Start();                
+                killer.Start();
+                killer.WaitForExit();
+                killer.Close();
 			}
 		}catch(Exception e){
 			UnityEngine.Debug.Log(e);
@@ -112,12 +114,17 @@ public class June {
 			
 			var output = compile_process.StandardOutput.ReadToEnd();
 	   		var error = compile_process.StandardError.ReadToEnd();
+	   		
+	   		// need to free the resources for the process
+	   		compile_process.WaitForExit();
+	   		compile_process.Close();
 			
 	//		Popup.mainPopup.popup(""  + output + " " + error);
 
 			if(!error.Equals(""))
 			{
 				success = false;	
+				FileLogger.Log("error launching Java process: "+error);
 			}
 			//ProgramLogger.LogKV("compile", getSpellName()+", "+success);
 			
@@ -176,6 +183,9 @@ public class June {
 			{
 				success = false;
 			}
+			
+			// free resources for this process
+			java_process.Close();
             
             TraceLogger.LogKV("endspell", getSpellName());
 			

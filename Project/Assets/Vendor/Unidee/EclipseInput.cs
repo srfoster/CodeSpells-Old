@@ -132,6 +132,10 @@ public class EclipseInput : FileInput {
 	   		var error = compile_process.StandardError.ReadToEnd();
 			
 			current_error = error;		
+			
+			// free resources
+			compile_process.WaitForExit();
+			compile_process.Close();
 
 		}catch(Exception e){
 		}
