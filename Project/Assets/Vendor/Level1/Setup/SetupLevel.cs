@@ -180,6 +180,8 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.MakeButtonUnlockable("massive_dance");
 		badgebook.Add("follow_the_leader", "  Follow The Leader", "incomplete_follow_the_leader", false);
 		badgebook.MakeButtonUnlockable("follow_the_leader");
+		badgebook.Add("portal", "  Portal", "incomplete_portal", false);
+		badgebook.MakeButtonUnlockable("portal");
 		
 		//badgebook.AddColumn(0);
 		

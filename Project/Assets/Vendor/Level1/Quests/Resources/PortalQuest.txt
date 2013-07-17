@@ -1,0 +1,34 @@
+Nodes
+0=Hi there! We never get very many visitors over here in our village. I think it's because the river monster eats them all when they try to cross the river.
+1=I want to open a portal across the river so that anyone who walks into it will automatically be transported across the river. Could you help me?
+2=Well, first you'll need your staff. Do you have it?
+3=Try flying around to collect the bread. If you talk to the gnomes with blue arrows in front of and on top of the house, they'll help you!
+4=Did you get your staff?
+5=Great! Now try creating two areas. To create an area, just drag the staff into the game and drop it. Then talk to me again.
+6=Did you get two areas made?
+7=Try to create two areas. If you need help, just ask Sam!
+8=Now try to write a portal spell that will take everything in one area and put it in the other area. Don't forget to make it do this forever!
+9=Hmm... You might get some ideas from Teleport, MassiveFire, Architecture, or Sentry.
+10=If you need help, just ask Sam!
+11=When you think you're done, press the lock in the Badge Book and Sam will come give you a badge!
+12=That's all I have to teach you. If you need help, just ask Sam!
+Responses
+0=Yes! It tries to eat me, too!=0=1
+1=Sure! How?=1=2
+2=No. How do I get it?=2=3
+3=Not yet...=4=3
+4=Yes!=4=5
+5=Yes, I do!=2=5
+6=Yes!=6=8
+7=Not yet...=6=7
+8=Ok. Do you have any hints?=8=9
+9=Ok. Thanks!=9=10
+10=Got it!=10=11
+11=Can you remind me what to do?=12=8
+Exits
+0=Maybe later.=1=1
+1=Ok!=3=4
+2=Ok!=5=6
+3=Ok!=7=6
+4=Yay! Another badge!=11=12
+5=Ok!=12=12
