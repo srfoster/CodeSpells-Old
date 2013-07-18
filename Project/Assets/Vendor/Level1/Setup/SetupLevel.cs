@@ -167,7 +167,7 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("reading_your_book_massive", 			"  Massive Fire", 				"incomplete_cast_massive_fire_badge", false);
 		badgebook.Add("reading_your_book_architecture", 	"  Architecture", 				"incomplete_cast_architecture_badge", false);
 		
-		badgebook.AddColumn(7);
+		badgebook.AddColumn(8);
 		badgebook.Add("square_dance", "  Square Dance", "incomplete_square_dance", false);
 		badgebook.MakeButtonUnlockable("square_dance");
 		badgebook.Add("creative_dance", "  Creative Dance", "incomplete_creative_dance", false);
@@ -182,6 +182,8 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.MakeButtonUnlockable("follow_the_leader");
 		badgebook.Add("portal", "  Portal", "incomplete_portal", false);
 		badgebook.MakeButtonUnlockable("portal");
+		badgebook.Add("umbrella", "  Umbrella", "incomplete_umbrella", false);
+		badgebook.MakeButtonUnlockable("umbrella");
 		
 		//badgebook.AddColumn(0);
 		

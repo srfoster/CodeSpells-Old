@@ -185,6 +185,7 @@ public class June {
 			}
 			
 			// free resources for this process
+			java_process.WaitForExit();
 			java_process.Close();
             
             TraceLogger.LogKV("endspell", getSpellName());

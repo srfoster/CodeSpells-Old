@@ -1,0 +1,21 @@
+Nodes
+0=I'm getting sick and tired of listening to my little brother, Alex, complain about getting wet in the rain! Can you help me make an umbrella for him?
+1=Maybe you can write a spell that will make an object teleport itself over his head wherever he goes.
+2=Hmm... The spell will probably be similar to Teleport and Follow The Leader. Have you gotten the Follow The Leader Badge?
+3=You might want to try Follow The Leader. Talk to my friend with the purple arrow over by the water fountain.
+4=Great! Maybe you can cast your Umbrella spell on this crate or something and have it hover over Alex's head wherever he goes.
+5=To see if your Umbrella spell will follow Alex, try casting one of your Dance spells on him.
+6=When you think you're done, press the lock in the Badge Book and Sam will come give you a badge!
+7=That's all I have to teach you. Thanks for trying to save me from my brother's whining!
+Responses
+0=Yes! How?=0=1
+1=Do you have any hints?=1=2
+2=Yes!=2=4
+3=Not yet...=2=3
+4=I can do that!=4=5
+5=Ooo! I see!=5=6
+Exits
+0=Not now.=0=0
+1=Ok. Thanks!=3=0
+2=Got it!=6=7
+3=Ok!=7=7
