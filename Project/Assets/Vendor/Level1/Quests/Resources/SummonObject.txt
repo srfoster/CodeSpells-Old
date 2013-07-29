@@ -3,11 +3,9 @@ Nodes
 1=Awesome! So, I am trying to summon it over to this area right next to me, can you help me?
 2=Great!! I think you have a spell that summons the rain to you in your SpellBook.
 3=You can probably change that spell to summon any object to you I think!
-4=If you need help, just ask Sam!
 Responses
 0=Yes, I see it!=0=1
 1=Sure!=1=2
 2=I sure do!=2=3
 Exits
-0=Ok, I'll try!=3=4
-1=Ok!=4=4
+0=Ok, I'll try!=3=3

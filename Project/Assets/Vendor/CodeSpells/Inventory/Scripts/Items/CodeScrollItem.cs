@@ -88,6 +88,10 @@ public class CodeScrollItem : DraggableItem {
 	}
 	
 	public IDEInput getIDEInput(){
+		UnityEngine.Debug.Log("********************IN CodeScrollITEM getIDEInput**********************");
+		UnityEngine.Debug.Log("juneconfig.java_files_path: "+JuneConfig.java_files_path);
+		UnityEngine.Debug.Log("file_name: "+file_name);
+		UnityEngine.Debug.Log("********************DONE WITH CodeScrollITEM getIDEInput**********************");
 		return new EclipseInput("CodeSpellsJava", JuneConfig.java_files_path+"/"+file_name);
 	}
 	

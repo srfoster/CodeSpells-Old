@@ -30,9 +30,12 @@ public class FileInput : IDEInput {
 	
 	public override void SetCode(string code_string)
 	{
+		Debug.Log("********************IN FILEINPUT SETCODE**********************");
+		Debug.Log("filename: "+file_name);
 		StreamWriter sw = new StreamWriter(file_name, false);
 	    sw.Write(code_string);
 	    sw.Close();
+		Debug.Log("********************DONE WITH FILEINPUT SETCODE**********************");
 	}
 	
 	public override void Process(IDE ide)

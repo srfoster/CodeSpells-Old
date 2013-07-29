@@ -12,9 +12,11 @@ public class Icon3D : MonoBehaviour {
 	
 	int count = 0;
 	
-	public Color color = Color.green;
+	public Color color = Color.white;
 	
 	Transform mesh;
+	
+	public bool show = true;
 
 	void Start () {
 		icon = Instantiate(icon, new Vector3(0,0,0), icon.transform.rotation) as GameObject;	
@@ -27,16 +29,22 @@ public class Icon3D : MonoBehaviour {
 		mesh.gameObject.renderer.material.color = color;
 	}
 	
+	public void changeColor(Color newColor) {
+		mesh.gameObject.renderer.material.color = newColor;
+	}
+	
 	// Update is called once per frame
 	void Update () {	
 		if(icon == null)
 			return;
 		
-		icon.transform.LookAt(Camera.main.transform.position, Vector3.up);
-
-		icon.transform.position = new Vector3(transform.position.x + x_adj,
-			transform.position.y+ y_adj + bounce(),
-			transform.position.z + z_adj);
+		if(show) {
+			icon.transform.LookAt(Camera.main.transform.position, Vector3.up);
+	
+			icon.transform.position = new Vector3(transform.position.x + x_adj,
+				transform.position.y+ y_adj + bounce(),
+				transform.position.z + z_adj);
+		}
 	}
 	
 	void findMeshRecursive(Transform parent)
