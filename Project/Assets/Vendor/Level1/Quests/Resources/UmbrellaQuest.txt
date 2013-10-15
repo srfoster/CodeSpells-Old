@@ -5,8 +5,7 @@ Nodes
 3=You might want to try Follow The Leader. Talk to my friend with the purple arrow over by the water fountain.
 4=Great! Maybe you can cast your Umbrella spell on this crate or something and have it hover over Alex's head wherever he goes.
 5=To see if your Umbrella spell will follow Alex, try casting one of your Dance spells on him.
-6=When you think you're done, press the lock in the Badge Book and Sam will come give you a badge!
-7=That's all I have to teach you. Thanks for trying to save me from my brother's whining!
+6=That's all I have to teach you. Thanks for trying to save me from my brother's whining!
 Responses
 0=Yes! How?=0=1
 1=Do you have any hints?=1=2
@@ -17,5 +16,4 @@ Responses
 Exits
 0=Not now.=0=0
 1=Ok. Thanks!=3=0
-2=Got it!=6=7
-3=Ok!=7=7
+2=Ok!=6=6

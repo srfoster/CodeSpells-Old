@@ -9,6 +9,8 @@ public class DisplayOnMinimap : MonoBehaviour {
 
     public float scale;
 	
+	public bool show = true;
+	
 	void Start () {
 		GameObject trianglePrefab = (Resources.Load("Triangle") as GameObject);
 		triangle = (Instantiate(trianglePrefab, transform.position, Quaternion.identity) as GameObject);
@@ -22,10 +24,16 @@ public class DisplayOnMinimap : MonoBehaviour {
 		triangle.transform.localScale *= scale;
 	}
 	
+	public void changeColor(Color newColor) {
+		triangle.transform.FindChild("Mesh").gameObject.renderer.material.color = newColor;
+	}
+	
 	void Update () {
-		//draw on minimap
-		Vector3 adjPos = new Vector3(transform.position.x, 60,transform.position.z);
-		triangle.transform.rotation = Quaternion.Euler(0.0f, transform.eulerAngles.y, 0.0f);
-		triangle.transform.position = adjPos;
+		if(show) {
+			//draw on minimap
+			Vector3 adjPos = new Vector3(transform.position.x, 60,transform.position.z);
+			triangle.transform.rotation = Quaternion.Euler(0.0f, transform.eulerAngles.y, 0.0f);
+			triangle.transform.position = adjPos;
+		}
     }
 }

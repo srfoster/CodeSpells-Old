@@ -2,14 +2,12 @@ Nodes
 0=Oh no!!! My crates have flown up and I cannot get them down! Can you help me?
 1=Well I think there is a spell in your spellbook that deals with levitation, maybe you can change it to UN-leviate?
 2=Maybe you can try moving down instead of up?
-3=Do you need a hint?
-4=If you still need help, you can ask Sam :)
+3=Remember you can try to move down instead of up :)
 Responses
 0=How?=0=1
 1=How would I do that?=1=2
-2=Yes please!=3=2
 Exits
 0=Maybe later.=0=0
 1=I can do that!=1=3
-2=Oh!=2=4
-3=Ok, I will=4=4
+2=Ok, I will try=2=3
+2=Ok, I will try=3=3

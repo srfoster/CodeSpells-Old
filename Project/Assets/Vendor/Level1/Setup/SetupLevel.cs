@@ -18,6 +18,8 @@ public class SetupLevel : MonoBehaviour {
 	private Texture2D yellowBorder;
 	private bool showYellowBorder = false;
 	
+	public GameObject UnlevitationQuest;
+	
 	private Texture2D orangeBorder;
 	
 	void Start()
@@ -32,7 +34,6 @@ public class SetupLevel : MonoBehaviour {
 		if(!done)
 		{
 			done = true;
-
 		}
 	}
 	
@@ -185,13 +186,10 @@ public class SetupLevel : MonoBehaviour {
 		badgebook.Add("umbrella", "  Umbrella", "incomplete_umbrella", false);
 		badgebook.MakeButtonUnlockable("umbrella");
 		
-		//badgebook.AddColumn(0);
-		
 		// To make a badge unlockable by an instructor, add
 		// badgebook.MakeButtonUnlockable(<badge_name>);
 		// example:
 		// badgebook.MakeButtonUnlockable("reading_your_book");
-		
 		
 		// mark badges as already complete
 		markCompletedBadges();
@@ -237,12 +235,15 @@ public class SetupLevel : MonoBehaviour {
 		
 		FlyQuestChecker.Levitated += () => {
 			if (badgebook.Complete("helping_others_reaching_up_high"))
+			{
+				//GameObject.Find("LevitationQuestGnomeArmature").GetComponent<DisplayOnMinimap>().show = false;
+				//GameObject.Find("LevitationQuestGnomeArmature").GetComponent<Icon3D>().show = false;
 			    helpingUnlocked++;
+			}
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
 		};
-		
 		
 		AudioSource main_audio = GameObject.Find("Voice").audio;
 			
@@ -257,7 +258,14 @@ public class SetupLevel : MonoBehaviour {
 			if(unlevitatingBoxes == 3)
 			{
 				if (badgebook.Complete("helping_others_unlevitate"))
+				{
+					//GameObject.Find("UnlevitationQuestGnomeArmature").GetComponent<DisplayOnMinimap>().show = false;
+					//GameObject.Find("UnlevitationQuestGnomeArmature").GetComponent<Icon3D>().show = false;
+					//GameObject.Find("QuestUnlevitationCrate").GetComponent<Icon3D>().show = false;
+					//GameObject.Find("QuestUnlevitationCrate1").GetComponent<Icon3D>().show = false;
+					//GameObject.Find("QuestUnlevitationCrate2").GetComponent<Icon3D>().show = false;
 				    helpingUnlocked++;
+				}
 			}
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
@@ -267,9 +275,12 @@ public class SetupLevel : MonoBehaviour {
 		SummonObject.SummonObjectQuest += () => {
 			if (badgebook.Complete("helping_others_summonObject"))
 			{
-				//Debug.Log("Trying to disable the Icon3D");
+				//GameObject.Find("SummonObjectGnomeArmature").GetComponent<DisplayOnMinimap>().show = false;
+				//GameObject.Find("SummonObjectGnomeArmature").GetComponent<Icon3D>().show = false;
+				//GameObject.Find("SummonedObject").GetComponent<Icon3D>().show = false;
 				
-				//GameObject.Find("SummonObjectGnome").GetComponent<DisplayOnMinimap>().scale = 0;
+				//Destroy the yellow summoning block when they have summond the square to it.
+				Destroy(GameObject.Find("SummonTo"));
 				helpingUnlocked++;
 			}
 			
@@ -286,7 +297,11 @@ public class SetupLevel : MonoBehaviour {
 			if(collectedBread == 12)
 			{
 				if (badgebook.Complete("helping_others_putting_something_high"))
+				{
+					//GameObject.Find("FlyQuestGnomeArmature").GetComponent<DisplayOnMinimap>().show = false;
+					//GameObject.Find("FlyQuestGnomeArmature").GetComponent<Icon3D>().show = false;
 				    helpingUnlocked++;
+				}
 			}
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
@@ -296,7 +311,8 @@ public class SetupLevel : MonoBehaviour {
 		Inventory.PickedUp += (target) => {
 			if(target.name.Equals("Presents"))
 			{
-				//GameObject.Find("QuestSwampGnome").GetComponent<Icon3D>().enabled = false;
+				//Debug.Log("Trying to enable the Icon3D for Dance Quest");
+				//GameObject.Find("DanceQuest").GetComponent<Icon3D>().color = Color.white;
 				
 				if (badgebook.Complete("helping_others_picking_up_item"))	
 				    helpingUnlocked++;
@@ -463,21 +479,9 @@ public class SetupLevel : MonoBehaviour {
 		//Remove a spell from the inventory if the user blanks out the file contents.
 		//  This is how we'll delete spells (for now).
 		IDE.IDEClosed += (file_name, contents) => {
-			
-			//	path += segs[i];
-
-			
-			
 			string newName = getSpellName(contents);
-
 			string[] segs = file_name.Split('/');
-			//if (newName.Equals("")) {
-			//	return;
-			//}
-
-			string prevName = segs[segs.Length - 1].Replace(".java","");;
-			
-			
+			string prevName = segs[segs.Length - 1].Replace(".java","");
 			
 			Inventory i = GameObject.Find("Inventory").GetComponent<Inventory>();
 			
@@ -532,7 +536,6 @@ public class SetupLevel : MonoBehaviour {
 			main_audio.audio.PlayOneShot(spellbook_clip);
 		};
 		
-		
 		AudioClip drop_item_clip = Resources.Load("DropItem") as AudioClip;
 		Inventory.DroppedOff += (target) => {
 			main_audio.audio.PlayOneShot(drop_item_clip);	
@@ -560,7 +563,6 @@ public class SetupLevel : MonoBehaviour {
 		};
 	}
 	
-	
 	// Reads a log of completed badges and marks them as already complete
 	void markCompletedBadges() {
 	    if (File.Exists("./CodeSpellsBadges.log")) {
@@ -569,7 +571,10 @@ public class SetupLevel : MonoBehaviour {
             foreach (string line in lines) {
                 if (badgebook.MarkAlreadyComplete(line.Trim())) {
                     if (line.StartsWith("helping_others_"))
-                        helpingUnlocked++;
+					{
+						helpingUnlocked++;
+					}
+                        
                     else if (line.StartsWith("reading_your_book_"))
                         num_unlocked++;
                     else if (line.StartsWith("collecting_objects_staff")) {
