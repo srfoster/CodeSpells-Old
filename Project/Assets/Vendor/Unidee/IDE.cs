@@ -193,7 +193,7 @@ public class IDE : MonoBehaviour {
 		
 		//Time.timeScale = 0;
 		
-		ProgramLogger.LogKV("open", getSpellName()+", "+Time.time);
+		ProgramLogger.LogKVtime("open", getSpellName()); //+", "+Time.time);
 		
 		spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
 		halfbook = new HalfBook();
@@ -357,8 +357,9 @@ public class IDE : MonoBehaviour {
 		Time.timeScale = 1;
 		
 		ProgramLogger.LogKVtime("delete", "all");
-		ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
+		ProgramLogger.LogKVtime("close", getSpellName()); //+", "+Time.time);
 		ProgramLogger.LogCode(getSpellName(), current_code);
+		SpellLogger.Log("delete: "+getSpellName());
 				
 		if(IDEClosed != null) {
 			
@@ -622,8 +623,9 @@ public class IDE : MonoBehaviour {
 				paused = true;
 				Time.timeScale = 1;
 				
-				ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
+				ProgramLogger.LogKVtime("close", getSpellName()); //+", "+Time.time);
 				ProgramLogger.LogCode(getSpellName(), current_code);
+				SpellLogger.LogCode(getSpellName(), current_code);
 									
 				if(IDEClosed != null)
 					IDEClosed(file_name, current_code);
@@ -646,13 +648,14 @@ public class IDE : MonoBehaviour {
 	public void checkNewSpellButton(Rect r) {
 	    if (GUI.Button(r, left_panel_background, empty_style)) {
 	        input.SetCode(current_code);
-	        ProgramLogger.LogKV("close", getSpellName()+", "+Time.time);
+	        ProgramLogger.LogKVtime("close", getSpellName()); //+", "+Time.time);
 			ProgramLogger.LogCode(getSpellName(), current_code);
+			SpellLogger.LogCode(getSpellName(), current_code);
 	        if (IDEClosed != null)
 	            IDEClosed(file_name, current_code);
 	        string fname = spellbook.copyBlankSpell();
 	        SetInput(new EclipseInput("CodeSpellsJava", JuneConfig.java_files_path+"/"+fname));
-	        ProgramLogger.LogKV("open", getSpellName()+", "+Time.time);
+	        ProgramLogger.LogKVtime("open", getSpellName()); //+", "+Time.time);
             if(IDEOpened != null)
                 IDEOpened(file_name, current_code);
 	    }
@@ -699,6 +702,16 @@ public class IDE : MonoBehaviour {
 	public void clearStyles()
 	{
 		error_lines.Clear();
+	}
+	
+	void OnApplicationQuit()
+	{
+	    if (enabled) {
+            input.SetCode(current_code);
+            ProgramLogger.LogKVtime("close", getSpellName()); //+", "+Time.time);
+            ProgramLogger.LogCode(getSpellName(), current_code);
+            SpellLogger.LogCode(getSpellName(), current_code);
+		}
 	}
 	
 }

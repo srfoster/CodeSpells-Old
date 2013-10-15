@@ -364,21 +364,81 @@ public class SetupLevel : MonoBehaviour {
 	}
 	
 	void givePlayerExistingSpells() {
-	    if (File.Exists("./CodeSpellsSpells.log")) {
-            string[] lines = File.ReadAllLines("./CodeSpellsSpells.log");
-            Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
-            string[] parts;
-            foreach (string line in lines) {
-                parts = line.Split(new char[] {','});
-                if (parts.Length == 1)
-	                spellbook.addExistingSpell(line, "");
-	            else {
-	                byte[] bs = System.Convert.FromBase64String(parts[1].Trim());
-	                string code = System.Text.Encoding.UTF8.GetString(bs, 0, bs.Length);
-	                spellbook.addExistingSpell(parts[0].Trim(), code);
-	            }
+// 	    System.Diagnostics.Process reader = Shell.shell_no_start("./buildSpellsLog.py", "CodeSpellsProgram.log CodeSpellsSpells.log");
+// 	    reader.Start();
+// 	    reader.WaitForExit();
+// 	    reader.Close();
+        Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+	    Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+	    if (SpellLogger.loggedSpells.Length > 0) {
+            string[] parts, keyed;
+            foreach (string line in SpellLogger.loggedSpells) {
+                keyed = line.Split(new char[] {':'});
+                if (keyed.Length == 1) {    //support for old spell log formats
+                    parts = line.Split(new char[] {','});
+                    if (parts.Length == 1)
+                        spellbook.addExistingSpell(line, "");
+                    else {
+                        byte[] bs = System.Convert.FromBase64String(parts[1].Trim());
+                        string code = System.Text.Encoding.UTF8.GetString(bs, 0, bs.Length);
+                        spellbook.addExistingSpell(parts[0].Trim(), code);
+                    }
+                } else {
+                    parts = keyed[1].Split(new char[] {','});
+                    if (keyed[0] == "code") {
+                        byte[] bs = System.Convert.FromBase64String(parts[1].Trim());
+                        string code = System.Text.Encoding.UTF8.GetString(bs, 0, bs.Length);
+                        spellbook.addExistingSpell(parts[0].Trim(), code);
+                    } else if (keyed[0] == "rename") {
+                        string old = parts[0].Trim();
+                        string newn = parts[1].Trim();
+                        //this could perhaps instead be accomplished with File.Move(...)
+//                         List<GameObject> matching_items = inventory.getMatching(old);
+//                         if (matching_items.Count != 1) {
+//                             Debug.Log("matching_items length "+matching_items.Count);
+//                             continue;
+//                         }
+                        CodeScrollItem item = inventory.getCodeScrollItem(old).GetComponent<CodeScrollItem>();
+                        //CodeScrollItem item = matching_items[0].GetComponent<CodeScrollItem>();
+                        if (item == null) {
+                            Debug.Log("Renaming CodeScrollItem null");
+                            continue;
+                        } else
+                            Debug.Log("Renaming CodeScrollItem "+item.getName());
+                        string code = item.getIDEInput().GetCode();
+                        item.setCurrentFile(newn+".java");
+				        item.getIDEInput().SetCode(code);
+				        spellbook.setNameCounter(newn);
+                    } else if (keyed[0] == "delete") {
+                        List<GameObject> matching_items = inventory.getMatching(parts[0].Trim());
+                        if (matching_items.Count > 0) {
+                            Debug.Log("matching items: "+matching_items.Count);
+                            inventory.removeItem(matching_items[0]);
+                        }
+                    }
+                }
+	        }
+	        inventory.clearRemovedItems();
+	        foreach (CodeScrollItem item in inventory.getAllCodeScrollItems()) {
+	            string code = item.getIDEInput().GetCode();
+	            SpellLogger.LogCode(item.getName(), code);
 	        }
 	    }
+// 	    if (File.Exists("./CodeSpellsSpells.log")) {
+//             string[] lines = File.ReadAllLines("./CodeSpellsSpells.log");
+//             Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+//             string[] parts;
+//             foreach (string line in lines) {
+//                 parts = line.Split(new char[] {','});
+//                 if (parts.Length == 1)
+// 	                spellbook.addExistingSpell(line, "");
+// 	            else {
+// 	                byte[] bs = System.Convert.FromBase64String(parts[1].Trim());
+// 	                string code = System.Text.Encoding.UTF8.GetString(bs, 0, bs.Length);
+// 	                spellbook.addExistingSpell(parts[0].Trim(), code);
+// 	            }
+// 	        }
+// 	    }
 	}
 	
 	public string getSpellName(string cont) {
@@ -440,6 +500,7 @@ public class SetupLevel : MonoBehaviour {
 				matching_items[0].GetComponent<CodeScrollItem>().setCurrentFile(newName+".java");
 				matching_items[0].GetComponent<CodeScrollItem>().getIDEInput().SetCode(contents);
 				ProgramLogger.LogKVtime("rename", prevName+", "+newName);
+				SpellLogger.Log("rename: "+prevName+", "+newName);
 			}
 			matching_items[0].GetComponent<CodeScrollItem>().SetCompilable();
 			ProgramLogger.LogKV("compilable", newName+", "+matching_items[0].GetComponent<CodeScrollItem>().IsCompilable());

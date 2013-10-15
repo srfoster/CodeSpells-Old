@@ -246,6 +246,16 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	
+	public void clearRemovedItems()
+	{
+	    foreach(GameObject r in to_remove)
+		{
+			items.Remove(r);
+			item_infos.Remove(r);
+		}
+	    to_remove.Clear();
+	}
+	
 	public void disactivate(GameObject item)
 	{
 		(item.GetComponent(typeof(Item)) as Item).SetActive(false);
@@ -294,6 +304,31 @@ public class Inventory : MonoBehaviour {
 		return ret;
 	}
 	
+	public List<CodeScrollItem> getAllCodeScrollItems()
+	{
+	    List<CodeScrollItem> ret = new List<CodeScrollItem>();
+	    
+	    foreach (GameObject item in items)
+	    {
+	        if (item.name.Equals("InitialScroll"))
+	            ret.Add(item.GetComponent<CodeScrollItem>());
+	    }
+	    return ret;
+	}
+	
+	public CodeScrollItem getCodeScrollItem(string name)
+	{
+	    foreach (GameObject item in items)
+	    {
+	        if (item.name.Equals("InitialScroll") && item.GetComponent<Item>().getName().Equals(name))
+	        {
+	            //Debug.Log("found InitialScroll "+name);
+	            return item.GetComponent<CodeScrollItem>();
+	        }
+	    }
+	    return null;
+	}
+	
 	public class ItemInfo
 	{
 		public float icon_x;
@@ -303,15 +338,16 @@ public class Inventory : MonoBehaviour {
 		public float label_y;
 	}
 	
-	void OnApplicationQuit() {
-	    // Save all the spells that are in the inventory
-	    using (StreamWriter file = new StreamWriter("./CodeSpellsSpells.log")) {
-	        foreach (GameObject item in items) {
-	            if (item.name.Equals("InitialScroll")) {
-	                string code = item.GetComponent<CodeScrollItem>().getIDEInput().GetCode();
-	                file.WriteLine(item.GetComponent<Item>().getName()+", "+ProgramLogger.EncodeTo64(code));
-	            }
-	        }
-	    }
-	}
+	// Has been replaced by incremental saving to avoid crash issues and other bugs
+// 	void OnApplicationQuit() {
+// 	    // Save all the spells that are in the inventory
+// 	    using (StreamWriter file = new StreamWriter("./CodeSpellsSpellsFinal.log")) {
+// 	        foreach (GameObject item in items) {
+// 	            if (item.name.Equals("InitialScroll")) {
+// 	                string code = item.GetComponent<CodeScrollItem>().getIDEInput().GetCode();
+// 	                file.WriteLine(item.GetComponent<Item>().getName()+", "+ProgramLogger.EncodeTo64(code));
+// 	            }
+// 	        }
+// 	    }
+// 	}
 }
