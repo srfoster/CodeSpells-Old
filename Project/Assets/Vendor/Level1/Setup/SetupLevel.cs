@@ -465,21 +465,30 @@ public class SetupLevel : MonoBehaviour {
 		
 		foreach (string questName in nextQuests()) {
 			Debug.Log("showing quest arrows for " + questName);
-			showQuestArrows(arrowsForQuest(questName));
+			showQuestObjects(objectNameForQuest(questName));
 		}
 	}
 	
 	void hideAllQuestArrows() {
-		List<Icon3D> arrows = new List<Icon3D>();
-		arrows.AddRange(GameObject.Find("IntroGnome").GetComponentsInChildren<Icon3D>(true));
-		arrows.AddRange(GameObject.Find("Quests").GetComponentsInChildren<Icon3D>(true));
-		foreach (Icon3D arrow in arrows) {
+		foreach (Icon3D arrow in GameObject.Find("IntroGnome").GetComponentsInChildren<Icon3D>(true)) {
+			arrow.show = false;
+		}
+		foreach (DisplayOnMinimap arrow in GameObject.Find("IntroGnome").GetComponentsInChildren<DisplayOnMinimap>(true)) {
+			arrow.show = false;
+		}
+		foreach (Icon3D arrow in GameObject.Find("Quests").GetComponentsInChildren<Icon3D>(true)) {
+			arrow.show = false;
+		}
+		foreach (DisplayOnMinimap arrow in GameObject.Find("Quests").GetComponentsInChildren<DisplayOnMinimap>(true)) {
 			arrow.show = false;
 		}
 	}
 	
-	void showQuestArrows(Icon3D[] arrows) {
-		foreach (Icon3D arrow in arrows) {
+	void showQuestObjects(string objectName) {
+		foreach (Icon3D arrow in GameObject.Find(objectName).GetComponentsInChildren<Icon3D>(true)) {
+			arrow.show = true;
+		}
+		foreach (DisplayOnMinimap arrow in GameObject.Find(objectName).GetComponentsInChildren<DisplayOnMinimap>(true)) {
 			arrow.show = true;
 		}
 	}
@@ -506,26 +515,25 @@ public class SetupLevel : MonoBehaviour {
 		return new string[] {};
 	}
 	
-	Icon3D[] arrowsForQuest(string questName) {
-		string gameObjectName = "";
+	string objectNameForQuest(string questName) {
 		switch (questName) {
-		case "helping_others_picking_up_item": gameObjectName = "RiverQuest"; break;
-		case "helping_others_cross_river": gameObjectName = "RiverQuest"; break;
-		case "helping_others_reaching_up_high": gameObjectName = "FlyingQuest"; break;
-		case "helping_others_putting_out_fire": gameObjectName = "SummonQuest"; break;
-		//case "light fire": gameObjectName = "SummonQuest"; break;
-		case "helping_others_summonObject": gameObjectName = "SummonObjectQuest"; break;
-		case "helping_others_unlevitate": gameObjectName = "UnlevitationQuest"; break;
-		case "square_dance": gameObjectName = "DanceQuest"; break;
-		case "creative_dance": gameObjectName = "DanceQuest"; break;
-		case "massive_levitate": gameObjectName = "MassiveLevitationQuest"; break;
-		case "massive_unlevitate": gameObjectName = "MassiveLevitationQuest"; break;
-		//case "massive creative dance": gameObjectName = ""; break;
-		case "follow_the_leader": gameObjectName = "FollowTheLeaderQuest"; break;
-		case "portal": gameObjectName = "PortalQuest"; break;
-		case "umbrella": gameObjectName = "UmbrellaQuest"; break;
+		case "helping_others_picking_up_item": return "RiverQuest";
+		case "helping_others_cross_river": return "RiverQuest";
+		case "helping_others_reaching_up_high": return "FlyingQuest";
+		case "helping_others_putting_out_fire": return "SummonQuest";
+		//case "light fire": return "SummonQuest";
+		case "helping_others_summonObject": return "SummonObjectQuest";
+		case "helping_others_unlevitate": return "UnlevitationQuest";
+		case "square_dance": return "DanceQuest";
+		case "creative_dance": return "DanceQuest";
+		case "massive_levitate": return "MassiveLevitationQuest";
+		case "massive_unlevitate": return "MassiveLevitationQuest";
+		//case "massive creative dance": return "";
+		case "follow_the_leader": return "FollowTheLeaderQuest";
+		case "portal": return "PortalQuest";
+		case "umbrella": return "UmbrellaQuest";
 		}
-		return GameObject.Find(gameObjectName).GetComponentsInChildren<Icon3D>(true);
+		return "";
 	}
 	
 	public string getSpellName(string cont) {
