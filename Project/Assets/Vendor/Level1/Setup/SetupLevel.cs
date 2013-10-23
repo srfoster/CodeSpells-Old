@@ -49,13 +49,13 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupSpellKiller()).Init();
 		
 		logStart();
-
+		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
 		//givePlayerAScroll();
 		givePlayerExistingSpells();
-		
+
 		setupSpecialEvents();  //i.e. do random shit
 		
 		// Setup help button
@@ -193,6 +193,8 @@ public class SetupLevel : MonoBehaviour {
 		
 		// mark badges as already complete
 		markCompletedBadges();
+		
+		showAppropriateQuestArrows();
 		
 		//Set up the callbacks for unlocking the badges.
 		//int num_unlocked = 0;
@@ -455,6 +457,75 @@ public class SetupLevel : MonoBehaviour {
 // 	            }
 // 	        }
 // 	    }
+	}
+	
+	void showAppropriateQuestArrows() {
+		Debug.Log("hiding all quest arrows");
+		hideAllQuestArrows();
+		
+		foreach (string questName in nextQuests()) {
+			Debug.Log("showing quest arrows for " + questName);
+			showQuestArrows(arrowsForQuest(questName));
+		}
+	}
+	
+	void hideAllQuestArrows() {
+		List<Icon3D> arrows = new List<Icon3D>();
+		arrows.AddRange(GameObject.Find("IntroGnome").GetComponentsInChildren<Icon3D>(true));
+		arrows.AddRange(GameObject.Find("Quests").GetComponentsInChildren<Icon3D>(true));
+		foreach (Icon3D arrow in arrows) {
+			arrow.show = false;
+		}
+	}
+	
+	void showQuestArrows(Icon3D[] arrows) {
+		foreach (Icon3D arrow in arrows) {
+			arrow.show = true;
+		}
+	}
+	
+	string[] nextQuests() {
+		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
+		
+		if (!badgebook.IsComplete("helping_others_picking_up_item")) return new string[] {"helping_others_picking_up_item"};
+		if (!badgebook.IsComplete("helping_others_cross_river")) return new string[] {"helping_others_cross_river"};
+		if (!badgebook.IsComplete("helping_others_reaching_up_high")) return new string[] {"helping_others_reaching_up_high"};
+		if (!badgebook.IsComplete("helping_others_putting_out_fire")) return new string[] {"helping_others_putting_out_fire"};
+		if (!badgebook.IsComplete("helping_others_light_fire")) return new string[] {"helping_others_light_fire"};
+		if (!badgebook.IsComplete("helping_others_summonObject")) return new string[] {"helping_others_summonObject"};
+		if (!badgebook.IsComplete("helping_others_unlevitate")) return new string[] {"helping_others_unlevitate"};
+		if (!badgebook.IsComplete("square_dance")) return new string[] {"square_dance"};
+		if (!badgebook.IsComplete("creative_dance")) return new string[] {"creative_dance"};
+		if (!badgebook.IsComplete("massive_levitate")) return new string[] {"massive_levitate"};
+		if (!badgebook.IsComplete("massive_unlevitate")) return new string[] {"massive_unlevitate"};
+		if (!badgebook.IsComplete("massive_dance")) return new string[] {"massive_dance"};
+		if (!badgebook.IsComplete("follow_the_leader")) return new string[] {"follow_the_leader"};
+		if (!badgebook.IsComplete("portal")) return new string[] {"portal"};
+		if (!badgebook.IsComplete("umbrella")) return new string[] {"umbrella"};
+
+		return new string[] {};
+	}
+	
+	Icon3D[] arrowsForQuest(string questName) {
+		string gameObjectName = "";
+		switch (questName) {
+		case "helping_others_picking_up_item": gameObjectName = "RiverQuest"; break;
+		case "helping_others_cross_river": gameObjectName = "RiverQuest"; break;
+		case "helping_others_reaching_up_high": gameObjectName = "FlyingQuest"; break;
+		case "helping_others_putting_out_fire": gameObjectName = "SummonQuest"; break;
+		//case "light fire": gameObjectName = "SummonQuest"; break;
+		case "helping_others_summonObject": gameObjectName = "SummonObjectQuest"; break;
+		case "helping_others_unlevitate": gameObjectName = "UnlevitationQuest"; break;
+		case "square_dance": gameObjectName = "DanceQuest"; break;
+		case "creative_dance": gameObjectName = "DanceQuest"; break;
+		case "massive_levitate": gameObjectName = "MassiveLevitationQuest"; break;
+		case "massive_unlevitate": gameObjectName = "MassiveLevitationQuest"; break;
+		//case "massive creative dance": gameObjectName = ""; break;
+		case "follow_the_leader": gameObjectName = "FollowTheLeaderQuest"; break;
+		case "portal": gameObjectName = "PortalQuest"; break;
+		case "umbrella": gameObjectName = "UmbrellaQuest"; break;
+		}
+		return GameObject.Find(gameObjectName).GetComponentsInChildren<Icon3D>(true);
 	}
 	
 	public string getSpellName(string cont) {
