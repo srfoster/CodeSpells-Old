@@ -231,6 +231,8 @@ public class SetupLevel : MonoBehaviour {
 			{
 				badgebook.Complete("reading_your_book");
 			}
+			
+			showAppropriateQuestArrows();
 		};
 		
 		int collectedBread = 0;
@@ -245,6 +247,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		AudioSource main_audio = GameObject.Find("Voice").audio;
@@ -272,6 +276,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		SummonObject.SummonObjectQuest += () => {
@@ -288,6 +294,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		CollectBread.CollectedBread += () => {
@@ -308,6 +316,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Inventory.PickedUp += (target) => {
@@ -326,6 +336,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Inventory.DroppedOff += (target) => {
@@ -340,6 +352,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Flamable.Extinguished += (target) => {
@@ -354,6 +368,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Flamable.CaughtFire += (target) => {
@@ -378,6 +394,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 	}
 	
@@ -496,7 +514,7 @@ public class SetupLevel : MonoBehaviour {
 	string[] nextQuests() {
 		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
 		
-		if (!badgebook.IsComplete("helping_others_picking_up_item")) return new string[] {"helping_others_picking_up_item"};
+		if (!badgebook.IsComplete("helping_others_picking_up_item")) return new string[] {"intro", "helping_others_picking_up_item"};
 		if (!badgebook.IsComplete("helping_others_cross_river")) return new string[] {"helping_others_cross_river"};
 		if (!badgebook.IsComplete("helping_others_reaching_up_high")) return new string[] {"helping_others_reaching_up_high"};
 		if (!badgebook.IsComplete("helping_others_putting_out_fire")) return new string[] {"helping_others_putting_out_fire"};
@@ -517,6 +535,7 @@ public class SetupLevel : MonoBehaviour {
 	
 	string objectNameForQuest(string questName) {
 		switch (questName) {
+		case "intro": return "IntroGnome";
 		case "helping_others_picking_up_item": return "RiverQuest";
 		case "helping_others_cross_river": return "RiverQuest";
 		case "helping_others_reaching_up_high": return "FlyingQuest";

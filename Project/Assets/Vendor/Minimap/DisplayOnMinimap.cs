@@ -35,5 +35,7 @@ public class DisplayOnMinimap : MonoBehaviour {
 			triangle.transform.rotation = Quaternion.Euler(0.0f, transform.eulerAngles.y, 0.0f);
 			triangle.transform.position = adjPos;
 		}
+		
+		triangle.transform.FindChild("Mesh").gameObject.renderer.enabled = show;
     }
 }
