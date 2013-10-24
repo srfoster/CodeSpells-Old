@@ -53,7 +53,7 @@ public class TraceLogger {
 	public static void LogTrace(string message)		
 	{
 		
-		file.WriteLine("trace: "+ProgramLogger.EncodeTo64(message.Trim()));
+		file.WriteLine("trace: "+ProgramLogger.EncodeTo64(message.Trim())+", "+Time.time+", "+ProgramLogger.getRealTime());
 		file.Flush();
 	}
 	

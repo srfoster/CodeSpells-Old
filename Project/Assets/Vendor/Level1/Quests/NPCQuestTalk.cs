@@ -99,7 +99,7 @@ public class NPCQuestTalk : MonoBehaviour {
 			currentQuest++;
 		}
 		
-		TraceLogger.LogKV("conversation", name+", "+transform.position+", "+Time.time);
+		TraceLogger.LogKVtime("conversation", name+", "+transform.position);
 		
 		c.Converse(((Conversation)conversationList[currentQuest]));
 		

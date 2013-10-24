@@ -436,11 +436,11 @@ public class SetupLevel : MonoBehaviour {
 //                         }
                         CodeScrollItem item = inventory.getCodeScrollItem(old).GetComponent<CodeScrollItem>();
                         //CodeScrollItem item = matching_items[0].GetComponent<CodeScrollItem>();
-                        if (item == null) {
-                            Debug.Log("Renaming CodeScrollItem null");
-                            continue;
-                        } else
-                            Debug.Log("Renaming CodeScrollItem "+item.getName());
+//                         if (item == null) {
+//                             Debug.Log("Renaming CodeScrollItem null");
+//                             continue;
+//                         } else
+//                             Debug.Log("Renaming CodeScrollItem "+item.getName());
                         string code = item.getIDEInput().GetCode();
                         item.setCurrentFile(newn+".java");
 				        item.getIDEInput().SetCode(code);
@@ -503,6 +503,8 @@ public class SetupLevel : MonoBehaviour {
 	}
 	
 	void showQuestObjects(string objectName) {
+	    if (objectName == "")
+	        return;
 		foreach (Icon3D arrow in GameObject.Find(objectName).GetComponentsInChildren<Icon3D>(true)) {
 			arrow.show = true;
 		}
@@ -541,6 +543,7 @@ public class SetupLevel : MonoBehaviour {
 		case "helping_others_reaching_up_high": return "FlyingQuest";
 		case "helping_others_putting_out_fire": return "SummonQuest";
 		//case "light fire": return "SummonQuest";
+		case "helping_others_light_fire": return "FireQuest";
 		case "helping_others_summonObject": return "SummonObjectQuest";
 		case "helping_others_unlevitate": return "UnlevitationQuest";
 		case "square_dance": return "DanceQuest";

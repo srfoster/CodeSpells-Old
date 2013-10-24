@@ -177,7 +177,7 @@ public class Badgebook : MonoBehaviour {
 		        Replace(name, "complete_" + name, badgeStore.label(name), badgeStore.path(name).Replace("incomplete","complete"), true);
 		    else
 			    Replace(name, "complete_" + name, badgeStore.label(name) + " (COMPLETED)", badgeStore.path(name).Replace("incomplete","complete"), true);
-			TraceLogger.LogKV("completed", name);
+			TraceLogger.LogKVtime("completed", name);
 			BadgeLogger.Log(name);
 			return true;
 		} else {
