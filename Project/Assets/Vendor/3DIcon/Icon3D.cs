@@ -45,6 +45,8 @@ public class Icon3D : MonoBehaviour {
 				transform.position.y+ y_adj + bounce(),
 				transform.position.z + z_adj);
 		}
+		
+		mesh.gameObject.renderer.enabled = show;
 	}
 	
 	void findMeshRecursive(Transform parent)

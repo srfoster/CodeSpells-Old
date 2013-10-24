@@ -49,13 +49,13 @@ public class SetupLevel : MonoBehaviour {
 		(new SetupSpellKiller()).Init();
 		
 		logStart();
-
+		
 		givePlayerASpellbook();
 		givePlayerABadgeBook();
 		givePlayerAFlag();
 		//givePlayerAScroll();
 		givePlayerExistingSpells();
-		
+
 		setupSpecialEvents();  //i.e. do random shit
 		
 		// Setup help button
@@ -194,6 +194,8 @@ public class SetupLevel : MonoBehaviour {
 		// mark badges as already complete
 		markCompletedBadges();
 		
+		showAppropriateQuestArrows();
+		
 		//Set up the callbacks for unlocking the badges.
 		//int num_unlocked = 0;
 		Enchantable.EnchantmentEnded += (spell_target, item_name) => {			
@@ -229,6 +231,8 @@ public class SetupLevel : MonoBehaviour {
 			{
 				badgebook.Complete("reading_your_book");
 			}
+			
+			showAppropriateQuestArrows();
 		};
 		
 		int collectedBread = 0;
@@ -243,6 +247,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		AudioSource main_audio = GameObject.Find("Voice").audio;
@@ -270,6 +276,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		SummonObject.SummonObjectQuest += () => {
@@ -286,6 +294,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		CollectBread.CollectedBread += () => {
@@ -306,6 +316,8 @@ public class SetupLevel : MonoBehaviour {
 			
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Inventory.PickedUp += (target) => {
@@ -324,6 +336,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Inventory.DroppedOff += (target) => {
@@ -338,6 +352,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Flamable.Extinguished += (target) => {
@@ -352,6 +368,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 		
 		Flamable.CaughtFire += (target) => {
@@ -376,6 +394,8 @@ public class SetupLevel : MonoBehaviour {
 			}
 			if(helpingUnlocked == NUMBER_OF_QUESTS)
 				badgebook.Complete("helping_others");
+			
+			showAppropriateQuestArrows();
 		};
 	}
 	
@@ -455,6 +475,84 @@ public class SetupLevel : MonoBehaviour {
 // 	            }
 // 	        }
 // 	    }
+	}
+	
+	void showAppropriateQuestArrows() {
+		Debug.Log("hiding all quest arrows");
+		hideAllQuestArrows();
+		
+		foreach (string questName in nextQuests()) {
+			Debug.Log("showing quest arrows for " + questName);
+			showQuestObjects(objectNameForQuest(questName));
+		}
+	}
+	
+	void hideAllQuestArrows() {
+		foreach (Icon3D arrow in GameObject.Find("IntroGnome").GetComponentsInChildren<Icon3D>(true)) {
+			arrow.show = false;
+		}
+		foreach (DisplayOnMinimap arrow in GameObject.Find("IntroGnome").GetComponentsInChildren<DisplayOnMinimap>(true)) {
+			arrow.show = false;
+		}
+		foreach (Icon3D arrow in GameObject.Find("Quests").GetComponentsInChildren<Icon3D>(true)) {
+			arrow.show = false;
+		}
+		foreach (DisplayOnMinimap arrow in GameObject.Find("Quests").GetComponentsInChildren<DisplayOnMinimap>(true)) {
+			arrow.show = false;
+		}
+	}
+	
+	void showQuestObjects(string objectName) {
+		foreach (Icon3D arrow in GameObject.Find(objectName).GetComponentsInChildren<Icon3D>(true)) {
+			arrow.show = true;
+		}
+		foreach (DisplayOnMinimap arrow in GameObject.Find(objectName).GetComponentsInChildren<DisplayOnMinimap>(true)) {
+			arrow.show = true;
+		}
+	}
+	
+	string[] nextQuests() {
+		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
+		
+		if (!badgebook.IsComplete("helping_others_picking_up_item")) return new string[] {"intro", "helping_others_picking_up_item"};
+		if (!badgebook.IsComplete("helping_others_cross_river")) return new string[] {"helping_others_cross_river"};
+		if (!badgebook.IsComplete("helping_others_reaching_up_high")) return new string[] {"helping_others_reaching_up_high"};
+		if (!badgebook.IsComplete("helping_others_putting_out_fire")) return new string[] {"helping_others_putting_out_fire"};
+		if (!badgebook.IsComplete("helping_others_light_fire")) return new string[] {"helping_others_light_fire"};
+		if (!badgebook.IsComplete("helping_others_summonObject")) return new string[] {"helping_others_summonObject"};
+		if (!badgebook.IsComplete("helping_others_unlevitate")) return new string[] {"helping_others_unlevitate"};
+		if (!badgebook.IsComplete("square_dance")) return new string[] {"square_dance"};
+		if (!badgebook.IsComplete("creative_dance")) return new string[] {"creative_dance"};
+		if (!badgebook.IsComplete("massive_levitate")) return new string[] {"massive_levitate"};
+		if (!badgebook.IsComplete("massive_unlevitate")) return new string[] {"massive_unlevitate"};
+		if (!badgebook.IsComplete("massive_dance")) return new string[] {"massive_dance"};
+		if (!badgebook.IsComplete("follow_the_leader")) return new string[] {"follow_the_leader"};
+		if (!badgebook.IsComplete("portal")) return new string[] {"portal"};
+		if (!badgebook.IsComplete("umbrella")) return new string[] {"umbrella"};
+
+		return new string[] {};
+	}
+	
+	string objectNameForQuest(string questName) {
+		switch (questName) {
+		case "intro": return "IntroGnome";
+		case "helping_others_picking_up_item": return "RiverQuest";
+		case "helping_others_cross_river": return "RiverQuest";
+		case "helping_others_reaching_up_high": return "FlyingQuest";
+		case "helping_others_putting_out_fire": return "SummonQuest";
+		//case "light fire": return "SummonQuest";
+		case "helping_others_summonObject": return "SummonObjectQuest";
+		case "helping_others_unlevitate": return "UnlevitationQuest";
+		case "square_dance": return "DanceQuest";
+		case "creative_dance": return "DanceQuest";
+		case "massive_levitate": return "MassiveLevitationQuest";
+		case "massive_unlevitate": return "MassiveLevitationQuest";
+		//case "massive creative dance": return "";
+		case "follow_the_leader": return "FollowTheLeaderQuest";
+		case "portal": return "PortalQuest";
+		case "umbrella": return "UmbrellaQuest";
+		}
+		return "";
 	}
 	
 	public string getSpellName(string cont) {
