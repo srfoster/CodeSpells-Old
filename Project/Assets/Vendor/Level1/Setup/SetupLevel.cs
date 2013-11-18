@@ -9,6 +9,7 @@ public class SetupLevel : MonoBehaviour {
 	private bool crate1 = false;
 	private bool crate2 = false;
 	private bool hintstart = false;
+	private string currentQuest = "";
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
@@ -480,10 +481,15 @@ public class SetupLevel : MonoBehaviour {
 	void showAppropriateQuestArrows() {
 		Debug.Log("hiding all quest arrows");
 		hideAllQuestArrows();
-		
-		foreach (string questName in nextQuests()) {
-			Debug.Log("showing quest arrows for " + questName);
-			showQuestObjects(objectNameForQuest(questName));
+
+		if (currentQuest != "") {
+			Debug.Log("showing quest arrows for " + currentQuest);
+			showQuestObjects(objectNameForQuest(currentQuest));
+		} else {
+			foreach (string questName in nextQuests()) {
+				Debug.Log("showing quest arrows for " + questName);
+				showQuestObjects(objectNameForQuest(questName));
+			}
 		}
 	}
 	
