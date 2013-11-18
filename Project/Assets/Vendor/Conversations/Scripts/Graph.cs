@@ -70,13 +70,13 @@ public class Graph {
 				}
 				else if(readEdges)
 				{
-					string [] split = txt.Split('='); 
+					string [] split = txt.Split('=');
 					this.addEdge(System.Int32.Parse(split[0]), split[1], System.Int32.Parse(split[2]), System.Int32.Parse(split[3]));
 				}
 				else if(readExits)
 				{
-					string [] split = txt.Split('='); 
-					this.addExit(System.Int32.Parse(split[0]), split[1], System.Int32.Parse(split[2]), System.Int32.Parse(split[3]));
+					string [] split = txt.Split('=');
+					this.addExit(System.Int32.Parse(split[0]), split[1], System.Int32.Parse(split[2]), System.Int32.Parse(split[3]), split.Length >= 5 ? split[4] : "");
 				}
 				txt = reader.ReadLine();
 			}
@@ -101,7 +101,7 @@ public class Graph {
 	// Adds response edges to the graph
 	public void addEdge(int p_id, string p_statement, int p_fromNode, int p_toNode)
 	{
-		Response temp = new Response(p_statement, p_fromNode, p_toNode, false);
+		Response temp = new Response(p_statement, p_fromNode, p_toNode, false, "");
 		
 		edges.Insert(p_id, temp);
 		foreach (KeyValuePair<Node, ArrayList> pair in graph)
@@ -115,9 +115,9 @@ public class Graph {
 	}
 	
 	// Adds exit edges to the graph
-	public void addExit(int p_id, string p_statement, int p_fromNode, int p_toNode)
+	public void addExit(int p_id, string p_statement, int p_fromNode, int p_toNode, string startingQuest)
 	{
-		Response temp = new Response(p_statement, p_fromNode, p_toNode, true);
+		Response temp = new Response(p_statement, p_fromNode, p_toNode, true, startingQuest);
 		temp.setIsExit(true);
 		edges.Insert(p_id, temp);
 		foreach (KeyValuePair<Node, ArrayList> pair in graph)

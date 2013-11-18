@@ -479,7 +479,6 @@ public class SetupLevel : MonoBehaviour {
 	}
 	
 	void showAppropriateQuestArrows() {
-		Debug.Log("hiding all quest arrows");
 		hideAllQuestArrows();
 
 		if (currentQuest != "") {
@@ -662,11 +661,16 @@ public class SetupLevel : MonoBehaviour {
 			main_audio.audio.PlayOneShot(hi_clip);	
 		};
 		
-		ConversationDisplayer.ConversationStopped += (target) => {
+		ConversationDisplayer.ConversationStopped += (target, startingQuest) => {
 			int i = Random.Range(1, 3);
 			AudioClip bye_clip = Resources.Load("GnomeBye" + i) as AudioClip;
 
-			main_audio.audio.PlayOneShot(bye_clip);	
+			main_audio.audio.PlayOneShot(bye_clip);
+
+			if (startingQuest != "") {
+				currentQuest = startingQuest;
+				showAppropriateQuestArrows();
+			}
 		};
 	}
 	

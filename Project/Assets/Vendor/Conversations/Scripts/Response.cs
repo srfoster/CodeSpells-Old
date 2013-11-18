@@ -7,13 +7,15 @@ public class Response {
 	private int nextNode = -1;
 	private int prevNode = -1;
 	private bool is_exit = false;
+	private string starts_quest = "";
 
-	public Response(string p_response, int p_prevNode, int p_nextNode, bool exit)
+	public Response(string p_response, int p_prevNode, int p_nextNode, bool exit, string starts_quest)
 	{
 		response = p_response;
 		nextNode = p_nextNode;
 		prevNode = p_prevNode;
 		is_exit = exit;
+		this.starts_quest = starts_quest;
 	}
 	
 	public string getResponseText()
@@ -39,6 +41,11 @@ public class Response {
 	public bool isExit()
 	{
 		return this.is_exit;
+	}
+
+	public string startsQuest()
+	{
+		return this.starts_quest;
 	}
 	
 	public void setNextNode(int p_nextNode)
