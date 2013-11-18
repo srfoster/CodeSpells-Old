@@ -10,23 +10,24 @@ public class NPCQuestTalk : MonoBehaviour {
 	public string quests;
 	
 	enum whichQuest {Fire=1, PickUp, River, Extinguish, Levitate, Fly, Transport, None, Staff, Unlevitate, SummonObject, SquareDance, CreativeDance, MassiveLevitate, MassiveUnlevitate, MassiveDance, FollowTheLeader, Portal, Umbrella}; 
-	private int questIndex;
-	
-	private QuestChecker questObject;
-	private Conversation convo;
-	
+
 	private int currentQuest;
-	
+
+	// populate conversationList and questList using the public properties convo_files and quests.
+	// convo_files is a semi-colon separated list of conversation files.
+	// quests is a semi-colon separated list of quest names.
+	// those two lists should be the same length? --tom
 	void Start()
 	{
+		QuestChecker questObject;
+
 		string [] questIndices = quests.Split(';');
 		questList = new QuestChecker [questIndices.Length];
 		for(int i = 0; i< questIndices.Length; i++ )
 		{
 			string quest = questIndices[i];
-			questIndex = Int32.Parse(quest);
-			
-			switch((whichQuest) questIndex)
+
+			switch((whichQuest) Int32.Parse(quest))
 			{	
 			case whichQuest.Fire:
 				questObject = new FireQuestChecker();
@@ -69,8 +70,7 @@ public class NPCQuestTalk : MonoBehaviour {
 		conversationList = new Conversation [conversation_files.Length];
 		for(int i = 0; i< conversation_files.Length; i++ )
 		{
-			convo = new GraphConversation(conversation_files[i]);
-			conversationList[i] = convo;
+			conversationList[i] = new GraphConversation(conversation_files[i]);
 		}
 		currentQuest = 0;
 	}
