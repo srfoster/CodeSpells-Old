@@ -10,21 +10,44 @@ function Awake () {
 
 // Update is called once per frame
 function Update () {
-	// Get the input vector from kayboard or analog stick
-	var directionVector = new Vector3(0, 0, Input.GetAxis("Vertical"));
-	transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * 120 * Time.deltaTime);
+	// Get the input vector from keyboard or analog stick
+	var rotateLR : float = Input.GetAxis ("Horizontal"); 
+	var directionVectorUD = new Vector3(0, 0, Input.GetAxis("Vertical") * 10 * Time.deltaTime);
 
-	// To look up, push R
-	if(Input.GetKey(KeyCode.R))
+	transform.Rotate(Vector3.up, rotateLR * 50 * Time.deltaTime);
+	
+	// To look up, push W
+	if(Input.GetKey(KeyCode.W))
     {
-   		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 1 * 120 * Time.deltaTime);
+		if(GameObject.Find("Main Camera").transform.rotation.x >= -0.25) {
+   			GameObject.Find("Main Camera").transform.Rotate(Vector3.left, 0.8 * 60 * Time.deltaTime);
+   		}
+
     }
 
-	// To look down, push F
-    if(Input.GetKey(KeyCode.F))
+	// To look down, push S
+    if(Input.GetKey(KeyCode.S))
     {
-    	GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -1 * 120 * Time.deltaTime);
+    	if(GameObject.Find("Main Camera").transform.rotation.x <= 0.25) {
+    		GameObject.Find("Main Camera").transform.Rotate(Vector3.left, -0.8 * 60 * Time.deltaTime);
+    	}
     }
+   
+    // Code for strafing left and right. Could be implemented, but need to solve "infinite falling" problem
+    // if you run into unlevel terrain
+    
+    /*
+    if(Input.GetKey(KeyCode.LeftArrow))
+    {
+    		GameObject.Find("Main Camera").transform.Translate(-0.1 * 60 * Time.deltaTime, 0, 0);
+    		transform.Translate(-0.1 * 60 * Time.deltaTime, 0, 0);
+    }
+    
+    if(Input.GetKey(KeyCode.RightArrow))
+    {
+    		GameObject.Find("Main Camera").transform.Translate(0.1 * 60 * Time.deltaTime, 0, 0);
+    		transform.Translate(0.1 * 60 * Time.deltaTime, 0, 0);
+    }*/
 
      /*
     
@@ -47,27 +70,28 @@ function Update () {
 	GameObject.Find("Main Camera").transform.localEulerAngles = new Vector3(rotationX, rotationY, rotationZ);
 
     */
-
-	if (directionVector != Vector3.zero) {
+	
+	if (directionVectorUD != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it
 		// Dividing by the length is cheaper than normalizing when we already have the length anyway
-		var directionLength = directionVector.magnitude;
-		directionVector = directionVector / directionLength;
+		var directionLengthUD = directionVectorUD.magnitude;
+		directionVectorUD = directionVectorUD / directionLengthUD;
 
 		// Make sure the length is no bigger than 1
-		directionLength = Mathf.Min(1, directionLength);
+		directionLengthUD = Mathf.Min(1, directionLengthUD);
 
 		// Make the input vector more sensitive towards the extremes and less sensitive in the middle
 		// This makes it easier to control slow speeds when using analog sticks
-		directionLength = directionLength * directionLength;
+		directionLengthUD = directionLengthUD * directionLengthUD;
 
 		// Multiply the normalized direction vector by the modified length
-		directionVector = directionVector * directionLength;
+		directionVectorUD = directionVectorUD * directionLengthUD;
 	}
 
 	// Apply the direction to the CharacterMotor
-	motor.inputMoveDirection = transform.rotation * directionVector;
+	motor.inputMoveDirection = transform.rotation * directionVectorUD;
 	motor.inputJump = Input.GetButton("Jump");
+	
 }
 
 // Require a character controller to be attached to the same game object
