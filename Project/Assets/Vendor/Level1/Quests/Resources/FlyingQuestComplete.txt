@@ -2,10 +2,12 @@ Nodes
 0=Thank you for collecting all my bread for me!
 1=You know, I hear wizards are even more powerful when they have a staff. I just happen to have one here, but I'm obviously not magical enough to use it so...I'd like to give it to you.
 2=I'd like to give you my staff.
+3=Now that you're an advanced wizard, you'll find new, more powerful spells in your Spell Book! Congratulations!
 Responses
 0=No problem!=0=1
 1=Yes Please!!=1=2
+2=OK=2=3
 Exits
 0=Exit=0=1
 1=Thank you!=1=2
-2=OK=2=2
+3=Awesome!=3=3
