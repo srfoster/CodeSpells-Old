@@ -81,6 +81,7 @@ public class Spellbook : MonoBehaviour {
 	}
 	
 	void OnGUI(){
+		
 		if(enabled){
 		    
 			displayCurrentPage();
@@ -109,7 +110,24 @@ public class Spellbook : MonoBehaviour {
                     SpellCopied(currentPage());
                 }
             }
+			///////////////////
 			
+			if(current_page != 0 && Input.GetKey(KeyCode.LeftArrow))
+			{
+				current_page--;
+				PageTurnedBackward(currentPage());
+				logCurrentPage();
+			
+			}
+			if(current_page != pages.Count - 1 && Input.GetKey(KeyCode.RightArrow))
+			{
+				current_page++;
+				PageTurnedForward(currentPage());
+				logCurrentPage();
+			}
+				
+			//hi
+				
 			GUIStyle prev_button_style = new GUIStyle();
 			prev_button_style.normal.background = prev_button_texture;
 			if(current_page != 0 && GUI.Button (new Rect (Screen.width * 0.025f, Screen.height * 0.5f, 35, 35), "", prev_button_style))
@@ -135,7 +153,7 @@ public class Spellbook : MonoBehaviour {
 		    GUI.Button(new Rect(0,0,Screen.width,Screen.height), "", empty_style);
 		}
 	}
-	
+		
 	public string copyBlankSpell() {
 	    int temp_curr = current_page;
 	    current_page = pages.FindIndex(

@@ -97,6 +97,7 @@ public class SetupLevel : MonoBehaviour {
 		inventory.addItem(book);
 		
 		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+		Badgebook badgebook = GameObject.Find("Badgebook").GetComponent<Badgebook>();
 		
 		spellbook.Add(new FilePage("MySpell", "MySpell/texture", "MySpell/code"));
 		//spellbook.Add(new FilePage("MassiveLevitation", "MassiveLevitation/texture", "MassiveLevitation/code"));
@@ -108,9 +109,13 @@ public class SetupLevel : MonoBehaviour {
 		spellbook.Add(new FilePage("Teleport", "Teleport/texture", "Teleport/code"));
 		spellbook.Add(new FilePage("Flight", "Flight/texture", "Flight/code"));
 		spellbook.Add(new FilePage("Summon", "Summon/texture", "Summon/code"));
-		spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
-		spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
-		spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
+		//if(badgebook.Complete("helping_others_putting_something_high"))
+		//{
+		//spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
+		//spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
+		//spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
+		//}
+		
 	}
 	
 	void givePlayerAScroll()
@@ -304,7 +309,7 @@ public class SetupLevel : MonoBehaviour {
 			main_audio.PlayOneShot(pickup_clip);
 			Popup.mainPopup.popup("Got it! (" + (12 - collectedBread) + " left)");
 			
-			if(collectedBread == 12)
+			if(12 == 12)
 			{
 				if (badgebook.Complete("helping_others_putting_something_high"))
 				{
@@ -318,6 +323,7 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("helping_others");
 			
 			showAppropriateQuestArrows();
+			showAppropriateSpells(GameObject.Find("Badgebook"));
 		};
 		
 		Inventory.PickedUp += (target) => {
@@ -338,6 +344,7 @@ public class SetupLevel : MonoBehaviour {
 				badgebook.Complete("helping_others");
 			
 			showAppropriateQuestArrows();
+
 		};
 		
 		Inventory.DroppedOff += (target) => {
@@ -475,6 +482,19 @@ public class SetupLevel : MonoBehaviour {
 // 	            }
 // 	        }
 // 	    }
+	}
+	
+	void showAppropriateSpells(GameObject badgeBook) {
+		Debug.Log("adding advanced spells");
+		Badgebook badgebook = badgeBook.GetComponent<Badgebook>();
+		Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+		
+		if(badgebook.Complete("collecting_objects_staff"))
+		{
+			spellbook.Add(new FilePage("MassiveFire", "MassiveFire/texture", "MassiveFire/code"));
+			spellbook.Add(new FilePage("Architecture", "Architecture/texture", "Architecture/code"));
+			spellbook.Add(new FilePage("Architecture2", "Architecture2/texture", "Architecture2/code"));
+		}
 	}
 	
 	void showAppropriateQuestArrows() {
@@ -688,6 +708,8 @@ public class SetupLevel : MonoBehaviour {
                         inventory.addItem(game_flag);
 
                         game_flag.GetComponent<Item>().item_name = "Staff";
+						showAppropriateSpells(GameObject.Find("Badgebook"));
+
                     }
                 }
             }
@@ -755,6 +777,15 @@ public class SetupLevel : MonoBehaviour {
             ProgramLogger.LogKVtime("hint", redButtonText);
             showYellowBorder = !showYellowBorder;
         }
+		
+		if(Input.GetKey(KeyCode.B))
+		{
+			Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+			Spellbook spellbook = GameObject.Find("Spellbook").GetComponent<Spellbook>();
+
+			spellbook.show(GameObject.Find("Inventory"));
+		}
+		
 	}
 	
 	// Yellow border shows up around screen if help is requested
