@@ -775,7 +775,7 @@ public class SetupLevel : MonoBehaviour {
         }
 
 		if (currentQuest != "") {
-			GUI.Label(new Rect(50, 10, Screen.width - 400, 20), "Current Quest: " + currentQuest, currentQuestStyle);
+			GUI.Label(new Rect(50, 10, Screen.width - 400, 20), "Current Quest: " + badgebook.badgeStore.label(currentQuest).Trim(), currentQuestStyle);
 		}
 	}
 

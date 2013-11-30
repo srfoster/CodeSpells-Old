@@ -54,7 +54,7 @@ public class Badgebook : MonoBehaviour {
 
 	bool enabled = false;
 		
-	BadgeStore badgeStore = new BadgeStore();
+	public BadgeStore badgeStore = new BadgeStore();
 	
 	GUIStyle label_style;
 	GUIStyle icon_style;
