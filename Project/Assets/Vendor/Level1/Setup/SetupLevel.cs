@@ -16,6 +16,7 @@ public class SetupLevel : MonoBehaviour {
 	private const int NUMBER_OF_QUESTS = 8 + 1; //extra 1 for staff, though it's not exactly a quest, it is used to unlock helping_others
 	
 	private GUIStyle helpButtonStyle = new GUIStyle();
+	private GUIStyle currentQuestStyle = new GUIStyle();
 	private Texture2D yellowBorder;
 	private bool showYellowBorder = false;
 	
@@ -67,7 +68,13 @@ public class SetupLevel : MonoBehaviour {
 		helpButtonStyle.active.textColor = new Color(0.75f, 0.68f, 0.016f);
 		helpButtonStyle.alignment = TextAnchor.MiddleCenter;
 		helpButtonStyle.fontSize = 20;
-		
+
+		Texture2D currentQuestBackground = new Texture2D(1, 1);
+		currentQuestBackground.SetPixel(0, 0, Color.yellow);
+		currentQuestBackground.Apply();
+		currentQuestStyle.normal.background = currentQuestBackground;
+		currentQuestStyle.alignment = TextAnchor.MiddleCenter;
+
 		// Setup quest check border
 		createOrangeBorderTexture();
 	}
@@ -482,11 +489,11 @@ public class SetupLevel : MonoBehaviour {
 		hideAllQuestArrows();
 
 		if (currentQuest != "") {
-			Debug.Log("showing quest arrows for " + currentQuest);
+			//Debug.Log("showing quest arrows for " + currentQuest);
 			showQuestObjects(objectNameForQuest(currentQuest));
 		} else {
 			foreach (string questName in nextQuests()) {
-				Debug.Log("showing quest arrows for " + questName);
+				//Debug.Log("showing quest arrows for " + questName);
 				showQuestObjects(objectNameForQuest(questName));
 			}
 		}
@@ -668,6 +675,7 @@ public class SetupLevel : MonoBehaviour {
 			main_audio.audio.PlayOneShot(bye_clip);
 
 			if (startingQuest != "") {
+				Debug.Log("Quest accepted: " + startingQuest);
 				currentQuest = startingQuest;
 				showAppropriateQuestArrows();
 			}
@@ -765,8 +773,12 @@ public class SetupLevel : MonoBehaviour {
             ProgramLogger.LogKVtime("hint", redButtonText);
             showYellowBorder = !showYellowBorder;
         }
+
+		if (currentQuest != "") {
+			GUI.Label(new Rect(50, 10, Screen.width - 400, 20), "Current Quest: " + currentQuest, currentQuestStyle);
+		}
 	}
-	
+
 	// Yellow border shows up around screen if help is requested
 	void createYellowBorderTexture() {
 	    yellowBorder = new Texture2D(1,1);
