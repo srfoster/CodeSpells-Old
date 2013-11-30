@@ -9,7 +9,7 @@ public class SetupLevel : MonoBehaviour {
 	private bool crate1 = false;
 	private bool crate2 = false;
 	private bool hintstart = false;
-	private string currentQuest = "";
+	private string currentQuest = ""; // helping_others_light_fire
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
@@ -17,6 +17,7 @@ public class SetupLevel : MonoBehaviour {
 	
 	private GUIStyle helpButtonStyle = new GUIStyle();
 	private GUIStyle currentQuestStyle = new GUIStyle();
+	private GUIStyle currentQuestButtonStyle = new GUIStyle();
 	private Texture2D yellowBorder;
 	private bool showYellowBorder = false;
 	
@@ -69,16 +70,17 @@ public class SetupLevel : MonoBehaviour {
 		helpButtonStyle.alignment = TextAnchor.MiddleCenter;
 		helpButtonStyle.fontSize = 20;
 
-		Texture2D currentQuestBackground = new Texture2D(1, 1);
-		currentQuestBackground.SetPixel(0, 0, Color.yellow);
-		currentQuestBackground.Apply();
-		currentQuestStyle.normal.background = currentQuestBackground;
+		currentQuestStyle.normal.background = colorTexture(Color.yellow);
 		currentQuestStyle.alignment = TextAnchor.MiddleCenter;
+
+		currentQuestButtonStyle.normal.background = colorTexture(1, 180.0f/255.0f, 40.0f/255.0f);
+		currentQuestButtonStyle.active.background = colorTexture(Color.yellow);
+		currentQuestButtonStyle.alignment = TextAnchor.MiddleCenter;
 
 		// Setup quest check border
 		createOrangeBorderTexture();
 	}
-	
+
 	void givePlayerAFlag() {
 		// If all the bread is collected, give them a staff/flag
 		FlyQuestChecker.UnlockedStaff += () => {
@@ -776,6 +778,10 @@ public class SetupLevel : MonoBehaviour {
 
 		if (currentQuest != "") {
 			GUI.Label(new Rect(50, 10, Screen.width - 400, 20), "Current Quest: " + badgebook.badgeStore.label(currentQuest).Trim(), currentQuestStyle);
+			int buttonWidth = 90;
+			if (GUI.Button(new Rect(Screen.width - 400 + 50 - (buttonWidth + 2), 12, buttonWidth, 16), "Abandon!", currentQuestButtonStyle)) {
+				currentQuest = "";
+			}
 		}
 	}
 
@@ -792,5 +798,15 @@ public class SetupLevel : MonoBehaviour {
 	    orangeBorder.SetPixel(0, 0, new Color(1,.5f,0,1));
 	    orangeBorder.Apply();
 	}
-
+	
+	Texture2D colorTexture(float r, float g, float b) {
+		return colorTexture(new Color(r, g, b));
+	}
+	
+	Texture2D colorTexture(Color color) {
+		Texture2D tex = new Texture2D(1, 1);
+		tex.SetPixel(0, 0, color);
+		tex.Apply();
+		return tex;
+	}
 }
