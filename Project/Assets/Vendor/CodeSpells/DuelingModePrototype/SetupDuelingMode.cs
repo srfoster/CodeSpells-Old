@@ -187,7 +187,7 @@ public class SetupDuelingMode : MonoBehaviour {
 			//main_audio.audio.PlayOneShot(hi_clip);	
 		};
 		
-		ConversationDisplayer.ConversationStopped += (target) => {
+		ConversationDisplayer.ConversationStopped += (target, bailed) => {
 			int i = Random.Range(1, 3);
 			AudioClip bye_clip = Resources.Load("GnomeBye" + i) as AudioClip;
 

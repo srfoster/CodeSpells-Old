@@ -4,8 +4,9 @@ using System.Collections;
 public class ConversationDisplayer : MonoBehaviour {
 	
 	public delegate void EventHandler(Conversation conversation);
+	public delegate void ConversationStoppedEventHandler(Conversation conversation, string startingQuest);
 	public static event EventHandler ConversationStarted;
-	public static event EventHandler ConversationStopped;
+	public static event ConversationStoppedEventHandler ConversationStopped;
 
 	
 	public int height = 300;
@@ -38,11 +39,11 @@ public class ConversationDisplayer : MonoBehaviour {
 			ConversationStarted(conversation);
 	}
 	
-	void exit()
+	void exit(string startingQuest)
 	{
 		((Camera) GameObject.Find ("MinimapCamera").camera).enabled = true;
-		if(ConversationStarted != null)
-			ConversationStopped(conversation);
+		if(ConversationStopped != null)
+			ConversationStopped(conversation, startingQuest);
 		
 		conversation = null;
 		Time.timeScale = 1;	
@@ -103,7 +104,7 @@ public class ConversationDisplayer : MonoBehaviour {
 					
 					if(response.isExit())
 					{
-						exit();
+						exit(response.startsQuest());
 					}
 				}
 				response_height += 60;
@@ -114,7 +115,7 @@ public class ConversationDisplayer : MonoBehaviour {
 			
 		if(Event.current.type == EventType.MouseDown && !mouse_over_button){
 			Event.current.Use();
-			exit();
+			exit("");
 			return;
 		}
 	}

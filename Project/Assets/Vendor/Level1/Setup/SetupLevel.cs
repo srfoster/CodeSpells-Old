@@ -9,12 +9,15 @@ public class SetupLevel : MonoBehaviour {
 	private bool crate1 = false;
 	private bool crate2 = false;
 	private bool hintstart = false;
+	private string currentQuest = "";
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
 	private const int NUMBER_OF_QUESTS = 8 + 1; //extra 1 for staff, though it's not exactly a quest, it is used to unlock helping_others
 	
 	private GUIStyle helpButtonStyle = new GUIStyle();
+	private GUIStyle currentQuestStyle = new GUIStyle();
+	private GUIStyle currentQuestButtonStyle = new GUIStyle();
 	private Texture2D yellowBorder;
 	private bool showYellowBorder = false;
 	
@@ -66,11 +69,18 @@ public class SetupLevel : MonoBehaviour {
 		helpButtonStyle.active.textColor = new Color(0.75f, 0.68f, 0.016f);
 		helpButtonStyle.alignment = TextAnchor.MiddleCenter;
 		helpButtonStyle.fontSize = 20;
-		
+
+		currentQuestStyle.normal.background = colorTexture(Color.yellow);
+		currentQuestStyle.alignment = TextAnchor.MiddleCenter;
+
+		currentQuestButtonStyle.normal.background = colorTexture(1, 180.0f/255.0f, 40.0f/255.0f);
+		currentQuestButtonStyle.active.background = colorTexture(Color.yellow);
+		currentQuestButtonStyle.alignment = TextAnchor.MiddleCenter;
+
 		// Setup quest check border
 		createOrangeBorderTexture();
 	}
-	
+
 	void givePlayerAFlag() {
 		// If all the bread is collected, give them a staff/flag
 		FlyQuestChecker.UnlockedStaff += () => {
@@ -236,6 +246,11 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		int collectedBread = 0;
+
+		Badgebook.BadgeSelected += (badge) => {
+			currentQuest = badge.name;
+			showAppropriateQuestArrows();
+		};
 		
 		FlyQuestChecker.Levitated += () => {
 			if (badgebook.Complete("helping_others_reaching_up_high"))
@@ -478,12 +493,16 @@ public class SetupLevel : MonoBehaviour {
 	}
 	
 	void showAppropriateQuestArrows() {
-		Debug.Log("hiding all quest arrows");
 		hideAllQuestArrows();
-		
-		foreach (string questName in nextQuests()) {
-			Debug.Log("showing quest arrows for " + questName);
-			showQuestObjects(objectNameForQuest(questName));
+
+		if (currentQuest != "") {
+			//Debug.Log("showing quest arrows for " + currentQuest);
+			showQuestObjects(objectNameForQuest(currentQuest));
+		} else {
+			foreach (string questName in nextQuests()) {
+				//Debug.Log("showing quest arrows for " + questName);
+				showQuestObjects(objectNameForQuest(questName));
+			}
 		}
 	}
 	
@@ -656,11 +675,17 @@ public class SetupLevel : MonoBehaviour {
 			main_audio.audio.PlayOneShot(hi_clip);	
 		};
 		
-		ConversationDisplayer.ConversationStopped += (target) => {
+		ConversationDisplayer.ConversationStopped += (target, startingQuest) => {
 			int i = Random.Range(1, 3);
 			AudioClip bye_clip = Resources.Load("GnomeBye" + i) as AudioClip;
 
-			main_audio.audio.PlayOneShot(bye_clip);	
+			main_audio.audio.PlayOneShot(bye_clip);
+
+			if (startingQuest != "") {
+				Debug.Log("Quest accepted: " + startingQuest);
+				currentQuest = startingQuest;
+				showAppropriateQuestArrows();
+			}
 		};
 	}
 	
@@ -755,8 +780,16 @@ public class SetupLevel : MonoBehaviour {
             ProgramLogger.LogKVtime("hint", redButtonText);
             showYellowBorder = !showYellowBorder;
         }
+
+		if (currentQuest != "") {
+			GUI.Label(new Rect(50, 10, Screen.width - 400, 20), "Current Quest: " + badgebook.badgeStore.label(currentQuest).Trim(), currentQuestStyle);
+			int buttonWidth = 90;
+			if (GUI.Button(new Rect(Screen.width - 400 + 50 - (buttonWidth + 2), 12, buttonWidth, 16), "Abandon!", currentQuestButtonStyle)) {
+				currentQuest = "";
+			}
+		}
 	}
-	
+
 	// Yellow border shows up around screen if help is requested
 	void createYellowBorderTexture() {
 	    yellowBorder = new Texture2D(1,1);
@@ -770,5 +803,15 @@ public class SetupLevel : MonoBehaviour {
 	    orangeBorder.SetPixel(0, 0, new Color(1,.5f,0,1));
 	    orangeBorder.Apply();
 	}
-
+	
+	Texture2D colorTexture(float r, float g, float b) {
+		return colorTexture(new Color(r, g, b));
+	}
+	
+	Texture2D colorTexture(Color color) {
+		Texture2D tex = new Texture2D(1, 1);
+		tex.SetPixel(0, 0, color);
+		tex.Apply();
+		return tex;
+	}
 }
