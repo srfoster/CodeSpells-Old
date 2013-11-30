@@ -29,6 +29,9 @@ public class Badgebook : MonoBehaviour {
 	public delegate void EventHandler(BadgeStore.BadgeInfo badge);
 	public static event EventHandler BadgeUnlocked;
 
+	public delegate void QuestSelectedEventHandler(BadgeStore.BadgeInfo badge);
+	public static event EventHandler BadgeSelected;
+
 	public Texture2D background;
 	GameObject previous_state;
 	
@@ -255,7 +258,9 @@ public class Badgebook : MonoBehaviour {
 			int y = row * field_height;
 			
 			icon_style.normal.background = badgeStore.icon(i);
-			GUI.Box(new Rect(x,y, 50 ,50), "" , icon_style);
+			if (GUI.Button(new Rect(x,y, 50 ,50), "" , icon_style)) {
+				BadgeSelected(badgeStore.Get(i));
+			}
 			
 			if(badgeStore.path(i).Contains("incomplete"))
 			{

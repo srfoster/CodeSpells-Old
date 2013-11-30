@@ -9,7 +9,7 @@ public class SetupLevel : MonoBehaviour {
 	private bool crate1 = false;
 	private bool crate2 = false;
 	private bool hintstart = false;
-	private string currentQuest = ""; // helping_others_light_fire
+	private string currentQuest = "";
 	
 	private int helpingUnlocked = 0;
 	private int num_unlocked = 0;
@@ -246,6 +246,11 @@ public class SetupLevel : MonoBehaviour {
 		};
 		
 		int collectedBread = 0;
+
+		Badgebook.BadgeSelected += (badge) => {
+			currentQuest = badge.name;
+			showAppropriateQuestArrows();
+		};
 		
 		FlyQuestChecker.Levitated += () => {
 			if (badgebook.Complete("helping_others_reaching_up_high"))

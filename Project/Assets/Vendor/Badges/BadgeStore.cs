@@ -11,7 +11,7 @@ public class BadgeStore {
 	public void Add(string name, string label, string path){
 		if(!badges.ContainsKey(name))
 		{
-			badges.Add(name, new BadgeInfo(label, path));
+			badges.Add(name, new BadgeInfo(name, label, path));
 			names.Add(name);
 		}
 	}
@@ -19,7 +19,7 @@ public class BadgeStore {
 	public void Replace(string name, string new_name, string label, string path){
 		if(badges.ContainsKey(name))
 		{
-			badges.Add(new_name, new BadgeInfo(label, path));
+			badges.Add(new_name, new BadgeInfo(name, label, path));
 
 			badges.Remove(name);
 				
@@ -87,13 +87,15 @@ public class BadgeStore {
 	
 	public class BadgeInfo{
 		public Texture2D texture;	
+		public string name;
 		public string label;
 		public string path;
 		public bool buttonUnlockable;
 		
-		public BadgeInfo(string label, string path)
+		public BadgeInfo(string name, string label, string path)
 		{
 			texture = Resources.Load(path) as Texture2D;
+			this.name = name;
 			this.label = label;
 			this.path = path;
 			buttonUnlockable = false;
