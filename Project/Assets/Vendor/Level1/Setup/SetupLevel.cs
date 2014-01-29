@@ -283,7 +283,7 @@ public class SetupLevel : MonoBehaviour {
                         if(helpingUnlocked == NUMBER_OF_QUESTS)
                                 badgebook.Complete("helping_others");
 								//update current level for spheres
-								GameObject.Find("Area1").GetComponent<Area1>().area1 = true;
+								GameObject.Find("Area2").GetComponent<Area2>().area2 = true;
                         
                         showAppropriateQuestArrows();
                 };
