@@ -27,7 +27,7 @@ public class Area1 : MonoBehaviour {
 		}
 		else
 		{
-			Popup.mainPopup.popup("You don't have enough magic for this area yet.");
+			Popup.mainPopup.popup("You don't have enough magic for area 1 yet.");
 		}
 	}
 }
