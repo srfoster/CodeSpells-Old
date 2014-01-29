@@ -13,7 +13,8 @@ public class SetupLevel : MonoBehaviour {
         private int helpingUnlocked = 0;
         private int num_unlocked = 0;
         private const int NUMBER_OF_QUESTS = 8 + 1; //extra 1 for staff, though it's not exactly a quest, it is used to unlock helping_others
-        
+        public int currentLevel = 0;
+	
         private GUIStyle helpButtonStyle = new GUIStyle();
         private Texture2D yellowBorder;
         private bool showYellowBorder = false;
@@ -281,6 +282,8 @@ public class SetupLevel : MonoBehaviour {
                         
                         if(helpingUnlocked == NUMBER_OF_QUESTS)
                                 badgebook.Complete("helping_others");
+								//update current level for spheres
+								GameObject.Find("Area1").GetComponent<Area1>().area1 = true;
                         
                         showAppropriateQuestArrows();
                 };
