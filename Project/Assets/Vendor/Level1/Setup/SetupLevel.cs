@@ -199,6 +199,9 @@ public class SetupLevel : MonoBehaviour {
                 
                 // mark badges as already complete
                 markCompletedBadges();
+				
+				// mark areas that are already cleared
+				getCompletedAreas();
                 
                 showAppropriateQuestArrows();
                 
@@ -282,8 +285,9 @@ public class SetupLevel : MonoBehaviour {
                         
                         if(helpingUnlocked == NUMBER_OF_QUESTS)
                                 badgebook.Complete("helping_others");
-								//update current level for spheres
+								//update current level for areas and log the area
 								GameObject.Find("Area2").GetComponent<Area2>().area2 = true;
+								AreaLogger.Log("Area2");
                         
                         showAppropriateQuestArrows();
                 };
@@ -718,6 +722,42 @@ public class SetupLevel : MonoBehaviour {
             }
             }
         }
+	
+		void getCompletedAreas(){
+			if (File.Exists("./CodeSpellsAreas.log")) 
+			{
+            	string[] lines = File.ReadAllLines("./CodeSpellsAreas.log");
+			
+				foreach (string line in lines) {
+					if (line.Equals("Area1")) {
+						GameObject.Find("Area1").GetComponent<Area1>().area1 = true;
+					}
+					if (line.Equals("Area2")) {
+						GameObject.Find("Area2").GetComponent<Area2>().area2 = true;
+					}
+					if (line.Equals ("Area3")){
+						GameObject.Find("Area3").GetComponent<Area3>().area3 = true;
+					}
+					if (line.Equals ("Area4")){
+						GameObject.Find("Area4").GetComponent<Area4>().area4 = true;
+					}
+					if (line.Equals ("Area5")){
+						GameObject.Find("Area5").GetComponent<Area5>().area5 = true;
+					}
+					if (line.Equals ("Area6")){
+						GameObject.Find("Area6").GetComponent<Area6>().area6 = true;
+					}
+					if (line.Equals ("Area7")){
+						GameObject.Find("Area7").GetComponent<Area7>().area7 = true;
+					}
+				}
+				
+			}
+			else {
+				GameObject.Find("Area1").GetComponent<Area1>().area1 = true;
+				AreaLogger.Log ("Area1");
+			}
+		}
         
         void logStart()
         {

@@ -6,6 +6,7 @@ public class Area2 : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
+		Debug.Log ("*************************" + area2);
 		//if not the player colliding
 		if(!col.gameObject.tag.Equals("Player"))
 			return;

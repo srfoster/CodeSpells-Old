@@ -27,6 +27,16 @@ public class BadgeLogger {
 	}
 }
 
+public class AreaLogger {
+	public static StreamWriter file = File.AppendText("./CodeSpellsAreas.log");
+
+	public static void Log(string message)		
+	{
+		file.WriteLine(message);
+		file.Flush();
+	}
+}
+
 
 
 public class SpellLogger {

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Area1 : MonoBehaviour {
-	public bool area1 = true;
+	public bool area1 = false;
 	
 	void OnTriggerEnter(Collider col)
 	{
